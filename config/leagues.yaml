@@ -1,0 +1,45 @@
+leagues:
+  EPL:
+    name: "English Premier League"
+    understat_name: "EPL"
+    footballdata_code: "E0"
+    country: "England"
+    seasons_available:
+      start: "2014-15"
+    season_type: "winter"
+
+  La_Liga:
+    name: "La Liga"
+    understat_name: "La_liga"
+    footballdata_code: "SP1"
+    country: "Spain"
+    seasons_available:
+      start: "2014-15"
+    season_type: "winter"
+
+  Bundesliga:
+    name: "Bundesliga"
+    understat_name: "Bundesliga"
+    footballdata_code: "D1"
+    country: "Germany"
+    seasons_available:
+      start: "2014-15"
+    season_type: "winter"
+
+  Serie_A:
+    name: "Serie A"
+    understat_name: "Serie_A"
+    footballdata_code: "I1"
+    country: "Italy"
+    seasons_available:
+      start: "2014-15"
+    season_type: "winter"
+
+  Ligue_1:
+    name: "Ligue 1"
+    understat_name: "Ligue_1"
+    footballdata_code: "F1"
+    country: "France"
+    seasons_available:
+      start: "2014-15"
+    season_type: "winter"
