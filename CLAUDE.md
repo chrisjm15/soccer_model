@@ -1,73 +1,69 @@
-# Soccer Model — Session Governance
+# Soccer Model — Session Constitution
 
-## Session Continuity
-**This project spans multiple Cowork chat sessions.** Chats compact or expire. When a new session starts:
-1. Read this file first
-2. Read `SESSION_STATE.md` for current progress and next actions
-3. Read `BUILD_PLAN.md` for the full phased plan
-4. Do NOT re-derive decisions already made — they're logged below
+## What This Is
+xG-based Poisson prediction model for soccer betting markets. Big 5 European leagues via Understat, BTTS first market. GitHub: `chrisjm15/soccer_model`.
 
-If `SESSION_STATE.md` says a phase or task is complete, trust it and move forward.
+## Roles
+| Context | Role |
+|---|---|
+| **Cowork session** | Strategic planner. Design, research, write prompts. Does NOT implement code, run scripts, or push to git. |
+| **Claude Sonnet CLI** | Executor. Multi-file integration, debugging, git. Reads full project context. |
+| **Local LLMs** | Single-module implementors. See tool allocation below. |
 
-## Session Role
-This is a **planning and architecture session**. It does NOT run scripts, execute Python, push to git, or build code. It plans, researches, designs, reviews, and writes prompts for Claude Code CLI sessions to execute.
+Chris has no coding background. All prompts must be copy-paste ready with exact paths and plain English explanations.
 
-## Chris's Experience Level
-Chris has **no coding background**. All Claude Code CLI prompts must:
-- Include the exact folder path to `cd` into
-- Include the `/effort max` command
-- Be copy-paste ready — no "adapt this to your setup" instructions
-- Explain what each step does in plain English
-- Never assume familiarity with git, Python, pip, or terminal concepts
+## Cowork Default Behaviour
+For any coding task, the default flow is:
+1. **Single module** → write fully self-contained prompt → paste to **Qwen3-Coder 30B**
+2. **Multi-file / integration / debugging** → write a **Sonnet CLI prompt**
+3. **Architecture, design, research** → handle in Cowork
 
-## Execution — Claude Code CLI
-When it's time to build, Chris opens a terminal and pastes:
+Do not implement code in Cowork. Write the prompt and hand it off.
+
+## Tool Allocation
+| Tool | Use When |
+|---|---|
+| Cowork | Architecture, design, research, prompt writing |
+| Sonnet CLI (`claude --model claude-sonnet-4-6`) | Multi-file work, debugging, git, full project context |
+| Qwen3-Coder 30B (`qwen3-coder:30b-16k`) | Default: single-module scripts, data transforms, boilerplate |
+| Gemma 4 26B (`gemma4:26b-16k`) | Correctness-critical: async code, financial calculations |
+| Qwen3 8B (`qwen3:8b-16k`) | Quick edits: config, single functions, test stubs |
+
+## Local LLM Prompt Rules
+- Launch: `ollama run qwen3-coder:30b-16k`
+- Always include: `temperature: 0.2`, `num_predict: 4096`
+- Prefix all Qwen3 prompts with `/no_think`
+- **Prompts must be fully self-contained** — local models have no project context. Include all specs, interfaces, and import signatures.
+
+## CLI Launch
 ```
 cd "C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer"
-claude --model claude-opus-4-6
-```
-Then inside Claude Code, paste:
-```
+claude --model claude-sonnet-4-6
 /effort max
 ```
-Then paste the session prompt (provided by this Cowork session).
 
-## Version Control — GitHub
-- Repo: `chrisjm15/soccer_model` (to be created in Phase 1)
-- All code is committed and pushed to GitHub
-- CLI prompts must include git instructions (init, add, commit, push)
-- Chris will need a GitHub repo created — the Phase 1 CLI prompt must walk through this step-by-step
-- Branch strategy: `main` branch for stable code. Feature branches for each phase if needed, but keep it simple — Chris is not a developer.
+## Hard Constraints
+- Free data sources only until positive ROI demonstrated
+- xG-based models only — never fall back to actual-goals approaches
+- Attack and defence modelled separately (not combined margins)
+- Independent Poisson for v1 — correlation limitation accepted
+- No PPDA or goalkeeper xGOT in base model — keep v1 clean
 
-## Style
-- Precise, not polite. Don't guess — search. Challenge reasoning. No sycophancy.
-- Failure is acceptable if the request is impossible.
+## Key Concepts
+| Term | Meaning |
+|---|---|
+| xG | Shot quality probability. Better predictor than actual goals. |
+| Poisson | Goal distribution model. Grid of outcomes → any market probability. |
+| BTTS | Both Teams To Score. First target market. |
+| EMA | Exponential Moving Average. Recent-form weighting without cliff effects. |
 
-## Paths
-- Local: `C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer`
-- Parent architecture session: `Sports Betting - Architecture` folder (if applicable)
+## Folder Structure
+```
+docs/                 Build plan, LLM setup, briefing, index — read on demand only
+prompts/              Active CLI/local prompts
+prompts/completed/    Executed prompts (reference only)
+archive/session_logs/ One file per past session
+```
 
-## Key Documents
-- `football_model_briefing.md` — Research briefing (xG, PPDA, markets, data sources)
-- `Football Pythag v0.5.xlsx` — Existing Excel model (10 leagues, 88 cols, Pythagorean + SOT)
-- `SOCCER_COWORK_SESSION.md` — Session planning doc
-- `BUILD_PLAN.md` — Phased build plan (4 phases)
-- `SESSION_STATE.md` — Current progress, handover notes, next actions
-
-## Key Concepts (for context)
-- **xG (Expected Goals):** Probability-weighted measure of chance quality. Better than actual goals for prediction.
-- **Poisson distribution:** Statistical model for "how many times does a rare event happen." Used here to model goal counts — given a team's expected goals (e.g., 1.5 xG), Poisson tells you the probability of 0, 1, 2, 3... goals. Build a grid for both teams → derive any market probability.
-- **BTTS:** Both Teams To Score. First market target because it forces attack/defence decomposition.
-- **EMA:** Exponential Moving Average. Smooth way to weight recent form more heavily without cliff effects.
-
-## Decisions Log
-
-- **2026-04-23:** Session created. Planning phase begun.
-- **2026-04-23:** Architecture → Fresh xG-based build (not evolving v0.5)
-- **2026-04-23:** First market → BTTS (forces attack/defence decomposition)
-- **2026-04-23:** Leagues (launch) → Big 5 via Understat
-- **2026-04-23:** Leagues (wave 2) → Nordic 4 via FBref
-- **2026-04-23:** Build order → Big 5 first, Nordic second
-- **2026-04-23:** Build plan written → see BUILD_PLAN.md
-- **2026-04-23:** Version control → GitHub repo `chrisjm15/soccer_model`
-- **2026-04-23:** Session handover protocol established → see SESSION_STATE.md
+## Finding Files
+Check `docs/INDEX.md` before scanning. Do not read it on startup — only when you need to locate something.

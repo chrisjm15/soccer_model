@@ -1,0 +1,36 @@
+==================================================
+  BTTS MODEL BACKTEST RESULTS
+==================================================
+Test period: 2023-24 to 2024-25
+Total matches: 3497 | Flagged as bets: 1954 (55.9%)
+
+OVERALL CALIBRATION (BRIER SCORE)
+  All matches    : 0.2460  (lower is better)
+  Naive baseline : 0.2479  (always predict 0.5263)
+  vs baseline    : -0.0019  (better than naive)
+  Flagged bets   : 0.2431
+
+BETTING PERFORMANCE (assumed odds 1.90)
+  Total bets     : 1954
+  Hit rate       : 58.6%  (break-even: 52.6%)
+  Total P&L      : +223.40 units
+  ROI            : +11.4%
+  Verdict        : Positive signal — model edges above implied probability on flagged bets
+
+CALIBRATION (model predicted prob vs actual BTTS rate)
+   40– 50%:  predicted=48.0%,  actual=46.5%  (n=172)
+   50– 60%:  predicted=55.7%,  actual=52.6%  (n=1930)
+   60– 70%:  predicted=63.5%,  actual=60.2%  (n=1378)
+   70– 80%:  predicted=70.9%,  actual=70.6%  (n=17)
+
+BY LEAGUE
+  Bundesliga  : 611 matches, 555 bets, hit=60.7%, ROI=+15.4%
+  EPL         : 760 matches, 679 bets, hit=59.1%, ROI=+12.2%
+  La_Liga     : 759 matches, 202 bets, hit=60.4%, ROI=+14.8%
+  Ligue_1     : 610 matches, 390 bets, hit=54.9%, ROI=+4.3%
+  Serie_A     : 757 matches, 128 bets, hit=56.2%, ROI=+6.9%
+
+BY SEASON
+  2023-24: 1747 matches, 860 bets, hit=60.1%, ROI=+14.2%
+  2024-25: 1750 matches, 1094 bets, hit=57.5%, ROI=+9.2%
+==================================================

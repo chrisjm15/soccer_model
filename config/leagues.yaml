@@ -7,6 +7,7 @@ leagues:
     seasons_available:
       start: "2014-15"
     season_type: "winter"
+    home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
 
   La_Liga:
     name: "La Liga"
@@ -16,6 +17,7 @@ leagues:
     seasons_available:
       start: "2014-15"
     season_type: "winter"
+    home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
 
   Bundesliga:
     name: "Bundesliga"
@@ -25,6 +27,7 @@ leagues:
     seasons_available:
       start: "2014-15"
     season_type: "winter"
+    home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
 
   Serie_A:
     name: "Serie A"
@@ -34,6 +37,7 @@ leagues:
     seasons_available:
       start: "2014-15"
     season_type: "winter"
+    home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
 
   Ligue_1:
     name: "Ligue 1"
@@ -43,3 +47,4 @@ leagues:
     seasons_available:
       start: "2014-15"
     season_type: "winter"
+    home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
