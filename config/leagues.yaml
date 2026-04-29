@@ -8,6 +8,7 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
+    odds_api_sport_key: "soccer_epl"
 
   La_Liga:
     name: "La Liga"
@@ -18,6 +19,7 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
+    odds_api_sport_key: "soccer_spain_la_liga"
 
   Bundesliga:
     name: "Bundesliga"
@@ -28,6 +30,7 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
+    odds_api_sport_key: "soccer_germany_bundesliga"
 
   Serie_A:
     name: "Serie A"
@@ -38,6 +41,7 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
+    odds_api_sport_key: "soccer_italy_serie_a"
 
   Ligue_1:
     name: "Ligue 1"
@@ -48,3 +52,4 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
+    odds_api_sport_key: "soccer_france_ligue_1"
