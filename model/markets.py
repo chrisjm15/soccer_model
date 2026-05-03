@@ -101,17 +101,18 @@ def predict_1x2(
 0.0)
         }
     """
-    # Implied probabilities
-    implied_home = 1 / odds_home
-    implied_draw = 1 / odds_draw
-    implied_away = 1 / odds_away
+    # No-vig implied probabilities (normalise out the bookmaker overround)
+    overround = 1/odds_home + 1/odds_draw + 1/odds_away
+    implied_home = (1/odds_home) / overround
+    implied_draw = (1/odds_draw) / overround
+    implied_away = (1/odds_away) / overround
 
     # Model probabilities
     model_home = probs['prob_home_win']
     model_draw = probs['prob_draw']
     model_away = probs['prob_away_win']
 
-    # Edge calculation
+    # Edge calculation (model prob vs no-vig implied prob)
     edge_home = model_home - implied_home
     edge_draw = model_draw - implied_draw
     edge_away = model_away - implied_away
@@ -173,7 +174,9 @@ def predict_over_under(
             'odds_over': float,
         }
     """
-    implied_over = 1 / odds_over
+    # No-vig implied probability for over
+    overround = 1/odds_over + 1/odds_under
+    implied_over = (1/odds_over) / overround
     model_prob_over = probs['prob_over_25']
 
     edge_over = model_prob_over - implied_over
@@ -233,8 +236,10 @@ def predict_asian_handicap(
     p_push = ah_probs['p_push']
     p_away = ah_probs['p_away']
 
-    implied_home = 1 / odds_ah_home
-    implied_away = 1 / odds_ah_away
+    # No-vig implied probabilities for AH (two-outcome market)
+    overround = 1/odds_ah_home + 1/odds_ah_away
+    implied_home = (1/odds_ah_home) / overround
+    implied_away = (1/odds_ah_away) / overround
 
     edge_ah_home = p_home - implied_home
     edge_ah_away = p_away - implied_away

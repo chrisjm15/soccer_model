@@ -7,71 +7,71 @@ Total matches evaluated: 5051
 --------------------------------------------------
 MARKET: 1X2
 --------------------------------------------------
-Total bets: 3312 (65.6% of matches)
-Hit rate:   19.0%  (break-can: 18.0%)
-Total P&L:  -692.98 units
-ROI:        -20.9%
-Brier score: 0.1922
+Total bets: 3883 (76.9% of matches)
+Hit rate:   20.3%  (break-can: 19.1%)
+Total P&L:  -820.26 units
+ROI:        -21.1%
+Brier score: 0.1971
 
 By league:
-  Bundesliga     : 537 bets, ROI=-35.6%
-  EPL            : 771 bets, ROI=-17.2%
-  La_Liga        : 685 bets, ROI=-14.2%
-  Ligue_1        : 570 bets, ROI=-14.3%
-  Serie_A        : 749 bets, ROI=-25.4%
+  Bundesliga     : 642 bets, ROI=-33.3%
+  EPL            : 882 bets, ROI=-16.9%
+  La_Liga        : 820 bets, ROI=-18.4%
+  Ligue_1        : 676 bets, ROI=-15.2%
+  Serie_A        : 863 bets, ROI=-23.6%
 
 By season:
-  2023-24: 1116 bets, ROI=-28.5%
-  2024-25: 1173 bets, ROI=-15.7%
-  2025-26: 1023 bets, ROI=-18.7%
+  2023-24: 1303 bets, ROI=-27.9%
+  2024-25: 1377 bets, ROI=-17.6%
+  2025-26: 1203 bets, ROI=-17.8%
 
 --------------------------------------------------
 MARKET: Over/Under 2.5 (Over only)
 --------------------------------------------------
-Total bets: 1736 (34.4% of matches)
-Hit rate:   46.1%  (break-can: 46.8%)
-Total P&L:  -58.07 units
-ROI:        -3.3%
-Brier score: 0.2514
+Total bets: 2496 (49.4% of matches)
+Hit rate:   47.7%  (break-can: 48.7%)
+Total P&L:  -108.04 units
+ROI:        -4.3%
+Brier score: 0.2373
 
 By league:
-  Bundesliga     : 205 bets, ROI=-4.1%
-  EPL            : 324 bets, ROI=+2.2%
-  La_Liga        : 546 bets, ROI=-6.0%
-  Ligue_1        : 338 bets, ROI=-9.4%
-  Serie_A        : 323 bets, ROI=+2.3%
+  Bundesliga     : 348 bets, ROI=-5.9%
+  EPL            : 514 bets, ROI=+1.1%
+  La_Liga        : 658 bets, ROI=-5.9%
+  Ligue_1        : 477 bets, ROI=-8.2%
+  Serie_A        : 499 bets, ROI=-3.1%
 
 By season:
-  2023-24: 451 bets, ROI=-5.0%
-  2024-25: 640 bets, ROI=-5.0%
-  2025-26: 645 bets, ROI=-0.6%
+  2023-24: 695 bets, ROI=-7.0%
+  2024-25: 905 bets, ROI=-6.8%
+  2025-26: 896 bets, ROI=+0.3%
 
 --------------------------------------------------
 MARKET: Asian Handicap (best side)
 --------------------------------------------------
-Total bets: 1626 (32.2% of matches)
-Hit rate:   50.4%  (break-can: 51.4%)
-Total P&L:  -31.87 units
-ROI:        -2.0%
+Total bets: 1926 (38.1% of matches)
+Hit rate:   50.1%  (break-can: 51.5%)
+Total P&L:  -54.12 units
+ROI:        -2.8%
 Brier score: 0.0000
 
 By league:
-  Bundesliga     : 285 bets, ROI=-8.6%
-  EPL            : 433 bets, ROI=+9.2%
-  La_Liga        : 307 bets, ROI=+1.0%
-  Ligue_1        : 269 bets, ROI=-6.8%
-  Serie_A        : 332 bets, ROI=-9.6%
+  Bundesliga     : 341 bets, ROI=-6.1%
+  EPL            : 498 bets, ROI=+7.1%
+  La_Liga        : 358 bets, ROI=-2.1%
+  Ligue_1        : 316 bets, ROI=-6.8%
+  Serie_A        : 413 bets, ROI=-9.6%
 
 By season:
-  2023-24: 571 bets, ROI=-3.1%
-  2024-25: 586 bets, ROI=-3.0%
-  2025-26: 469 bets, ROI=+0.7%
+  2023-24: 655 bets, ROI=-4.4%
+  2024-25: 675 bets, ROI=-1.8%
+  2025-26: 596 bets, ROI=-2.2%
 
 ============================================================
 SUMMARY COMPARISON
 =============================================================
 Market             Bets     Hit%     ROI        Brier   
-1X2                3312      19.0%    -20.9%   0.1922
-Over/Under 2.5     1736      46.1%     -3.3%   0.2514
-Asian Handicap     1626      50.4%     -2.0%   0.0000
+1X2                3883      20.3%    -21.1%   0.1971
+Over/Under 2.5     2496      47.7%     -4.3%   0.2373
+Asian Handicap     1926      50.1%     -2.8%   0.0000
 =============================================================
