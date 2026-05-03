@@ -148,6 +148,121 @@ def fetch_all_leagues_odds(
     return pd.DataFrame(all_matches)
 
 
+def fetch_epl_ah_odds(
+    api_key: str,
+    sport_key: str,
+    league_name: str,
+    regions: str = 'uk'
+) -> list[dict]:
+    """
+    Fetches upcoming Asian Handicap (spreads) odds for one league.
+    Returns list of match dicts with AH odds data.
+    Prints raw first-match bookmaker data to verify AH fields are present.
+    """
+    url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
+    params = {
+        'apiKey': api_key,
+        'regions': regions,
+        'markets': 'spreads',
+        'dateFormat': 'iso',
+        'oddsFormat': 'decimal'
+    }
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+
+        remaining = response.headers.get('X-Requests-Remaining')
+        if remaining:
+            print(f"  [{league_name}] API credits remaining: {remaining}")
+
+        data = response.json()
+
+        # Print raw first match for verification
+        if data:
+            first = data[0]
+            print(f"\n  [DEBUG] Raw AH fields from first API match ({first.get('home_team')} vs {first.get('away_team')}):")
+            bookmakers = first.get('bookmakers', [])
+            if bookmakers:
+                bk = bookmakers[0]
+                print(f"    Bookmaker: {bk.get('key')}")
+                for mkt in bk.get('markets', []):
+                    print(f"    Market key: {mkt.get('key')}")
+                    for oc in mkt.get('outcomes', [])[:4]:
+                        print(f"      {oc.get('name')}: price={oc.get('price')}, point={oc.get('point')}")
+            else:
+                print(f"    No bookmakers returned for this match")
+            print()
+
+        now = datetime.now(timezone.utc)
+        cutoff = now + timedelta(days=7)
+        matches = []
+
+        for match in data:
+            commence_time = match.get('commence_time')
+            if not commence_time:
+                continue
+            commence_dt = datetime.fromisoformat(commence_time.replace('Z', '+00:00'))
+            if commence_dt > cutoff:
+                continue
+            match_date = commence_dt.date().isoformat()
+
+            home_name = match.get('home_team')
+            away_name = match.get('away_team')
+
+            # Collect AH prices per line: {line: {'home': [prices], 'away': [prices]}}
+            ah_data = {}
+            for bookmaker in match.get('bookmakers', []):
+                for market in bookmaker.get('markets', []):
+                    if market.get('key') != 'spreads':
+                        continue
+                    outcomes = market.get('outcomes', [])
+                    home_oc = next((o for o in outcomes if o.get('name') == home_name), None)
+                    away_oc = next((o for o in outcomes if o.get('name') == away_name), None)
+                    if not home_oc or not away_oc:
+                        continue
+                    line = home_oc.get('point')
+                    if line is None:
+                        continue
+                    if line not in ah_data:
+                        ah_data[line] = {'home': [], 'away': []}
+                    ah_data[line]['home'].append(home_oc['price'])
+                    ah_data[line]['away'].append(away_oc['price'])
+
+            if not ah_data:
+                continue
+
+            # Use the line offered by the most bookmakers
+            modal_line = max(ah_data, key=lambda l: len(ah_data[l]['home']))
+            home_prices = ah_data[modal_line]['home']
+            away_prices = ah_data[modal_line]['away']
+
+            matches.append({
+                'date': match_date,
+                'league': league_name,
+                'home_team': home_name,
+                'away_team': away_name,
+                'ah_line': float(modal_line),
+                'odds_ah_home_best': max(home_prices),
+                'odds_ah_away_best': max(away_prices),
+                'n_bookmakers': len(home_prices)
+            })
+
+        return matches
+
+    except requests.exceptions.HTTPError as e:
+        if response.status_code == 401:
+            print(f"ERROR: Invalid API key for {league_name}")
+        elif response.status_code == 422:
+            msg = response.json().get('message', str(e))
+            print(f"ERROR: {league_name} — {msg}")
+        else:
+            print(f"ERROR: HTTP {response.status_code} for {league_name}: {e}")
+        return []
+    except Exception as e:
+        print(f"ERROR: Failed to fetch AH odds for {league_name}: {e}")
+        return []
+
+
 if __name__ == '__main__':
     import yaml
     import os

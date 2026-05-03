@@ -1,3 +1,60 @@
+# Session 5 — 2026-05-03
+
+## Status at session end
+Multi-market analysis complete. EPL Asian Handicap at 7% threshold confirmed as the target market. Live prediction pipeline needs updating to EPL AH. Next CLI task written and ready.
+
+## What was done this session
+- Strategic pivot: ran multi-market backtest (1X2, O/U 2.5, AH) against real historical odds with no-vig correction
+- Dropped 1X2 (-21% ROI, unviable)
+- Identified EPL AH as the only credible signal
+- Threshold sweep confirmed 7% as optimal
+- Season-on-season trend confirmed signal is real and growing
+
+## Key findings — multi-market backtest (2023-24 to 2025-26, 5051 matches)
+| Market | ROI | Bets | Verdict |
+|---|---|---|---|
+| 1X2 | -21.1% | 3883 | Drop — unviable |
+| O/U 2.5 | -4.3% | 2496 | Drop — too thin |
+| AH all leagues | -2.8% | 1926 | Drop — EPL signal diluted |
+| **EPL AH only** | **+7.1%** | **498** | **Target market** |
+
+## Threshold sweep — EPL AH
+| Threshold | Bets | ROI |
+|---|---|---|
+| 5% | 498 | +7.1% |
+| 7% | 419 | +11.3% ← optimal |
+| 8% | 368 | +9.8% |
+| 10% | 247 | +8.1% |
+
+## Season-by-season EPL AH at 7% threshold
+| Season | Bets | ROI |
+|---|---|---|
+| 2023-24 | ~140 | +2.8% |
+| 2024-25 | ~140 | +13.2% |
+| 2025-26 | ~139 | +16.2% |
+
+Improving trend — model signal is real and growing.
+
+## Strategic decisions locked
+- **Target market: EPL Asian Handicap only**
+- **Edge threshold: 7%**
+- **Staking: flat stake for paper trading phase**
+- **Other leagues: dropped until model is validated on EPL**
+- **O/U 2.5 and 1X2: dropped**
+
+## Next action — CLI
+Update `run.py predict` to output EPL AH predictions at 7% threshold instead of current O/U 2.5 output. Prompt is at `prompts/CLI_PROMPT_UPDATE_PREDICT.md`.
+
+## Files created this session
+- `model/markets.py` (new — 1X2, O/U, AH output layers with no-vig edge calculation)
+- `backtest/multi_market_engine.py` (new — multi-market backtest)
+- `scripts/threshold_sweep.py` (new — threshold optimisation sweep)
+- `prompts/MARKETS_PROMPT_QWEN3.md`
+- `prompts/MULTI_MARKET_BACKTEST_GEMMA.md`
+- `prompts/THRESHOLD_SWEEP_QWEN3.md`
+
+---
+
 # Session 4 — 2026-05-03
 
 ## Status at session end

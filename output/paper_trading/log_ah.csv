@@ -1,0 +1,7 @@
+prediction_date,match_date,league,home_team,away_team,ah_line,bet_side,model_prob_ah,odds_ah,implied_prob,edge,bet_flag,actual_ah_result,profit_loss,notes
+2026-05-03,2026-05-04,EPL,Everton,Manchester City,1.0,home,0.554,2.14,0.4673,0.0917,True,,,
+2026-05-03,2026-05-09,EPL,Liverpool,Chelsea,-0.5,away,0.5812,1.8,0.5556,0.0897,True,,,
+2026-05-03,2026-05-03,EPL,Bournemouth,Crystal Palace,-1.0,away,0.52,1.95,0.5128,0.0112,False,,,
+2026-05-03,2026-05-04,EPL,Chelsea,Nottingham Forest,-0.75,away,0.4763,2.06,0.4854,-0.0035,False,,,
+2026-05-03,2026-05-03,EPL,Manchester United,Liverpool,-0.25,home,0.4321,2.1,0.4762,-0.0416,False,,,
+2026-05-03,2026-05-03,EPL,Aston Villa,Tottenham,-0.25,home,0.4646,1.92,0.5208,-0.053,False,,,

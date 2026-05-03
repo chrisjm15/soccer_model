@@ -65,8 +65,12 @@ def cmd_predict():
     import pandas as pd
     from model.live_ratings import get_latest_ratings
     from model.poisson import compute_match_probs
-    from scrapers.odds_api import fetch_all_leagues_odds
+    from model.markets import predict_asian_handicap
+    from scrapers.odds_api import fetch_epl_ah_odds
     from scrapers.team_name_mapper import map_team_name, find_unmapped_teams
+
+    EDGE_THRESHOLD = 0.07
+    today = date.today().isoformat()
 
     # --- API key ---
     api_key = os.environ.get('ODDS_API_KEY')
@@ -80,23 +84,35 @@ def cmd_predict():
         print("Get a free key at: https://the-odds-api.com")
         sys.exit(1)
 
-    # --- Load config ---
+    # --- Load EPL config ---
     with open('config/leagues.yaml', 'r') as f:
         config = yaml.safe_load(f)
-    leagues_config = config['leagues']
 
-    # --- Fetch live odds ---
-    print("Fetching live odds from The Odds API (over/under 2.5 goals market)...")
-    print("Note: BTTS market requires a paid API tier. Using over 2.5 as equivalent free market.")
+    epl_config = config['leagues'].get('EPL')
+    if not epl_config:
+        print("ERROR: EPL not found in config/leagues.yaml")
+        sys.exit(1)
+
+    epl_sport_key = epl_config.get('odds_api_sport_key', 'soccer_epl')
+
+    # --- Fetch EPL AH odds ---
+    print("Fetching EPL Asian Handicap odds from The Odds API...")
+    print("Target market: spreads (Asian Handicap) | EPL only | 7% edge threshold")
     print("")
-    odds_df = fetch_all_leagues_odds(api_key, leagues_config)
+    matches_raw = fetch_epl_ah_odds(api_key, epl_sport_key, 'EPL')
 
-    if odds_df.empty:
-        print("\nNo upcoming matches found with odds.")
-        print("Leagues may be between gameweeks, or no matches in the next week.")
+    if not matches_raw:
+        print("\nNo EPL Asian Handicap odds found.")
+        print("Possible reasons:")
+        print("  - No EPL fixtures in the next 7 days")
+        print("  - AH (spreads) market not available on your API tier")
+        print("  - No UK bookmakers returned AH lines for EPL this week")
+        print("")
+        print("The Odds API free tier does include spreads — if this persists, check API key and credits.")
         sys.exit(0)
 
-    print(f"\nFound {len(odds_df)} upcoming matches.\n")
+    odds_df = pd.DataFrame(matches_raw)
+    print(f"\nFound {len(odds_df)} EPL matches with AH odds.\n")
 
     # --- Load ratings ---
     ratings = get_latest_ratings('data/processed/ratings.csv')
@@ -110,23 +126,20 @@ def cmd_predict():
         print("  -> These matches will be skipped. Add missing mappings to data/aliases/team_aliases.json\n")
 
     # --- Run predictions ---
-    EDGE_THRESHOLD = 0.08
-    today = date.today().isoformat()
     predictions = []
 
     for _, row in odds_df.iterrows():
-        league = row['league']
         api_home = row['home_team']
         api_away = row['away_team']
 
-        canonical_home = map_team_name(api_home, league)
-        canonical_away = map_team_name(api_away, league)
+        canonical_home = map_team_name(api_home, 'EPL')
+        canonical_away = map_team_name(api_away, 'EPL')
 
-        if canonical_home is None or canonical_home not in ratings:
-            print(f"  SKIP (no rating): {league} — '{api_home}'")
+        if canonical_home not in ratings:
+            print(f"  SKIP (no rating): EPL — '{api_home}' -> '{canonical_home}'")
             continue
-        if canonical_away is None or canonical_away not in ratings:
-            print(f"  SKIP (no rating): {league} — '{api_away}'")
+        if canonical_away not in ratings:
+            print(f"  SKIP (no rating): EPL — '{api_away}' -> '{canonical_away}'")
             continue
 
         hr = ratings[canonical_home]
@@ -140,30 +153,49 @@ def cmd_predict():
             home_advantage=0.0,
         )
 
-        over25_odds = float(row['over25_odds_best'])
-        implied_prob_over25 = 1.0 / over25_odds
-        edge_over25 = probs['prob_over_25'] - implied_prob_over25
-        ev_over25 = (
-            probs['prob_over_25'] * (over25_odds - 1.0)
-            - (1.0 - probs['prob_over_25']) * 1.0
+        ah_line = float(row['ah_line'])
+        odds_ah_home = float(row['odds_ah_home_best'])
+        odds_ah_away = float(row['odds_ah_away_best'])
+
+        result = predict_asian_handicap(
+            probs=probs,
+            ah_line=ah_line,
+            odds_ah_home=odds_ah_home,
+            odds_ah_away=odds_ah_away,
+            edge_threshold=EDGE_THRESHOLD
         )
-        bet_flag = edge_over25 >= EDGE_THRESHOLD
+
+        # Display the side with the highest edge (regardless of threshold)
+        if result['edge_ah_home'] >= result['edge_ah_away']:
+            display_side = 'home'
+            display_prob = result['p_ah_home']
+            display_odds = odds_ah_home
+            display_edge = result['edge_ah_home']
+        else:
+            display_side = 'away'
+            display_prob = result['p_ah_away']
+            display_odds = odds_ah_away
+            display_edge = result['edge_ah_away']
+
+        # For flagged bets, use the official best_side and best_odds from predict_asian_handicap
+        bet_side = result['best_side'] if result['should_bet'] else display_side
+        bet_odds = result['best_odds'] if result['should_bet'] else display_odds
 
         predictions.append({
             'prediction_date': today,
             'match_date': row['date'],
-            'league': league,
+            'league': 'EPL',
             'home_team': canonical_home,
             'away_team': canonical_away,
-            'model_prob_btts': round(probs['prob_btts_yes'], 4),
-            'model_prob_over25': round(probs['prob_over_25'], 4),
-            'real_odds_over25': round(over25_odds, 3),
-            'n_bookmakers': int(row['n_bookmakers']),
-            'implied_prob_over25': round(implied_prob_over25, 4),
-            'edge_over25': round(edge_over25, 4),
-            'expected_value': round(ev_over25, 4),
-            'bet_flag': bet_flag,
-            'actual_over25': '',
+            'ah_line': ah_line,
+            'bet_side': bet_side,
+            'model_prob_ah': round(display_prob, 4),
+            'odds_ah': round(bet_odds, 3),
+            'implied_prob': round(1.0 / bet_odds, 4),
+            'edge': round(display_edge, 4),
+            'ev': round(result['ev'], 4),
+            'bet_flag': result['should_bet'],
+            'actual_ah_result': '',
             'profit_loss': '',
             'notes': '',
         })
@@ -173,55 +205,51 @@ def cmd_predict():
         sys.exit(0)
 
     pred_df = pd.DataFrame(predictions)
-    pred_df = pred_df.sort_values('edge_over25', ascending=False).reset_index(drop=True)
+    pred_df = pred_df.sort_values('edge', ascending=False).reset_index(drop=True)
 
     flagged = pred_df[pred_df['bet_flag']]
 
-    print(f"\n{'='*75}")
-    print(f"=== PREDICTIONS — {today} ===")
-    print(f"Market: Over 2.5 Goals | Edge threshold: {int(EDGE_THRESHOLD*100)}% | UK bookmakers (best price)")
-    print(f"{'='*75}")
+    print(f"\n{'='*80}")
+    print(f"=== EPL ASIAN HANDICAP PREDICTIONS - {today} ===")
+    print(f"Edge threshold: 7% | Market: Asian Handicap | UK bookmakers (best price)")
+    print(f"{'='*80}")
 
     if len(flagged) > 0:
-        print(f"\nFLAGGED BETS (edge >= {int(EDGE_THRESHOLD*100)}%):")
+        print(f"\nFLAGGED BETS (edge >= 7%):")
         for _, r in flagged.iterrows():
+            side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
             print(
                 f"  {r['home_team'][:20]:<20} vs {r['away_team'][:20]:<20}  "
-                f"{r['league']:<12}  "
-                f"P(Ov2.5)={r['model_prob_over25']*100:.1f}%  "
-                f"Odds={r['real_odds_over25']:.2f}  "
-                f"Edge={r['edge_over25']*100:+.1f}%  "
-                f"EV={r['expected_value']:+.3f}"
+                f"AH={r['ah_line']:+.2f}  Side={side_str}  "
+                f"P(AH {side_str})={r['model_prob_ah']*100:.1f}%  "
+                f"Odds={r['odds_ah']:.2f}  Edge={r['edge']*100:+.1f}%  EV={r['ev']:+.3f}"
             )
     else:
-        print(f"\nFLAGGED BETS: None this week (no match exceeded {int(EDGE_THRESHOLD*100)}% edge)")
+        print(f"\nFLAGGED BETS: None this week (no EPL match exceeded 7% edge)")
 
-    print(f"\nALL UPCOMING MATCHES ({len(pred_df)} total), sorted by edge:")
+    print(f"\nALL EPL MATCHES THIS WEEK ({len(pred_df)} total), sorted by edge:")
     print(
-        f"  {'Home':<22} {'Away':<22} {'League':<12} "
-        f"{'Ov2.5%':>7} {'BTTS%':>6} {'Odds':>6} {'Edge':>7} {'Flag':>8}"
+        f"  {'Home':<22} {'Away':<22} "
+        f"{'AH':>6} {'Side':>5} {'P(side)':>8} {'Odds':>6} {'Edge':>7} {'Flag':>8}"
     )
-    print(f"  {'-'*95}")
+    print(f"  {'-'*92}")
     for _, r in pred_df.iterrows():
         flag = '*** BET' if r['bet_flag'] else ''
+        side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
         print(
-            f"  {r['home_team'][:22]:<22} {r['away_team'][:22]:<22} {r['league']:<12} "
-            f"{r['model_prob_over25']*100:>6.1f}% "
-            f"{r['model_prob_btts']*100:>5.1f}% "
-            f"{r['real_odds_over25']:>6.2f} "
-            f"{r['edge_over25']*100:>+6.1f}% "
-            f"  {flag}"
+            f"  {r['home_team'][:22]:<22} {r['away_team'][:22]:<22} "
+            f"{r['ah_line']:>+6.2f} {side_str:>5} {r['model_prob_ah']*100:>7.1f}% "
+            f"{r['odds_ah']:>6.2f} {r['edge']*100:>+6.1f}%   {flag}"
         )
 
-    # --- Paper trading log ---
-    log_path = 'output/paper_trading/log.csv'
-    os.makedirs('output/paper_trading', exist_ok=True)
-
+    # --- Paper trading log (AH) ---
     log_cols = [
         'prediction_date', 'match_date', 'league', 'home_team', 'away_team',
-        'model_prob_btts', 'model_prob_over25', 'real_odds_over25', 'implied_prob_over25',
-        'edge_over25', 'bet_flag', 'actual_over25', 'profit_loss', 'notes',
+        'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah', 'implied_prob', 'edge',
+        'bet_flag', 'actual_ah_result', 'profit_loss', 'notes',
     ]
+    log_path = 'output/paper_trading/log_ah.csv'
+    os.makedirs('output/paper_trading', exist_ok=True)
 
     if os.path.exists(log_path):
         existing = pd.read_csv(log_path, dtype=str)
@@ -246,8 +274,8 @@ def cmd_predict():
         print(f"\nPaper trading log created: {log_path}")
         print(f"  Logged {len(pred_df)} matches")
 
-    print(f"\nThis week: {len(flagged)} flagged bets out of {len(pred_df)} upcoming matches")
-    print(f"{'='*75}\n")
+    print(f"\nThis week: {len(flagged)} flagged bets out of {len(pred_df)} EPL matches")
+    print(f"{'='*80}\n")
 
 
 def main():
@@ -256,7 +284,7 @@ def main():
         print("Commands:")
         print("  backtest   Run historical backtest and print metrics")
         print("  update     Re-scrape all data and rebuild ratings (run weekly)")
-        print("  predict    Fetch live odds and generate over 2.5 goals predictions")
+        print("  predict    Fetch live EPL odds and generate Asian Handicap predictions (7% threshold)")
         sys.exit(1)
 
     command = sys.argv[1].lower()
