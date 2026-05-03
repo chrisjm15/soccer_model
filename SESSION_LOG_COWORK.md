@@ -1,17 +1,48 @@
 # Session 4 — 2026-05-03
 
 ## Status at session end
-Fixture bug prompt written. CLI session not yet run — hit session limit. Ready to go next session.
+Fixture bug fixed and pushed. Live prediction pipeline now producing correct fixtures. First valid paper trading predictions logged for week of May 3–9.
 
-## What was done this session (Cowork only)
-- Read session log and confirmed fixture bug is the blocker
-- Wrote `prompts/CLI_PROMPT_FIXTURE_BUG.md` — targeted diagnostic + fix prompt for the CLI
+## What was done this session
+- Wrote `prompts/CLI_PROMPT_FIXTURE_BUG.md` (Cowork)
+- CLI ran the prompt and fixed the bug
 
-## Next action (first thing next session)
-Paste into CLI:
+## Fixture bug — resolved
+**Root cause:** Hypothesis B — multi-round stacking. The Odds API returns ~15 fixtures per league across two rounds (~7 days + ~8 days ahead). `fetch_league_odds` had no date filter, so both rounds were passed to the model and fixtures appeared mixed.
+
+**Fix:** 7-day cutoff filter added to `scrapers/odds_api.py`. Any match with `commence_time > now + 7 days` is skipped. One-line change, no interface changes.
+
+**Note on Real Oviedo:** Legitimately in La Liga 2025-26 (promoted from Segunda). Not a bug.
+
+## First valid predictions — week of May 3–9
+45 total matches processed. All fixtures verified correct.
+
+| Match | League | P(Ov2.5) | Best Odds | Edge |
+|---|---|---|---|---|
+| St. Pauli vs Mainz 05 | Bundesliga | 61.0% | 2.08 | +12.9% |
+| Real Betis vs Real Oviedo | La Liga | 60.7% | 1.98 | +10.2% |
+| Elche vs Alaves | La Liga | 63.5% | 1.82 | +8.6% |
+| Freiburg vs Wolfsburg | Bundesliga | 67.0% | 1.70 | +8.2% |
+
+Unmapped teams: None — all 45 teams resolved.
+
+**Caveat:** O/U 2.5 backtest not yet done. Edge figures are model output — not yet validated against historical O/U 2.5 performance with real odds.
+
+## Priority order for next phase
+
+| Priority | Task | Type |
+|---|---|---|
+| 1 | Backtest O/U 2.5 with real odds | CLI session |
+| 2 | Investigate SportsGameOdds free tier | Research (Cowork) |
+| 3 | Team news layer — Gemini API design | Design (Cowork) |
+| 4 | Nordic leagues investigation | Research (Cowork) |
+
+## Weekly workflow (now working)
 ```
-Read `CLAUDE.md` and `SESSION_LOG_COWORK.md`, then follow all steps in `prompts/CLI_PROMPT_FIXTURE_BUG.md` exactly.
+python run.py update    # Sunday/Monday — ~5 mins
+python run.py predict   # Outputs flagged bets — ~30 secs
 ```
+After each gameweek: fill `actual_over25` (TRUE/FALSE) and `profit_loss` in `output/paper_trading/log.csv`
 
 ---
 

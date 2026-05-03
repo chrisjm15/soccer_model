@@ -1,0 +1,77 @@
+==============================================================
+  MULTI-MARKET BACKTEST RESULTS
+============================================================
+Test period: 2023-24 to 2025-26
+Total matches evaluated: 5051
+
+--------------------------------------------------
+MARKET: 1X2
+--------------------------------------------------
+Total bets: 3312 (65.6% of matches)
+Hit rate:   19.0%  (break-can: 18.0%)
+Total P&L:  -692.98 units
+ROI:        -20.9%
+Brier score: 0.1922
+
+By league:
+  Bundesliga     : 537 bets, ROI=-35.6%
+  EPL            : 771 bets, ROI=-17.2%
+  La_Liga        : 685 bets, ROI=-14.2%
+  Ligue_1        : 570 bets, ROI=-14.3%
+  Serie_A        : 749 bets, ROI=-25.4%
+
+By season:
+  2023-24: 1116 bets, ROI=-28.5%
+  2024-25: 1173 bets, ROI=-15.7%
+  2025-26: 1023 bets, ROI=-18.7%
+
+--------------------------------------------------
+MARKET: Over/Under 2.5 (Over only)
+--------------------------------------------------
+Total bets: 1736 (34.4% of matches)
+Hit rate:   46.1%  (break-can: 46.8%)
+Total P&L:  -58.07 units
+ROI:        -3.3%
+Brier score: 0.2514
+
+By league:
+  Bundesliga     : 205 bets, ROI=-4.1%
+  EPL            : 324 bets, ROI=+2.2%
+  La_Liga        : 546 bets, ROI=-6.0%
+  Ligue_1        : 338 bets, ROI=-9.4%
+  Serie_A        : 323 bets, ROI=+2.3%
+
+By season:
+  2023-24: 451 bets, ROI=-5.0%
+  2024-25: 640 bets, ROI=-5.0%
+  2025-26: 645 bets, ROI=-0.6%
+
+--------------------------------------------------
+MARKET: Asian Handicap (best side)
+--------------------------------------------------
+Total bets: 1626 (32.2% of matches)
+Hit rate:   50.4%  (break-can: 51.4%)
+Total P&L:  -31.87 units
+ROI:        -2.0%
+Brier score: 0.0000
+
+By league:
+  Bundesliga     : 285 bets, ROI=-8.6%
+  EPL            : 433 bets, ROI=+9.2%
+  La_Liga        : 307 bets, ROI=+1.0%
+  Ligue_1        : 269 bets, ROI=-6.8%
+  Serie_A        : 332 bets, ROI=-9.6%
+
+By season:
+  2023-24: 571 bets, ROI=-3.1%
+  2024-25: 586 bets, ROI=-3.0%
+  2025-26: 469 bets, ROI=+0.7%
+
+============================================================
+SUMMARY COMPARISON
+=============================================================
+Market             Bets     Hit%     ROI        Brier   
+1X2                3312      19.0%    -20.9%   0.1922
+Over/Under 2.5     1736      46.1%     -3.3%   0.2514
+Asian Handicap     1626      50.4%     -2.0%   0.0000
+=============================================================
