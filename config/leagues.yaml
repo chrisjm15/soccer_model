@@ -52,4 +52,4 @@ leagues:
       start: "2014-15"
     season_type: "winter"
     home_advantage_xg: 0.0  # Baked into home/away rating split; tune via backtest
-    odds_api_sport_key: "soccer_france_ligue_1"
+    odds_api_sport_key: "soccer_france_ligue_one"

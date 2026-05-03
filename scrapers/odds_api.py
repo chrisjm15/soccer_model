@@ -17,15 +17,18 @@ def fetch_league_odds(
     regions: str = 'uk'
 ) -> list[dict]:
     """
-    Fetches upcoming BTTS odds for one league.
+    Fetches upcoming over/under 2.5 goals odds for one league.
     Returns list of match dicts with odds data.
     Logs remaining API credits after the call.
+
+    Note: The free API tier supports the 'totals' (over/under) market but not 'btts'.
+    We use over 2.5 goals odds as the comparable market for our Poisson model predictions.
     """
     url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
     params = {
         'apiKey': api_key,
         'regions': regions,
-        'markets': 'btts',
+        'markets': 'totals',
         'dateFormat': 'iso',
         'oddsFormat': 'decimal'
     }
@@ -33,16 +36,14 @@ def fetch_league_odds(
         response = requests.get(url, params=params)
         response.raise_for_status()
 
-        # Log remaining credits
         remaining = response.headers.get('X-Requests-Remaining')
         if remaining:
-            print(f"API credits remaining after {league_name}: {remaining}")
+            print(f"  [{league_name}] API credits remaining: {remaining}")
 
         data = response.json()
         matches = []
 
         for match in data:
-            # Extract date from commence_time
             commence_time = match.get('commence_time')
             if not commence_time:
                 continue
@@ -50,41 +51,34 @@ def fetch_league_odds(
                 commence_time.replace('Z', '+00:00')
             ).date().isoformat()
 
-            # Collect BTTS odds from bookmakers
-            btts_yes_prices = []
-            btts_no_prices = []
+            over25_prices = []
+            under25_prices = []
             bookmakers_count = 0
 
             for bookmaker in match.get('bookmakers', []):
-                # Find BTTS market
-                btts_market = None
                 for market in bookmaker.get('markets', []):
-                    if market.get('key') == 'btts':
-                        btts_market = market
-                        break
+                    if market.get('key') != 'totals':
+                        continue
 
-                if not btts_market:
-                    continue
+                    over_price = None
+                    under_price = None
+                    for outcome in market.get('outcomes', []):
+                        # Only use the 2.5 line (ignore 1.5, 3.5, etc.)
+                        if outcome.get('point') != 2.5:
+                            continue
+                        name = outcome.get('name')
+                        price = outcome.get('price')
+                        if name == 'Over' and price is not None:
+                            over_price = price
+                        elif name == 'Under' and price is not None:
+                            under_price = price
 
-                # Extract Yes and No prices
-                yes_price = None
-                no_price = None
-                for outcome in btts_market.get('outcomes', []):
-                    name = outcome.get('name')
-                    price = outcome.get('price')
-                    if name == 'Yes' and price is not None:
-                        yes_price = price
-                    elif name == 'No' and price is not None:
-                        no_price = price
+                    if over_price is not None and under_price is not None:
+                        over25_prices.append(over_price)
+                        under25_prices.append(under_price)
+                        bookmakers_count += 1
 
-                # Only count bookmaker if both prices are available
-                if yes_price is not None and no_price is not None:
-                    btts_yes_prices.append(yes_price)
-                    btts_no_prices.append(no_price)
-                    bookmakers_count += 1
-
-            # Skip matches with no valid bookmakers
-            if not btts_yes_prices or not btts_no_prices:
+            if not over25_prices:
                 continue
 
             matches.append({
@@ -92,9 +86,9 @@ def fetch_league_odds(
                 'league': league_name,
                 'home_team': match.get('home_team'),
                 'away_team': match.get('away_team'),
-                'btts_odds_yes': sum(btts_yes_prices) / len(btts_yes_prices),
-                'btts_odds_no': sum(btts_no_prices) / len(btts_no_prices),
-                'btts_odds_yes_best': max(btts_yes_prices),
+                'over25_odds': sum(over25_prices) / len(over25_prices),
+                'under25_odds': sum(under25_prices) / len(under25_prices),
+                'over25_odds_best': max(over25_prices),
                 'n_bookmakers': bookmakers_count
             })
 
@@ -104,7 +98,8 @@ def fetch_league_odds(
         if response.status_code == 401:
             print(f"ERROR: Invalid API key for {league_name}")
         elif response.status_code == 422:
-            print(f"ERROR: Invalid sport key '{sport_key}' for {league_name}")
+            msg = response.json().get('message', str(e))
+            print(f"ERROR: {league_name} — {msg}")
         else:
             print(f"ERROR: HTTP {response.status_code} for {league_name}: {e}")
         return []
@@ -119,7 +114,7 @@ def fetch_all_leagues_odds(
     delay_seconds: float = 1.0
 ) -> pd.DataFrame:
     """
-    Fetches upcoming BTTS odds for all leagues.
+    Fetches upcoming over/under 2.5 goals odds for all leagues.
 
     Args:
         api_key: The Odds API key
@@ -129,7 +124,7 @@ def fetch_all_leagues_odds(
 
     Returns:
         DataFrame with columns: date, league, home_team, away_team,
-        btts_odds_yes, btts_odds_no, btts_odds_yes_best, n_bookmakers
+        over25_odds, under25_odds, over25_odds_best, n_bookmakers
     """
     all_matches = []
 
@@ -169,5 +164,5 @@ if __name__ == '__main__':
     if df.empty:
         print("No upcoming matches found (leagues may be between gameweeks).")
     else:
-        print(f"Found {len(df)} upcoming matches with BTTS odds:")
+        print(f"\nFound {len(df)} upcoming matches with over/under 2.5 odds:")
         print(df.to_string(index=False))
