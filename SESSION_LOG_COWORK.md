@@ -1,104 +1,105 @@
-# Session 2 — 2026-04-29
+# Session 4 — 2026-05-03
 
 ## Status at session end
-Phase 2 complete. Phase 3 prompt and odds_api.py module ready. CLI_PROMPT_PHASE3.md is the next thing to run.
+Fixture bug prompt written. CLI session not yet run — hit session limit. Ready to go next session.
 
-## What was built this session
+## What was done this session (Cowork only)
+- Read session log and confirmed fixture bug is the blocker
+- Wrote `prompts/CLI_PROMPT_FIXTURE_BUG.md` — targeted diagnostic + fix prompt for the CLI
 
-### Phase 2 (completed)
-- `model/ratings.py` — EMA attack/defence rating engine (generated Qwen3, corrected Cowork)
-- `model/poisson.py` — Poisson probability model (generated Gemma, test block added Cowork)
-- `model/btts.py` — BTTS prediction + edge calculation (generated Qwen3, 2 fixes Cowork)
-- `backtest/engine.py` — lookahead-safe backtest runner (Sonnet CLI)
-- `backtest/metrics.py` — Brier score, ROI, calibration, league/season breakdown (Sonnet CLI)
-- `scripts/threshold_test.py` — edge threshold sensitivity test (Sonnet CLI)
-- `run.py` — updated with `backtest` command
-
-### Phase 3 (ready to run)
-- `scrapers/odds_api.py` — The Odds API integration, fetches live BTTS odds (generated Qwen3, 2 fixes + dotenv added Cowork)
-- `config/leagues.yaml` — updated with `odds_api_sport_key` for all 5 leagues
-- `prompts/ODDS_API_PROMPT_QWEN3.md` — prompt that produced odds_api.py
-- `prompts/CLI_PROMPT_PHASE3.md` — next CLI session to run
-
-## Phase 2 backtest results (assumed odds 1.90)
-| Threshold | Bets | % matches | Hit rate | ROI | Brier (bets) |
-|---|---|---|---|---|---|
-| 5% | 1,954 | 55.9% | 58.6% | +11.4% | 0.2431 |
-| 8% | 1,255 | 35.9% | 60.6% | +15.1% | 0.2401 |
-| 10% | 815 | 23.3% | 62.6% | +18.9% | 0.2358 |
-
-**Operating threshold: 8%** (best balance of selectivity and volume ~12 bets/week)
-Calibration is strong: 60-70% probability bin landed at 60.2% actual BTTS rate.
-
-## Key design decisions locked
-- EMA α = 0.1
-- Season regression: SHRINK_WEIGHT = 0.3 (30% pull toward league mean at season start)
-- λ formula: λ_home = (home_attack + away_defence) / 2, λ_away = (away_attack + home_defence) / 2
-- Edge threshold: 8% for live operations
-- Home advantage: 0.0 (baked into home/away split; tune later)
-- Independent Poisson accepted as v1 limitation
-
-## Historical BTTS odds research finding
-Free historical BTTS odds covering 2020-2025 do not exist from legitimate sources.
-- The Odds API: BTTS history only from May 2023, historical endpoint is paid-only
-- OddAlerts: 6 months max, recent data only
-- Kaggle: no confirmed Big 5 + BTTS + full period dataset
-**Strategic decision:** Skip historical enrichment. Move to live pipeline with real odds going forward.
-
-## Phase 3 next session — what CLI_PROMPT_PHASE3.md does
-1. Refreshes data pipeline with 2025-26 season matches (re-run scrapers)
-2. Builds `model/live_ratings.py` — latest team ratings lookup
-3. Builds `scrapers/team_name_mapper.py` — maps Odds API names to canonical names
-4. Builds `run.py predict` — fetches real odds, runs model, outputs bets ≥8% edge
-5. Sets up `output/paper_trading/log.csv` — paper trading tracker
-6. Builds `run.py update` — weekly data refresh command
-7. Runs first live prediction for remaining 2025-26 gameweeks
-
-## Weekly workflow (once Phase 3 is built)
+## Next action (first thing next session)
+Paste into CLI:
 ```
-python run.py update    # run once a week to refresh data
-python run.py predict   # outputs this week's flagged bets
+Read `CLAUDE.md` and `SESSION_LOG_COWORK.md`, then follow all steps in `prompts/CLI_PROMPT_FIXTURE_BUG.md` exactly.
 ```
-After each gameweek: manually fill `actual_btts` and `profit_loss` columns in `output/paper_trading/log.csv`.
 
-## API and environment setup
-- The Odds API: free tier, 500 credits/month, ~20 credits/month needed
-- API key stored in `.env` file (project root) — loaded automatically via python-dotenv
-- `.env` is in `.gitignore` — key will not be pushed to GitHub
-- No PowerShell env var setup needed
+---
 
-## Local LLM findings this session
-| Model | Task | Quality | Notes |
-|---|---|---|---|
-| Qwen3-Coder 30B | ratings.py | Poor | Logic bugs, missing imports, needed full rewrite |
-| Gemma 4 26B | poisson.py | Good | Just truncated at test block |
-| Qwen3-Coder 30B | btts.py | Good | 2 markdown link corruptions only |
-| Qwen3-Coder 30B | odds_api.py | Good | 2 markdown link corruptions only |
+# Session 3 — 2026-05-03
 
-**Known Qwen3 paste issue:** `x.y_z()` dot notation sometimes renders as `[x.y](url)_z()` in Cowork chat. Always scan `__main__` blocks for this pattern before saving.
-**num_predict:** Use 8192 (not 4096) to avoid truncation on longer modules.
+## Status at session end
+Phase 3 complete and pushed. Live prediction pipeline running but has a **critical fixture data bug** — must be fixed before paper trading results can be trusted. Strategic direction for next phase locked.
 
-## Files created/modified this session
-**Local project folder (C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer):**
-- `model/ratings.py` (new)
-- `model/poisson.py` (new)
-- `model/btts.py` (new)
-- `scrapers/odds_api.py` (new)
-- `config/leagues.yaml` (updated — odds_api_sport_key added)
-- `prompts/RATINGS_PROMPT_QWEN3.md` (new)
-- `prompts/POISSON_PROMPT_GEMMA.md` (new)
-- `prompts/BTTS_PROMPT_QWEN3.md` (new)
-- `prompts/CLI_PROMPT_PHASE2.md` (new, executed)
-- `prompts/CLI_PROMPT_THRESHOLD_TEST.md` (new, executed)
-- `prompts/ODDS_API_PROMPT_QWEN3.md` (new, executed)
-- `prompts/CLI_PROMPT_PHASE3.md` (new — run next session)
-- `SESSION_LOG_COWORK.md` (this file)
+## What was built this session (by CLI — not Cowork)
+Phase 3 live prediction pipeline, committed and pushed to GitHub:
+- `model/live_ratings.py` — latest team ratings lookup from ratings.csv
+- `scrapers/team_name_mapper.py` — maps Odds API team names to canonical names
+- `run.py predict` — fetches live odds, runs Poisson model, outputs flagged bets ≥8% edge
+- `run.py update` — weekly data refresh (understat → footballdata → merge → ratings)
+- `output/paper_trading/log.csv` — paper trading tracker initialised
+
+## First live prediction run — 8 matches flagged
+| Match | League | P(Ov2.5) | Best Odds | Edge |
+|---|---|---|---|---|
+| Real Oviedo vs Getafe | La Liga | 53.0% | 2.75 | +16.6% |
+| St. Pauli vs Mainz 05 | Bundesliga | 61.0% | 2.18 | +15.1% |
+| Crystal Palace vs Everton | EPL | 61.3% | 2.06 | +12.8% |
+| Cremonese vs Pisa | Serie A | 56.4% | 2.20 | +11.0% |
+| Paris FC vs Brest | Ligue 1 | 61.6% | 1.93 | +9.8% |
+| Real Betis vs Real Oviedo | La Liga | 60.7% | 1.92 | +8.6% |
+| Elche vs Alaves | La Liga | 63.5% | 1.82 | +8.6% |
+| Freiburg vs Wolfsburg | Bundesliga | 67.0% | 1.70 | +8.2% |
+
+**These fixtures are wrong.** Crystal Palace play Bournemouth (not Everton). Real Oviedo is a Segunda División club and should not appear under La Liga. Almost all fixtures appear incorrect.
+
+## Critical bug — fixture data
+The Odds API sport key `soccer_spain_la_liga` may be pulling from multiple competitions (Copa del Rey, Segunda, playoffs) or returning matches from multiple upcoming rounds simultaneously. Team name mapper then pairs them incorrectly.
+
+**First thing next CLI session:** Print raw API response before any team mapping. Verify actual match dates and competitions returned. Fix from there.
+
+## The Odds API free tier limitation confirmed
+Free tier does NOT include BTTS odds. Includes:
+- 1X2 (home/draw/away)
+- Spreads (Asian handicap)
+- Totals (over/under goals, including O/U 2.5)
+
+Live predictions currently use **Over/Under 2.5** as proxy market. Backtest was calibrated on BTTS so edge figures not directly comparable. Model already outputs P(over 2.5) natively — needs a proper O/U 2.5 backtest with real odds.
+
+BTTS requires paid tier ($79/month). Not worth paying until paper trading shows positive ROI.
+
+## Strategic decisions this session
+
+### Market priority order
+1. **Over/Under 2.5** — currently active market, needs proper backtest with real odds
+2. **BTTS** — best backtest result (+15.1% ROI) but needs paid API access. Return to after paper trading validates.
+3. **1X2** — most liquid, hardest to beat. Lower priority.
+4. **O/U 1.5 / O/U 3.5** — less efficient lines, check if available on free tier.
+
+### Data sources to investigate
+- **SportsGameOdds** — may have free tier with Pinnacle odds and BTTS. Check before next billing cycle.
+- **Pinnacle API** — closed to public July 2025. Email sent to api@pinnacle.com requesting academic/research access. Use as reference price / line movement signal if granted.
+- **Google Gemini API (free)** — identified for team news parsing pipeline (high upside edge source).
+
+### Team news layer (future)
+Scrape club social media / BBC Sport injury tracker → feed to Gemini API → extract injury/suspension data → apply as match-level adjustment on top of Poisson model. Bookmaker odds lag real team news by 15-30 mins — genuine information edge.
+
+### Leagues
+Stick with Big 5 through paper trading phase. Nordic leagues (Swedish Allsvenskan, Norwegian Eliteserien) identified as potentially less efficient for Australian bookmakers — worth investigating after Big 5 validated. Blocked on finding xG data source for Nordic leagues.
+
+## Priority order for next phase
+
+| Priority | Task | Type |
+|---|---|---|
+| 1 | Fix fixture data bug | CLI session — blocker |
+| 2 | Backtest O/U 2.5 with real odds | CLI session |
+| 3 | Investigate SportsGameOdds free tier | Research (Cowork) |
+| 4 | Team news layer — Gemini API design | Design (Cowork) |
+| 5 | Nordic leagues investigation | Research (Cowork) |
+
+## Weekly workflow (once bug is fixed)
+```
+python run.py update    # Sunday/Monday — ~5 mins
+python run.py predict   # Outputs flagged bets — ~30 secs
+```
+After each gameweek: fill `actual_over25` (TRUE/FALSE) and `profit_loss` in `output/paper_trading/log.csv`
+
+## Files created/modified this session (by CLI)
+**GitHub repo (committed and pushed):**
+- `model/live_ratings.py` (new)
+- `scrapers/team_name_mapper.py` (new)
+- `run.py` (updated — predict and update commands added)
+- `output/paper_trading/log.csv` (new)
+
+**Local project folder:**
+- `SESSION_LOG_COWORK.md` (this file — replaces session 2 log)
 - `docs/INDEX.md` (updated)
-
-**GitHub repo (via CLI sessions):**
-- `model/ratings.py`, `model/poisson.py`, `model/btts.py`
-- `backtest/engine.py`, `backtest/metrics.py`
-- `scripts/threshold_test.py`
-- `run.py` (updated)
-- `output/backtest_results/predictions.csv`
-- Pending commit: `scrapers/odds_api.py`, `config/leagues.yaml`, prompt files

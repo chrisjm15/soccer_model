@@ -35,12 +35,22 @@ Do not implement code in Cowork. Write the prompt and hand it off.
 - Prefix all Qwen3 prompts with `/no_think`
 - **Prompts must be fully self-contained** — local models have no project context. Include all specs, interfaces, and import signatures.
 
-## CLI Launch
-```
-cd "C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer"
-claude --model claude-sonnet-4-6
-/effort max
-```
+## CLI Launch — Full Steps
+
+1. Press **Windows key**, type `Terminal`, press **Enter**
+2. Paste this and press Enter:
+   ```
+   cd "C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer"
+   ```
+3. Paste this and press Enter:
+   ```
+   claude --model claude-sonnet-4-6
+   ```
+4. Once the CLI is running, type:
+   ```
+   /effort max
+   ```
+5. Now paste the prompt.
 
 ## Hard Constraints
 - Free data sources only until positive ROI demonstrated

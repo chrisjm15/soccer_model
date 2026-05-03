@@ -29,7 +29,7 @@
 | `CLI_PROMPT_PHASE2.md` | Phase 2 Sonnet CLI — backtest engine + results | Executed |
 | `CLI_PROMPT_THRESHOLD_TEST.md` | Threshold sensitivity test (5% / 8% / 10%) | Executed |
 | `ODDS_API_PROMPT_QWEN3.md` | Phase 3 → Qwen3 → `scrapers/odds_api.py` | Executed |
-| `CLI_PROMPT_PHASE3.md` | Phase 3 Sonnet CLI — live pipeline, predict command, paper trading | **Run next** |
+| `CLI_PROMPT_PHASE3.md` | Phase 3 Sonnet CLI — live pipeline, predict command, paper trading | Executed |
 
 ## prompts/completed/
 | File | Purpose |
@@ -59,4 +59,7 @@
 | `data/processed/all_merged.csv` | 8,972 merged match records (Phase 1) |
 | `data/processed/ratings.csv` | Pre-match EMA ratings for all matches (Phase 2) |
 | `output/backtest_results/predictions.csv` | Full backtest predictions + outcomes |
+| `model/live_ratings.py` | Latest team ratings lookup for live predictions (Phase 3) |
+| `scrapers/team_name_mapper.py` | Maps Odds API team names to canonical names |
+| `output/paper_trading/log.csv` | Paper trading tracker — fill actual_over25 + profit_loss after each gameweek |
 | `run.py` | Entry point: `python run.py backtest` / `predict` / `update` |

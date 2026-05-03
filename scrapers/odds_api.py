@@ -1,7 +1,7 @@
 import requests
 import time
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 try:
     from dotenv import load_dotenv
@@ -42,14 +42,17 @@ def fetch_league_odds(
 
         data = response.json()
         matches = []
+        now = datetime.now(timezone.utc)
+        cutoff = now + timedelta(days=7)
 
         for match in data:
             commence_time = match.get('commence_time')
             if not commence_time:
                 continue
-            date = datetime.fromisoformat(
-                commence_time.replace('Z', '+00:00')
-            ).date().isoformat()
+            commence_dt = datetime.fromisoformat(commence_time.replace('Z', '+00:00'))
+            if commence_dt > cutoff:
+                continue  # Skip fixtures beyond 7-day window
+            date = commence_dt.date().isoformat()
 
             over25_prices = []
             under25_prices = []
