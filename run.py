@@ -106,7 +106,7 @@ def cmd_predict():
         print("Possible reasons:")
         print("  - No EPL fixtures in the next 7 days")
         print("  - AH (spreads) market not available on your API tier")
-        print("  - No AU bookmakers returned AH lines for EPL this week")
+        print("  - No UK/AU bookmakers returned AH lines for EPL this week")
         print("")
         print("The Odds API free tier does include spreads — if this persists, check API key and credits.")
         sys.exit(0)
@@ -214,12 +214,12 @@ def cmd_predict():
 
     print(f"\n{'='*90}")
     print(f"=== EPL ASIAN HANDICAP PREDICTIONS - {today} ===")
-    print(f"Edge threshold: 7% | Market: Asian Handicap | AU bookmakers (best price)")
+    print(f"Edge threshold: 7% | Market: Asian Handicap | UK + AU bookmakers (best price)")
     print(f"{'='*90}")
 
     if len(flagged) > 0:
         print(f"\nFLAGGED BETS (edge >= 7%):")
-        print(f"  NOTE: Odds shown are best available from AU bookmakers via The Odds API.")
+        print(f"  NOTE: Odds shown are best available from UK + AU bookmakers via The Odds API.")
         print(f"  Min odds = minimum you should accept on Sportsbet/Ladbrokes to preserve 7% edge.")
         print()
         for _, r in flagged.iterrows():
