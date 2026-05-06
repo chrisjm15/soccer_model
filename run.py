@@ -3,7 +3,7 @@ import sys
 import os
 import subprocess
 import yaml
-from datetime import date
+from datetime import date, datetime, timezone
 
 
 def cmd_backtest():
@@ -70,7 +70,7 @@ def cmd_predict():
     from scrapers.team_name_mapper import map_team_name, find_unmapped_teams
 
     EDGE_THRESHOLD = 0.07
-    today = date.today().isoformat()
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')  # GMT date
 
     # --- API key ---
     api_key = os.environ.get('ODDS_API_KEY')
@@ -106,7 +106,7 @@ def cmd_predict():
         print("Possible reasons:")
         print("  - No EPL fixtures in the next 7 days")
         print("  - AH (spreads) market not available on your API tier")
-        print("  - No UK bookmakers returned AH lines for EPL this week")
+        print("  - No AU bookmakers returned AH lines for EPL this week")
         print("")
         print("The Odds API free tier does include spreads — if this persists, check API key and credits.")
         sys.exit(0)
@@ -195,6 +195,9 @@ def cmd_predict():
             'edge': round(display_edge, 4),
             'ev': round(result['ev'], 4),
             'bet_flag': result['should_bet'],
+            'prob_home_win': round(probs['prob_home_win'], 4),
+            'prob_draw': round(probs['prob_draw'], 4),
+            'prob_away_win': round(probs['prob_away_win'], 4),
             'actual_ah_result': '',
             'profit_loss': '',
             'notes': '',
@@ -205,41 +208,77 @@ def cmd_predict():
         sys.exit(0)
 
     pred_df = pd.DataFrame(predictions)
-    pred_df = pred_df.sort_values('edge', ascending=False).reset_index(drop=True)
+    pred_df = pred_df.sort_values(['match_date', 'edge'], ascending=[True, False]).reset_index(drop=True)
 
     flagged = pred_df[pred_df['bet_flag']]
 
-    print(f"\n{'='*80}")
+    print(f"\n{'='*90}")
     print(f"=== EPL ASIAN HANDICAP PREDICTIONS - {today} ===")
-    print(f"Edge threshold: 7% | Market: Asian Handicap | UK bookmakers (best price)")
-    print(f"{'='*80}")
+    print(f"Edge threshold: 7% | Market: Asian Handicap | AU bookmakers (best price)")
+    print(f"{'='*90}")
 
     if len(flagged) > 0:
         print(f"\nFLAGGED BETS (edge >= 7%):")
+        print(f"  NOTE: Odds shown are best available from AU bookmakers via The Odds API.")
+        print(f"  Min odds = minimum you should accept on Sportsbet/Ladbrokes to preserve 7% edge.")
+        print()
         for _, r in flagged.iterrows():
             side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
-            print(
-                f"  {r['home_team'][:20]:<20} vs {r['away_team'][:20]:<20}  "
-                f"AH={r['ah_line']:+.2f}  Side={side_str}  "
-                f"P(AH {side_str})={r['model_prob_ah']*100:.1f}%  "
-                f"Odds={r['odds_ah']:.2f}  Edge={r['edge']*100:+.1f}%  EV={r['ev']:+.3f}"
-            )
+            bet_team = r['home_team'] if r['bet_side'] == 'home' else r['away_team']
+            ah = float(r['ah_line'])
+            # AH line is from home team's perspective. Away side gets the opposite line.
+            if r['bet_side'] == 'away':
+                display_line = -ah
+            else:
+                display_line = ah
+            # Human-readable outcome description
+            if display_line == -0.25:
+                outcome_desc = f"{bet_team} win (half-stake refunded if draw)"
+            elif display_line == 0.25:
+                outcome_desc = f"{bet_team} win or draw (half-stake lost if draw)"
+            elif display_line == -0.5:
+                outcome_desc = f"{bet_team} win"
+            elif display_line == 0.5:
+                outcome_desc = f"{bet_team} win or draw"
+            elif display_line == -0.75:
+                outcome_desc = f"{bet_team} win by 2+ (half-stake wins if win by 1)"
+            elif display_line == 0.75:
+                outcome_desc = f"{bet_team} win or draw (or lose by 1 for half-stake)"
+            elif display_line == -1.0:
+                outcome_desc = f"{bet_team} win by 2+ (push if win by exactly 1)"
+            elif display_line == 1.0:
+                outcome_desc = f"{bet_team} win, draw, or lose by 1 (push if lose by exactly 1)"
+            elif display_line < 0:
+                outcome_desc = f"{bet_team} win by {abs(display_line):.2f}+ goals"
+            else:
+                outcome_desc = f"{bet_team} win or draw (or lose by up to {display_line:.2f})"
+            # Minimum odds to preserve 7% edge (conservative: ignores overround)
+            min_odds = 1.0 / (float(r['model_prob_ah']) - 0.07)
+            print(f"  {'='*70}")
+            print(f"  {r['match_date']}  {r['home_team']} vs {r['away_team']}")
+            print(f"  BET:      {bet_team} AH {display_line:+.2f} ({side_str} side)")
+            print(f"  OUTCOME:  {outcome_desc}")
+            print(f"  API odds: {r['odds_ah']:.2f}  |  Min odds to bet: {min_odds:.2f}  |  Edge: {r['edge']*100:+.1f}%")
+            print(f"  Model P:  {r['model_prob_ah']*100:.1f}% chance of winning this AH bet")
+            print()
     else:
         print(f"\nFLAGGED BETS: None this week (no EPL match exceeded 7% edge)")
 
-    print(f"\nALL EPL MATCHES THIS WEEK ({len(pred_df)} total), sorted by edge:")
+    print(f"\nALL EPL MATCHES THIS WEEK ({len(pred_df)} total), sorted by date then edge:")
     print(
-        f"  {'Home':<22} {'Away':<22} "
-        f"{'AH':>6} {'Side':>5} {'P(side)':>8} {'Odds':>6} {'Edge':>7} {'Flag':>8}"
+        f"  {'Date':<12} {'Home':<22} {'Away':<22} "
+        f"{'H%':>5} {'D%':>5} {'A%':>5} "
+        f"{'AH':>6} {'Side':>5} {'P(side)':>8} {'Odds':>6} {'Edge':>7} {'Signal':>9}"
     )
-    print(f"  {'-'*92}")
+    print(f"  {'-'*116}")
     for _, r in pred_df.iterrows():
-        flag = '*** BET' if r['bet_flag'] else ''
+        signal = '*** BET' if r['bet_flag'] else 'No Bet'
         side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
         print(
-            f"  {r['home_team'][:22]:<22} {r['away_team'][:22]:<22} "
+            f"  {r['match_date']:<12} {r['home_team'][:22]:<22} {r['away_team'][:22]:<22} "
+            f"{r['prob_home_win']*100:>4.0f}% {r['prob_draw']*100:>4.0f}% {r['prob_away_win']*100:>4.0f}% "
             f"{r['ah_line']:>+6.2f} {side_str:>5} {r['model_prob_ah']*100:>7.1f}% "
-            f"{r['odds_ah']:>6.2f} {r['edge']*100:>+6.1f}%   {flag}"
+            f"{r['odds_ah']:>6.2f} {r['edge']*100:>+6.1f}%   {signal}"
         )
 
     # --- Paper trading log (AH) ---

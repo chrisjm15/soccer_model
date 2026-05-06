@@ -152,7 +152,7 @@ def fetch_epl_ah_odds(
     api_key: str,
     sport_key: str,
     league_name: str,
-    regions: str = 'uk'
+    regions: str = 'au'
 ) -> list[dict]:
     """
     Fetches upcoming Asian Handicap (spreads) odds for one league.
