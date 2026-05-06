@@ -1,6 +1,7 @@
 # Local LLM Setup
 
 *Updated 2026-04-29. Benchmarked on Chris's hardware.*
+**Workflow:** use the `local-llm` Cowork skill. This file covers hardware specs and benchmarks only.
 
 ## Hardware
 

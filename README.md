@@ -1,22 +1,22 @@
 # Soccer Prediction Model
 
-xG-based soccer prediction model targeting BTTS, Over/Under, and Win/Draw/Loss markets across Big 5 European leagues.
+xG-based soccer prediction model. Currently live on EPL Asian Handicap market at 7% edge threshold. Paper trading active.
 
 ## Data Sources
 - **Understat** — Match-level xG data (EPL, La Liga, Bundesliga, Serie A, Ligue 1)
-- **football-data.co.uk** — Results, shots, cards, referee, closing odds
-
-## Project Structure
-- `scrapers/` — Data ingestion scripts
-- `model/` — Prediction models (Phase 2+)
-- `backtest/` — Historical simulation engine (Phase 2+)
-- `config/` — League definitions
-- `data/` — Raw and processed data (gitignored)
+- **The Odds API** — Live AH odds (free tier)
 
 ## Usage
 ```bash
-pip install -r requirements.txt
-python scrapers/understat.py
-python scrapers/footballdata.py
-python scrapers/merge.py
+python run.py update    # Weekly data refresh (~5 min)
+python run.py predict   # Output flagged bets for upcoming fixtures
+python run.py backtest  # Run historical simulation
 ```
+
+## Project Structure
+- `scrapers/` — Data ingestion (Understat, football-data.co.uk, Odds API)
+- `model/` — EMA ratings, Poisson probability, market edge calculation
+- `backtest/` — Historical simulation engine and metrics
+- `config/` — League definitions and Odds API keys
+- `data/` — Raw and processed data (gitignored)
+- `output/` — Backtest results and paper trading log
