@@ -47,11 +47,39 @@ Added escalation rule: "needs testing" is not a reason to use Sonnet CLI — Col
 | Sunderland vs Man United (May 9) | Sunderland +0.50 Home | +9.8% | 1.97 |
 
 **Watch points:**
-- Brentford +1.50 and Wolves +1.75 edges (19.2%, 17.6%) are unusually large — either genuine or model calibration issue. Monitor closely.
-- Sunderland are newly promoted — model ratings may be thin. Less reliable prediction.
+- Brentford +1.50 and Wolves +1.75 edges (19.2%, 17.6%) — now confirmed overconfident zone (65%+ confidence band wins at only 50% historically)
+- Sunderland newly promoted — model ratings may be thin
+
+### AH backtest bug found and fixed (this session)
+**Prompt:** `prompts/CLI_PROMPT_AH_BACKTEST_FIX.md` — Sonnet CLI.
+
+**What was broken** (`backtest/multi_market_engine.py`):
+- Lines 215–231: `prob_ah_outcome` used 1X2 match result probability instead of model's AH probability for the bet side
+- Line 306: Brier ran over all 5095 rows instead of non-push bets only
+- Line 307: `'brier': 0` hardcoded — computed value silently discarded
+
+**P&L was NOT affected** — odds lookup was already correct. ROI barely changed (498→504 EPL bets).
+
+**Results after fix:**
+- AH Brier score: 0.0000 → **0.2673** (real)
+- EPL AH ROI: **+6.5%** (validated — not an artefact)
+- Total AH ROI across all leagues: -2.8% (unchanged)
+
+**Calibration by confidence band (EPL AH):**
+| Band | Bets | Win rate | Verdict |
+|---|---|---|---|
+| 50–55% | 37 | 40.5% | Underperforms |
+| 55–60% | 149 | 57.0% | Well calibrated ✓ |
+| 60–65% | 153 | 62.7% | Well calibrated ✓ |
+| 65%+ | 146 | 50.0% | Overconfident ⚠️ |
+
+**Key finding:** Model reliable at 55–65% confidence. Above 65% it is systematically overconfident. Large edges (>15%) fall in this zone and should not be treated the same as moderate edges.
+
+### Other leagues analysis (this session)
+All Big 5 leagues produce individual matches at ≥7% edge but only EPL converts positively. EPL-only strategy confirmed correct.
 
 ## Next session checklist
 - [ ] Monday AEST: `python run.py update` then `python run.py results` — settle May 9-10 bets
-- [ ] Review all 4 flagged bet results and note any pattern (especially the large-edge ones)
-- [ ] Thursday AEST: `python run.py predict` for GW38 fixtures (final round of season)
-- [ ] Ongoing: watch whether large edges (>15%) are genuine or model overconfidence
+- [ ] Note whether Brentford and Wolves (overconfident zone) win or lose — first live data point on calibration
+- [ ] Thursday AEST: `python run.py predict` for GW38 (final EPL round)
+- [ ] Future: consider confidence cap on live model — flag >65% confidence bets as "caution"
