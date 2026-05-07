@@ -209,26 +209,15 @@ row['odds_ah_home'], row['odds_ah_away'], edge_threshold)
             elif bet_result == 'half_loss':
                 pnl_ah = -0.5
 
-            # For Brier: prob that the prediction's best side 'wins' (win or push)
-            # We use the probability of the actual result being 'home' or 'away' relative to the line.
-            # Simplified: prob of the predicted side's outcome.
             if side == 'home':
-                # Prob that margin > -ah_line
-                # This is the sum of all probs where margin > -ah_line
-                # To keep it simple, we'll use the 1x2 prob as a proxy or a simplified calc
-                # However, the prompt asks for Brier on "relevant probability".
-                # We'll use the probability of the chosen side 'winning' or 'pushing'.
-                # This is complex. Let's use: prob(outcome) = 1 if win/push, 0 if loss.
-                # We need a model prob. Let's use the margin prob from the Poisson grid.
-                pass
-
-            # Since we don't have a single probability for AH in the predict_ah call,
-            # we'll use the probability of the actual 'home_win' / 'draw' / 'away_win'
-            # mapped to the ah_line context.
-            # For simplicity and to avoid breaking, let's use the 1X2 prob as a proxy for the Brier.
-            prob_ah_outcome = prob_1x2_outcome
+                prob_ah_outcome = r_ah['p_ah_home']
+            else:
+                prob_ah_outcome = r_ah['p_ah_away']
         else:
-            prob_ah_outcome = prob_1x2_outcome
+            if r_ah['p_ah_home'] >= r_ah['p_ah_away']:
+                prob_ah_outcome = r_ah['p_ah_home']
+            else:
+                prob_ah_outcome = r_ah['p_ah_away']
 
         # Store record
         results_list.append({
@@ -303,8 +292,8 @@ row['odds_ah_home'], row['odds_ah_away'], edge_threshold)
             roi = (total_pnl / len(bets)) * 100
             avg_odds = bets['odds_ah'].mean()
             breakeven = (1 / avg_odds * 100) if avg_odds else 0
-            brier = ((df['prob_ah'] - (df['pnl_ah'] > 0).astype(float))**2).mean()
-            return {'bets': len(bets), 'hit': hit_rate, 'pnl': total_pnl, 'roi': roi, 'breakeven': breakeven, 'brier': 0, 'raw': bets}
+            brier = ((non_push_bets['prob_ah'] - (non_push_bets['pnl_ah'] > 0).astype(float))**2).mean() if len(non_push_bets) > 0 else float('nan')
+            return {'bets': len(bets), 'hit': hit_rate, 'pnl': total_pnl, 'roi': roi, 'breakeven': breakeven, 'brier': brier, 'raw': bets}
 
     stats_1x2 = get_market_stats(results_df, '1X2')
     stats_ou = get_market_stats(results_df, 'OU')
