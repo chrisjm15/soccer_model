@@ -17,6 +17,7 @@
 | `LOCAL_LLM_SETUP.md` | Hardware specs and model benchmarks only — workflow is in `local-llm` Cowork skill |
 | `local-llm.skill` | Packaged `local-llm` Cowork skill (reference copy — already installed globally) |
 | `SESSION_MANAGEMENT_GUIDE.md` | Guide for Chris on managing multi-session projects (not for Claude) |
+| `SCANDINAVIAN_EXPANSION_SPEC.md` | Full experiment spec — 25 metric variants, 6 proxy leagues, module architecture, data sources. Handoff doc for Sonnet execution. |
 | `football_model_briefing.md` | Research briefing — xG, PPDA, markets, data sources |
 | `SOCCER_COWORK_SESSION.md` | Original session planning doc (read-only reference) |
 | `Football Pythag v0.5.xlsx` | Chris's existing Excel model (reference only, not being evolved) |
@@ -36,6 +37,13 @@
 | `CLI_PROMPT_PHASE3.md` | Phase 3 Sonnet CLI — live pipeline, predict command, paper trading | Executed |
 | `CLI_PROMPT_FIXTURE_BUG.md` | Fixture data bug fix | Executed |
 | `CLI_PROMPT_UPDATE_PREDICT.md` | Switch predict output to EPL AH at 7% threshold | Executed |
+
+## prompts/experiment/
+| File | Purpose | Status |
+|---|---|---|
+| `MODULE_1_FOOTBALLDATA_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_footballdata.py` | Ready |
+| `MODULE_2_FBREF_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_fbref.py` | Abandoned — FBref blocked by Cloudflare CAPTCHA |
+| `MODULE_2_FOTMOB_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_fotmob.py` | Written — awaiting execution |
 
 ## prompts/completed/
 | File | Purpose |

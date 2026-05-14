@@ -212,6 +212,11 @@ def cmd_predict():
     pred_df = pd.DataFrame(predictions)
     pred_df = pred_df.sort_values(['match_date', 'edge'], ascending=[True, False]).reset_index(drop=True)
 
+    # Post-filter: only flag bets where API odds actually meet the min odds required
+    # min_odds = 1 / (model_prob - edge_threshold) — same formula used in display below
+    pred_df['min_odds_required'] = 1.0 / (pred_df['model_prob_ah'] - EDGE_THRESHOLD)
+    pred_df.loc[pred_df['odds_ah'] < pred_df['min_odds_required'], 'bet_flag'] = False
+
     flagged = pred_df[pred_df['bet_flag']]
 
     print(f"\n{'='*90}")
@@ -390,7 +395,8 @@ def cmd_results():
     settled_this_run = []
     not_found = []
 
-    for i in log_df[unsettled_mask].index:
+    bet_mask = log_df['bet_flag'].str.strip().str.lower() == 'true'
+    for i in log_df[unsettled_mask & bet_mask].index:
         row = log_df.loc[i]
         home = row['home_team'].strip()
         away = row['away_team'].strip()
@@ -458,8 +464,11 @@ def cmd_results():
             print(f"  Match not found in scores data — may not be played yet: "
                   f"{nf['home']} vs {nf['away']} on {nf['date']}")
 
+    bet_mask = log_df['bet_flag'].str.strip().str.lower() == 'true'
     settled_all = log_df[
-        log_df['actual_ah_result'].notna() & (log_df['actual_ah_result'].str.strip() != '')
+        bet_mask &
+        log_df['actual_ah_result'].notna() &
+        (log_df['actual_ah_result'].str.strip() != '')
     ].copy()
 
     if len(settled_all) > 0:

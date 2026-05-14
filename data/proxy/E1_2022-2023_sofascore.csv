@@ -1,0 +1,553 @@
+date,home_team,away_team,home_shots,away_shots,home_sot,away_sot,home_corners,away_corners,home_fouls,away_fouls,home_yellow,away_yellow,home_red,away_red,home_xg,away_xg,league,season
+2022-07-29,Huddersfield Town,Burnley,2,16,0,7,1,5,13,10,1.0,2.0,,,,,E1,2022-2023
+2022-07-30,Blackburn Rovers,Queens Park Rangers,9,4,4,0,6,0,15,9,1.0,1.0,,,,,E1,2022-2023
+2022-07-30,Blackpool,Reading,10,12,5,3,3,10,12,7,1.0,0.0,,,,,E1,2022-2023
+2022-07-30,Cardiff City,Norwich City,3,6,2,1,1,7,16,9,6.0,2.0,1.0,1.0,,,E1,2022-2023
+2022-07-30,Hull City,Bristol City,14,10,4,4,6,3,11,5,0.0,1.0,,,,,E1,2022-2023
+2022-07-30,Luton Town,Birmingham City,14,12,4,3,9,6,7,15,0.0,3.0,,,,,E1,2022-2023
+2022-07-30,Millwall,Stoke City,13,4,5,2,8,2,14,8,1.0,2.0,,,,,E1,2022-2023
+2022-07-30,Rotherham United,Swansea City,9,14,8,5,5,6,12,6,1.0,2.0,,,,,E1,2022-2023
+2022-07-30,Wigan Athletic,Preston North End,20,11,5,2,7,4,9,17,2.0,3.0,0.0,1.0,,,E1,2022-2023
+2022-07-30,Middlesbrough,West Bromwich Albion,16,12,2,5,4,3,7,9,2.0,1.0,,,,,E1,2022-2023
+2022-07-31,Sunderland,Coventry City,10,9,5,2,4,3,16,6,4.0,1.0,,,,,E1,2022-2023
+2022-08-01,Watford,Sheffield United,10,6,4,3,5,4,13,8,4.0,3.0,,,,,E1,2022-2023
+2022-08-05,Birmingham City,Huddersfield Town,18,9,6,2,6,7,10,10,1.0,2.0,,,,,E1,2022-2023
+2022-08-06,Norwich City,Wigan Athletic,22,6,4,3,9,0,6,13,0.0,4.0,,,,,E1,2022-2023
+2022-08-06,Bristol City,Sunderland,13,16,5,6,8,9,10,9,2.0,2.0,,,,,E1,2022-2023
+2022-08-06,Burnley,Luton Town,12,13,1,2,11,2,10,11,2.0,1.0,,,,,E1,2022-2023
+2022-08-06,Preston North End,Hull City,20,6,6,1,4,1,13,10,1.0,4.0,,,,,E1,2022-2023
+2022-08-06,Queens Park Rangers,Middlesbrough,10,12,5,3,5,5,12,12,2.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-08-06,Reading,Cardiff City,8,6,2,2,1,2,17,16,3.0,3.0,,,,,E1,2022-2023
+2022-08-06,Sheffield United,Millwall,19,11,6,1,3,5,12,10,3.0,2.0,,,,,E1,2022-2023
+2022-08-06,Stoke City,Blackpool,20,10,7,0,5,6,10,8,2.0,2.0,,,,,E1,2022-2023
+2022-08-06,Swansea City,Blackburn Rovers,8,5,5,4,5,4,8,9,3.0,1.0,,,,,E1,2022-2023
+2022-08-08,West Bromwich Albion,Watford,19,5,7,3,12,0,7,13,2.0,1.0,,,,,E1,2022-2023
+2022-10-25,Coventry City,Rotherham United,21,10,7,4,6,1,7,11,2.0,3.0,,,,,E1,2022-2023
+2022-08-12,Watford,Burnley,5,11,1,4,3,6,13,12,1.0,1.0,1.0,0.0,,,E1,2022-2023
+2022-08-13,Cardiff City,Birmingham City,16,4,7,0,2,2,9,12,1.0,4.0,,,,,E1,2022-2023
+2022-08-13,Blackpool,Swansea City,10,15,4,5,3,6,6,13,1.0,3.0,,,,,E1,2022-2023
+2022-08-13,Huddersfield Town,Stoke City,10,18,5,5,3,3,9,9,1.0,3.0,,,,,E1,2022-2023
+2022-08-13,Hull City,Norwich City,13,18,4,12,2,11,15,6,1.0,1.0,,,,,E1,2022-2023
+2022-08-13,Luton Town,Preston North End,18,7,2,5,8,3,11,12,0.0,6.0,,,,,E1,2022-2023
+2022-08-13,Millwall,Coventry City,13,17,6,7,3,6,8,13,4.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-08-13,Rotherham United,Reading,11,12,4,6,5,7,5,8,0.0,2.0,,,,,E1,2022-2023
+2022-08-13,Sunderland,Queens Park Rangers,16,20,8,4,4,3,12,9,3.0,3.0,,,,,E1,2022-2023
+2022-08-13,Wigan Athletic,Bristol City,13,5,3,1,5,1,10,13,1.0,2.0,,,,,E1,2022-2023
+2022-08-14,Middlesbrough,Sheffield United,7,4,4,4,5,4,6,13,3.0,4.0,,,,,E1,2022-2023
+2022-08-14,Blackburn Rovers,West Bromwich Albion,7,13,2,4,1,5,14,16,4.0,1.0,,,,,E1,2022-2023
+2022-08-16,Birmingham City,Watford,7,15,4,2,2,5,12,5,1.0,1.0,,,,,E1,2022-2023
+2022-08-16,Bristol City,Luton Town,10,11,3,2,5,7,9,14,2.0,2.0,1.0,0.0,,,E1,2022-2023
+2022-08-16,Burnley,Hull City,15,4,5,3,6,2,7,13,1.0,3.0,,,,,E1,2022-2023
+2022-08-16,Norwich City,Huddersfield Town,22,11,9,5,8,1,13,5,1.0,0.0,0.0,1.0,,,E1,2022-2023
+2022-08-16,Preston North End,Rotherham United,21,5,6,1,10,3,5,11,1.0,3.0,,,,,E1,2022-2023
+2022-08-16,Swansea City,Millwall,17,15,9,1,6,7,8,8,2.0,3.0,,,,,E1,2022-2023
+2022-08-16,Queens Park Rangers,Blackpool,12,14,6,4,2,2,10,13,1.0,2.0,,,,,E1,2022-2023
+2022-08-17,Stoke City,Middlesbrough,9,15,4,4,4,8,12,10,2.0,1.0,,,,,E1,2022-2023
+2022-08-17,Reading,Blackburn Rovers,12,8,7,1,7,3,8,7,5.0,2.0,,,,,E1,2022-2023
+2022-08-17,Sheffield United,Sunderland,22,4,7,2,13,3,7,13,1.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-08-17,West Bromwich Albion,Cardiff City,13,6,5,0,9,2,12,10,3.0,3.0,,,,,E1,2022-2023
+2022-11-08,Coventry City,Wigan Athletic,14,6,2,0,6,4,11,15,2.0,1.0,,,,,E1,2022-2023
+2022-08-19,Norwich City,Millwall,18,10,3,2,5,4,4,16,2.0,2.0,,,,,E1,2022-2023
+2022-08-20,Birmingham City,Wigan Athletic,14,5,4,2,7,3,11,8,0.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-08-20,Burnley,Blackpool,13,12,4,8,4,6,10,13,1.0,3.0,1.0,1.0,,,E1,2022-2023
+2022-08-20,Preston North End,Watford,10,12,4,2,7,5,14,9,2.0,2.0,,,,,E1,2022-2023
+2022-08-20,Queens Park Rangers,Rotherham United,17,6,5,2,9,3,11,11,3.0,2.0,,,,,E1,2022-2023
+2022-08-20,Reading,Middlesbrough,8,16,3,3,5,7,8,15,4.0,1.0,,,,,E1,2022-2023
+2022-08-20,Sheffield United,Blackburn Rovers,22,3,11,0,11,4,8,8,3.0,2.0,,,,,E1,2022-2023
+2022-08-20,Stoke City,Sunderland,15,12,3,2,7,3,14,14,3.0,6.0,,,,,E1,2022-2023
+2022-08-20,Swansea City,Luton Town,14,7,2,5,7,5,7,12,1.0,0.0,,,,,E1,2022-2023
+2022-08-20,West Bromwich Albion,Hull City,16,7,7,5,12,2,2,12,0.0,3.0,,,,,E1,2022-2023
+2022-08-21,Bristol City,Cardiff City,15,10,3,3,7,8,12,12,4.0,3.0,,,,,E1,2022-2023
+2023-01-28,Coventry City,Huddersfield Town,9,6,5,4,6,3,13,13,1.0,2.0,,,,,E1,2022-2023
+2022-08-26,Luton Town,Sheffield United,12,12,4,3,4,9,11,8,0.0,4.0,,,,,E1,2022-2023
+2022-08-27,Sunderland,Norwich City,20,12,6,3,8,7,11,9,2.0,2.0,,,,,E1,2022-2023
+2022-08-27,Blackburn Rovers,Stoke City,18,8,2,3,12,3,8,14,3.0,3.0,,,,,E1,2022-2023
+2022-08-27,Blackpool,Bristol City,19,13,4,4,5,3,15,17,1.0,5.0,,,,,E1,2022-2023
+2022-08-27,Cardiff City,Preston North End,22,5,2,0,8,2,5,8,0.0,2.0,,,,,E1,2022-2023
+2022-08-27,Huddersfield Town,West Bromwich Albion,11,16,3,6,6,4,2,6,1.0,2.0,,,,,E1,2022-2023
+2022-08-27,Hull City,Coventry City,9,15,4,7,3,4,9,6,3.0,2.0,,,,,E1,2022-2023
+2022-08-27,Middlesbrough,Swansea City,7,9,3,4,8,4,13,14,5.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-08-27,Millwall,Reading,13,5,1,2,3,1,11,13,0.0,1.0,,,,,E1,2022-2023
+2022-08-27,Rotherham United,Birmingham City,20,10,6,3,7,2,7,13,1.0,2.0,,,,,E1,2022-2023
+2022-08-27,Watford,Queens Park Rangers,12,10,5,5,1,4,9,9,4.0,3.0,,,,,E1,2022-2023
+2022-08-27,Wigan Athletic,Burnley,18,8,4,6,6,1,8,8,1.0,1.0,,,,,E1,2022-2023
+2022-08-30,Birmingham City,Norwich City,9,14,2,5,6,8,15,5,4.0,4.0,,,,,E1,2022-2023
+2022-08-30,Burnley,Millwall,22,12,10,5,5,3,7,15,0.0,3.0,,,,,E1,2022-2023
+2022-08-30,Cardiff City,Luton Town,17,14,2,4,5,2,9,15,0.0,3.0,,,,,E1,2022-2023
+2022-08-30,Queens Park Rangers,Hull City,11,7,7,3,2,7,4,12,1.0,1.0,,,,,E1,2022-2023
+2022-08-30,Sheffield United,Reading,18,4,7,0,3,5,13,7,,,,,,,E1,2022-2023
+2022-08-30,Wigan Athletic,West Bromwich Albion,8,8,3,3,3,2,12,12,2.0,2.0,,,,,E1,2022-2023
+2022-08-30,Watford,Middlesbrough,14,14,4,3,2,7,13,9,2.0,4.0,,,,,E1,2022-2023
+2022-08-31,Bristol City,Huddersfield Town,12,12,7,4,4,7,6,3,,,,,,,E1,2022-2023
+2022-08-31,Coventry City,Preston North End,13,13,4,4,9,6,7,8,1.0,2.0,,,,,E1,2022-2023
+2022-08-31,Stoke City,Swansea City,20,10,4,5,12,2,12,8,1.0,2.0,,,,,E1,2022-2023
+2022-08-31,Sunderland,Rotherham United,17,7,4,3,2,1,8,13,0.0,4.0,,,,,E1,2022-2023
+2022-08-31,Blackpool,Blackburn Rovers,13,18,1,5,7,5,9,15,2.0,3.0,,,,,E1,2022-2023
+2022-09-02,West Bromwich Albion,Burnley,23,11,8,4,9,1,12,10,1.0,4.0,,,,,E1,2022-2023
+2022-09-03,Blackburn Rovers,Bristol City,11,16,6,5,5,6,8,10,2.0,2.0,,,,,E1,2022-2023
+2022-09-03,Luton Town,Wigan Athletic,15,9,4,1,9,4,10,7,1.0,1.0,,,,,E1,2022-2023
+2022-09-03,Millwall,Cardiff City,16,12,7,2,4,6,9,15,2.0,2.0,,,,,E1,2022-2023
+2022-09-03,Norwich City,Coventry City,14,6,7,1,4,1,8,4,1.0,0.0,,,,,E1,2022-2023
+2022-09-03,Preston North End,Birmingham City,10,8,3,3,4,6,14,12,1.0,3.0,,,,,E1,2022-2023
+2022-09-03,Rotherham United,Watford,9,12,3,2,3,6,12,11,3.0,2.0,,,,,E1,2022-2023
+2022-09-03,Swansea City,Queens Park Rangers,13,8,4,3,6,4,8,9,3.0,0.0,,,,,E1,2022-2023
+2022-09-04,Reading,Stoke City,11,11,3,3,4,6,5,15,2.0,0.0,,,,,E1,2022-2023
+2022-09-04,Huddersfield Town,Blackpool,15,7,6,2,10,2,8,4,0.0,3.0,,,,,E1,2022-2023
+2022-09-04,Hull City,Sheffield United,11,12,3,5,6,1,8,14,1.0,2.0,,,,,E1,2022-2023
+2022-09-05,Middlesbrough,Sunderland,15,8,5,2,4,6,10,11,5.0,1.0,,,,,E1,2022-2023
+2022-10-11,Wigan Athletic,Blackburn Rovers,13,3,6,0,2,1,11,10,2.0,1.0,,,,,E1,2022-2023
+2022-10-12,Bristol City,Preston North End,14,8,4,2,5,1,12,12,4.0,4.0,,,,,E1,2022-2023
+2022-10-25,Burnley,Norwich City,17,5,2,2,5,4,10,14,3.0,3.0,,,,,E1,2022-2023
+2022-11-08,Birmingham City,Swansea City,15,8,2,3,12,1,12,11,3.0,4.0,,,,,E1,2022-2023
+2022-11-08,Blackpool,Middlesbrough,7,19,1,5,2,7,10,12,4.0,1.0,,,,,E1,2022-2023
+2022-11-08,Cardiff City,Hull City,12,10,2,4,4,2,6,9,0.0,2.0,,,,,E1,2022-2023
+2022-11-08,Queens Park Rangers,Huddersfield Town,36,11,6,5,14,4,11,8,0.0,6.0,,,,,E1,2022-2023
+2022-11-08,Sheffield United,Rotherham United,14,4,5,2,12,1,10,10,2.0,3.0,,,,,E1,2022-2023
+2022-11-08,Stoke City,Luton Town,8,15,2,3,5,13,7,15,1.0,4.0,,,,,E1,2022-2023
+2022-11-08,Watford,Reading,15,6,5,1,7,3,15,16,2.0,3.0,,,,,E1,2022-2023
+2022-12-03,Sunderland,Millwall,11,19,5,5,1,8,10,19,1.0,3.0,,,,,E1,2022-2023
+2022-12-21,Coventry City,West Bromwich Albion,17,5,8,3,10,2,12,11,2.0,1.0,,,,,E1,2022-2023
+2022-09-13,Blackburn Rovers,Watford,15,6,6,2,9,5,9,12,2.0,0.0,,,,,E1,2022-2023
+2022-09-13,Huddersfield Town,Wigan Athletic,18,12,6,5,4,5,12,10,2.0,2.0,,,,,E1,2022-2023
+2022-09-13,Hull City,Stoke City,15,20,4,7,7,6,13,12,2.0,1.0,,,,,E1,2022-2023
+2022-09-13,Middlesbrough,Cardiff City,10,6,2,4,9,3,6,6,1.0,1.0,,,,,E1,2022-2023
+2022-09-13,Swansea City,Sheffield United,12,12,2,3,6,4,9,13,1.0,1.0,,,,,E1,2022-2023
+2022-09-13,Preston North End,Burnley,6,12,3,4,4,6,17,6,2.0,0.0,,,,,E1,2022-2023
+2022-09-14,Luton Town,Coventry City,11,11,4,4,7,3,7,11,2.0,1.0,,,,,E1,2022-2023
+2022-09-14,Millwall,Queens Park Rangers,12,13,4,4,5,4,10,7,,,,,,,E1,2022-2023
+2022-09-14,Norwich City,Bristol City,11,11,6,4,2,8,10,8,,,,,,,E1,2022-2023
+2022-09-14,Rotherham United,Blackpool,11,6,4,1,5,4,9,8,1.0,1.0,,,,,E1,2022-2023
+2022-09-14,Reading,Sunderland,6,13,2,6,3,7,16,8,1.0,1.0,,,,,E1,2022-2023
+2022-09-14,West Bromwich Albion,Birmingham City,18,7,5,3,6,2,6,12,2.0,2.0,,,,,E1,2022-2023
+2022-09-17,Swansea City,Hull City,17,6,5,1,5,3,6,7,1.0,2.0,,,,,E1,2022-2023
+2022-09-17,Birmingham City,Coventry City,12,13,4,3,6,4,6,17,1.0,3.0,0.0,1.0,,,E1,2022-2023
+2022-09-17,Burnley,Bristol City,13,9,6,5,8,5,10,6,2.0,1.0,,,,,E1,2022-2023
+2022-09-17,Huddersfield Town,Cardiff City,8,7,4,2,1,3,10,6,4.0,0.0,,,,,E1,2022-2023
+2022-09-17,Luton Town,Blackburn Rovers,13,7,4,1,4,3,10,13,3.0,2.0,,,,,E1,2022-2023
+2022-09-17,Millwall,Blackpool,16,9,6,2,5,2,16,12,2.0,2.0,,,,,E1,2022-2023
+2022-09-17,Norwich City,West Bromwich Albion,11,11,3,2,7,4,10,13,1.0,1.0,,,,,E1,2022-2023
+2022-09-17,Preston North End,Sheffield United,18,15,3,6,7,5,11,10,1.0,3.0,,,,,E1,2022-2023
+2022-09-17,Queens Park Rangers,Stoke City,20,8,5,1,8,6,11,14,1.0,2.0,,,,,E1,2022-2023
+2022-09-17,Watford,Sunderland,13,12,4,5,8,3,8,6,0.0,4.0,,,,,E1,2022-2023
+2022-09-17,Wigan Athletic,Reading,10,7,0,2,1,3,10,12,3.0,2.0,,,,,E1,2022-2023
+2022-09-17,Middlesbrough,Rotherham United,13,3,3,0,8,3,14,15,1.0,2.0,,,,,E1,2022-2023
+2022-09-30,Hull City,Luton Town,11,10,0,5,7,6,11,10,1.0,3.0,,,,,E1,2022-2023
+2022-10-01,Blackburn Rovers,Millwall,10,10,4,2,4,4,6,9,1.0,0.0,,,,,E1,2022-2023
+2022-10-01,Blackpool,Norwich City,17,22,6,8,9,6,13,4,3.0,0.0,,,,,E1,2022-2023
+2022-10-01,Bristol City,Queens Park Rangers,12,15,2,6,8,2,13,13,3.0,1.0,,,,,E1,2022-2023
+2022-10-01,Cardiff City,Burnley,12,8,4,2,9,1,9,5,3.0,0.0,,,,,E1,2022-2023
+2022-10-01,Coventry City,Middlesbrough,11,6,4,3,3,6,22,12,4.0,1.0,,,,,E1,2022-2023
+2022-10-01,Reading,Huddersfield Town,11,10,3,3,5,1,5,13,0.0,3.0,,,,,E1,2022-2023
+2022-10-01,Rotherham United,Wigan Athletic,12,14,3,5,8,4,9,8,3.0,1.0,,,,,E1,2022-2023
+2022-10-01,Sheffield United,Birmingham City,13,8,3,2,4,4,9,14,3.0,3.0,,,,,E1,2022-2023
+2022-10-01,Sunderland,Preston North End,16,8,2,5,4,8,11,14,1.0,1.0,,,,,E1,2022-2023
+2022-10-01,West Bromwich Albion,Swansea City,13,7,5,4,8,6,21,8,3.0,1.0,,,,,E1,2022-2023
+2022-10-02,Stoke City,Watford,15,16,2,9,6,6,10,15,2.0,5.0,,,,,E1,2022-2023
+2022-10-04,Bristol City,Coventry City,9,10,3,3,9,2,7,11,2.0,1.0,,,,,E1,2022-2023
+2022-10-04,Luton Town,Huddersfield Town,24,3,10,3,9,5,9,9,0.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-10-04,Sheffield United,Queens Park Rangers,21,10,5,3,9,3,8,10,2.0,2.0,,,,,E1,2022-2023
+2022-10-04,Sunderland,Blackpool,15,13,4,4,5,12,10,13,1.0,3.0,,,,,E1,2022-2023
+2022-10-04,Cardiff City,Blackburn Rovers,14,5,5,2,7,0,13,14,2.0,2.0,,,,,E1,2022-2023
+2022-10-04,Reading,Norwich City,10,7,3,1,3,7,10,4,3.0,1.0,,,,,E1,2022-2023
+2022-10-05,Burnley,Stoke City,13,6,6,4,14,2,5,11,2.0,2.0,,,,,E1,2022-2023
+2022-10-05,Hull City,Wigan Athletic,11,12,5,4,9,5,13,10,3.0,1.0,,,,,E1,2022-2023
+2022-10-05,Middlesbrough,Birmingham City,13,13,3,4,6,6,11,10,2.0,1.0,,,,,E1,2022-2023
+2022-10-05,Rotherham United,Millwall,10,14,1,4,6,4,9,8,2.0,2.0,,,,,E1,2022-2023
+2022-10-05,Watford,Swansea City,9,12,4,4,1,6,18,12,2.0,6.0,,,,,E1,2022-2023
+2022-10-05,Preston North End,West Bromwich Albion,9,18,4,5,2,10,9,3,2.0,1.0,,,,,E1,2022-2023
+2022-10-07,Queens Park Rangers,Reading,11,9,5,2,4,5,10,14,2.0,3.0,,,,,E1,2022-2023
+2022-10-08,Birmingham City,Bristol City,10,7,5,1,7,4,23,11,3.0,2.0,,,,,E1,2022-2023
+2022-10-08,Blackburn Rovers,Rotherham United,19,9,6,2,8,3,7,9,0.0,3.0,,,,,E1,2022-2023
+2022-10-08,Blackpool,Watford,18,10,9,5,5,7,10,9,1.0,1.0,,,,,E1,2022-2023
+2022-10-08,Coventry City,Burnley,6,13,0,4,2,7,7,8,1.0,3.0,,,,,E1,2022-2023
+2022-10-08,Millwall,Middlesbrough,9,7,7,1,0,7,15,12,2.0,3.0,,,,,E1,2022-2023
+2022-10-08,Norwich City,Preston North End,17,8,8,5,8,3,10,12,1.0,5.0,,,,,E1,2022-2023
+2022-10-08,Stoke City,Sheffield United,12,8,5,3,6,5,12,6,3.0,2.0,,,,,E1,2022-2023
+2022-10-08,Swansea City,Sunderland,10,10,6,2,7,4,7,13,2.0,5.0,,,,,E1,2022-2023
+2022-10-08,West Bromwich Albion,Luton Town,12,8,3,3,7,4,5,10,1.0,1.0,,,,,E1,2022-2023
+2022-10-08,Wigan Athletic,Cardiff City,10,10,1,6,6,3,7,15,5.0,2.0,,,,,E1,2022-2023
+2022-10-09,Huddersfield Town,Hull City,9,12,5,2,6,3,10,14,4.0,3.0,,,,,E1,2022-2023
+2022-10-15,Luton Town,Queens Park Rangers,17,11,4,4,9,9,16,12,2.0,1.0,,,,,E1,2022-2023
+2022-10-15,Rotherham United,Huddersfield Town,10,7,4,4,3,3,12,12,3.0,2.0,,,,,E1,2022-2023
+2022-10-15,Bristol City,Millwall,9,16,1,7,0,6,10,11,2.0,3.0,,,,,E1,2022-2023
+2022-10-15,Burnley,Swansea City,10,6,5,1,5,6,9,11,1.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-10-15,Cardiff City,Coventry City,15,11,1,4,12,7,6,12,0.0,4.0,,,,,E1,2022-2023
+2022-10-15,Middlesbrough,Blackburn Rovers,16,11,7,6,9,4,7,9,2.0,4.0,,,,,E1,2022-2023
+2022-10-15,Preston North End,Stoke City,7,18,0,6,3,6,9,11,1.0,0.0,,,,,E1,2022-2023
+2022-10-15,Reading,West Bromwich Albion,18,9,6,3,4,7,10,11,3.0,1.0,,,,,E1,2022-2023
+2022-10-15,Sheffield United,Blackpool,20,10,9,3,14,4,13,10,5.0,4.0,1.0,3.0,,,E1,2022-2023
+2022-10-15,Sunderland,Wigan Athletic,8,8,3,1,1,5,7,15,3.0,2.0,,,,,E1,2022-2023
+2022-10-15,Watford,Norwich City,16,11,9,2,3,12,10,8,1.0,1.0,,,,,E1,2022-2023
+2022-10-16,Hull City,Birmingham City,12,9,2,3,7,6,15,6,4.0,3.0,,,,,E1,2022-2023
+2022-10-18,Huddersfield Town,Preston North End,9,10,0,3,5,5,13,9,5.0,1.0,,,,,E1,2022-2023
+2022-10-18,Norwich City,Luton Town,14,6,1,2,4,2,9,13,1.0,2.0,1.0,0.0,,,E1,2022-2023
+2022-10-18,Swansea City,Reading,13,7,5,4,8,0,2,7,1.0,1.0,,,,,E1,2022-2023
+2022-10-18,Blackburn Rovers,Sunderland,11,14,3,4,3,7,16,11,3.0,3.0,,,,,E1,2022-2023
+2022-10-18,Stoke City,Rotherham United,29,4,12,1,8,3,7,14,0.0,3.0,,,,,E1,2022-2023
+2022-10-18,West Bromwich Albion,Bristol City,14,6,0,2,13,1,12,8,3.0,1.0,,,,,E1,2022-2023
+2022-10-19,Birmingham City,Burnley,14,9,2,1,8,4,13,11,1.0,2.0,,,,,E1,2022-2023
+2022-10-19,Blackpool,Hull City,8,11,1,3,2,4,13,15,3.0,4.0,,,,,E1,2022-2023
+2022-10-19,Coventry City,Sheffield United,8,18,2,3,4,10,14,7,4.0,1.0,,,,,E1,2022-2023
+2022-10-19,Queens Park Rangers,Cardiff City,22,4,10,0,5,2,16,11,2.0,5.0,0.0,1.0,,,E1,2022-2023
+2022-10-19,Wigan Athletic,Middlesbrough,10,16,5,7,4,4,7,11,1.0,2.0,,,,,E1,2022-2023
+2022-10-19,Millwall,Watford,12,12,4,1,2,5,12,10,0.0,2.0,,,,,E1,2022-2023
+2022-10-22,Blackpool,Preston North End,11,18,5,6,1,6,11,12,1.0,2.0,,,,,E1,2022-2023
+2022-10-22,Blackburn Rovers,Birmingham City,5,17,3,6,2,9,8,6,1.0,1.0,,,,,E1,2022-2023
+2022-10-22,Middlesbrough,Huddersfield Town,11,10,2,4,3,5,7,11,3.0,1.0,,,,,E1,2022-2023
+2022-10-22,Millwall,West Bromwich Albion,18,8,3,2,5,2,8,11,1.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-10-22,Queens Park Rangers,Wigan Athletic,9,12,4,2,5,4,10,6,1.0,2.0,,,,,E1,2022-2023
+2022-10-22,Reading,Bristol City,15,5,4,0,10,5,12,8,2.0,3.0,,,,,E1,2022-2023
+2022-10-22,Rotherham United,Hull City,11,19,3,13,4,7,6,9,1.0,0.0,,,,,E1,2022-2023
+2022-10-22,Sheffield United,Norwich City,22,10,8,6,4,9,16,12,1.0,5.0,,,,,E1,2022-2023
+2022-10-22,Stoke City,Coventry City,11,8,2,3,9,2,8,15,1.0,1.0,,,,,E1,2022-2023
+2022-10-22,Sunderland,Burnley,10,9,5,4,2,5,9,10,1.0,3.0,,,,,E1,2022-2023
+2022-10-23,Swansea City,Cardiff City,13,3,6,1,7,1,5,10,3.0,3.0,0.0,1.0,,,E1,2022-2023
+2022-10-23,Watford,Luton Town,13,9,8,3,6,1,9,15,3.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-10-28,Birmingham City,Queens Park Rangers,7,15,3,4,2,10,15,6,4.0,3.0,,,,,E1,2022-2023
+2022-10-29,Bristol City,Swansea City,10,15,4,3,7,11,13,5,1.0,0.0,,,,,E1,2022-2023
+2022-10-29,West Bromwich Albion,Sheffield United,15,11,5,2,8,3,6,4,0.0,1.0,,,,,E1,2022-2023
+2022-10-29,Burnley,Reading,14,11,3,4,12,9,7,7,3.0,4.0,,,,,E1,2022-2023
+2022-10-29,Cardiff City,Rotherham United,19,3,5,0,10,3,3,9,0.0,1.0,,,,,E1,2022-2023
+2022-10-29,Coventry City,Blackpool,15,17,4,4,3,5,9,12,1.0,4.0,,,,,E1,2022-2023
+2022-10-29,Huddersfield Town,Millwall,14,4,5,1,8,1,8,13,2.0,3.0,,,,,E1,2022-2023
+2022-10-29,Hull City,Blackburn Rovers,7,14,0,6,6,3,11,10,2.0,1.0,,,,,E1,2022-2023
+2022-10-29,Luton Town,Sunderland,15,16,3,4,8,5,18,17,2.0,3.0,,,,,E1,2022-2023
+2022-10-29,Norwich City,Stoke City,16,18,9,4,5,6,14,11,6.0,3.0,,,,,E1,2022-2023
+2022-10-29,Preston North End,Middlesbrough,13,9,4,1,2,4,11,10,3.0,3.0,,,,,E1,2022-2023
+2022-10-29,Wigan Athletic,Watford,8,13,1,2,3,4,5,7,2.0,2.0,,,,,E1,2022-2023
+2022-11-01,Coventry City,Blackburn Rovers,15,9,7,2,3,4,5,10,2.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-11-01,Hull City,Middlesbrough,10,6,2,3,7,2,11,8,1.0,3.0,,,,,E1,2022-2023
+2022-11-01,Luton Town,Reading,9,17,2,3,6,5,10,8,2.0,3.0,,,,,E1,2022-2023
+2022-11-01,Preston North End,Swansea City,9,14,4,4,2,7,11,8,4.0,3.0,,,,,E1,2022-2023
+2022-11-01,Bristol City,Sheffield United,16,4,3,3,8,1,6,15,3.0,5.0,1.0,0.0,,,E1,2022-2023
+2022-11-01,West Bromwich Albion,Blackpool,11,4,5,0,7,2,11,8,4.0,2.0,,,,,E1,2022-2023
+2022-11-02,Birmingham City,Millwall,5,9,0,3,2,5,10,11,0.0,1.0,,,,,E1,2022-2023
+2022-11-02,Burnley,Rotherham United,24,8,11,5,7,3,7,4,3.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-11-02,Cardiff City,Watford,11,16,3,5,8,11,9,8,2.0,2.0,,,,,E1,2022-2023
+2022-11-02,Huddersfield Town,Sunderland,16,9,3,3,5,1,9,8,2.0,2.0,,,,,E1,2022-2023
+2022-11-02,Norwich City,Queens Park Rangers,12,14,3,4,11,3,7,10,1.0,3.0,,,,,E1,2022-2023
+2022-11-02,Wigan Athletic,Stoke City,11,13,1,5,2,7,7,12,1.0,2.0,,,,,E1,2022-2023
+2022-11-04,Reading,Preston North End,11,10,2,4,3,2,10,9,1.0,4.0,,,,,E1,2022-2023
+2022-11-05,Sheffield United,Burnley,28,14,12,3,10,6,8,7,2.0,4.0,,,,,E1,2022-2023
+2022-11-05,Blackburn Rovers,Huddersfield Town,12,8,4,3,5,4,3,16,0.0,3.0,,,,,E1,2022-2023
+2022-11-05,Blackpool,Luton Town,19,11,8,3,9,11,7,10,1.0,1.0,,,,,E1,2022-2023
+2022-11-05,Middlesbrough,Bristol City,23,6,9,2,8,1,13,11,3.0,2.0,,,,,E1,2022-2023
+2022-11-05,Millwall,Hull City,24,6,6,2,10,2,9,13,0.0,3.0,0.0,1.0,,,E1,2022-2023
+2022-11-05,Queens Park Rangers,West Bromwich Albion,9,10,2,2,8,5,9,10,1.0,2.0,,,,,E1,2022-2023
+2022-11-05,Rotherham United,Norwich City,10,13,4,4,2,9,10,12,1.0,3.0,,,,,E1,2022-2023
+2022-11-05,Stoke City,Birmingham City,11,8,7,3,4,3,14,17,3.0,3.0,,,,,E1,2022-2023
+2022-11-05,Sunderland,Cardiff City,11,13,2,4,6,4,6,12,4.0,3.0,,,,,E1,2022-2023
+2022-11-05,Swansea City,Wigan Athletic,13,4,3,4,6,3,10,13,2.0,2.0,,,,,E1,2022-2023
+2022-11-05,Watford,Coventry City,12,12,2,4,10,5,13,6,4.0,2.0,,,,,E1,2022-2023
+2022-11-11,Birmingham City,Sunderland,22,6,6,4,7,3,8,12,2.0,4.0,,,,,E1,2022-2023
+2022-11-12,Bristol City,Watford,9,2,2,0,4,3,15,10,1.0,1.0,,,,,E1,2022-2023
+2022-11-12,Cardiff City,Sheffield United,12,10,2,5,5,4,10,7,0.0,1.0,,,,,E1,2022-2023
+2022-11-12,Coventry City,Queens Park Rangers,13,11,5,1,2,5,7,11,2.0,2.0,,,,,E1,2022-2023
+2022-11-12,Huddersfield Town,Swansea City,8,16,4,6,2,11,8,9,1.0,2.0,,,,,E1,2022-2023
+2022-11-12,Hull City,Reading,12,9,4,4,4,6,6,6,0.0,1.0,,,,,E1,2022-2023
+2022-11-12,Luton Town,Rotherham United,18,8,7,2,12,4,10,13,1.0,7.0,,,,,E1,2022-2023
+2022-11-12,Norwich City,Middlesbrough,14,11,6,3,3,4,9,10,1.0,2.0,,,,,E1,2022-2023
+2022-11-12,Preston North End,Millwall,17,6,4,4,2,2,5,10,1.0,3.0,,,,,E1,2022-2023
+2022-11-12,West Bromwich Albion,Stoke City,16,12,3,3,8,6,9,9,2.0,3.0,,,,,E1,2022-2023
+2022-11-12,Wigan Athletic,Blackpool,18,4,3,1,8,3,11,13,3.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-11-13,Burnley,Blackburn Rovers,17,1,8,1,7,3,12,9,1.0,2.0,,,,,E1,2022-2023
+2022-12-10,Blackburn Rovers,Preston North End,7,13,2,6,2,2,12,4,1.0,2.0,,,,,E1,2022-2023
+2022-12-10,Rotherham United,Bristol City,16,9,5,4,7,9,7,11,1.0,4.0,,,,,E1,2022-2023
+2022-12-10,Reading,Coventry City,9,15,3,4,4,4,11,8,2.0,3.0,,,,,E1,2022-2023
+2022-12-10,Blackpool,Birmingham City,9,10,0,1,2,6,9,14,0.0,1.0,,,,,E1,2022-2023
+2022-12-10,Middlesbrough,Luton Town,17,3,3,1,3,2,16,16,0.0,4.0,0.0,1.0,,,E1,2022-2023
+2022-12-10,Millwall,Wigan Athletic,12,7,6,3,4,3,18,12,1.0,2.0,,,,,E1,2022-2023
+2022-12-10,Sheffield United,Huddersfield Town,16,4,4,1,10,1,8,9,2.0,2.0,,,,,E1,2022-2023
+2022-12-10,Stoke City,Cardiff City,11,8,3,5,6,5,10,7,1.0,2.0,,,,,E1,2022-2023
+2022-12-10,Swansea City,Norwich City,17,5,7,2,7,4,9,13,2.0,5.0,,,,,E1,2022-2023
+2022-12-11,Queens Park Rangers,Burnley,9,9,2,7,2,6,13,18,1.0,2.0,,,,,E1,2022-2023
+2022-12-11,Watford,Hull City,12,9,3,3,7,5,7,13,0.0,4.0,,,,,E1,2022-2023
+2022-12-12,Sunderland,West Bromwich Albion,11,10,3,4,5,5,8,7,1.0,1.0,,,,,E1,2022-2023
+2022-12-16,Birmingham City,Reading,9,20,6,7,0,7,14,14,1.0,1.0,,,,,E1,2022-2023
+2022-12-17,Bristol City,Stoke City,14,6,5,3,3,3,11,17,3.0,4.0,,,,,E1,2022-2023
+2022-12-17,Burnley,Middlesbrough,11,4,4,4,4,1,13,4,1.0,2.0,1.0,0.0,,,E1,2022-2023
+2022-12-17,Cardiff City,Blackpool,22,9,8,2,4,6,11,13,3.0,3.0,,,,,E1,2022-2023
+2022-12-17,Coventry City,Swansea City,17,17,9,7,5,3,11,12,0.0,2.0,,,,,E1,2022-2023
+2022-12-17,Huddersfield Town,Watford,15,12,2,6,7,11,10,15,2.0,2.0,,,,,E1,2022-2023
+2022-12-17,Hull City,Sunderland,17,6,2,1,7,4,8,13,1.0,1.0,0.0,1.0,,,E1,2022-2023
+2022-12-17,Preston North End,Queens Park Rangers,10,17,2,6,4,4,18,13,1.0,3.0,,,,,E1,2022-2023
+2022-12-17,West Bromwich Albion,Rotherham United,16,2,9,1,6,3,11,10,1.0,2.0,,,,,E1,2022-2023
+2022-12-17,Norwich City,Blackburn Rovers,19,7,4,3,6,2,12,18,4.0,3.0,,,,,E1,2022-2023
+2022-12-19,Wigan Athletic,Sheffield United,10,10,3,6,8,4,10,13,1.0,3.0,,,,,E1,2022-2023
+2023-02-28,Luton Town,Millwall,15,9,4,3,6,2,11,12,0.0,1.0,,,,,E1,2022-2023
+2022-12-26,Watford,Millwall,7,23,2,8,4,9,14,15,2.0,3.0,1.0,0.0,,,E1,2022-2023
+2022-12-26,Sunderland,Blackburn Rovers,11,6,5,2,7,3,15,13,3.0,5.0,,,,,E1,2022-2023
+2022-12-26,Bristol City,West Bromwich Albion,8,15,3,4,8,6,11,8,2.0,1.0,,,,,E1,2022-2023
+2022-12-26,Hull City,Blackpool,15,16,1,6,11,8,18,13,2.0,2.0,0.0,1.0,,,E1,2022-2023
+2022-12-26,Middlesbrough,Wigan Athletic,14,17,7,5,8,10,8,11,2.0,1.0,,,,,E1,2022-2023
+2022-12-26,Preston North End,Huddersfield Town,11,9,2,3,2,3,10,12,2.0,3.0,,,,,E1,2022-2023
+2022-12-26,Rotherham United,Stoke City,5,12,1,5,3,3,14,16,1.0,2.0,,,,,E1,2022-2023
+2022-12-26,Sheffield United,Coventry City,8,11,3,4,2,7,10,10,2.0,3.0,1.0,0.0,,,E1,2022-2023
+2022-12-26,Cardiff City,Queens Park Rangers,11,10,0,1,1,6,11,14,2.0,3.0,,,,,E1,2022-2023
+2022-12-26,Luton Town,Norwich City,13,19,3,5,6,4,11,10,3.0,1.0,1.0,0.0,,,E1,2022-2023
+2022-12-27,Reading,Swansea City,9,12,4,7,3,4,24,7,2.0,3.0,,,,,E1,2022-2023
+2022-12-27,Burnley,Birmingham City,10,2,4,0,1,1,12,8,1.0,3.0,,,,,E1,2022-2023
+2022-12-29,Queens Park Rangers,Luton Town,8,6,2,5,6,0,10,20,0.0,4.0,,,,,E1,2022-2023
+2022-12-29,Blackburn Rovers,Middlesbrough,9,11,5,4,1,7,8,11,1.0,3.0,1.0,0.0,,,E1,2022-2023
+2022-12-29,Coventry City,Cardiff City,15,6,4,2,5,2,8,9,2.0,1.0,,,,,E1,2022-2023
+2022-12-29,Huddersfield Town,Rotherham United,9,7,3,2,0,2,6,13,3.0,2.0,,,,,E1,2022-2023
+2022-12-29,Millwall,Bristol City,9,6,0,2,3,4,8,3,,,,,,,E1,2022-2023
+2022-12-29,Wigan Athletic,Sunderland,7,13,2,7,1,4,19,14,2.0,1.0,,,,,E1,2022-2023
+2022-12-29,West Bromwich Albion,Preston North End,17,8,8,2,14,3,9,9,1.0,1.0,,,,,E1,2022-2023
+2022-12-29,Blackpool,Sheffield United,14,11,4,6,5,6,8,16,,,,,,,E1,2022-2023
+2022-12-30,Birmingham City,Hull City,10,15,3,2,4,7,10,10,3.0,1.0,,,,,E1,2022-2023
+2022-12-30,Norwich City,Reading,11,11,5,4,7,7,17,7,3.0,2.0,,,,,E1,2022-2023
+2022-12-30,Stoke City,Burnley,6,7,3,2,3,5,21,13,2.0,3.0,,,,,E1,2022-2023
+2022-12-30,Swansea City,Watford,15,4,7,3,4,2,14,11,4.0,2.0,,,,,E1,2022-2023
+2023-01-01,Blackburn Rovers,Cardiff City,10,11,4,3,3,9,6,9,3.0,2.0,,,,,E1,2022-2023
+2023-01-01,Blackpool,Sunderland,6,18,2,5,1,5,14,10,5.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-01-01,Coventry City,Bristol City,16,9,6,2,6,11,10,10,3.0,2.0,,,,,E1,2022-2023
+2023-01-01,Huddersfield Town,Luton Town,6,10,3,5,1,1,14,15,1.0,3.0,,,,,E1,2022-2023
+2023-01-01,Millwall,Rotherham United,27,5,11,1,10,1,9,12,1.0,1.0,,,,,E1,2022-2023
+2023-01-02,Birmingham City,Middlesbrough,9,18,1,8,9,8,10,8,1.0,2.0,,,,,E1,2022-2023
+2023-01-02,Norwich City,Watford,15,12,1,3,8,3,9,17,2.0,3.0,,,,,E1,2022-2023
+2023-01-02,Swansea City,Burnley,10,7,3,3,4,5,7,12,3.0,5.0,,,,,E1,2022-2023
+2023-01-02,West Bromwich Albion,Reading,17,7,4,2,6,3,11,12,1.0,4.0,,,,,E1,2022-2023
+2023-01-02,Wigan Athletic,Hull City,6,9,1,4,7,5,10,7,1.0,2.0,,,,,E1,2022-2023
+2023-01-02,Stoke City,Preston North End,15,10,3,2,4,7,13,6,4.0,4.0,,,,,E1,2022-2023
+2023-01-02,Queens Park Rangers,Sheffield United,15,15,2,6,8,6,11,13,2.0,2.0,,,,,E1,2022-2023
+2023-01-14,Rotherham United,Blackburn Rovers,8,9,4,3,4,2,7,1,1.0,0.0,,,,,E1,2022-2023
+2023-01-14,Bristol City,Birmingham City,10,14,5,4,5,2,14,6,2.0,1.0,,,,,E1,2022-2023
+2023-01-14,Burnley,Coventry City,10,8,5,0,3,5,4,8,3.0,3.0,,,,,E1,2022-2023
+2023-01-14,Cardiff City,Wigan Athletic,11,16,2,4,3,3,7,11,4.0,2.0,,,,,E1,2022-2023
+2023-01-14,Hull City,Huddersfield Town,14,8,5,6,4,4,4,5,0.0,2.0,,,,,E1,2022-2023
+2023-01-14,Luton Town,West Bromwich Albion,10,17,4,7,2,9,15,9,3.0,2.0,,,,,E1,2022-2023
+2023-01-14,Middlesbrough,Millwall,7,8,3,2,6,3,8,13,2.0,4.0,,,,,E1,2022-2023
+2023-01-14,Preston North End,Norwich City,10,23,2,8,4,7,17,11,4.0,4.0,,,,,E1,2022-2023
+2023-01-14,Reading,Queens Park Rangers,10,17,3,4,5,7,11,9,2.0,2.0,,,,,E1,2022-2023
+2023-01-14,Sheffield United,Stoke City,8,9,3,5,2,6,7,13,2.0,2.0,,,,,E1,2022-2023
+2023-01-14,Sunderland,Swansea City,8,18,3,6,1,4,15,15,2.0,4.0,1.0,0.0,,,E1,2022-2023
+2023-01-14,Watford,Blackpool,11,6,5,2,2,3,11,14,2.0,3.0,,,,,E1,2022-2023
+2023-01-20,Sheffield United,Hull City,13,10,5,2,4,2,11,8,6.0,2.0,0.0,1.0,,,E1,2022-2023
+2023-01-20,Burnley,West Bromwich Albion,17,8,2,2,16,5,7,8,1.0,1.0,,,,,E1,2022-2023
+2023-01-21,Coventry City,Norwich City,11,18,4,7,4,6,10,8,0.0,1.0,,,,,E1,2022-2023
+2023-01-21,Birmingham City,Preston North End,10,8,4,4,5,3,12,11,4.0,1.0,,,,,E1,2022-2023
+2023-01-21,Bristol City,Blackburn Rovers,11,6,3,2,5,3,10,12,1.0,3.0,0.0,1.0,,,E1,2022-2023
+2023-01-21,Cardiff City,Millwall,22,15,4,6,7,4,13,10,3.0,3.0,,,,,E1,2022-2023
+2023-01-21,Queens Park Rangers,Swansea City,15,12,4,2,5,8,15,14,,,,,,,E1,2022-2023
+2023-01-21,Stoke City,Reading,16,7,7,3,6,2,12,5,,,,,,,E1,2022-2023
+2023-01-21,Watford,Rotherham United,18,12,5,5,9,3,9,8,3.0,3.0,,,,,E1,2022-2023
+2023-01-21,Wigan Athletic,Luton Town,10,8,1,2,3,1,7,11,2.0,3.0,,,,,E1,2022-2023
+2023-01-22,Sunderland,Middlesbrough,17,14,6,6,4,8,8,10,0.0,2.0,0.0,1.0,,,E1,2022-2023
+2023-02-07,Blackpool,Huddersfield Town,11,13,3,6,3,7,9,7,1.0,3.0,1.0,0.0,,,E1,2022-2023
+2023-01-28,Hull City,Queens Park Rangers,7,5,3,2,4,5,10,8,0.0,4.0,,,,,E1,2022-2023
+2023-01-28,Middlesbrough,Watford,14,11,6,4,9,5,10,19,1.0,2.0,,,,,E1,2022-2023
+2023-01-31,Luton Town,Cardiff City,15,11,4,4,13,2,12,7,3.0,2.0,,,,,E1,2022-2023
+2023-02-21,Blackburn Rovers,Blackpool,13,7,3,0,8,2,12,12,3.0,0.0,,,,,E1,2022-2023
+2023-02-21,Millwall,Burnley,12,18,3,3,3,6,7,11,1.0,1.0,,,,,E1,2022-2023
+2023-02-21,Norwich City,Birmingham City,13,10,7,2,6,1,14,9,1.0,2.0,,,,,E1,2022-2023
+2023-02-21,Rotherham United,Sunderland,7,13,3,5,4,6,7,9,2.0,1.0,,,,,E1,2022-2023
+2023-02-21,Swansea City,Stoke City,12,15,5,8,5,4,12,18,4.0,1.0,,,,,E1,2022-2023
+2023-02-28,Preston North End,Coventry City,14,11,2,4,4,2,10,11,1.0,4.0,,,,,E1,2022-2023
+2023-03-07,Huddersfield Town,Bristol City,9,10,3,5,6,4,13,4,3.0,2.0,,,,,E1,2022-2023
+2023-03-07,Reading,Sheffield United,12,8,3,4,3,4,9,7,2.0,0.0,,,,,E1,2022-2023
+2023-03-07,West Bromwich Albion,Wigan Athletic,17,10,4,3,1,2,6,9,0.0,2.0,,,,,E1,2022-2023
+2023-02-03,West Bromwich Albion,Coventry City,16,10,3,1,10,4,11,12,4.0,1.0,,,,,E1,2022-2023
+2023-02-04,Norwich City,Burnley,8,13,1,6,5,3,15,15,5.0,3.0,,,,,E1,2022-2023
+2023-02-04,Rotherham United,Sheffield United,6,12,3,2,3,5,13,6,1.0,1.0,,,,,E1,2022-2023
+2023-02-04,Huddersfield Town,Queens Park Rangers,6,11,4,2,8,4,14,13,2.0,2.0,,,,,E1,2022-2023
+2023-02-04,Hull City,Cardiff City,12,14,4,3,3,7,10,7,2.0,0.0,,,,,E1,2022-2023
+2023-02-04,Luton Town,Stoke City,11,7,4,1,7,5,11,7,2.0,3.0,,,,,E1,2022-2023
+2023-02-04,Middlesbrough,Blackpool,13,13,6,1,9,7,14,12,1.0,2.0,,,,,E1,2022-2023
+2023-02-04,Millwall,Sunderland,14,5,2,1,5,6,19,10,4.0,1.0,,,,,E1,2022-2023
+2023-02-04,Preston North End,Bristol City,17,6,6,3,5,3,10,12,1.0,4.0,,,,,E1,2022-2023
+2023-02-04,Reading,Watford,14,12,6,4,4,4,17,17,3.0,4.0,,,,,E1,2022-2023
+2023-02-04,Swansea City,Birmingham City,14,14,6,6,1,3,7,12,1.0,2.0,,,,,E1,2022-2023
+2023-02-06,Blackburn Rovers,Wigan Athletic,9,11,3,1,7,7,10,13,3.0,1.0,,,,,E1,2022-2023
+2023-02-10,Birmingham City,West Bromwich Albion,12,5,4,1,5,6,13,7,3.0,3.0,,,,,E1,2022-2023
+2023-02-11,Blackpool,Rotherham United,10,10,3,2,4,0,7,13,1.0,0.0,,,,,E1,2022-2023
+2023-02-11,Bristol City,Norwich City,7,15,2,1,8,8,14,7,1.0,3.0,,,,,E1,2022-2023
+2023-02-11,Burnley,Preston North End,13,5,6,2,5,2,10,15,1.0,3.0,,,,,E1,2022-2023
+2023-02-11,Cardiff City,Middlesbrough,15,10,4,3,7,4,9,13,0.0,2.0,,,,,E1,2022-2023
+2023-02-11,Coventry City,Luton Town,12,8,3,6,5,5,16,16,3.0,4.0,1.0,0.0,,,E1,2022-2023
+2023-02-11,Queens Park Rangers,Millwall,9,11,2,5,4,3,8,12,1.0,1.0,,,,,E1,2022-2023
+2023-02-11,Sheffield United,Swansea City,18,12,9,3,4,5,13,11,2.0,3.0,,,,,E1,2022-2023
+2023-02-11,Stoke City,Hull City,5,9,2,3,7,2,14,9,0.0,2.0,,,,,E1,2022-2023
+2023-02-11,Sunderland,Reading,13,9,5,1,4,8,7,9,0.0,2.0,,,,,E1,2022-2023
+2023-02-11,Watford,Blackburn Rovers,16,7,6,4,6,2,13,18,2.0,4.0,,,,,E1,2022-2023
+2023-02-11,Wigan Athletic,Huddersfield Town,6,5,1,2,3,2,12,10,1.0,1.0,,,,,E1,2022-2023
+2023-02-14,Birmingham City,Cardiff City,6,12,1,4,5,4,13,7,3.0,3.0,,,,,E1,2022-2023
+2023-02-14,Coventry City,Millwall,12,11,5,2,3,6,8,9,2.0,3.0,,,,,E1,2022-2023
+2023-02-14,Norwich City,Hull City,21,3,6,1,5,3,8,11,0.0,1.0,,,,,E1,2022-2023
+2023-02-14,Queens Park Rangers,Sunderland,7,12,2,8,2,2,16,13,6.0,2.0,,,,,E1,2022-2023
+2023-02-14,Burnley,Watford,14,4,5,1,5,1,14,15,3.0,3.0,,,,,E1,2022-2023
+2023-02-14,Reading,Rotherham United,12,13,3,1,4,4,10,14,2.0,0.0,,,,,E1,2022-2023
+2023-02-15,Bristol City,Wigan Athletic,5,10,1,2,3,11,6,12,2.0,3.0,,,,,E1,2022-2023
+2023-02-15,Preston North End,Luton Town,7,18,2,3,2,10,7,13,2.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-02-15,Stoke City,Huddersfield Town,16,4,6,1,12,3,15,13,2.0,5.0,0.0,1.0,,,E1,2022-2023
+2023-02-15,Swansea City,Blackpool,17,7,6,3,6,2,18,9,2.0,3.0,0.0,1.0,,,E1,2022-2023
+2023-02-15,Sheffield United,Middlesbrough,18,17,10,5,6,6,10,8,3.0,3.0,,,,,E1,2022-2023
+2023-02-15,West Bromwich Albion,Blackburn Rovers,12,9,5,4,12,5,10,12,2.0,1.0,,,,,E1,2022-2023
+2023-02-17,Cardiff City,Reading,19,5,5,0,8,3,8,10,1.0,2.0,,,,,E1,2022-2023
+2023-02-18,Millwall,Sheffield United,13,11,6,6,4,5,10,13,3.0,4.0,,,,,E1,2022-2023
+2023-02-18,Blackburn Rovers,Swansea City,8,10,3,2,6,3,10,10,4.0,2.0,,,,,E1,2022-2023
+2023-02-18,Blackpool,Stoke City,7,25,1,6,3,5,13,9,4.0,1.0,,,,,E1,2022-2023
+2023-02-18,Huddersfield Town,Birmingham City,13,18,7,5,4,6,10,10,1.0,1.0,,,,,E1,2022-2023
+2023-02-18,Hull City,Preston North End,15,7,4,0,11,6,10,8,2.0,2.0,,,,,E1,2022-2023
+2023-02-18,Luton Town,Burnley,9,9,3,2,7,5,14,11,3.0,1.0,1.0,0.0,,,E1,2022-2023
+2023-02-18,Middlesbrough,Queens Park Rangers,12,10,9,2,9,9,5,12,1.0,0.0,,,,,E1,2022-2023
+2023-02-18,Rotherham United,Coventry City,11,8,1,6,4,2,9,13,2.0,3.0,,,,,E1,2022-2023
+2023-02-18,Sunderland,Bristol City,11,9,3,2,2,4,12,14,2.0,0.0,,,,,E1,2022-2023
+2023-02-18,Wigan Athletic,Norwich City,11,9,6,1,3,5,10,14,2.0,2.0,,,,,E1,2022-2023
+2023-02-20,Watford,West Bromwich Albion,18,18,7,4,6,6,10,13,2.0,2.0,,,,,E1,2022-2023
+2023-02-25,Coventry City,Sunderland,15,13,3,5,4,7,11,8,3.0,2.0,,,,,E1,2022-2023
+2023-02-25,Birmingham City,Luton Town,8,11,0,5,2,7,11,9,1.0,1.0,,,,,E1,2022-2023
+2023-02-25,Bristol City,Hull City,10,11,3,1,7,3,6,8,0.0,1.0,,,,,E1,2022-2023
+2023-02-25,Burnley,Huddersfield Town,22,8,12,1,5,2,7,13,0.0,2.0,,,,,E1,2022-2023
+2023-02-25,Norwich City,Cardiff City,13,9,4,2,3,5,12,9,1.0,1.0,,,,,E1,2022-2023
+2023-02-25,Preston North End,Wigan Athletic,7,14,3,4,3,7,13,13,4.0,1.0,1.0,0.0,,,E1,2022-2023
+2023-02-25,Queens Park Rangers,Blackburn Rovers,11,9,2,5,7,1,12,10,4.0,0.0,,,,,E1,2022-2023
+2023-02-25,Reading,Blackpool,8,14,5,4,3,8,11,10,1.0,0.0,,,,,E1,2022-2023
+2023-02-25,Sheffield United,Watford,17,8,4,2,5,5,11,8,2.0,3.0,,,,,E1,2022-2023
+2023-02-25,Stoke City,Millwall,15,7,3,1,9,4,10,11,0.0,1.0,,,,,E1,2022-2023
+2023-02-25,West Bromwich Albion,Middlesbrough,12,12,4,3,4,8,7,10,1.0,1.0,,,,,E1,2022-2023
+2023-02-27,Swansea City,Rotherham United,7,14,4,5,3,6,18,11,3.0,2.0,,,,,E1,2022-2023
+2023-03-03,Hull City,West Bromwich Albion,8,21,2,6,4,6,12,8,0.0,2.0,,,,,E1,2022-2023
+2023-03-04,Blackburn Rovers,Sheffield United,11,14,2,4,3,8,8,11,2.0,3.0,,,,,E1,2022-2023
+2023-03-04,Cardiff City,Bristol City,11,12,4,4,3,5,8,13,,,1.0,0.0,,,E1,2022-2023
+2023-03-04,Blackpool,Burnley,6,13,0,5,1,8,12,11,1.0,1.0,,,,,E1,2022-2023
+2023-03-04,Huddersfield Town,Coventry City,13,13,3,6,5,5,10,12,0.0,1.0,,,,,E1,2022-2023
+2023-03-04,Luton Town,Swansea City,17,9,4,3,4,3,17,11,2.0,2.0,,,,,E1,2022-2023
+2023-03-04,Middlesbrough,Reading,13,3,6,0,6,1,13,13,1.0,2.0,,,,,E1,2022-2023
+2023-03-04,Millwall,Norwich City,22,9,8,5,4,4,7,11,2.0,3.0,,,,,E1,2022-2023
+2023-03-04,Rotherham United,Queens Park Rangers,16,14,9,3,7,8,9,11,2.0,3.0,,,,,E1,2022-2023
+2023-03-04,Sunderland,Stoke City,8,16,4,8,2,4,8,19,1.0,2.0,,,,,E1,2022-2023
+2023-03-04,Watford,Preston North End,12,11,4,2,6,3,13,17,1.0,4.0,,,,,E1,2022-2023
+2023-03-04,Wigan Athletic,Birmingham City,7,13,3,2,2,1,13,14,2.0,2.0,,,,,E1,2022-2023
+2023-03-10,Stoke City,Blackburn Rovers,14,9,5,2,1,5,9,10,2.0,2.0,,,,,E1,2022-2023
+2023-03-11,Bristol City,Blackpool,18,5,3,2,6,0,8,13,0.0,1.0,,,,,E1,2022-2023
+2023-03-11,Birmingham City,Rotherham United,13,13,5,1,4,10,8,12,1.0,3.0,,,,,E1,2022-2023
+2023-03-11,Burnley,Wigan Athletic,27,2,7,2,10,0,11,15,1.0,5.0,0.0,1.0,,,E1,2022-2023
+2023-03-11,Coventry City,Hull City,25,11,6,3,10,3,14,12,,,,,,,E1,2022-2023
+2023-03-11,Preston North End,Cardiff City,12,13,5,4,4,4,12,9,2.0,1.0,0.0,1.0,,,E1,2022-2023
+2023-03-11,Queens Park Rangers,Watford,11,9,4,2,2,5,14,10,2.0,2.0,,,,,E1,2022-2023
+2023-03-11,Reading,Millwall,2,6,0,1,2,2,15,14,1.0,0.0,,,,,E1,2022-2023
+2023-03-11,Sheffield United,Luton Town,10,6,5,1,3,4,11,9,2.0,0.0,,,,,E1,2022-2023
+2023-03-11,Swansea City,Middlesbrough,14,14,5,7,4,6,9,10,3.0,1.0,,,,,E1,2022-2023
+2023-03-11,West Bromwich Albion,Huddersfield Town,13,4,4,1,9,2,8,13,1.0,0.0,,,,,E1,2022-2023
+2023-03-12,Norwich City,Sunderland,17,11,5,5,8,3,13,21,2.0,5.0,,,,,E1,2022-2023
+2023-03-14,Blackpool,Queens Park Rangers,16,7,8,2,6,1,8,18,1.0,3.0,,,,,E1,2022-2023
+2023-03-14,Millwall,Swansea City,10,19,3,11,5,5,8,13,1.0,2.0,,,,,E1,2022-2023
+2023-03-14,Rotherham United,Preston North End,6,7,1,3,3,5,7,10,2.0,2.0,,,,,E1,2022-2023
+2023-03-14,Watford,Birmingham City,11,8,5,6,3,1,20,13,1.0,3.0,,,,,E1,2022-2023
+2023-03-14,Wigan Athletic,Coventry City,10,18,5,7,6,4,18,11,1.0,1.0,,,,,E1,2022-2023
+2023-03-14,Middlesbrough,Stoke City,9,11,3,5,4,6,10,15,1.0,4.0,,,,,E1,2022-2023
+2023-03-15,Blackburn Rovers,Reading,12,9,6,4,6,4,7,7,2.0,2.0,0.0,1.0,,,E1,2022-2023
+2023-03-15,Cardiff City,West Bromwich Albion,11,8,2,3,3,5,5,7,2.0,2.0,,,,,E1,2022-2023
+2023-03-15,Huddersfield Town,Norwich City,11,12,0,3,6,8,9,10,1.0,3.0,0.0,1.0,,,E1,2022-2023
+2023-03-15,Hull City,Burnley,14,9,6,3,3,3,8,14,1.0,2.0,,,,,E1,2022-2023
+2023-03-15,Luton Town,Bristol City,15,6,6,3,7,2,15,12,4.0,3.0,,,,,E1,2022-2023
+2023-03-15,Sunderland,Sheffield United,7,11,3,4,4,8,16,16,3.0,4.0,,,,,E1,2022-2023
+2023-03-18,Blackpool,Coventry City,12,18,1,7,5,4,7,12,0.0,3.0,,,,,E1,2022-2023
+2023-03-18,Middlesbrough,Preston North End,16,7,5,3,7,4,11,15,4.0,5.0,0.0,1.0,,,E1,2022-2023
+2023-03-18,Millwall,Huddersfield Town,18,4,4,2,3,6,8,12,2.0,3.0,,,,,E1,2022-2023
+2023-03-18,Queens Park Rangers,Birmingham City,16,10,2,6,10,1,16,16,4.0,3.0,,,,,E1,2022-2023
+2023-03-18,Reading,Hull City,11,12,5,4,1,9,15,18,2.0,1.0,,,,,E1,2022-2023
+2023-03-18,Stoke City,Norwich City,14,8,8,1,8,3,13,11,2.0,0.0,,,,,E1,2022-2023
+2023-03-18,Sunderland,Luton Town,11,7,4,3,6,2,7,16,0.0,4.0,,,,,E1,2022-2023
+2023-03-18,Watford,Wigan Athletic,17,6,3,2,5,4,10,10,2.0,4.0,,,,,E1,2022-2023
+2023-03-19,Swansea City,Bristol City,18,6,5,3,3,7,14,6,2.0,2.0,,,,,E1,2022-2023
+2023-04-25,Blackburn Rovers,Burnley,8,8,5,1,10,4,13,12,3.0,5.0,,,,,E1,2022-2023
+2023-04-26,Sheffield United,West Bromwich Albion,13,6,4,4,5,0,11,10,1.0,1.0,,,,,E1,2022-2023
+2023-04-27,Rotherham United,Cardiff City,8,13,3,6,6,4,14,8,1.0,0.0,,,,,E1,2022-2023
+2023-03-31,Burnley,Sunderland,13,7,3,3,5,4,11,13,2.0,0.0,,,,,E1,2022-2023
+2023-04-01,Luton Town,Watford,13,2,6,1,9,3,14,12,2.0,3.0,,,,,E1,2022-2023
+2023-04-01,Preston North End,Blackpool,9,12,7,5,6,8,10,13,3.0,3.0,,,,,E1,2022-2023
+2023-04-01,Birmingham City,Blackburn Rovers,10,17,3,8,4,7,3,7,3.0,3.0,,,,,E1,2022-2023
+2023-04-01,Bristol City,Reading,18,7,8,2,9,4,11,8,3.0,2.0,,,,,E1,2022-2023
+2023-04-01,Cardiff City,Swansea City,9,10,3,4,1,3,19,11,2.0,5.0,,,,,E1,2022-2023
+2023-04-01,Coventry City,Stoke City,15,26,6,11,6,6,11,6,2.0,0.0,,,,,E1,2022-2023
+2023-04-01,Huddersfield Town,Middlesbrough,13,20,5,6,5,9,5,12,2.0,3.0,,,,,E1,2022-2023
+2023-04-01,Hull City,Rotherham United,14,4,1,0,8,8,7,14,0.0,2.0,0.0,1.0,,,E1,2022-2023
+2023-04-01,Norwich City,Sheffield United,7,7,1,1,4,5,13,17,3.0,3.0,,,,,E1,2022-2023
+2023-04-01,West Bromwich Albion,Millwall,16,14,1,4,6,7,13,12,2.0,3.0,,,,,E1,2022-2023
+2023-04-01,Wigan Athletic,Queens Park Rangers,8,8,4,3,2,5,12,14,2.0,2.0,,,,,E1,2022-2023
+2023-04-07,Millwall,Luton Town,14,6,4,2,4,4,7,13,1.0,2.0,,,,,E1,2022-2023
+2023-04-07,Rotherham United,West Bromwich Albion,23,10,10,5,8,3,13,11,2.0,4.0,,,,,E1,2022-2023
+2023-04-07,Blackburn Rovers,Norwich City,16,13,5,5,8,5,6,6,1.0,2.0,,,,,E1,2022-2023
+2023-04-07,Blackpool,Cardiff City,13,13,4,5,4,3,15,12,2.0,1.0,,,,,E1,2022-2023
+2023-04-07,Queens Park Rangers,Preston North End,10,10,1,5,6,6,10,6,0.0,1.0,,,,,E1,2022-2023
+2023-04-07,Reading,Birmingham City,12,10,3,4,5,0,11,7,1.0,1.0,,,,,E1,2022-2023
+2023-04-07,Sheffield United,Wigan Athletic,22,9,4,1,9,6,14,5,2.0,1.0,,,,,E1,2022-2023
+2023-04-07,Stoke City,Bristol City,8,5,5,3,7,4,11,6,1.0,0.0,,,,,E1,2022-2023
+2023-04-07,Swansea City,Coventry City,16,11,6,4,5,5,11,10,2.0,3.0,,,,,E1,2022-2023
+2023-04-07,Watford,Huddersfield Town,14,8,5,4,13,3,7,10,5.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-04-07,Sunderland,Hull City,18,9,7,7,1,0,9,16,0.0,2.0,,,,,E1,2022-2023
+2023-04-07,Middlesbrough,Burnley,9,11,3,4,1,2,16,6,1.0,1.0,,,,,E1,2022-2023
+2023-04-10,Huddersfield Town,Blackburn Rovers,9,21,2,11,5,10,5,7,0.0,3.0,,,,,E1,2022-2023
+2023-04-10,Birmingham City,Stoke City,7,7,2,1,6,10,14,7,2.0,2.0,,,,,E1,2022-2023
+2023-04-10,Cardiff City,Sunderland,17,18,4,4,7,5,20,8,4.0,1.0,,,,,E1,2022-2023
+2023-04-10,Coventry City,Watford,23,7,6,4,6,4,8,14,3.0,5.0,,,,,E1,2022-2023
+2023-04-10,Hull City,Millwall,8,22,2,6,7,5,10,11,1.0,2.0,,,,,E1,2022-2023
+2023-04-10,Luton Town,Blackpool,21,11,4,5,7,5,14,9,1.0,2.0,,,,,E1,2022-2023
+2023-04-10,Norwich City,Rotherham United,21,6,4,2,10,3,10,14,0.0,1.0,,,,,E1,2022-2023
+2023-04-10,Preston North End,Reading,23,8,7,3,9,2,9,10,1.0,3.0,,,,,E1,2022-2023
+2023-04-10,West Bromwich Albion,Queens Park Rangers,12,14,6,2,8,4,8,12,0.0,1.0,,,,,E1,2022-2023
+2023-04-10,Wigan Athletic,Swansea City,8,14,4,3,6,1,18,6,3.0,1.0,,,,,E1,2022-2023
+2023-04-10,Bristol City,Middlesbrough,16,10,7,4,4,7,8,7,2.0,1.0,,,,,E1,2022-2023
+2023-04-10,Burnley,Sheffield United,16,4,6,1,8,2,12,10,1.0,3.0,0.0,1.0,,,E1,2022-2023
+2023-04-14,Middlesbrough,Norwich City,8,11,6,3,3,5,10,10,0.0,1.0,,,,,E1,2022-2023
+2023-04-15,Sheffield United,Cardiff City,13,15,7,6,5,5,8,10,3.0,2.0,,,,,E1,2022-2023
+2023-04-15,Blackpool,Wigan Athletic,5,13,2,2,3,7,12,12,1.0,2.0,,,,,E1,2022-2023
+2023-04-15,Millwall,Preston North End,6,8,2,3,2,4,6,11,1.0,2.0,,,,,E1,2022-2023
+2023-04-15,Queens Park Rangers,Coventry City,6,14,2,5,5,2,9,10,1.0,3.0,,,,,E1,2022-2023
+2023-04-15,Reading,Burnley,7,16,0,1,3,7,8,13,3.0,1.0,,,,,E1,2022-2023
+2023-04-15,Rotherham United,Luton Town,4,15,0,5,2,6,17,16,2.0,5.0,,,,,E1,2022-2023
+2023-04-15,Stoke City,West Bromwich Albion,10,11,3,6,5,5,15,16,6.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-04-15,Sunderland,Birmingham City,13,14,5,5,9,2,3,19,2.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-04-15,Swansea City,Huddersfield Town,19,9,5,1,5,4,12,11,4.0,2.0,,,,,E1,2022-2023
+2023-04-15,Watford,Bristol City,13,11,4,6,6,7,11,7,1.0,3.0,,,,,E1,2022-2023
+2023-04-15,Blackburn Rovers,Hull City,14,11,2,3,9,3,12,6,1.0,2.0,,,,,E1,2022-2023
+2023-04-18,Blackpool,West Bromwich Albion,13,11,3,3,5,5,5,10,1.0,3.0,,,,,E1,2022-2023
+2023-04-18,Rotherham United,Burnley,9,18,5,8,4,7,11,8,1.0,2.0,,,,,E1,2022-2023
+2023-04-18,Sheffield United,Bristol City,12,4,3,1,2,2,9,9,1.0,2.0,,,,,E1,2022-2023
+2023-04-18,Stoke City,Wigan Athletic,9,7,3,2,7,4,17,13,2.0,2.0,,,,,E1,2022-2023
+2023-04-18,Sunderland,Huddersfield Town,18,13,3,3,5,11,10,21,3.0,2.0,,,,,E1,2022-2023
+2023-04-18,Millwall,Birmingham City,21,7,7,4,11,4,6,9,0.0,2.0,,,,,E1,2022-2023
+2023-04-19,Blackburn Rovers,Coventry City,6,4,2,3,5,6,14,9,3.0,1.0,,,,,E1,2022-2023
+2023-04-19,Queens Park Rangers,Norwich City,7,18,2,6,7,11,11,9,5.0,2.0,,,,,E1,2022-2023
+2023-04-19,Swansea City,Preston North End,12,6,7,2,2,4,10,18,3.0,3.0,1.0,0.0,,,E1,2022-2023
+2023-04-19,Watford,Cardiff City,14,9,3,5,10,1,11,11,3.0,3.0,,,,,E1,2022-2023
+2023-04-19,Middlesbrough,Hull City,21,7,7,3,4,3,12,6,1.0,1.0,,,,,E1,2022-2023
+2023-04-19,Reading,Luton Town,9,18,2,5,2,5,10,11,5.0,2.0,1.0,0.0,,,E1,2022-2023
+2023-04-22,Birmingham City,Blackpool,16,12,7,4,6,7,15,13,2.0,1.0,,,,,E1,2022-2023
+2023-04-22,Bristol City,Rotherham United,9,7,5,3,7,7,8,10,2.0,3.0,,,,,E1,2022-2023
+2023-04-22,Burnley,Queens Park Rangers,21,6,6,5,11,4,5,10,2.0,2.0,,,,,E1,2022-2023
+2023-04-22,Cardiff City,Stoke City,7,6,4,1,6,4,3,8,3.0,0.0,,,,,E1,2022-2023
+2023-04-22,Coventry City,Reading,19,11,5,3,2,4,15,12,5.0,4.0,,,,,E1,2022-2023
+2023-04-22,Hull City,Watford,2,10,1,2,2,5,14,10,3.0,2.0,,,,,E1,2022-2023
+2023-04-22,Norwich City,Swansea City,8,14,2,6,2,6,8,9,1.0,1.0,1.0,0.0,,,E1,2022-2023
+2023-04-22,Wigan Athletic,Millwall,16,9,2,3,5,3,10,8,1.0,2.0,,,,,E1,2022-2023
+2023-04-22,Preston North End,Blackburn Rovers,13,9,4,3,4,3,13,11,1.0,2.0,,,,,E1,2022-2023
+2023-04-23,West Bromwich Albion,Sunderland,19,13,4,6,4,5,13,13,3.0,3.0,,,,,E1,2022-2023
+2023-04-24,Luton Town,Middlesbrough,8,9,3,1,4,5,10,9,2.0,0.0,,,,,E1,2022-2023
+2023-05-04,Huddersfield Town,Sheffield United,7,6,2,2,9,3,5,6,1.0,2.0,,,,,E1,2022-2023
+2023-04-28,Blackpool,Millwall,13,18,3,3,7,3,12,16,2.0,4.0,,,,,E1,2022-2023
+2023-04-29,Bristol City,Burnley,8,14,1,7,3,3,12,9,1.0,0.0,,,,,E1,2022-2023
+2023-04-29,Coventry City,Birmingham City,9,9,3,1,5,5,10,10,0.0,2.0,,,,,E1,2022-2023
+2023-04-29,Hull City,Swansea City,7,10,1,2,3,5,10,10,0.0,2.0,,,,,E1,2022-2023
+2023-04-29,Reading,Wigan Athletic,21,11,5,3,13,3,7,13,2.0,1.0,,,,,E1,2022-2023
+2023-04-29,Sheffield United,Preston North End,18,10,10,4,10,5,9,5,2.0,1.0,,,,,E1,2022-2023
+2023-04-29,Stoke City,Queens Park Rangers,6,4,2,4,7,0,7,10,1.0,3.0,,,,,E1,2022-2023
+2023-04-29,Sunderland,Watford,25,9,7,3,10,2,11,12,4.0,3.0,,,,,E1,2022-2023
+2023-04-29,West Bromwich Albion,Norwich City,14,7,5,2,6,1,9,14,0.0,2.0,,,,,E1,2022-2023
+2023-04-30,Cardiff City,Huddersfield Town,8,20,2,4,5,9,2,8,1.0,0.0,,,,,E1,2022-2023
+2023-05-01,Rotherham United,Middlesbrough,4,7,1,1,1,11,19,7,3.0,1.0,0.0,1.0,,,E1,2022-2023
+2023-05-01,Blackburn Rovers,Luton Town,15,13,3,4,9,4,7,8,2.0,0.0,,,,,E1,2022-2023
+2023-05-08,Birmingham City,Sheffield United,9,21,4,3,4,4,9,12,1.0,0.0,,,,,E1,2022-2023
+2023-05-08,Burnley,Cardiff City,18,10,7,4,5,3,9,12,1.0,2.0,,,,,E1,2022-2023
+2023-05-08,Huddersfield Town,Reading,13,9,7,0,4,6,7,16,0.0,1.0,,,,,E1,2022-2023
+2023-05-08,Luton Town,Hull City,8,9,2,1,7,6,11,8,1.0,0.0,,,,,E1,2022-2023
+2023-05-08,Middlesbrough,Coventry City,8,9,3,2,7,6,6,14,1.0,3.0,,,,,E1,2022-2023
+2023-05-08,Millwall,Blackburn Rovers,14,13,4,9,3,6,7,7,1.0,0.0,,,,,E1,2022-2023
+2023-05-08,Norwich City,Blackpool,28,12,5,6,10,4,11,7,1.0,0.0,,,,,E1,2022-2023
+2023-05-08,Preston North End,Sunderland,10,16,2,7,2,7,18,1,2.0,0.0,,,,,E1,2022-2023
+2023-05-08,Queens Park Rangers,Bristol City,17,8,0,2,7,3,13,7,0.0,1.0,,,,,E1,2022-2023
+2023-05-08,Swansea City,West Bromwich Albion,16,10,4,4,6,3,13,9,1.0,2.0,,,,,E1,2022-2023
+2023-05-08,Watford,Stoke City,13,15,6,7,6,6,13,17,0.0,2.0,,,,,E1,2022-2023
+2023-05-08,Wigan Athletic,Rotherham United,10,7,6,2,3,2,10,13,0.0,2.0,,,,,E1,2022-2023
