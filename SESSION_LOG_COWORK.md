@@ -1,3 +1,40 @@
+# Session 13 — 2026-05-14
+
+## Status at session end
+GW38 predict run completed. Flagging bug fixed. Tottenham alias added. No bets logged — all remaining flagged bets disqualified by context or data issues. EPL season effectively done.
+
+## What was done this session
+
+### GW38 predict run — 10 matches, 2 valid flags, 0 logged
+Ran `python run.py predict`. Tottenham now appearing (alias fixed). 5 initially flagged but 3 suppressed after bug fix. Remaining 2 not logged:
+- **Burnley +2.50 at 31.8% edge** — Burnley relegated (no motivation), suspicious odds (2.02 for +2.50 line implies ~50/50 which doesn't make sense for this fixture), likely data/interpretation error. Do not log.
+- **Bournemouth +1.50 vs Man City at 15.2% edge** — Man City fully motivated (title race), model in overconfident zone (81.5% confidence). Do not log.
+
+Also confirmed: Wolves (relegated) disqualified even before bug fix. Correct to skip.
+
+### Flagging bug fixed — `run.py`
+**Bug:** `should_bet` from `model/markets.py` used a different edge formula than the `min_odds` displayed in output. Bets were flagged even when API odds were below their own min threshold.
+**Fix:** Added post-filter in `run.py` (3 lines) — after building `pred_df`, suppress `bet_flag` where `odds_ah < 1 / (model_prob_ah - EDGE_THRESHOLD)`.
+**Result:** 3 spurious flags correctly suppressed. Flagging and min odds display now self-consistent.
+
+### Tottenham alias added — `data/aliases/team_aliases.json`
+Added `"Tottenham Hotspur": "Tottenham"`. Tottenham now maps correctly and appears in predictions. Chelsea vs Tottenham showed as No Bet (1.9% edge).
+
+### Large commit pushed
+225 files including Scandinavian data, experiment scripts, new docs — all previously untracked. Now on GitHub.
+
+## Paper trading — final EPL state
+- Season ends May 18-19. Settled bets: 5 (bet_flag=True only): 3W 2L, +$9.10, ROI +18.2%
+- 5 bets logged from May 13-18 rounds — settle after season ends with `run.py update` + `run.py results`
+- GW38: 0 bets logged (all disqualified)
+
+## Next session checklist
+- [ ] After May 18-19: `python run.py update` then `python run.py results` — settle final bets
+- [ ] Pre-season priority: Large line calibration backtest — see `docs/LARGE_LINE_CALIBRATION.md`
+- [ ] Sofascore back burner: remaining 9 leagues (N1 first) — see handoff doc
+
+---
+
 # Session 12 — 2026-05-12
 
 ## Status at session end

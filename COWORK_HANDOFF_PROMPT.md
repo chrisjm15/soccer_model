@@ -2,23 +2,19 @@
 
 CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.md` to locate files if needed — do not read files preemptively.
 
-## Priority for this session
-Large line calibration backtest — see `docs/LARGE_LINE_CALIBRATION.md`.
-
-Results already settled (done 2026-05-12). 5 new bets logged for May 13-18 — settle those
-at end of week once all matches played.
-
 ## Current state
 - Live EPL AH pipeline fully operational
+- Flagging bug fixed — min odds post-filter now live in `run.py`
+- Tottenham alias added — all EPL teams now mapping correctly
 - Paper trading: 3W 2L, +$9.10, **ROI +18.2%** (5 settled, bet_flag=True only)
 - Calibration: 55-65% zone reliable, 65%+ zone 0W 2L — overconfidence confirmed
-- 5 bets logged for final 2 rounds — see session log for details
-- EPL season ends ~May 18. Pre-season work starts after.
+- 5 bets logged for final 2 rounds (May 13-18) — settle after season ends
+- GW38: 0 bets logged (relegated teams + suspicious lines)
+- EPL season ends May 18-19
 
-## Known bugs to fix (next coding session)
-1. **Flagging logic inconsistency** — 3 of 5 this week's bets have API odds below their
-   own min odds but were still flagged. Edge check and min odds display are inconsistent.
-   Single-file fix in `run.py` predict/flagging logic.
+## Next actions
+1. **After May 18-19:** `python run.py update` then `python run.py results` — settle final bets
+2. **Pre-season priority:** Large line calibration backtest — see `docs/LARGE_LINE_CALIBRATION.md`
 
 ## Priority after results — Large line calibration backtest
 See `docs/LARGE_LINE_CALIBRATION.md` for full research notes.
@@ -27,7 +23,7 @@ Can measure model calibration error now — no need to wait for paper trading vo
 Sonnet CLI session to build backtest script, then analysis in Cowork.
 
 ## Scandinavian Expansion — BACK BURNER
-Module 2 (Sofascore) script is complete and working but paused due to 403 rate limit block.
+Module 2 (Sofascore) script complete but paused — 403 rate limit block.
 
 ### When resuming (separate session):
 - Block should have cleared overnight
