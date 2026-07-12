@@ -191,6 +191,8 @@ def cmd_predict():
             'bet_side': bet_side,
             'model_prob_ah': round(display_prob, 4),
             'odds_ah': round(bet_odds, 3),
+            'odds_ah_home_at_bet': round(odds_ah_home, 3),
+            'odds_ah_away_at_bet': round(odds_ah_away, 3),
             'implied_prob': round(1.0 / bet_odds, 4),
             'edge': round(display_edge, 4),
             'ev': round(result['ev'], 4),
@@ -291,7 +293,9 @@ def cmd_predict():
     # --- Paper trading log (AH) ---
     log_cols = [
         'prediction_date', 'match_date', 'league', 'home_team', 'away_team',
-        'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah', 'implied_prob', 'edge',
+        'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah',
+        'odds_ah_home_at_bet', 'odds_ah_away_at_bet',
+        'implied_prob', 'edge',
         'bet_flag', 'actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
     ]
     log_path = 'output/paper_trading/log_ah.csv'
@@ -383,6 +387,7 @@ def cmd_results():
 
     log_df = pd.read_csv(log_path, dtype=str)
     for col in ['actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
+                'odds_ah_home_at_bet', 'odds_ah_away_at_bet',
                 'closing_line', 'closing_odds', 'clv']:
         if col not in log_df.columns:
             log_df[col] = ''
@@ -432,15 +437,11 @@ def cmd_results():
         })
 
     # --- CLV back-fill for all bet rows ---
-    # Looks up closing AH line and odds from all_merged.csv (football-data.co.uk closing prices).
     # CLV = closing_novig_prob(bet_side) - bet_novig_prob(bet_side), both no-vig.
-    # bet_novig_prob is approximated as implied_prob (= 1/bet_odds, stored at prediction time).
-    # This is approximate because it includes the bookmaker margin rather than being a true
-    # no-vig probability — we did not record both sides' odds at prediction time.
-    # It will understate CLV by ~2-4pp relative to a full two-sided no-vig calculation.
-    # Closing no-vig uses both sides of the football-data closing line for precision.
-    # CLV is left blank when the closing line differs from the bet line (different lines
-    # imply different probabilities — comparing them is invalid).
+    # Closing no-vig uses both sides of the football-data closing line.
+    # Bet no-vig uses odds_ah_home_at_bet / odds_ah_away_at_bet when available (accurate).
+    # Old rows without those columns fall back to 1/bet_odds (understates CLV ~2-4pp).
+    # CLV is left blank when the closing line differs from the bet line.
     for i in log_df[bet_mask].index:
         row = log_df.loc[i]
         home = row['home_team'].strip()
@@ -472,17 +473,30 @@ def cmd_results():
         bet_ah_line = float(row['ah_line'])
         if abs(closing_line - bet_ah_line) < 1e-9:
             # Closing no-vig probability for the bet side
-            overround    = 1.0 / closing_oh + 1.0 / closing_oa
+            overround     = 1.0 / closing_oh + 1.0 / closing_oa
             closing_novig = (1.0 / closing_odds_side) / overround
-            # Bet implied probability (approximate; see comment above)
-            bet_implied  = float(row['implied_prob'])
-            clv = closing_novig - bet_implied
+            # Bet no-vig probability: use both sides at bet time when available
+            # (more accurate than 1/bet_odds which includes the bookmaker margin)
+            bet_oh_str = str(row.get('odds_ah_home_at_bet', '')).strip()
+            bet_oa_str = str(row.get('odds_ah_away_at_bet', '')).strip()
+            if bet_oh_str and bet_oa_str:
+                bet_oh_f = float(bet_oh_str)
+                bet_oa_f = float(bet_oa_str)
+                bet_overround = 1.0 / bet_oh_f + 1.0 / bet_oa_f
+                bet_odds_side = bet_oh_f if bet_side == 'home' else bet_oa_f
+                bet_novig = (1.0 / bet_odds_side) / bet_overround
+            else:
+                # Fallback for old rows: 1/bet_odds (includes margin, understates CLV ~2-4pp)
+                bet_novig = float(row['implied_prob'])
+            clv = closing_novig - bet_novig
             log_df.at[i, 'clv'] = str(round(clv, 6))
         # else: lines differ — closing info recorded but clv left blank
 
     desired_cols = [
         'prediction_date', 'match_date', 'league', 'home_team', 'away_team',
-        'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah', 'implied_prob', 'edge', 'bet_flag',
+        'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah',
+        'odds_ah_home_at_bet', 'odds_ah_away_at_bet',
+        'implied_prob', 'edge', 'bet_flag',
         'actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
         'closing_line', 'closing_odds', 'clv',
     ]
@@ -559,9 +573,8 @@ def cmd_results():
             pos = (valid_clv['_clv'] > 0).sum()
             neg = (valid_clv['_clv'] <= 0).sum()
             print(f"  Mean CLV: {mean_clv*100:+.2f}pp  |  Positive: {pos}  |  Negative: {neg}")
-            print(f"  NOTE: CLV is biased ~4-5pp downward — bet odds use 1-sided gross implied prob")
-            print(f"  (implied_prob=1/bet_odds), while closing uses 2-sided no-vig. Values are")
-            print(f"  comparable across bets but not in absolute terms.")
+            print(f"  NOTE: New bets use both-sided no-vig at bet time (accurate).")
+            print(f"  Old bets (pre-both-sides logging) use 1/bet_odds as fallback (~4-5pp downward bias).")
 
     print(f"\nPaper trading log updated: {log_path}")
     print(f"{'='*64}\n")

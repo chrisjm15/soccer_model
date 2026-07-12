@@ -1,0 +1,174 @@
+==========================================================================================
+  RECALIBRATION MARKET-BLEND TEST  —  2026-07-12
+==========================================================================================
+  Train seasons: 2020-21 to 2023-24  |  Test seasons: 2024-25, 2025-26
+  Train n (all leagues): 7216  |  Test n (all leagues): 3486
+  Train n (EPL only):    1520  |  Test n (EPL only):    759
+  Rows dropped (missing): 0
+  Rows clipped — model_prob: 0  |  market_prob_novig: 0
+
+==========================================================================================
+  SECTION 1 — REGRESSION TABLES  (train seasons only, robust HC1 SEs)
+==========================================================================================
+
+  Specifications:
+    M1 : actual_score ~ logit_market
+    M2 : actual_score ~ logit_model
+    M3 : actual_score ~ logit_market + logit_model   ← HEADLINE
+    M4 : M3 + big_line + logit_model × big_line      (large-line interaction)
+
+  Response: actual_score ∈ {0, 0.25, 0.5, 0.75, 1.0}  (AH bet perspective)
+  Estimator: fractional logit  (GLM with Binomial family, logit link)
+
+------------------------------------------------------------------------------------------
+  ALL LEAGUES
+------------------------------------------------------------------------------------------
+
+  M1 — logit_market only
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.0104     0.0214     0.6275     
+  logit_market                       1.0608     0.2266     0.0000  ***
+  n = 7216
+
+  M2 — logit_model only
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.0819     0.0320     0.0106    *
+  logit_model                        0.1546     0.0582     0.0079   **
+  n = 7216
+
+  M3 — logit_market + logit_model
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.0493     0.0331     0.1364     
+  logit_market                       0.9641     0.2351     0.0000  ***
+  logit_model                        0.0913     0.0603     0.1297     
+  n = 7216
+
+  >>> HEADLINE (all leagues): logit_model coef in M3 = 0.0913  p = 0.1297
+
+
+  M4 — M3 + big_line interaction
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.0125     0.0368     0.7342     
+  logit_market                       1.0616     0.2384     0.0000  ***
+  logit_model                       -0.0722     0.0852     0.3965     
+  big_line                           0.2044     0.2067     0.3228     
+  logit_model_x_big                  0.0653     0.1976     0.7411     
+  n = 7216
+
+------------------------------------------------------------------------------------------
+  EPL ONLY
+------------------------------------------------------------------------------------------
+
+  M1 — logit_market only  (EPL)
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.0023     0.0468     0.9610     
+  logit_market                       0.6157     0.5078     0.2253     
+  n = 1520
+
+  M2 — logit_model only   (EPL)
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.1506     0.0736     0.0406    *
+  logit_model                        0.3029     0.1182     0.0104    *
+  n = 1520
+
+  M3 — logit_market + logit_model  (EPL)
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.1416     0.0756     0.0609     
+  logit_market                       0.2850     0.5263     0.5881     
+  logit_model                        0.2858     0.1224     0.0196    *
+  n = 1520
+
+  >>> HEADLINE (EPL only): logit_model coef in M3 = 0.2858  p = 0.0196
+
+
+  M4 — M3 + big_line interaction  (EPL)
+  Variable                             Coef   SE (HC1)    p-value     
+  ------------------------------------------------------------------
+  const                             -0.1150     0.0841     0.1715     
+  logit_market                       0.3611     0.5343     0.4991     
+  logit_model                        0.1812     0.1749     0.3001     
+  big_line                           0.0489     0.4042     0.9038     
+  logit_model_x_big                  0.0956     0.3909     0.8067     
+  n = 1520
+
+==========================================================================================
+  SECTION 2 — OUT-OF-SAMPLE METRICS  (test seasons: 2024-25, 2025-26)
+==========================================================================================
+
+  Model                                 Log-Loss   Δ vs Mkt      Brier   Δ vs Mkt
+  -----------------------------------------------------------------------------
+  Market (M1, no-vig probs)             0.692616  +0.000000   0.205674  +0.000000
+  Raw model (uncalibrated)              0.718623  +0.026006   0.217583  +0.011909
+  M3 calibrated (all-lg fit)            0.692760  +0.000143   0.205747  +0.000073
+  M4 calibrated (all-lg fit)            0.692937  +0.000321   0.205837  +0.000163
+
+  Model earns its place if M3 log-loss < market log-loss:
+    Log-loss: M3 >= Market => NO
+    Brier:    M3 >= Market => NO
+  M3 − Market log-loss delta: +0.000143
+
+==========================================================================================
+  SECTION 3 — POST-CALIBRATION THRESHOLD SWEEP  (test seasons only)
+==========================================================================================
+
+  calibrated_edge = calib_prob (M3) − market_prob_novig
+  ROI = sum(pnl_flat10) / (n_bets × 10) × 100.  Flat $10 stake.
+  Bootstrap 95% CI: 1,000 resamples of the qualifying bet set.
+
+  ALL LEAGUES — M3 (all-leagues fit):
+   Threshold      N  Bets/Ssn  MeanEdge  ActScore      ROI               95% CI
+  ----------------------------------------------------------------------
+        1.0%    182        91      1.4%     0.532    +2.0%   [ -11.1%,  +14.5%]
+        1.5%     57        28      2.0%     0.504    -3.0%   [ -26.3%,  +19.3%]
+        2.0%     23        12      2.4%     0.467    -8.4%   [ -44.9%,  +26.4%]
+        2.5%      7         4      2.8%     0.536    +4.7%   [ -50.3%,  +68.2%]
+        3.0%      1         0      3.0%     1.000   +98.0%   [ +98.0%,  +98.0%]
+        4.0%      0         0         —         —        —                    —
+        5.0%      0         0         —         —        —                    —
+
+  EPL ONLY — M3 (EPL-only fit):
+   Threshold      N  Bets/Ssn  MeanEdge  ActScore      ROI               95% CI
+  ----------------------------------------------------------------------
+        1.0%    183        92      2.7%     0.553    +8.9%   [  -3.1%,  +20.9%]
+        1.5%    133        66      3.2%     0.521    +3.2%   [ -11.9%,  +18.1%]
+        2.0%    101        50      3.7%     0.522    +3.3%   [ -14.1%,  +22.3%]
+        2.5%     73        36      4.2%     0.538    +6.4%   [ -14.3%,  +26.6%]
+        3.0%     61        30      4.5%     0.529    +5.0%   [ -19.2%,  +30.0%]
+        4.0%     33        16      5.4%     0.515    +1.7%   [ -26.8%,  +31.4%]
+        5.0%     17         8      6.3%     0.485    -4.1%   [ -48.4%,  +36.9%]
+
+  BREAKDOWN AT 2% THRESHOLD  (all leagues, M3 all-fit) — by league:
+  League              N   Actual      ROI
+  ----------------------------------------
+  Bundesliga          9    0.389   -22.4%
+  EPL                 5    0.550    +6.2%
+  La_Liga             7    0.500    -2.1%
+  Ligue_1             1    1.000   +93.0%
+  Serie_A             1    0.000  -100.0%
+
+  BREAKDOWN AT 2% THRESHOLD  (all leagues, M3 all-fit) — by |line| bucket:
+  Bucket              N   Actual      ROI
+  ----------------------------------------
+  1.5-2.0            10    0.375   -27.1%
+  >=2.25             13    0.538    +6.0%
+
+==========================================================================================
+  SECTION 4 — SANITY CHECK LOG
+==========================================================================================
+  M1 intercept      = -0.0104  (expected ≈ 0)
+  M1 logit_market   = 1.0608  (expected ≈ 1.0)
+  Train n (all)     = 7216  (expected ≈ 7,200)
+  Test  n (all)     = 3486  (expected ≈ 3,500)
+  M3 pred range (test): [0.4157, 0.8069]
+  No NaN/inf in logit features: CONFIRMED
+
+==========================================================================================
+  END OF REPORT
+==========================================================================================
