@@ -74,10 +74,13 @@
 | `backtest/multi_market_engine.py` | Multi-market backtest (1X2, O/U, AH) |
 | `scripts/threshold_test.py` | Edge threshold sensitivity explorer |
 | `scripts/threshold_sweep.py` | Threshold optimisation sweep |
+| `scripts/calibration_backtest.py` | AH model calibration over all 10,702 historical matches — probability zone × line-size cross-tab, disagreement test |
 | `config/leagues.yaml` | League definitions + Odds API sport keys |
 | `data/aliases/team_aliases.json` | Team name mapping |
-| `data/processed/all_merged.csv` | 8,972 merged match records |
+| `data/processed/all_merged.csv` | 10,714 merged match records (2020-21 to 2025-26) |
 | `data/processed/ratings.csv` | Pre-match EMA ratings for all matches |
 | `output/backtest_results/predictions.csv` | Full backtest predictions + outcomes |
-| `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker |
+| `output/backtest_results/calibration_matches.csv` | Per-match calibration data (10,702 rows) — model_prob, market_prob_novig, actual_score, pnl_flat10 |
+| `output/backtest_results/calibration_report.txt` | Calibration report — prob zone × line-size tables, disagreement test, by-season drift |
+| `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker (now includes closing_line, closing_odds, clv) |
 | `run.py` | Entry point: `python run.py update / predict / backtest` |

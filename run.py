@@ -382,7 +382,8 @@ def cmd_results():
         sys.exit(0)
 
     log_df = pd.read_csv(log_path, dtype=str)
-    for col in ['actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes']:
+    for col in ['actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
+                'closing_line', 'closing_odds', 'clv']:
         if col not in log_df.columns:
             log_df[col] = ''
 
@@ -430,10 +431,60 @@ def cmd_results():
             'score': f"{hg}-{ag}", 'result': result, 'pnl': pnl,
         })
 
+    # --- CLV back-fill for all bet rows ---
+    # Looks up closing AH line and odds from all_merged.csv (football-data.co.uk closing prices).
+    # CLV = closing_novig_prob(bet_side) - bet_novig_prob(bet_side), both no-vig.
+    # bet_novig_prob is approximated as implied_prob (= 1/bet_odds, stored at prediction time).
+    # This is approximate because it includes the bookmaker margin rather than being a true
+    # no-vig probability — we did not record both sides' odds at prediction time.
+    # It will understate CLV by ~2-4pp relative to a full two-sided no-vig calculation.
+    # Closing no-vig uses both sides of the football-data closing line for precision.
+    # CLV is left blank when the closing line differs from the bet line (different lines
+    # imply different probabilities — comparing them is invalid).
+    for i in log_df[bet_mask].index:
+        row = log_df.loc[i]
+        home = row['home_team'].strip()
+        away = row['away_team'].strip()
+        match_date = pd.to_datetime(row['match_date'])
+        bet_side = row['bet_side'].strip().lower()
+
+        hits = scores_df[
+            (scores_df['_home'] == home.lower()) &
+            (scores_df['_away'] == away.lower()) &
+            (scores_df['_date'] >= match_date - timedelta(days=1)) &
+            (scores_df['_date'] <= match_date + timedelta(days=1))
+        ]
+        if hits.empty:
+            continue
+
+        sr = hits.iloc[0]
+        if any(pd.isna(sr.get(c)) for c in ['ah_line', 'odds_ah_home', 'odds_ah_away']):
+            continue
+
+        closing_line    = float(sr['ah_line'])
+        closing_oh      = float(sr['odds_ah_home'])
+        closing_oa      = float(sr['odds_ah_away'])
+        closing_odds_side = closing_oh if bet_side == 'home' else closing_oa
+
+        log_df.at[i, 'closing_line']  = str(round(closing_line, 4))
+        log_df.at[i, 'closing_odds']  = str(round(closing_odds_side, 4))
+
+        bet_ah_line = float(row['ah_line'])
+        if abs(closing_line - bet_ah_line) < 1e-9:
+            # Closing no-vig probability for the bet side
+            overround    = 1.0 / closing_oh + 1.0 / closing_oa
+            closing_novig = (1.0 / closing_odds_side) / overround
+            # Bet implied probability (approximate; see comment above)
+            bet_implied  = float(row['implied_prob'])
+            clv = closing_novig - bet_implied
+            log_df.at[i, 'clv'] = str(round(clv, 6))
+        # else: lines differ — closing info recorded but clv left blank
+
     desired_cols = [
         'prediction_date', 'match_date', 'league', 'home_team', 'away_team',
         'ah_line', 'bet_side', 'model_prob_ah', 'odds_ah', 'implied_prob', 'edge', 'bet_flag',
         'actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
+        'closing_line', 'closing_odds', 'clv',
     ]
     for col in desired_cols:
         if col not in log_df.columns:
@@ -486,6 +537,31 @@ def cmd_results():
               f"Half Losses: {rc.get('Half Loss', 0)}  |  Losses: {rc.get('Loss', 0)}")
         print(f"  Total P&L: {pnl_str}")
         print(f"  ROI: {roi:+.1f}%  (P&L / total staked × 100)")
+
+    # CLV summary (all bet rows, not just settled)
+    all_bets_count = bet_mask.sum()
+    closing_found = log_df[bet_mask & log_df['closing_line'].notna() & (log_df['closing_line'].str.strip() != '')]
+    line_mismatches = len(closing_found[closing_found['clv'].isna() | (closing_found['clv'].str.strip() == '')])
+    clv_rows = log_df[
+        bet_mask &
+        log_df['clv'].notna() &
+        (log_df['clv'].str.strip() != '')
+    ].copy()
+    print(f"\nCLV SUMMARY (closing line value vs football-data.co.uk closing odds):")
+    print(f"  Total flagged bets: {all_bets_count}")
+    print(f"  Line matched (CLV computable): {len(clv_rows)}")
+    print(f"  Line moved between bet and close (CLV invalid): {line_mismatches}")
+    if len(clv_rows) > 0:
+        clv_rows['_clv'] = pd.to_numeric(clv_rows['clv'], errors='coerce')
+        valid_clv = clv_rows.dropna(subset=['_clv'])
+        if len(valid_clv) > 0:
+            mean_clv = valid_clv['_clv'].mean()
+            pos = (valid_clv['_clv'] > 0).sum()
+            neg = (valid_clv['_clv'] <= 0).sum()
+            print(f"  Mean CLV: {mean_clv*100:+.2f}pp  |  Positive: {pos}  |  Negative: {neg}")
+            print(f"  NOTE: CLV is biased ~4-5pp downward — bet odds use 1-sided gross implied prob")
+            print(f"  (implied_prob=1/bet_odds), while closing uses 2-sided no-vig. Values are")
+            print(f"  comparable across bets but not in absolute terms.")
 
     print(f"\nPaper trading log updated: {log_path}")
     print(f"{'='*64}\n")
