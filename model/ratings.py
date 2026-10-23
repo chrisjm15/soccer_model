@@ -53,7 +53,7 @@ def build_ratings(data_path: str, output_path: str) -> pd.DataFrame:
     """
     df = pd.read_csv(data_path)
     df['date'] = pd.to_datetime(df['date'])
-    df = df.sort_values('date').reset_index(drop=True)
+    df = df.sort_values('date', kind='stable').reset_index(drop=True)
 
     # team_ratings[team] = {attack_home, defence_home, attack_away, defence_away}
     team_ratings = {}

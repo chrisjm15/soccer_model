@@ -7,6 +7,7 @@
 | `COWORK_HANDOFF_PROMPT.md` | Next actions for incoming session |
 | `SESSION_LOG_COWORK.md` | Current session log (replaced each session) |
 | `README.md` | GitHub-facing project overview |
+| `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
 | `.env` | API keys — NOT in git, loaded via python-dotenv |
 
 ## docs/
@@ -18,43 +19,25 @@
 | `local-llm.skill` | Packaged `local-llm` Cowork skill (reference copy — already installed globally) |
 | `SESSION_MANAGEMENT_GUIDE.md` | Guide for Chris on managing multi-session projects (not for Claude) |
 | `SCANDINAVIAN_EXPANSION_SPEC.md` | Full experiment spec — 25 metric variants, 6 proxy leagues, module architecture, data sources. Handoff doc for Sonnet execution. |
+| `LARGE_LINE_CALIBRATION.md` | SUPERSEDED 2026-07-12 — 10-factor layer killed by recalibration test (M4: no large-line interaction). Kept for the factor research notes only. |
+| `FUTURE_DEVELOPMENT.md` | Durable edge backlog (session 14) — ranked by edge-per-effort, incl. deprioritised items. Handoff carries only current top items; this is the full list. |
 | `football_model_briefing.md` | Research briefing — xG, PPDA, markets, data sources |
 | `SOCCER_COWORK_SESSION.md` | Original session planning doc (read-only reference) |
 | `Football Pythag v0.5.xlsx` | Chris's existing Excel model (reference only, not being evolved) |
 
 ## prompts/
-| File | Purpose | Status |
-|---|---|---|
-| `RATINGS_PROMPT_QWEN3.md` | Phase 2 → Qwen3 → `model/ratings.py` | Executed |
-| `POISSON_PROMPT_GEMMA.md` | Phase 2 → Gemma → `model/poisson.py` | Executed |
-| `BTTS_PROMPT_QWEN3.md` | Phase 2 → Qwen3 → `model/btts.py` | Executed |
-| `MARKETS_PROMPT_QWEN3.md` | Phase 3 → Qwen3 → `model/markets.py` | Executed |
-| `MULTI_MARKET_BACKTEST_GEMMA.md` | Phase 3 → Gemma → `backtest/multi_market_engine.py` | Executed |
-| `THRESHOLD_SWEEP_QWEN3.md` | Phase 3 → Qwen3 → `scripts/threshold_sweep.py` | Executed |
-| `ODDS_API_PROMPT_QWEN3.md` | Phase 3 → Qwen3 → `scrapers/odds_api.py` | Executed |
-| `CLI_PROMPT_PHASE2.md` | Phase 2 Sonnet CLI — backtest engine + results | Executed |
-| `CLI_PROMPT_THRESHOLD_TEST.md` | Threshold sensitivity test (5% / 8% / 10%) | Executed |
-| `CLI_PROMPT_PHASE3.md` | Phase 3 Sonnet CLI — live pipeline, predict command, paper trading | Executed |
-| `CLI_PROMPT_FIXTURE_BUG.md` | Fixture data bug fix | Executed |
-| `CLI_PROMPT_UPDATE_PREDICT.md` | Switch predict output to EPL AH at 7% threshold | Executed |
-
-## prompts/experiment/
-| File | Purpose | Status |
-|---|---|---|
-| `MODULE_1_FOOTBALLDATA_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_footballdata.py` | Ready |
-| `MODULE_2_FBREF_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_fbref.py` | Abandoned — FBref blocked by Cloudflare CAPTCHA |
-| `MODULE_2_FOTMOB_QWEN3.md` | Experiment → Qwen3-Coder → `experiment/load_fotmob.py` | Written — awaiting execution |
+No active prompts (session 14). All executed/abandoned prompts live in `prompts/completed/`.
 
 ## prompts/completed/
-| File | Purpose |
-|---|---|
-| `CLI_PROMPT_PHASE1.md` | Phase 1 data pipeline prompt (executed, complete) |
+25 executed or abandoned prompts (reference only) — all Phase 1-3 build prompts, experiment module prompts, bug-fix prompts, and session 14's `CLI_PROMPT_CALIBRATION_CLV.md` + `CLI_PROMPT_RECALIBRATION_TEST.md`. Scan the folder if you need one.
 
 ## archive/
 | File | Purpose |
 |---|---|
 | `session_logs/SESSION_LOG_SESSIONS_3_to_6.md` | Sessions 3–6 logs (archived session 7) |
+| `session_logs/SESSION_LOG_SESSIONS_9_to_13.md` | Sessions 9–13 logs (archived session 14) |
 | `local-llm-eval-review.html` | Skill eval viewer output (session 7, reference only) |
+| `load_sofascore_STALE_SESSION10_COPY.py` | Old buggy copy that caused the session-10 caching incident — do NOT run. Live script: `experiment/load_sofascore.py` |
 
 ## GitHub repo (chrisjm15/soccer_model)
 | File/Folder | Purpose |
@@ -65,6 +48,7 @@
 | `scrapers/odds_api.py` | The Odds API — live AH odds fetcher |
 | `scrapers/team_name_mapper.py` | Maps Odds API team names to canonical names |
 | `model/ratings.py` | EMA attack/defence rating engine |
+| `model/calibration.py` | Pure calibration functions (consensus no-vig, calibrate_prob, calibrated_ah_decision, calibrate_m1) |
 | `model/poisson.py` | Poisson probability model (BTTS, WDL, O/U) |
 | `model/btts.py` | BTTS prediction, edge calculation, bet flagging |
 | `model/markets.py` | 1X2, O/U, AH output layers with no-vig edge calculation |
@@ -76,7 +60,10 @@
 | `scripts/threshold_sweep.py` | Threshold optimisation sweep |
 | `scripts/calibration_backtest.py` | AH model calibration over all 10,702 historical matches — probability zone × line-size cross-tab, disagreement test |
 | `scripts/recalibration_test.py` | Market-blend logistic regression test (M1-M4) — trains on 2020-24, evaluates OOS on 2024-26. Tests if model adds info beyond market. Threshold sweep with bootstrap CI. |
+| `scripts/fit_epl_calibration.py` | Refit M3 & M1 on 6 historical EPL seasons (2020-26), generates config/calibration.yaml |
+| `scripts/test_calibration.py` | Fixed gold tests for model/calibration.py |
 | `config/leagues.yaml` | League definitions + Odds API sport keys |
+| `config/calibration.yaml` | EPL AH calibration config (M3/M1 coefficients, market_prob_range, 1% threshold, promoted_min_matches) |
 | `data/aliases/team_aliases.json` | Team name mapping |
 | `data/processed/all_merged.csv` | 10,714 merged match records (2020-21 to 2025-26) |
 | `data/processed/ratings.csv` | Pre-match EMA ratings for all matches |

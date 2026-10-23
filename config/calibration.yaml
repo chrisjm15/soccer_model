@@ -1,0 +1,23 @@
+epl_ah:
+  fit_date: '2026-10-24'
+  seasons:
+  - 2020-21
+  - 2021-22
+  - 2022-23
+  - 2023-24
+  - 2024-25
+  - 2025-26
+  n: 2279
+  edge_threshold: 0.01
+  m3:
+    intercept: -0.06006
+    b_market: 0.396003
+    b_model: 0.244967
+    p_model: 0.021613
+  m1:
+    intercept: 0.053239
+    b_market: 0.668217
+  market_prob_range:
+  - 0.4569
+  - 0.5407
+  promoted_min_matches: 10

@@ -177,6 +177,13 @@ def fetch_epl_ah_odds(
 
         data = response.json()
 
+        all_bookmaker_keys = set()
+        for m in data:
+            for b in m.get('bookmakers', []):
+                all_bookmaker_keys.add(b.get('key'))
+        bet365_present = 'bet365' in all_bookmaker_keys
+        print(f"  [The Odds API] bet365 present in response: {bet365_present}")
+
         # Print raw first match for verification
         if data:
             first = data[0]
@@ -209,9 +216,10 @@ def fetch_epl_ah_odds(
             home_name = match.get('home_team')
             away_name = match.get('away_team')
 
-            # Collect AH prices per line: {line: {'home': [prices], 'away': [prices]}}
+            # Collect AH prices per line: {line: {'book_prices': [(home_p, away_p)], 'bookmakers': [key]}}
             ah_data = {}
             for bookmaker in match.get('bookmakers', []):
+                bk_key = bookmaker.get('key')
                 for market in bookmaker.get('markets', []):
                     if market.get('key') != 'spreads':
                         continue
@@ -223,18 +231,24 @@ def fetch_epl_ah_odds(
                     line = home_oc.get('point')
                     if line is None:
                         continue
+                    h_price = home_oc.get('price')
+                    a_price = away_oc.get('price')
+                    if h_price is None or a_price is None:
+                        continue
                     if line not in ah_data:
-                        ah_data[line] = {'home': [], 'away': []}
-                    ah_data[line]['home'].append(home_oc['price'])
-                    ah_data[line]['away'].append(away_oc['price'])
+                        ah_data[line] = {'book_prices': [], 'bookmakers': []}
+                    ah_data[line]['book_prices'].append((float(h_price), float(a_price)))
+                    ah_data[line]['bookmakers'].append(bk_key)
 
             if not ah_data:
                 continue
 
             # Use the line offered by the most bookmakers
-            modal_line = max(ah_data, key=lambda l: len(ah_data[l]['home']))
-            home_prices = ah_data[modal_line]['home']
-            away_prices = ah_data[modal_line]['away']
+            modal_line = max(ah_data, key=lambda l: len(ah_data[l]['book_prices']))
+            pairs = ah_data[modal_line]['book_prices']
+            bks = ah_data[modal_line]['bookmakers']
+            home_prices = [p[0] for p in pairs]
+            away_prices = [p[1] for p in pairs]
 
             matches.append({
                 'date': match_date,
@@ -244,7 +258,9 @@ def fetch_epl_ah_odds(
                 'ah_line': float(modal_line),
                 'odds_ah_home_best': max(home_prices),
                 'odds_ah_away_best': max(away_prices),
-                'n_bookmakers': len(home_prices)
+                'book_prices': pairs,
+                'bookmakers': bks,
+                'n_bookmakers': len(pairs)
             })
 
         return matches

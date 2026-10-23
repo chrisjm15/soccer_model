@@ -26,6 +26,7 @@ SEASON_MAP = {
     "2023-24": "2023-24",
     "2024-25": "2024-25",
     "2025-26": "2025-26",
+    "2026-27": "2026-27",
 }
 
 LEAGUES = ["EPL", "La_Liga", "Bundesliga", "Serie_A", "Ligue_1"]
@@ -82,6 +83,11 @@ KNOWN_ALIASES = {
         "Newcastle": "Newcastle United",
         "Wolves": "Wolverhampton Wanderers",
         "West Brom": "West Bromwich Albion",
+        "Coventry City": "Coventry",
+        "Tottenham Hotspur": "Tottenham",
+        "Hull City": "Hull",
+        "Brighton and Hove Albion": "Brighton",
+        "Leeds United": "Leeds",
     },
     "La_Liga": {
         "Ath Bilbao": "Athletic Club",
@@ -285,6 +291,23 @@ def main():
 
     if all_frames:
         combined = pd.concat(all_frames, ignore_index=True)
+        ratings_path = os.path.join(OUTPUT_DIR, "ratings.csv")
+        backup_path = os.path.join(OUTPUT_DIR, "ratings_backup.csv")
+        ref_path = backup_path if os.path.exists(backup_path) else ratings_path
+        if os.path.exists(ref_path):
+            ref = pd.read_csv(ref_path)
+            match_cols = ['date', 'league', 'season', 'home_team', 'away_team']
+            ref_keys = ref[match_cols].copy()
+            ref_keys['__seq'] = range(len(ref_keys))
+            m_pre = pd.merge(
+                combined,
+                ref_keys,
+                on=match_cols,
+                how='inner'
+            ).sort_values('__seq').drop(columns=['__seq'])
+            ref_idx = ref_keys.set_index(match_cols).index
+            m_new = combined[~combined.set_index(match_cols).index.isin(ref_idx)].sort_values('date')
+            combined = pd.concat([m_pre, m_new], ignore_index=True)
         combined.to_csv(os.path.join(OUTPUT_DIR, "all_merged.csv"), index=False)
 
     with open(ALIASES_PATH, "w") as f:

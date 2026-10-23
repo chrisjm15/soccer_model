@@ -13,7 +13,7 @@ HEADERS = {"User-Agent": "Mozilla/5.0", "X-Requested-With": "XMLHttpRequest"}
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "raw", "understat")
 CONFIG_PATH = os.path.join(os.path.dirname(__file__), "..", "config", "leagues.yaml")
 
-SEASONS = list(range(2020, 2026))  # 2020 = 2020-21 season, ..., 2025 = 2025-26
+SEASONS = list(range(2020, 2027))  # 2020 = 2020-21 season, ..., 2026 = 2026-27
 
 FIELDNAMES = [
     "match_id", "date", "league", "season",
