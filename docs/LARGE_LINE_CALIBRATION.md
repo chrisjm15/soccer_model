@@ -1,5 +1,13 @@
 # Large Line Calibration — Research Notes
 
+> **SUPERSEDED 2026-07-12 — DO NOT IMPLEMENT.** The recalibration market-blend test
+> (`output/backtest_results/recalibration_report.txt`) showed: (1) overconfidence is universal
+> across all probability zones, not specific to large lines; (2) the M4 large-line interaction
+> term is insignificant (p≈0.8 both all-leagues and EPL) — the model's signal is NOT concentrated
+> in large handicaps; (3) global market-blend recalibration (M3) already corrects the
+> miscalibration. The 10-factor correction layer below is therefore not being built.
+> Kept for the factor research notes, which may inform future feature work.
+
 *Documented 2026-05-12. Design only — no implementation yet.*
 
 ## The Problem

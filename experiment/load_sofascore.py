@@ -96,6 +96,16 @@ def get_round_matches(page, tournament_id, season_id, round_num):
     return data.get('events', [])
 
 
+def get_events_last_page(page, tournament_id, season_id, page_num):
+    """Return (events_list, has_next_page) from the /events/last/{page} endpoint."""
+    data = fetch_json(page, f'https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{season_id}/events/last/{page_num}')
+    if not data:
+        return [], False
+    events = data.get('events', [])
+    has_next = data.get('hasNextPage', False)
+    return events, has_next
+
+
 def get_match_stats(page, match_id):
     """Return stats dict {stat_key: (home_val, away_val)} for a match."""
     data = fetch_json(page, f'https://api.sofascore.com/api/v1/event/{match_id}/statistics')
@@ -137,8 +147,45 @@ def sofascore_season_to_our_format(season_name, league_type):
         return year_part
 
 
+def _build_row_from_event(event, stats, league_code, our_season):
+    """Shared helper: build an output row dict from an event + stats dict."""
+    row = {col: None for col in OUTPUT_COLUMNS}
+    row['league'] = league_code
+    row['season'] = our_season
+
+    ts = event.get('startTimestamp')
+    if ts:
+        row['date'] = pd.to_datetime(ts, unit='s').strftime('%Y-%m-%d')
+
+    row['home_team'] = event.get('homeTeam', {}).get('name')
+    row['away_team'] = event.get('awayTeam', {}).get('name')
+
+    for stat_key, (home_col, away_col) in STAT_MAP.items():
+        if stat_key not in stats:
+            continue
+        home_val, away_val = stats[stat_key]
+        is_xg = home_col in ('home_xg', 'away_xg')
+
+        def to_num(v, as_float=is_xg):
+            try:
+                f = float(v)
+                return round(f, 2) if as_float else int(f)
+            except (TypeError, ValueError):
+                return None
+
+        row[home_col] = to_num(home_val)
+        row[away_col] = to_num(away_val)
+
+    return row
+
+
 def scrape_season(page, league_code, tournament_id, season_id, season_name, league_type, failures):
-    """Scrape all completed matches in a season. Returns (DataFrame, season_str) or None."""
+    """Scrape all completed matches in a season. Returns (DataFrame, season_str) or None.
+
+    Primary path: round-based (/events/round/{n}).
+    Fallback path: page-based (/events/last/{page}) when round-based returns 0 rows.
+    Fallback never runs for leagues that already work with rounds.
+    """
     our_season = sofascore_season_to_our_format(season_name, league_type)
     print(f"  Season: {season_name} -> {our_season}")
 
@@ -148,6 +195,7 @@ def scrape_season(page, league_code, tournament_id, season_id, season_name, leag
     consecutive_empty = 0
     seen_match_ids = set()  # FIX 2: deduplication
 
+    # --- Primary path: round-based ---
     while True:
         # FIX 1: Hard cap on rounds
         if round_num > max_round:
@@ -186,40 +234,45 @@ def scrape_season(page, league_code, tournament_id, season_id, season_name, leag
                                   'match_id': match_id, 'reason': 'no stats returned'})
                 continue
 
-            # Build row — start all values as None
-            row = {col: None for col in OUTPUT_COLUMNS}
-            row['league'] = league_code
-            row['season'] = our_season
-
-            # Date from Unix timestamp
-            ts = event.get('startTimestamp')
-            if ts:
-                row['date'] = pd.to_datetime(ts, unit='s').strftime('%Y-%m-%d')
-
-            # Teams
-            row['home_team'] = event.get('homeTeam', {}).get('name')
-            row['away_team'] = event.get('awayTeam', {}).get('name')
-
-            # Stats — map keys, never use [] on API data
-            for stat_key, (home_col, away_col) in STAT_MAP.items():
-                if stat_key not in stats:
-                    continue
-                home_val, away_val = stats[stat_key]
-                is_xg = home_col in ('home_xg', 'away_xg')
-
-                def to_num(v, as_float):
-                    try:
-                        f = float(v)
-                        return round(f, 2) if as_float else int(f)
-                    except (TypeError, ValueError):
-                        return None
-
-                row[home_col] = to_num(home_val, is_xg)
-                row[away_col] = to_num(away_val, is_xg)
-
-            rows.append(row)
+            rows.append(_build_row_from_event(event, stats, league_code, our_season))
 
         round_num += 1
+
+    # --- Fallback: page-based (/events/last/{page}) when round-based returns nothing ---
+    # Only triggers if round-based produced 0 rows, so existing leagues are unaffected.
+    if not rows:
+        print(f"    Round-based fetch returned 0 rows — trying /events/last/{{page}} fallback")
+        pg = 0
+        while True:
+            time.sleep(DELAY)
+            events, has_next = get_events_last_page(page, tournament_id, season_id, pg)
+
+            if not events:
+                print(f"    Page {pg}: no events — stopping")
+                break
+
+            ended = [e for e in events if e.get('status', {}).get('description') == 'Ended']
+            print(f"    Page {pg}: {len(ended)}/{len(events)} completed")
+
+            for event in ended:
+                match_id = event.get('id')
+                if not match_id or match_id in seen_match_ids:
+                    continue
+                seen_match_ids.add(match_id)
+
+                time.sleep(DELAY)
+                stats = get_match_stats(page, match_id)
+
+                if not stats:
+                    failures.append({'league': league_code, 'season': our_season,
+                                      'match_id': match_id, 'reason': 'no stats returned'})
+                    continue
+
+                rows.append(_build_row_from_event(event, stats, league_code, our_season))
+
+            if not has_next:
+                break
+            pg += 1
 
     if not rows:
         return None
@@ -227,6 +280,78 @@ def scrape_season(page, league_code, tournament_id, season_id, season_name, leag
     df = pd.DataFrame(rows)
     df = df.reindex(columns=OUTPUT_COLUMNS)
     return df, our_season
+
+
+def diagnose_league(page, league_code):
+    """Print diagnostic info to identify why a league produces no data."""
+    if league_code not in LEAGUES:
+        print(f"Unknown league: {league_code}")
+        return
+
+    league = LEAGUES[league_code]
+    tournament_id = league['id']
+
+    print(f"\n{'='*60}")
+    print(f"DIAGNOSIS: {league_code} — {league['name']} (tournament_id={tournament_id})")
+    print(f"{'='*60}")
+
+    # 1. Top 5 seasons
+    seasons = get_seasons(page, tournament_id)
+    print(f"\nTop 5 seasons (id + name):")
+    if not seasons:
+        print("  No seasons returned — cannot continue")
+        return
+    for s in seasons[:5]:
+        print(f"  id={s.get('id')}  name={s.get('name')}")
+
+    recent = seasons[0]
+    season_id = recent.get('id')
+    season_name = recent.get('name', '')
+    print(f"\nMost recent season: {season_name} (id={season_id})")
+
+    # 2. Round-based: rounds 1–5
+    print(f"\n--- Round-based fetch (rounds 1–5) ---")
+    for r in range(1, 6):
+        time.sleep(DELAY)
+        data = fetch_json(page, f'https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{season_id}/events/round/{r}')
+        if data is None:
+            print(f"  Round {r}: API returned None (error / blocked)")
+            continue
+        events = data.get('events', [])
+        if not events:
+            print(f"  Round {r}: 0 events  (raw keys: {list(data.keys())})")
+        else:
+            statuses = {}
+            for e in events:
+                desc = e.get('status', {}).get('description', 'unknown')
+                statuses[desc] = statuses.get(desc, 0) + 1
+            print(f"  Round {r}: {len(events)} events — {statuses}")
+
+    # 3. Page-based: /events/last/0
+    print(f"\n--- Page-based fetch (/events/last/0) ---")
+    time.sleep(DELAY)
+    data = fetch_json(page, f'https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{season_id}/events/last/0')
+    if data is None:
+        print("  /events/last/0: API returned None")
+    else:
+        events = data.get('events', [])
+        has_next = data.get('hasNextPage', False)
+        if not events:
+            print(f"  /events/last/0: 0 events  (raw keys: {list(data.keys())})")
+        else:
+            statuses = {}
+            for e in events:
+                desc = e.get('status', {}).get('description', 'unknown')
+                statuses[desc] = statuses.get(desc, 0) + 1
+            sample = events[0]
+            print(f"  /events/last/0: {len(events)} events — {statuses}")
+            print(f"  hasNextPage: {has_next}")
+            print(f"  Sample: id={sample.get('id')}  "
+                  f"home={sample.get('homeTeam', {}).get('name')}  "
+                  f"away={sample.get('awayTeam', {}).get('name')}  "
+                  f"ts={sample.get('startTimestamp')}")
+
+    print(f"\n{'='*60}")
 
 
 def parse_args():
@@ -238,6 +363,8 @@ def parse_args():
                         help='Scrape all available seasons')
     parser.add_argument('--seasons-back', type=int, default=None,
                         help='Max number of seasons to scrape (most recent first). e.g. 5')
+    parser.add_argument('--diagnose', action='store_true',
+                        help='Diagnose a league: print top 5 seasons, try rounds 1-5 and /events/last/0')
     return parser.parse_args()
 
 
@@ -266,6 +393,15 @@ def main():
         page.goto('https://www.sofascore.com', wait_until='domcontentloaded')
         time.sleep(2)  # let session cookies settle
         print("Session ready.\n")
+
+        # --- Diagnose mode: just print API probe results and exit ---
+        if args.diagnose:
+            for league_code in league_list:
+                page.goto('https://www.sofascore.com', wait_until='domcontentloaded')
+                time.sleep(3)
+                diagnose_league(page, league_code)
+            browser.close()
+            return
 
         for league_code in league_list:
             if league_code not in LEAGUES:

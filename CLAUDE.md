@@ -1,7 +1,8 @@
 # Soccer Model — Session Constitution
 
 ## What This Is
-xG-based Poisson prediction model for soccer betting markets. Big 5 European leagues via Understat, BTTS first market. GitHub: `chrisjm15/soccer_model`.
+xG-based Poisson prediction model for soccer betting markets. GitHub: `chrisjm15/soccer_model`.
+Current focus (since 2026-07-12 verdict): EPL Asian Handicap only, using market-blend **calibrated** probabilities — raw model edges and the old 7% threshold are retired; Big 5 ex-EPL has no edge and takes no bets. Soft-league (Scandinavian/proxy) expansion is in data-collection phase and holds most of the remaining upside.
 
 ## Roles
 | Context | Role |
