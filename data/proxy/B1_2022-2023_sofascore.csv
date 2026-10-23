@@ -1,0 +1,329 @@
+date,home_team,away_team,home_shots,away_shots,home_sot,away_sot,home_corners,away_corners,home_fouls,away_fouls,home_yellow,away_yellow,home_red,away_red,home_xg,away_xg,league,season
+2022-07-22,Standard Liège,KAA Gent,7,25,3,9,2,12,14,13,5.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-07-23,RC Sporting Charleroi,KAS Eupen,12,8,5,7,2,1,10,12,2.0,1.0,,,,,B1,2022-2023
+2022-07-23,KV Kortrijk,Oud-Heverlee Leuven,15,19,2,6,6,4,14,13,3.0,0.0,,,,,B1,2022-2023
+2022-07-23,SV Zulte Waregem,RFC Seraing,18,2,8,0,7,0,14,17,1.0,1.0,,,,,B1,2022-2023
+2022-07-23,Sint-Truidense VV,Royale Union Saint-Gilloise,10,14,3,3,0,5,9,11,1.0,4.0,,,,,B1,2022-2023
+2022-07-24,Club Brugge KV,KRC Genk,15,16,5,10,4,3,7,17,1.0,2.0,,,,,B1,2022-2023
+2022-07-24,KV Mechelen,Royal Antwerp FC,14,10,3,3,6,2,10,9,1.0,1.0,,,,,B1,2022-2023
+2022-07-24,RSC Anderlecht,KV Oostende,13,8,3,1,7,5,9,8,0.0,4.0,0.0,1.0,,,B1,2022-2023
+2022-07-24,KVC Westerlo,Cercle Brugge,18,4,8,0,3,4,12,20,1.0,5.0,0.0,1.0,,,B1,2022-2023
+2023-04-28,KAA Gent,KVC Westerlo,21,10,6,3,9,5,8,6,1.0,1.0,,,,,B1,2022-2023
+2023-04-29,Cercle Brugge,Standard Liège,14,6,2,1,6,3,14,12,2.0,1.0,,,,,B1,2022-2023
+2023-04-30,KRC Genk,Club Brugge KV,8,18,4,7,3,5,11,13,2.0,3.0,,,,,B1,2022-2023
+2023-05-03,Royale Union Saint-Gilloise,Royal Antwerp FC,13,9,2,4,3,3,13,20,2.0,4.0,,,,,B1,2022-2023
+2022-07-29,Royale Union Saint-Gilloise,RC Sporting Charleroi,16,5,6,4,8,4,11,5,2.0,1.0,,,,,B1,2022-2023
+2022-07-30,Cercle Brugge,RSC Anderlecht,13,5,5,0,8,1,11,15,0.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-07-30,KV Oostende,KV Mechelen,9,19,7,7,6,9,5,14,1.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-07-30,Oud-Heverlee Leuven,KVC Westerlo,11,13,5,0,5,6,11,15,2.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-07-30,KAA Gent,Sint-Truidense VV,13,11,4,7,3,6,14,12,2.0,2.0,,,,,B1,2022-2023
+2022-07-31,KRC Genk,Standard Liège,15,10,6,2,7,4,15,12,3.0,4.0,,,,,B1,2022-2023
+2022-07-31,KAS Eupen,Club Brugge KV,13,13,6,6,5,7,18,13,4.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-07-31,RFC Seraing,KV Kortrijk,19,7,5,3,3,4,17,9,2.0,2.0,1.0,1.0,,,B1,2022-2023
+2022-07-31,Royal Antwerp FC,SV Zulte Waregem,17,12,7,4,3,6,6,14,2.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-05-06,Club Brugge KV,Royale Union Saint-Gilloise,12,7,5,4,10,2,6,19,4.0,2.0,,,,,B1,2022-2023
+2023-05-06,Standard Liège,KAA Gent,9,6,1,3,6,3,10,13,3.0,3.0,1.0,0.0,,,B1,2022-2023
+2023-05-07,KVC Westerlo,Cercle Brugge,9,20,6,11,3,3,9,9,4.0,3.0,,,,,B1,2022-2023
+2023-05-07,Royal Antwerp FC,KRC Genk,12,8,8,2,2,5,12,13,2.0,4.0,0.0,2.0,,,B1,2022-2023
+2022-08-05,Club Brugge KV,SV Zulte Waregem,23,7,7,4,7,4,7,17,2.0,3.0,,,,,B1,2022-2023
+2022-08-06,KRC Genk,KAS Eupen,25,9,14,5,8,2,9,15,0.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-08-06,KV Kortrijk,Sint-Truidense VV,10,18,4,2,4,6,12,16,1.0,1.0,,,,,B1,2022-2023
+2022-08-06,RC Sporting Charleroi,KV Oostende,16,9,3,6,9,5,11,7,2.0,1.0,,,,,B1,2022-2023
+2022-08-06,KV Mechelen,Royale Union Saint-Gilloise,6,6,5,2,3,5,14,12,2.0,5.0,,,,,B1,2022-2023
+2022-08-07,Standard Liège,Cercle Brugge,10,6,7,3,5,6,15,17,1.0,2.0,,,,,B1,2022-2023
+2022-08-07,KAA Gent,KVC Westerlo,15,9,5,3,10,7,11,10,2.0,0.0,,,,,B1,2022-2023
+2022-08-07,RSC Anderlecht,RFC Seraing,12,5,6,2,2,1,14,8,1.0,1.0,,,,,B1,2022-2023
+2022-08-07,Royal Antwerp FC,Oud-Heverlee Leuven,17,8,4,4,8,7,7,11,2.0,1.0,,,,,B1,2022-2023
+2023-05-13,Cercle Brugge,KAA Gent,7,16,2,7,8,4,7,7,2.0,0.0,1.0,0.0,,,B1,2022-2023
+2023-05-13,Standard Liège,KVC Westerlo,12,12,5,5,4,7,8,12,1.0,1.0,,,,,B1,2022-2023
+2023-05-14,Royal Antwerp FC,Club Brugge KV,19,15,7,5,7,5,12,14,1.0,4.0,,,,,B1,2022-2023
+2023-05-14,Royale Union Saint-Gilloise,KRC Genk,16,9,8,3,6,6,9,13,1.0,4.0,,,,,B1,2022-2023
+2022-08-12,KV Oostende,KAA Gent,8,14,2,6,2,6,9,7,3.0,1.0,,,,,B1,2022-2023
+2022-08-13,KVC Westerlo,Standard Liège,14,12,5,6,4,6,3,11,2.0,6.0,0.0,1.0,,,B1,2022-2023
+2022-08-13,Cercle Brugge,KV Mechelen,12,10,2,4,8,8,9,13,0.0,4.0,,,,,B1,2022-2023
+2022-08-13,RFC Seraing,RC Sporting Charleroi,11,13,3,5,3,6,8,13,2.0,3.0,,,,,B1,2022-2023
+2022-08-13,Royale Union Saint-Gilloise,KV Kortrijk,16,6,9,2,5,1,20,11,0.0,3.0,,,,,B1,2022-2023
+2022-08-14,Sint-Truidense VV,RSC Anderlecht,12,10,6,7,6,5,13,11,4.0,3.0,,,,,B1,2022-2023
+2022-08-14,KAS Eupen,Royal Antwerp FC,17,9,5,3,6,3,12,9,4.0,0.0,,,,,B1,2022-2023
+2022-08-14,Oud-Heverlee Leuven,Club Brugge KV,13,12,2,6,7,5,6,12,3.0,2.0,,,,,B1,2022-2023
+2022-08-14,SV Zulte Waregem,KRC Genk,16,15,6,6,4,8,14,16,4.0,2.0,,,,,B1,2022-2023
+2023-05-20,KVC Westerlo,Standard Liège,11,11,8,2,2,5,12,13,2.0,1.0,,,,,B1,2022-2023
+2023-05-20,KAA Gent,Cercle Brugge,14,15,8,6,4,2,11,10,1.0,1.0,,,,,B1,2022-2023
+2023-05-21,Club Brugge KV,Royal Antwerp FC,6,12,4,0,3,5,10,5,3.0,3.0,,,,,B1,2022-2023
+2023-05-21,KRC Genk,Royale Union Saint-Gilloise,11,7,2,4,2,4,8,14,0.0,2.0,,,,,B1,2022-2023
+2022-08-19,KAS Eupen,RFC Seraing,13,16,5,7,7,6,17,10,5.0,3.0,,,,,B1,2022-2023
+2022-08-20,KV Oostende,Sint-Truidense VV,12,9,6,3,5,5,13,17,2.0,4.0,,,,,B1,2022-2023
+2022-08-20,KRC Genk,Cercle Brugge,15,9,5,2,7,5,7,19,1.0,1.0,,,,,B1,2022-2023
+2022-08-21,Club Brugge KV,KV Kortrijk,29,9,12,2,15,2,16,12,3.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-08-21,SV Zulte Waregem,RC Sporting Charleroi,9,15,4,6,2,5,5,7,2.0,0.0,,,,,B1,2022-2023
+2022-08-21,Standard Liège,Oud-Heverlee Leuven,25,7,8,5,10,3,11,15,3.0,4.0,0.0,1.0,,,B1,2022-2023
+2022-08-21,KV Mechelen,KVC Westerlo,14,14,7,8,4,5,11,7,1.0,2.0,,,,,B1,2022-2023
+2022-08-31,Royal Antwerp FC,Royale Union Saint-Gilloise,10,8,4,3,4,3,11,10,2.0,0.0,0.0,2.0,,,B1,2022-2023
+2022-09-01,RSC Anderlecht,KAA Gent,10,10,1,5,5,3,10,13,2.0,2.0,,,,,B1,2022-2023
+2023-05-27,KVC Westerlo,KAA Gent,8,11,6,6,4,3,15,6,0.0,1.0,,,,,B1,2022-2023
+2023-05-27,Standard Liège,Cercle Brugge,11,17,3,10,6,7,8,16,2.0,1.0,,,,,B1,2022-2023
+2023-05-28,Royal Antwerp FC,Royale Union Saint-Gilloise,10,5,4,2,3,5,12,17,2.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-05-28,Club Brugge KV,KRC Genk,21,14,5,5,7,1,10,13,1.0,1.0,,,,,B1,2022-2023
+2022-08-26,RC Sporting Charleroi,Club Brugge KV,22,16,6,7,2,5,9,6,1.0,0.0,,,,,B1,2022-2023
+2022-08-27,RFC Seraing,KRC Genk,11,11,3,4,5,2,10,13,2.0,3.0,,,,,B1,2022-2023
+2022-08-27,Cercle Brugge,SV Zulte Waregem,23,8,6,4,6,4,10,16,1.0,2.0,,,,,B1,2022-2023
+2022-08-27,Oud-Heverlee Leuven,KV Oostende,11,15,6,5,2,7,9,15,1.0,3.0,,,,,B1,2022-2023
+2022-08-27,Sint-Truidense VV,KV Mechelen,10,2,4,2,4,3,10,15,1.0,3.0,,,,,B1,2022-2023
+2022-08-28,KAA Gent,Royal Antwerp FC,15,6,4,4,6,2,12,11,3.0,3.0,,,,,B1,2022-2023
+2022-08-28,KV Kortrijk,Standard Liège,6,16,2,5,4,9,10,19,4.0,3.0,1.0,0.0,,,B1,2022-2023
+2022-08-28,Royale Union Saint-Gilloise,RSC Anderlecht,11,10,6,5,7,7,11,8,3.0,1.0,,,,,B1,2022-2023
+2022-08-28,KVC Westerlo,KAS Eupen,7,14,5,2,5,10,10,15,2.0,1.0,,,,,B1,2022-2023
+2023-06-03,Cercle Brugge,KVC Westerlo,16,10,5,3,4,3,13,11,1.0,1.0,,,,,B1,2022-2023
+2023-06-03,KAA Gent,Standard Liège,17,10,5,2,4,3,9,12,1.0,3.0,,,,,B1,2022-2023
+2023-06-04,KRC Genk,Royal Antwerp FC,7,14,3,4,1,3,12,15,1.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-06-04,Royale Union Saint-Gilloise,Club Brugge KV,14,10,5,6,5,6,14,11,0.0,3.0,,,,,B1,2022-2023
+2022-09-02,Club Brugge KV,Cercle Brugge,8,14,4,2,7,4,10,18,1.0,3.0,,,,,B1,2022-2023
+2022-09-03,KRC Genk,Sint-Truidense VV,17,7,4,3,8,6,13,12,1.0,3.0,,,,,B1,2022-2023
+2022-09-03,KAS Eupen,KV Kortrijk,22,14,5,3,8,4,16,7,5.0,3.0,,,,,B1,2022-2023
+2022-09-03,KV Mechelen,RFC Seraing,9,6,4,2,9,3,14,16,2.0,2.0,,,,,B1,2022-2023
+2022-09-03,Standard Liège,KV Oostende,16,14,5,5,5,4,10,7,2.0,2.0,,,,,B1,2022-2023
+2022-09-04,RSC Anderlecht,Oud-Heverlee Leuven,21,12,6,4,12,2,11,13,3.0,1.0,,,,,B1,2022-2023
+2022-09-04,Royal Antwerp FC,KVC Westerlo,12,11,3,3,3,6,10,8,0.0,1.0,,,,,B1,2022-2023
+2022-09-04,RC Sporting Charleroi,KAA Gent,14,9,7,1,4,4,6,6,2.0,0.0,0.0,1.0,,,B1,2022-2023
+2022-09-04,SV Zulte Waregem,Royale Union Saint-Gilloise,9,12,1,4,7,3,14,16,3.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-09-09,Sint-Truidense VV,Standard Liège,22,11,5,2,7,0,12,14,0.0,3.0,,,,,B1,2022-2023
+2022-09-10,KV Kortrijk,KV Mechelen,12,10,3,5,10,3,7,13,3.0,5.0,,,,,B1,2022-2023
+2022-09-10,KV Oostende,KAS Eupen,10,13,5,3,3,6,14,19,5.0,3.0,1.0,0.0,,,B1,2022-2023
+2022-09-10,RFC Seraing,Club Brugge KV,4,11,1,4,2,1,20,9,4.0,2.0,,,,,B1,2022-2023
+2022-09-10,Oud-Heverlee Leuven,RC Sporting Charleroi,11,7,4,5,2,1,10,14,2.0,4.0,,,,,B1,2022-2023
+2022-09-11,KVC Westerlo,RSC Anderlecht,13,12,6,3,1,6,9,15,2.0,3.0,,,,,B1,2022-2023
+2022-09-11,Cercle Brugge,Royal Antwerp FC,13,11,6,4,3,3,9,13,1.0,3.0,,,,,B1,2022-2023
+2022-09-11,Royale Union Saint-Gilloise,KRC Genk,10,14,3,4,4,5,14,12,4.0,3.0,,,,,B1,2022-2023
+2022-09-11,KAA Gent,SV Zulte Waregem,23,5,6,1,4,4,7,10,0.0,2.0,,,,,B1,2022-2023
+2022-09-16,Royal Antwerp FC,RFC Seraing,12,10,3,2,5,3,12,12,3.0,2.0,,,,,B1,2022-2023
+2022-09-17,KV Mechelen,Oud-Heverlee Leuven,12,10,2,1,9,1,8,8,2.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-09-17,Cercle Brugge,KV Oostende,19,16,6,7,10,7,11,10,1.0,3.0,,,,,B1,2022-2023
+2022-09-17,SV Zulte Waregem,Sint-Truidense VV,4,18,2,8,0,4,13,15,1.0,3.0,1.0,0.0,,,B1,2022-2023
+2022-09-17,RC Sporting Charleroi,KVC Westerlo,14,7,4,3,1,0,9,4,,,,,,,B1,2022-2023
+2022-09-18,KRC Genk,KAA Gent,10,9,6,0,5,5,13,11,2.0,2.0,,,,,B1,2022-2023
+2022-09-18,KAS Eupen,Royale Union Saint-Gilloise,9,13,4,3,5,5,8,19,3.0,3.0,1.0,0.0,,,B1,2022-2023
+2022-09-18,Standard Liège,Club Brugge KV,9,10,6,1,1,8,10,14,4.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-09-18,RSC Anderlecht,KV Kortrijk,12,8,5,3,9,6,17,8,1.0,2.0,,,,,B1,2022-2023
+2022-09-30,Standard Liège,RFC Seraing,13,10,3,3,9,4,9,14,1.0,4.0,,,,,B1,2022-2023
+2022-10-01,Oud-Heverlee Leuven,Royale Union Saint-Gilloise,8,11,2,6,6,8,8,15,2.0,4.0,,,,,B1,2022-2023
+2022-10-01,KV Oostende,KRC Genk,12,11,7,6,2,6,16,11,2.0,1.0,1.0,0.0,,,B1,2022-2023
+2022-10-01,KVC Westerlo,SV Zulte Waregem,10,12,4,3,5,12,12,11,3.0,3.0,,,,,B1,2022-2023
+2022-10-01,Club Brugge KV,KV Mechelen,22,6,11,2,5,3,2,10,,,,,,,B1,2022-2023
+2022-10-02,RSC Anderlecht,RC Sporting Charleroi,20,6,8,2,14,5,9,14,2.0,2.0,,,,,B1,2022-2023
+2022-10-02,KAA Gent,Cercle Brugge,12,14,7,5,6,4,15,15,3.0,4.0,,,,,B1,2022-2023
+2022-10-02,KV Kortrijk,Royal Antwerp FC,13,21,4,5,0,7,8,13,4.0,1.0,,,,,B1,2022-2023
+2022-10-02,Sint-Truidense VV,KAS Eupen,22,8,6,4,10,1,8,13,1.0,2.0,,,,,B1,2022-2023
+2022-10-07,Royal Antwerp FC,Sint-Truidense VV,11,4,4,3,6,2,15,9,1.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-10-08,KRC Genk,KV Kortrijk,28,6,7,2,10,3,12,13,4.0,0.0,,,,,B1,2022-2023
+2022-10-08,RFC Seraing,KV Oostende,13,13,3,2,3,9,11,9,2.0,1.0,1.0,0.0,,,B1,2022-2023
+2022-10-08,SV Zulte Waregem,Oud-Heverlee Leuven,10,14,1,7,4,6,16,9,6.0,2.0,,,,,B1,2022-2023
+2022-10-08,Club Brugge KV,KVC Westerlo,29,10,13,5,11,3,4,9,0.0,1.0,,,,,B1,2022-2023
+2022-10-09,KV Mechelen,RSC Anderlecht,19,13,3,7,5,7,11,13,1.0,4.0,,,,,B1,2022-2023
+2022-10-09,KAS Eupen,KAA Gent,10,13,1,6,6,9,15,15,2.0,2.0,,,,,B1,2022-2023
+2022-10-09,RC Sporting Charleroi,Standard Liège,10,4,3,1,3,1,19,14,3.0,4.0,1.0,2.0,,,B1,2022-2023
+2022-10-09,Royale Union Saint-Gilloise,Cercle Brugge,17,13,7,5,3,4,10,7,0.0,2.0,,,,,B1,2022-2023
+2022-10-14,KVC Westerlo,RFC Seraing,10,2,3,2,5,2,10,10,0.0,1.0,,,,,B1,2022-2023
+2022-10-15,KV Kortrijk,SV Zulte Waregem,8,16,5,8,3,5,14,16,4.0,4.0,,,,,B1,2022-2023
+2022-10-15,Cercle Brugge,KAS Eupen,18,2,10,2,2,2,20,9,2.0,2.0,,,,,B1,2022-2023
+2022-10-15,Sint-Truidense VV,RC Sporting Charleroi,10,7,3,2,4,4,11,14,1.0,2.0,,,,,B1,2022-2023
+2022-10-15,Oud-Heverlee Leuven,KRC Genk,19,13,7,1,11,9,9,15,3.0,2.0,0.0,1.0,,,B1,2022-2023
+2022-10-16,Standard Liège,Royal Antwerp FC,6,13,4,2,2,6,14,14,2.0,3.0,,,,,B1,2022-2023
+2022-10-16,KAA Gent,KV Mechelen,19,9,10,1,5,2,12,14,1.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-10-16,RSC Anderlecht,Club Brugge KV,12,11,4,4,6,7,15,15,1.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-10-16,KV Oostende,Royale Union Saint-Gilloise,10,18,3,8,6,4,10,9,2.0,2.0,,,,,B1,2022-2023
+2022-10-18,KAS Eupen,Oud-Heverlee Leuven,23,8,9,4,6,3,10,11,3.0,2.0,,,,,B1,2022-2023
+2022-10-18,RC Sporting Charleroi,KV Kortrijk,11,11,5,6,4,9,22,8,3.0,1.0,,,,,B1,2022-2023
+2022-10-18,KRC Genk,KVC Westerlo,23,6,10,5,7,1,8,7,1.0,0.0,0.0,1.0,,,B1,2022-2023
+2022-10-18,RFC Seraing,Cercle Brugge,5,13,3,2,1,1,13,20,5.0,3.0,1.0,0.0,,,B1,2022-2023
+2022-10-19,Royale Union Saint-Gilloise,KAA Gent,17,2,3,2,3,4,7,13,1.0,2.0,0.0,1.0,,,B1,2022-2023
+2022-10-19,Club Brugge KV,Sint-Truidense VV,12,7,7,2,8,1,14,14,2.0,2.0,0.0,1.0,,,B1,2022-2023
+2022-10-19,KV Mechelen,Standard Liège,16,9,7,1,8,5,9,9,1.0,2.0,,,,,B1,2022-2023
+2022-10-20,Royal Antwerp FC,KV Oostende,17,6,4,2,7,3,15,17,1.0,2.0,,,,,B1,2022-2023
+2022-10-20,SV Zulte Waregem,RSC Anderlecht,12,10,6,4,5,5,19,14,8.0,1.0,0.0,1.0,,,B1,2022-2023
+2022-10-21,Cercle Brugge,RC Sporting Charleroi,20,11,8,3,6,6,9,9,3.0,1.0,,,,,B1,2022-2023
+2022-10-22,KV Kortrijk,KVC Westerlo,6,18,3,5,6,6,11,14,0.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-10-22,KV Mechelen,KAS Eupen,20,9,10,2,7,8,7,10,3.0,4.0,1.0,0.0,,,B1,2022-2023
+2022-10-22,Sint-Truidense VV,Oud-Heverlee Leuven,13,14,3,2,3,5,10,12,2.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-10-22,Royale Union Saint-Gilloise,Club Brugge KV,6,13,4,2,4,4,8,9,4.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-10-23,Royal Antwerp FC,KRC Genk,20,8,4,5,8,4,10,19,1.0,1.0,,,,,B1,2022-2023
+2022-10-23,KAA Gent,RFC Seraing,13,5,4,3,9,3,5,11,1.0,1.0,,,,,B1,2022-2023
+2022-10-23,KV Oostende,SV Zulte Waregem,8,7,5,4,5,5,15,20,2.0,3.0,,,,,B1,2022-2023
+2022-10-28,KRC Genk,KV Mechelen,14,10,6,5,8,7,9,15,2.0,2.0,1.0,0.0,,,B1,2022-2023
+2022-10-29,SV Zulte Waregem,Standard Liège,6,18,3,7,4,10,13,11,1.0,1.0,1.0,0.0,,,B1,2022-2023
+2022-10-29,KV Kortrijk,Cercle Brugge,14,17,5,5,3,6,17,17,4.0,2.0,,,,,B1,2022-2023
+2022-10-29,KVC Westerlo,Sint-Truidense VV,11,13,3,4,4,2,5,9,3.0,3.0,,,,,B1,2022-2023
+2022-10-29,Club Brugge KV,KV Oostende,16,6,6,3,4,2,5,13,2.0,2.0,,,,,B1,2022-2023
+2022-10-30,RSC Anderlecht,KAS Eupen,19,12,8,2,10,4,15,6,2.0,2.0,,,,,B1,2022-2023
+2022-10-30,RFC Seraing,Royale Union Saint-Gilloise,13,13,2,3,6,7,16,11,3.0,2.0,,,,,B1,2022-2023
+2022-10-30,Oud-Heverlee Leuven,KAA Gent,12,10,5,4,1,6,14,17,5.0,5.0,,,,,B1,2022-2023
+2022-10-30,RC Sporting Charleroi,Royal Antwerp FC,8,14,3,6,4,8,13,4,3.0,3.0,,,,,B1,2022-2023
+2022-11-04,KRC Genk,RC Sporting Charleroi,13,6,8,2,5,4,3,7,1.0,1.0,,,,,B1,2022-2023
+2022-11-05,KV Mechelen,SV Zulte Waregem,21,14,7,7,11,5,11,10,1.0,4.0,0.0,1.0,,,B1,2022-2023
+2022-11-05,Cercle Brugge,Oud-Heverlee Leuven,8,9,4,4,6,6,8,14,2.0,2.0,,,,,B1,2022-2023
+2022-11-05,RFC Seraing,Sint-Truidense VV,6,15,2,5,5,7,14,19,5.0,1.0,1.0,0.0,,,B1,2022-2023
+2022-11-05,KAS Eupen,Standard Liège,13,8,5,4,7,2,13,10,0.0,3.0,1.0,1.0,,,B1,2022-2023
+2022-11-06,KAA Gent,Club Brugge KV,11,8,2,4,4,3,11,12,1.0,5.0,,,,,B1,2022-2023
+2022-11-06,Royale Union Saint-Gilloise,KVC Westerlo,25,13,1,5,10,4,12,14,4.0,3.0,,,,,B1,2022-2023
+2022-11-06,Royal Antwerp FC,RSC Anderlecht,14,4,3,1,4,1,13,13,2.0,3.0,,,,,B1,2022-2023
+2022-11-06,KV Oostende,KV Kortrijk,24,7,9,4,8,6,14,15,3.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-11-11,Oud-Heverlee Leuven,RFC Seraing,25,4,14,1,14,3,11,8,1.0,6.0,0.0,1.0,,,B1,2022-2023
+2022-11-12,KVC Westerlo,KV Oostende,16,7,8,0,5,3,8,14,1.0,2.0,,,,,B1,2022-2023
+2022-11-12,SV Zulte Waregem,KAS Eupen,19,15,9,8,11,2,12,8,2.0,2.0,,,,,B1,2022-2023
+2022-11-12,Sint-Truidense VV,Cercle Brugge,12,6,1,1,10,2,13,11,0.0,4.0,1.0,1.0,,,B1,2022-2023
+2022-11-13,Club Brugge KV,Royal Antwerp FC,9,11,5,6,3,4,11,11,4.0,2.0,,,,,B1,2022-2023
+2022-11-13,Standard Liège,Royale Union Saint-Gilloise,10,13,5,7,8,4,10,17,3.0,4.0,,,,,B1,2022-2023
+2022-11-13,RSC Anderlecht,KRC Genk,12,13,5,4,5,6,10,14,2.0,3.0,0.0,1.0,,,B1,2022-2023
+2022-11-13,KV Kortrijk,KAA Gent,7,19,3,10,8,6,8,15,2.0,0.0,1.0,1.0,,,B1,2022-2023
+2022-12-23,RFC Seraing,KAS Eupen,8,15,1,5,4,9,9,16,3.0,1.0,,,,,B1,2022-2023
+2022-12-23,KAA Gent,Standard Liège,21,1,5,0,13,1,12,12,0.0,5.0,,,,,B1,2022-2023
+2022-12-23,KV Mechelen,Cercle Brugge,20,12,10,4,9,8,8,8,3.0,4.0,0.0,1.0,,,B1,2022-2023
+2022-12-26,Club Brugge KV,Oud-Heverlee Leuven,20,12,7,5,3,3,10,17,3.0,2.0,,,,,B1,2022-2023
+2022-12-26,Royale Union Saint-Gilloise,KV Oostende,12,4,5,1,10,2,9,13,3.0,4.0,,,,,B1,2022-2023
+2022-12-26,KV Kortrijk,KRC Genk,18,15,8,6,5,6,14,11,4.0,2.0,,,,,B1,2022-2023
+2022-12-26,RC Sporting Charleroi,RSC Anderlecht,11,9,2,2,3,0,14,8,2.0,1.0,,,,,B1,2022-2023
+2022-12-27,KVC Westerlo,Royal Antwerp FC,10,14,4,7,3,6,10,8,1.0,1.0,,,,,B1,2022-2023
+2022-12-27,Sint-Truidense VV,SV Zulte Waregem,12,6,6,1,6,3,10,10,0.0,1.0,0.0,1.0,,,B1,2022-2023
+2023-01-06,Standard Liège,Sint-Truidense VV,6,10,1,3,9,2,10,14,0.0,2.0,,,,,B1,2022-2023
+2023-01-07,KAS Eupen,RC Sporting Charleroi,10,20,3,4,5,7,11,12,1.0,2.0,,,,,B1,2022-2023
+2023-01-07,Cercle Brugge,KVC Westerlo,11,4,5,2,6,4,8,9,1.0,3.0,,,,,B1,2022-2023
+2023-01-07,KV Oostende,RFC Seraing,17,4,3,2,5,2,21,20,6.0,6.0,2.0,0.0,,,B1,2022-2023
+2023-01-07,Royal Antwerp FC,KAA Gent,11,9,5,1,3,6,10,10,2.0,1.0,,,,,B1,2022-2023
+2023-01-08,KRC Genk,Club Brugge KV,12,7,6,4,5,4,13,10,2.0,4.0,0.0,1.0,,,B1,2022-2023
+2023-01-08,SV Zulte Waregem,KV Mechelen,17,7,4,4,3,3,21,16,2.0,6.0,,,,,B1,2022-2023
+2023-01-08,RSC Anderlecht,Royale Union Saint-Gilloise,6,23,2,11,0,6,12,12,5.0,3.0,1.0,0.0,,,B1,2022-2023
+2023-01-08,Oud-Heverlee Leuven,KV Kortrijk,17,15,5,6,4,6,10,16,1.0,3.0,,,,,B1,2022-2023
+2023-01-13,KVC Westerlo,Oud-Heverlee Leuven,14,10,4,4,9,3,10,7,3.0,2.0,0.0,1.0,,,B1,2022-2023
+2023-01-14,RFC Seraing,Standard Liège,8,16,1,1,3,11,9,15,5.0,1.0,,,,,B1,2022-2023
+2023-01-14,KAS Eupen,Sint-Truidense VV,7,10,3,4,3,3,9,9,1.0,1.0,,,,,B1,2022-2023
+2023-01-14,KV Mechelen,KV Oostende,16,15,6,4,10,1,6,17,1.0,1.0,0.0,1.0,,,B1,2022-2023
+2023-01-14,KRC Genk,SV Zulte Waregem,9,6,3,1,1,5,17,16,2.0,2.0,,,,,B1,2022-2023
+2023-01-15,Club Brugge KV,RSC Anderlecht,16,4,6,0,3,4,13,15,2.0,3.0,,,,,B1,2022-2023
+2023-01-15,KAA Gent,KV Kortrijk,15,12,6,5,7,5,14,12,3.0,1.0,,,,,B1,2022-2023
+2023-01-15,Royale Union Saint-Gilloise,Royal Antwerp FC,17,7,6,5,8,9,13,11,5.0,4.0,,,,,B1,2022-2023
+2023-01-15,RC Sporting Charleroi,Cercle Brugge,10,11,6,3,9,7,9,12,1.0,1.0,,,,,B1,2022-2023
+2023-01-17,Oud-Heverlee Leuven,KAS Eupen,18,8,7,3,8,7,9,10,2.0,2.0,,,,,B1,2022-2023
+2023-01-17,KVC Westerlo,KRC Genk,14,8,5,3,11,4,7,9,3.0,0.0,,,,,B1,2022-2023
+2023-01-17,Standard Liège,KV Mechelen,12,10,5,2,7,7,12,13,2.0,0.0,,,,,B1,2022-2023
+2023-01-18,Cercle Brugge,Royale Union Saint-Gilloise,6,16,1,7,3,6,15,10,2.0,0.0,,,,,B1,2022-2023
+2023-01-18,KV Oostende,Royal Antwerp FC,17,13,3,7,6,5,13,17,1.0,0.0,,,,,B1,2022-2023
+2023-01-18,KV Kortrijk,RFC Seraing,21,12,7,7,6,8,11,12,1.0,2.0,0.0,1.0,,,B1,2022-2023
+2023-01-18,RSC Anderlecht,SV Zulte Waregem,19,11,9,5,5,2,9,16,1.0,2.0,,,,,B1,2022-2023
+2023-01-19,KAA Gent,RC Sporting Charleroi,12,9,6,3,9,5,7,11,2.0,4.0,,,,,B1,2022-2023
+2023-01-19,Sint-Truidense VV,Club Brugge KV,8,13,4,4,1,8,14,6,1.0,1.0,,,,,B1,2022-2023
+2023-01-21,SV Zulte Waregem,KVC Westerlo,12,13,3,5,5,5,15,10,1.0,1.0,,,,,B1,2022-2023
+2023-01-21,KV Mechelen,KV Kortrijk,14,8,8,3,9,0,14,15,2.0,4.0,,,,,B1,2022-2023
+2023-01-21,KV Oostende,Cercle Brugge,9,11,4,6,4,6,11,16,3.0,1.0,,,,,B1,2022-2023
+2023-01-21,Royale Union Saint-Gilloise,Oud-Heverlee Leuven,19,12,8,5,12,5,7,15,1.0,3.0,,,,,B1,2022-2023
+2023-01-22,Royal Antwerp FC,Standard Liège,8,10,6,3,2,2,20,9,3.0,2.0,0.0,1.0,,,B1,2022-2023
+2023-01-22,RFC Seraing,RSC Anderlecht,10,14,4,4,4,6,17,11,3.0,1.0,,,,,B1,2022-2023
+2023-01-22,Club Brugge KV,RC Sporting Charleroi,12,9,6,3,2,3,7,18,2.0,4.0,0.0,1.0,,,B1,2022-2023
+2023-01-22,Sint-Truidense VV,KAA Gent,5,13,1,4,1,5,12,10,2.0,0.0,1.0,0.0,,,B1,2022-2023
+2023-02-01,KAS Eupen,KRC Genk,10,14,4,5,3,7,15,13,5.0,4.0,,,,,B1,2022-2023
+2023-01-27,Standard Liège,KAS Eupen,14,8,7,3,7,2,14,10,1.0,2.0,,,,,B1,2022-2023
+2023-01-28,KVC Westerlo,KV Mechelen,26,8,7,2,11,5,4,10,1.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-01-28,KV Kortrijk,KV Oostende,15,22,3,7,2,5,12,7,1.0,0.0,,,,,B1,2022-2023
+2023-01-28,Oud-Heverlee Leuven,Sint-Truidense VV,14,8,5,4,6,3,7,18,0.0,3.0,,,,,B1,2022-2023
+2023-01-28,RC Sporting Charleroi,Royale Union Saint-Gilloise,5,9,1,3,2,8,17,8,3.0,3.0,,,,,B1,2022-2023
+2023-01-29,RSC Anderlecht,Royal Antwerp FC,7,12,0,4,6,2,13,10,4.0,3.0,1.0,1.0,,,B1,2022-2023
+2023-01-29,Cercle Brugge,KAA Gent,10,9,6,5,4,2,18,7,1.0,1.0,,,,,B1,2022-2023
+2023-01-29,SV Zulte Waregem,Club Brugge KV,11,12,4,2,4,8,8,17,2.0,4.0,1.0,0.0,,,B1,2022-2023
+2023-01-29,KRC Genk,RFC Seraing,12,6,9,0,3,4,7,15,0.0,2.0,,,,,B1,2022-2023
+2023-02-03,KV Oostende,RSC Anderlecht,11,13,4,3,3,2,18,13,3.0,1.0,,,,,B1,2022-2023
+2023-02-04,Cercle Brugge,Standard Liège,13,8,3,2,4,1,21,14,3.0,3.0,,,,,B1,2022-2023
+2023-02-04,KAS Eupen,KVC Westerlo,7,15,3,6,4,7,18,7,1.0,0.0,,,,,B1,2022-2023
+2023-02-04,RFC Seraing,Oud-Heverlee Leuven,14,19,4,5,7,11,10,10,1.0,0.0,,,,,B1,2022-2023
+2023-02-04,Sint-Truidense VV,KV Kortrijk,6,9,2,4,2,2,11,9,1.0,4.0,,,,,B1,2022-2023
+2023-02-05,Royal Antwerp FC,Club Brugge KV,7,4,2,1,2,5,12,22,1.0,5.0,,,,,B1,2022-2023
+2023-02-05,KV Mechelen,RC Sporting Charleroi,10,17,7,8,4,7,12,11,0.0,3.0,1.0,0.0,,,B1,2022-2023
+2023-02-05,KAA Gent,KRC Genk,20,11,6,5,4,3,12,12,1.0,1.0,,,,,B1,2022-2023
+2023-02-05,Royale Union Saint-Gilloise,SV Zulte Waregem,14,7,8,1,2,3,8,9,0.0,1.0,,,,,B1,2022-2023
+2023-02-10,Oud-Heverlee Leuven,Cercle Brugge,8,12,1,5,5,7,12,10,1.0,0.0,,,,,B1,2022-2023
+2023-02-10,Club Brugge KV,Royale Union Saint-Gilloise,10,19,4,2,5,3,13,10,1.0,4.0,,,,,B1,2022-2023
+2023-02-10,KAS Eupen,KV Mechelen,11,14,3,4,3,2,16,16,0.0,4.0,,,,,B1,2022-2023
+2023-02-11,KVC Westerlo,KAA Gent,8,16,5,9,3,6,7,6,1.0,1.0,,,,,B1,2022-2023
+2023-02-11,RC Sporting Charleroi,RFC Seraing,13,2,4,1,10,2,8,13,1.0,0.0,,,,,B1,2022-2023
+2023-02-12,KRC Genk,Royal Antwerp FC,16,9,3,3,9,3,18,14,2.0,3.0,,,,,B1,2022-2023
+2023-02-12,RSC Anderlecht,Sint-Truidense VV,24,3,9,2,4,2,3,11,1.0,1.0,,,,,B1,2022-2023
+2023-02-12,Standard Liège,KV Kortrijk,9,11,1,4,7,3,9,20,0.0,2.0,1.0,0.0,,,B1,2022-2023
+2023-02-12,SV Zulte Waregem,KV Oostende,8,5,2,3,3,4,11,17,0.0,1.0,,,,,B1,2022-2023
+2023-02-17,KV Mechelen,KRC Genk,11,14,5,3,4,4,8,6,1.0,0.0,,,,,B1,2022-2023
+2023-02-18,Royal Antwerp FC,KAS Eupen,17,4,2,0,7,4,11,11,3.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-02-18,KV Oostende,RC Sporting Charleroi,17,8,6,3,11,3,7,10,,,,,,,B1,2022-2023
+2023-02-18,RFC Seraing,SV Zulte Waregem,6,12,2,4,4,7,18,16,3.0,3.0,1.0,1.0,,,B1,2022-2023
+2023-02-18,Royale Union Saint-Gilloise,Standard Liège,15,9,6,6,3,0,12,11,2.0,5.0,,,,,B1,2022-2023
+2023-02-19,Cercle Brugge,Club Brugge KV,28,7,10,5,17,4,10,12,2.0,2.0,,,,,B1,2022-2023
+2023-02-19,KAA Gent,Oud-Heverlee Leuven,12,14,6,4,4,9,15,12,2.0,1.0,,,,,B1,2022-2023
+2023-02-19,KV Kortrijk,RSC Anderlecht,14,12,7,5,6,4,14,8,2.0,0.0,,,,,B1,2022-2023
+2023-02-19,Sint-Truidense VV,KVC Westerlo,6,13,1,3,1,6,8,6,1.0,0.0,1.0,0.0,,,B1,2022-2023
+2023-02-24,SV Zulte Waregem,KV Kortrijk,17,9,4,5,8,5,19,18,3.0,4.0,,,,,B1,2022-2023
+2023-02-25,RFC Seraing,KV Mechelen,7,9,0,4,4,3,11,14,2.0,1.0,,,,,B1,2022-2023
+2023-02-25,KAS Eupen,Cercle Brugge,7,14,3,4,4,6,10,13,1.0,1.0,1.0,0.0,,,B1,2022-2023
+2023-02-25,KRC Genk,KV Oostende,10,12,5,4,4,4,13,15,2.0,3.0,,,,,B1,2022-2023
+2023-02-25,KVC Westerlo,Royale Union Saint-Gilloise,9,20,6,8,4,6,9,9,2.0,2.0,,,,,B1,2022-2023
+2023-02-26,Club Brugge KV,KAA Gent,16,6,6,2,9,3,9,10,2.0,0.0,,,,,B1,2022-2023
+2023-02-26,Oud-Heverlee Leuven,Royal Antwerp FC,9,18,4,4,3,7,9,13,1.0,0.0,,,,,B1,2022-2023
+2023-02-26,RSC Anderlecht,Standard Liège,15,8,8,4,7,3,5,8,2.0,2.0,,,,,B1,2022-2023
+2023-02-26,RC Sporting Charleroi,Sint-Truidense VV,17,11,7,2,4,2,15,13,0.0,2.0,,,,,B1,2022-2023
+2023-03-03,KV Oostende,Club Brugge KV,13,11,6,3,0,5,12,16,2.0,2.0,,,,,B1,2022-2023
+2023-03-04,KV Kortrijk,RC Sporting Charleroi,18,11,3,6,4,2,7,12,0.0,4.0,,,,,B1,2022-2023
+2023-03-04,Cercle Brugge,RFC Seraing,19,3,7,2,11,3,14,10,1.0,1.0,,,,,B1,2022-2023
+2023-03-04,Oud-Heverlee Leuven,SV Zulte Waregem,13,12,8,4,3,5,11,10,2.0,1.0,,,,,B1,2022-2023
+2023-03-04,Standard Liège,KVC Westerlo,23,7,5,0,7,1,12,11,0.0,2.0,1.0,0.0,,,B1,2022-2023
+2023-03-05,Sint-Truidense VV,KRC Genk,11,10,5,5,2,2,17,11,3.0,1.0,,,,,B1,2022-2023
+2023-03-05,Royal Antwerp FC,KV Mechelen,16,10,10,5,6,3,9,11,1.0,2.0,,,,,B1,2022-2023
+2023-03-05,KAA Gent,RSC Anderlecht,14,10,5,3,4,2,8,9,1.0,4.0,0.0,1.0,,,B1,2022-2023
+2023-03-05,Royale Union Saint-Gilloise,KAS Eupen,12,8,6,3,5,2,11,16,1.0,1.0,,,,,B1,2022-2023
+2023-03-10,RC Sporting Charleroi,Oud-Heverlee Leuven,25,9,5,2,7,4,8,11,1.0,4.0,,,,,B1,2022-2023
+2023-03-11,KV Mechelen,Sint-Truidense VV,8,7,4,1,8,4,10,16,1.0,2.0,,,,,B1,2022-2023
+2023-03-11,KAS Eupen,KV Oostende,29,15,10,9,9,2,9,10,0.0,4.0,0.0,1.0,,,B1,2022-2023
+2023-03-11,KVC Westerlo,KV Kortrijk,10,19,7,6,7,7,9,10,3.0,2.0,,,,,B1,2022-2023
+2023-03-11,RFC Seraing,Royal Antwerp FC,8,18,1,5,4,5,15,12,3.0,1.0,1.0,0.0,,,B1,2022-2023
+2023-03-12,Club Brugge KV,Standard Liège,13,17,4,4,6,6,11,10,1.0,1.0,,,,,B1,2022-2023
+2023-03-12,SV Zulte Waregem,KAA Gent,11,12,4,8,4,1,14,11,1.0,1.0,,,,,B1,2022-2023
+2023-03-12,KRC Genk,Royale Union Saint-Gilloise,12,13,6,5,14,5,13,15,3.0,3.0,,,,,B1,2022-2023
+2023-03-12,RSC Anderlecht,Cercle Brugge,18,7,9,2,5,4,7,17,0.0,2.0,0.0,1.0,,,B1,2022-2023
+2023-03-17,Cercle Brugge,KRC Genk,18,11,4,2,6,9,5,9,2.0,1.0,,,,,B1,2022-2023
+2023-03-18,KV Kortrijk,Club Brugge KV,10,13,6,3,1,6,11,11,2.0,2.0,,,,,B1,2022-2023
+2023-03-18,KV Oostende,KVC Westerlo,22,7,12,2,7,5,9,9,1.0,2.0,,,,,B1,2022-2023
+2023-03-18,Sint-Truidense VV,RFC Seraing,12,9,7,1,4,2,14,8,2.0,2.0,,,,,B1,2022-2023
+2023-03-18,Standard Liège,SV Zulte Waregem,21,9,8,5,6,5,14,12,3.0,2.0,,,,,B1,2022-2023
+2023-03-19,Royal Antwerp FC,RC Sporting Charleroi,29,5,8,2,8,0,8,9,0.0,4.0,0.0,1.0,,,B1,2022-2023
+2023-03-19,Oud-Heverlee Leuven,RSC Anderlecht,9,12,5,5,4,7,11,13,3.0,2.0,,,,,B1,2022-2023
+2023-03-19,Royale Union Saint-Gilloise,KV Mechelen,15,6,6,1,3,5,11,11,1.0,2.0,,,,,B1,2022-2023
+2023-03-19,KAA Gent,KAS Eupen,25,10,5,3,16,5,6,10,2.0,0.0,,,,,B1,2022-2023
+2023-03-31,SV Zulte Waregem,Royal Antwerp FC,7,13,3,5,6,5,11,15,4.0,1.0,,,,,B1,2022-2023
+2023-04-01,Cercle Brugge,KV Kortrijk,19,6,6,4,6,2,17,13,2.0,2.0,,,,,B1,2022-2023
+2023-04-01,KVC Westerlo,RC Sporting Charleroi,17,12,7,5,7,4,5,16,2.0,5.0,,,,,B1,2022-2023
+2023-04-01,RFC Seraing,KAA Gent,6,18,0,10,3,13,5,6,0.0,1.0,,,,,B1,2022-2023
+2023-04-01,KV Oostende,Standard Liège,15,13,4,7,6,7,11,6,3.0,1.0,1.0,0.0,,,B1,2022-2023
+2023-04-02,KRC Genk,Oud-Heverlee Leuven,22,11,8,5,11,5,10,9,4.0,2.0,,,,,B1,2022-2023
+2023-04-02,KAS Eupen,RSC Anderlecht,9,13,1,4,2,6,16,8,1.0,0.0,,,,,B1,2022-2023
+2023-04-02,KV Mechelen,Club Brugge KV,4,18,1,5,1,8,9,6,1.0,1.0,,,,,B1,2022-2023
+2023-04-02,Royale Union Saint-Gilloise,Sint-Truidense VV,11,6,7,1,13,1,14,8,2.0,3.0,0.0,1.0,,,B1,2022-2023
+2023-04-07,Club Brugge KV,RFC Seraing,26,4,11,0,21,1,11,9,,,,,,,B1,2022-2023
+2023-04-08,KV Kortrijk,KAS Eupen,14,13,2,3,7,6,17,9,3.0,2.0,,,,,B1,2022-2023
+2023-04-08,Oud-Heverlee Leuven,KV Mechelen,17,16,11,6,2,8,8,13,1.0,3.0,,,,,B1,2022-2023
+2023-04-08,RC Sporting Charleroi,SV Zulte Waregem,18,8,8,5,3,5,11,15,3.0,1.0,,,,,B1,2022-2023
+2023-04-08,KAA Gent,Royale Union Saint-Gilloise,10,4,3,2,4,3,4,11,0.0,2.0,,,,,B1,2022-2023
+2023-04-09,RSC Anderlecht,KVC Westerlo,16,14,2,6,10,1,11,18,2.0,3.0,,,,,B1,2022-2023
+2023-04-09,Royal Antwerp FC,Cercle Brugge,11,9,4,4,6,1,10,18,1.0,3.0,,,,,B1,2022-2023
+2023-04-09,Standard Liège,KRC Genk,11,20,4,8,4,7,17,13,3.0,3.0,,,,,B1,2022-2023
+2023-04-09,Sint-Truidense VV,KV Oostende,18,11,11,3,6,2,14,12,1.0,1.0,,,,,B1,2022-2023
+2023-04-14,Standard Liège,RC Sporting Charleroi,11,17,6,5,5,5,15,11,4.0,1.0,1.0,0.0,,,B1,2022-2023
+2023-04-15,KAS Eupen,SV Zulte Waregem,11,16,3,9,4,3,15,13,3.0,1.0,,,,,B1,2022-2023
+2023-04-15,Cercle Brugge,Sint-Truidense VV,10,5,5,1,4,1,11,15,3.0,0.0,,,,,B1,2022-2023
+2023-04-15,KV Oostende,Oud-Heverlee Leuven,13,19,3,8,7,6,10,8,1.0,0.0,,,,,B1,2022-2023
+2023-04-15,KVC Westerlo,Club Brugge KV,7,23,1,12,4,13,12,8,4.0,3.0,,,,,B1,2022-2023
+2023-04-16,KRC Genk,RSC Anderlecht,14,13,9,6,7,2,16,17,2.0,3.0,,,,,B1,2022-2023
+2023-04-16,KV Mechelen,KAA Gent,3,14,1,5,3,6,10,7,1.0,1.0,,,,,B1,2022-2023
+2023-04-16,Royal Antwerp FC,KV Kortrijk,14,5,4,2,12,2,13,13,0.0,1.0,,,,,B1,2022-2023
+2023-04-16,Royale Union Saint-Gilloise,RFC Seraing,19,6,8,2,11,2,9,13,1.0,1.0,,,,,B1,2022-2023
+2023-04-22,RFC Seraing,KVC Westerlo,10,12,4,1,6,4,14,12,5.0,1.0,,,,,B1,2022-2023
+2023-04-23,Sint-Truidense VV,Royal Antwerp FC,9,10,0,4,6,2,11,6,2.0,0.0,,,,,B1,2022-2023
+2023-04-23,Club Brugge KV,KAS Eupen,32,6,13,0,4,4,8,15,0.0,3.0,,,,,B1,2022-2023
+2023-04-23,KAA Gent,KV Oostende,19,13,4,6,3,5,4,10,2.0,3.0,,,,,B1,2022-2023
+2023-04-23,KV Kortrijk,Royale Union Saint-Gilloise,9,16,5,8,0,3,9,13,1.0,3.0,,,,,B1,2022-2023
+2023-04-23,Oud-Heverlee Leuven,Standard Liège,12,14,5,5,6,7,9,9,0.0,2.0,,,,,B1,2022-2023
+2023-04-23,RC Sporting Charleroi,KRC Genk,13,4,6,2,6,4,16,13,3.0,1.0,,,,,B1,2022-2023
+2023-04-23,RSC Anderlecht,KV Mechelen,20,15,9,7,6,3,11,12,,,,,,,B1,2022-2023
+2023-04-23,SV Zulte Waregem,Cercle Brugge,12,22,3,8,3,3,16,21,2.0,4.0,,,,,B1,2022-2023

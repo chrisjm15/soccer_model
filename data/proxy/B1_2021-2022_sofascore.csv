@@ -1,0 +1,313 @@
+date,home_team,away_team,home_shots,away_shots,home_sot,away_sot,home_corners,away_corners,home_fouls,away_fouls,home_yellow,away_yellow,home_red,away_red,home_xg,away_xg,league,season
+2021-07-23,Standard Liège,KRC Genk,17,17,4,5,7,3,11,9,1.0,2.0,,,,,B1,2021-2022
+2021-07-24,Oud-Heverlee Leuven,SV Zulte Waregem,13,10,4,4,0,4,12,17,4.0,6.0,0.0,1.0,,,B1,2021-2022
+2021-07-24,K. Beerschot V.A.,Cercle Brugge,10,6,1,2,8,3,8,16,2.0,1.0,,,,,B1,2021-2022
+2021-07-24,KV Kortrijk,RFC Seraing,9,9,4,4,2,2,16,15,4.0,2.0,,,,,B1,2021-2022
+2021-07-24,KV Oostende,RC Sporting Charleroi,11,10,3,6,9,2,13,9,3.0,1.0,,,,,B1,2021-2022
+2021-07-25,KV Mechelen,Royal Antwerp FC,18,10,9,5,13,2,12,10,2.0,2.0,,,,,B1,2021-2022
+2021-07-25,Club Brugge KV,KAS Eupen,21,13,11,5,10,3,9,13,3.0,8.0,,,,,B1,2021-2022
+2021-07-25,RSC Anderlecht,Royale Union Saint-Gilloise,9,8,2,5,5,2,11,7,3.0,3.0,,,,,B1,2021-2022
+2021-07-25,Sint-Truidense VV,KAA Gent,6,13,2,4,1,8,12,6,2.0,1.0,,,,,B1,2021-2022
+2021-07-30,KRC Genk,KV Oostende,24,18,10,7,9,5,2,12,0.0,1.0,,,,,B1,2021-2022
+2021-07-31,RC Sporting Charleroi,Sint-Truidense VV,10,7,0,3,6,5,12,16,2.0,4.0,,,,,B1,2021-2022
+2021-07-31,Cercle Brugge,Oud-Heverlee Leuven,17,10,3,1,2,3,21,8,3.0,1.0,,,,,B1,2021-2022
+2021-07-31,RFC Seraing,KV Mechelen,10,10,4,4,6,6,18,13,3.0,3.0,,,,,B1,2021-2022
+2021-07-31,KAS Eupen,RSC Anderlecht,14,10,5,3,3,2,11,9,1.0,1.0,,,,,B1,2021-2022
+2021-08-01,Royale Union Saint-Gilloise,Club Brugge KV,14,12,3,5,2,7,12,14,2.0,2.0,,,,,B1,2021-2022
+2021-08-01,SV Zulte Waregem,Standard Liège,17,16,3,5,5,6,10,19,2.0,4.0,,,,,B1,2021-2022
+2021-08-01,KAA Gent,K. Beerschot V.A.,24,11,5,7,7,8,8,13,1.0,0.0,,,,,B1,2021-2022
+2021-08-01,Royal Antwerp FC,KV Kortrijk,13,13,3,5,6,5,11,9,2.0,5.0,,,,,B1,2021-2022
+2021-08-06,Club Brugge KV,Cercle Brugge,13,5,3,1,7,0,11,11,2.0,4.0,,,,,B1,2021-2022
+2021-08-07,K. Beerschot V.A.,Royale Union Saint-Gilloise,8,15,2,6,9,3,12,12,2.0,3.0,,,,,B1,2021-2022
+2021-08-07,KV Mechelen,KAS Eupen,12,16,4,4,7,3,6,11,0.0,2.0,,,,,B1,2021-2022
+2021-08-07,Sint-Truidense VV,SV Zulte Waregem,11,12,1,7,8,3,12,12,1.0,2.0,,,,,B1,2021-2022
+2021-08-07,KV Kortrijk,KRC Genk,8,18,3,6,4,4,7,5,1.0,3.0,,,,,B1,2021-2022
+2021-08-08,Standard Liège,Royal Antwerp FC,20,12,9,6,9,1,11,16,3.0,5.0,,,,,B1,2021-2022
+2021-08-08,Oud-Heverlee Leuven,RC Sporting Charleroi,21,21,4,9,7,9,6,13,1.0,1.0,,,,,B1,2021-2022
+2021-08-08,RSC Anderlecht,RFC Seraing,19,4,7,1,8,2,14,14,2.0,2.0,0.0,1.0,,,B1,2021-2022
+2021-08-08,KV Oostende,KAA Gent,7,19,3,1,6,6,9,9,3.0,1.0,,,,,B1,2021-2022
+2021-08-13,RC Sporting Charleroi,Royal Antwerp FC,23,10,7,7,12,1,6,6,1.0,2.0,,,,,B1,2021-2022
+2021-08-14,Royale Union Saint-Gilloise,KV Kortrijk,24,2,8,2,10,2,11,20,0.0,6.0,0.0,1.0,,,B1,2021-2022
+2021-08-14,KAS Eupen,Sint-Truidense VV,8,18,5,5,5,8,18,10,4.0,2.0,,,,,B1,2021-2022
+2021-08-14,RFC Seraing,KV Oostende,10,12,3,7,3,6,7,17,4.0,5.0,0.0,1.0,,,B1,2021-2022
+2021-08-14,KRC Genk,Oud-Heverlee Leuven,21,15,8,6,7,6,11,15,1.0,5.0,,,,,B1,2021-2022
+2021-08-15,K. Beerschot V.A.,Standard Liège,14,8,4,1,3,3,16,14,2.0,1.0,,,,,B1,2021-2022
+2021-08-15,KAA Gent,KV Mechelen,21,6,8,3,13,2,10,11,2.0,2.0,,,,,B1,2021-2022
+2021-08-15,Cercle Brugge,RSC Anderlecht,8,17,2,6,7,7,9,11,2.0,0.0,,,,,B1,2021-2022
+2021-08-15,SV Zulte Waregem,Club Brugge KV,3,21,1,12,3,7,9,10,2.0,4.0,0.0,1.0,,,B1,2021-2022
+2022-05-12,RSC Anderlecht,Royal Antwerp FC,13,7,3,1,9,2,12,12,2.0,1.0,,,,,B1,2021-2022
+2021-08-20,Standard Liège,KV Oostende,17,9,5,1,6,3,13,18,4.0,4.0,0.0,1.0,,,B1,2021-2022
+2021-08-21,RFC Seraing,Cercle Brugge,10,9,5,5,5,3,14,20,2.0,3.0,,,,,B1,2021-2022
+2021-08-21,Oud-Heverlee Leuven,KAS Eupen,14,21,6,8,2,6,8,12,2.0,3.0,,,,,B1,2021-2022
+2021-08-21,Sint-Truidense VV,KV Kortrijk,24,11,4,2,6,7,16,6,3.0,3.0,,,,,B1,2021-2022
+2021-08-22,SV Zulte Waregem,RC Sporting Charleroi,20,17,6,4,8,6,10,9,2.0,1.0,,,,,B1,2021-2022
+2021-08-22,Club Brugge KV,K. Beerschot V.A.,13,9,5,4,8,1,10,16,3.0,6.0,1.0,1.0,,,B1,2021-2022
+2021-08-22,KV Mechelen,Royale Union Saint-Gilloise,12,13,4,5,6,7,22,12,2.0,3.0,,,,,B1,2021-2022
+2021-09-22,Royal Antwerp FC,KRC Genk,10,16,7,7,4,8,11,12,5.0,3.0,1.0,0.0,,,B1,2021-2022
+2021-09-23,RSC Anderlecht,KAA Gent,13,11,5,2,7,3,9,14,2.0,2.0,,,,,B1,2021-2022
+2022-05-15,Royal Antwerp FC,Club Brugge KV,15,8,4,3,4,6,16,7,4.0,3.0,,,,,B1,2021-2022
+2022-05-15,KRC Genk,KAA Gent,8,9,2,4,3,5,14,13,1.0,3.0,,,,,B1,2021-2022
+2022-05-15,RSC Anderlecht,Royale Union Saint-Gilloise,9,12,1,4,4,1,13,15,2.0,2.0,1.0,0.0,,,B1,2021-2022
+2021-08-27,KV Kortrijk,KV Mechelen,9,14,5,5,5,7,9,21,2.0,3.0,,,,,B1,2021-2022
+2021-08-28,RC Sporting Charleroi,K. Beerschot V.A.,24,6,11,3,3,5,15,11,2.0,5.0,0.0,2.0,,,B1,2021-2022
+2021-08-28,Cercle Brugge,Sint-Truidense VV,25,7,6,2,9,1,8,12,1.0,2.0,0.0,1.0,,,B1,2021-2022
+2021-08-28,KAS Eupen,RFC Seraing,15,9,2,4,7,1,8,5,3.0,1.0,,,,,B1,2021-2022
+2021-08-28,Royale Union Saint-Gilloise,Standard Liège,16,10,4,0,2,2,10,17,1.0,5.0,,,,,B1,2021-2022
+2021-08-29,KAA Gent,Club Brugge KV,11,7,6,3,1,6,18,12,2.0,2.0,,,,,B1,2021-2022
+2021-08-29,Royal Antwerp FC,Oud-Heverlee Leuven,14,22,6,6,7,13,8,10,4.0,4.0,0.0,1.0,,,B1,2021-2022
+2021-08-29,KRC Genk,RSC Anderlecht,12,16,3,0,3,7,9,8,1.0,5.0,,,,,B1,2021-2022
+2021-08-29,KV Oostende,SV Zulte Waregem,22,12,3,6,11,1,13,17,5.0,3.0,,,,,B1,2021-2022
+2022-05-21,KAA Gent,RC Sporting Charleroi,17,10,9,7,5,7,12,9,1.0,2.0,,,,,B1,2021-2022
+2022-05-21,KV Mechelen,KRC Genk,10,18,3,5,3,7,12,21,2.0,2.0,,,,,B1,2021-2022
+2022-05-22,Royale Union Saint-Gilloise,Royal Antwerp FC,13,10,5,5,5,5,15,5,3.0,1.0,,,,,B1,2021-2022
+2022-05-22,Club Brugge KV,RSC Anderlecht,11,14,4,6,5,2,5,16,2.0,2.0,,,,,B1,2021-2022
+2021-09-10,Club Brugge KV,KV Oostende,32,4,7,2,10,4,11,14,0.0,5.0,0.0,1.0,,,B1,2021-2022
+2021-09-11,KAS Eupen,Royal Antwerp FC,17,14,4,6,7,5,8,9,1.0,5.0,,,,,B1,2021-2022
+2021-09-11,SV Zulte Waregem,Cercle Brugge,4,18,2,8,2,8,13,7,1.0,2.0,1.0,0.0,,,B1,2021-2022
+2021-09-12,RSC Anderlecht,KV Mechelen,15,8,9,3,5,3,9,5,1.0,0.0,,,,,B1,2021-2022
+2021-09-12,KAA Gent,RC Sporting Charleroi,24,13,10,4,13,3,7,18,2.0,5.0,0.0,1.0,,,B1,2021-2022
+2021-09-12,RFC Seraing,Standard Liège,19,7,6,3,8,2,15,16,4.0,7.0,0.0,1.0,,,B1,2021-2022
+2021-09-12,KRC Genk,Royale Union Saint-Gilloise,18,18,5,7,6,4,8,13,1.0,1.0,0.0,1.0,,,B1,2021-2022
+2021-09-12,Oud-Heverlee Leuven,KV Kortrijk,17,14,5,8,3,4,8,19,3.0,6.0,0.0,1.0,,,B1,2021-2022
+2021-09-13,K. Beerschot V.A.,Sint-Truidense VV,14,6,2,3,5,1,14,18,4.0,3.0,,,,,B1,2021-2022
+2021-09-17,Cercle Brugge,KAS Eupen,12,16,3,8,4,5,10,17,2.0,3.0,,,,,B1,2021-2022
+2021-09-18,KV Oostende,K. Beerschot V.A.,18,12,12,4,8,5,20,11,4.0,2.0,,,,,B1,2021-2022
+2021-09-18,KV Mechelen,Oud-Heverlee Leuven,8,14,4,5,2,6,21,10,5.0,6.0,0.0,1.0,,,B1,2021-2022
+2021-09-18,Royale Union Saint-Gilloise,SV Zulte Waregem,20,11,6,5,11,4,18,12,2.0,2.0,0.0,1.0,,,B1,2021-2022
+2021-09-18,RC Sporting Charleroi,Club Brugge KV,17,13,5,4,8,8,3,9,1.0,2.0,,,,,B1,2021-2022
+2021-09-19,Sint-Truidense VV,KRC Genk,8,8,3,2,6,2,15,10,4.0,1.0,,,,,B1,2021-2022
+2021-09-19,Royal Antwerp FC,RFC Seraing,19,11,6,2,10,6,13,7,1.0,1.0,,,,,B1,2021-2022
+2021-09-19,Standard Liège,RSC Anderlecht,7,12,1,4,6,4,17,11,3.0,4.0,2.0,0.0,,,B1,2021-2022
+2021-09-19,KV Kortrijk,KAA Gent,7,17,3,4,3,7,18,15,4.0,3.0,,,,,B1,2021-2022
+2021-09-24,Club Brugge KV,Oud-Heverlee Leuven,31,5,9,1,14,1,8,10,1.0,2.0,,,,,B1,2021-2022
+2021-09-25,K. Beerschot V.A.,KAS Eupen,7,16,1,5,4,7,10,9,5.0,4.0,2.0,0.0,,,B1,2021-2022
+2021-09-25,SV Zulte Waregem,KV Kortrijk,12,12,3,3,3,5,16,10,5.0,2.0,,,,,B1,2021-2022
+2021-09-25,Standard Liège,Sint-Truidense VV,7,12,1,4,2,1,20,20,2.0,4.0,,,,,B1,2021-2022
+2021-09-26,Royale Union Saint-Gilloise,Royal Antwerp FC,19,12,10,5,10,7,14,7,3.0,3.0,,,,,B1,2021-2022
+2021-09-26,KAA Gent,Cercle Brugge,12,11,6,4,8,6,20,18,3.0,5.0,,,,,B1,2021-2022
+2021-09-26,KV Oostende,RSC Anderlecht,9,18,5,6,3,3,11,7,2.0,1.0,0.0,1.0,,,B1,2021-2022
+2021-09-26,KRC Genk,RFC Seraing,12,5,8,2,5,3,12,9,3.0,2.0,,,,,B1,2021-2022
+2021-09-26,RC Sporting Charleroi,KV Mechelen,12,11,1,5,10,4,9,10,1.0,3.0,,,,,B1,2021-2022
+2021-10-01,KV Mechelen,Standard Liège,16,16,8,4,5,5,9,17,2.0,3.0,,,,,B1,2021-2022
+2021-10-02,KV Kortrijk,RC Sporting Charleroi,24,21,9,11,5,6,14,8,2.0,4.0,,,,,B1,2021-2022
+2021-10-02,Cercle Brugge,Royale Union Saint-Gilloise,8,11,2,5,4,3,13,13,2.0,2.0,,,,,B1,2021-2022
+2021-10-02,Sint-Truidense VV,KV Oostende,14,10,4,1,5,4,15,10,2.0,1.0,,,,,B1,2021-2022
+2021-10-02,Oud-Heverlee Leuven,K. Beerschot V.A.,17,14,7,4,10,4,13,16,3.0,4.0,1.0,0.0,,,B1,2021-2022
+2021-10-03,RSC Anderlecht,Club Brugge KV,18,11,4,4,7,6,8,12,2.0,4.0,,,,,B1,2021-2022
+2021-10-03,RFC Seraing,SV Zulte Waregem,26,9,16,4,7,3,5,9,,,0.0,1.0,,,B1,2021-2022
+2021-10-03,Royal Antwerp FC,KAA Gent,11,13,5,3,6,7,6,12,1.0,3.0,0.0,1.0,,,B1,2021-2022
+2021-10-03,KAS Eupen,KRC Genk,12,10,7,4,5,4,18,11,2.0,1.0,1.0,0.0,,,B1,2021-2022
+2021-10-15,Club Brugge KV,KV Kortrijk,17,11,6,0,4,1,13,9,3.0,5.0,,,,,B1,2021-2022
+2021-10-16,Royale Union Saint-Gilloise,RFC Seraing,21,10,9,4,10,2,18,8,3.0,2.0,1.0,0.0,,,B1,2021-2022
+2021-10-16,KV Oostende,Cercle Brugge,12,12,3,4,4,4,9,15,1.0,4.0,,,,,B1,2021-2022
+2021-10-16,SV Zulte Waregem,Royal Antwerp FC,13,14,8,3,3,9,9,10,2.0,2.0,,,,,B1,2021-2022
+2021-10-16,Standard Liège,Oud-Heverlee Leuven,18,13,6,7,5,3,16,9,2.0,1.0,,,,,B1,2021-2022
+2021-10-17,Sint-Truidense VV,RSC Anderlecht,27,10,9,6,6,3,13,10,2.0,0.0,,,,,B1,2021-2022
+2021-10-17,K. Beerschot V.A.,KV Mechelen,16,10,6,5,6,9,9,10,0.0,3.0,,,,,B1,2021-2022
+2021-10-17,RC Sporting Charleroi,KRC Genk,12,12,3,8,7,8,5,9,,,,,,,B1,2021-2022
+2021-10-17,KAA Gent,KAS Eupen,21,7,13,3,6,2,16,9,1.0,4.0,,,,,B1,2021-2022
+2021-10-22,RFC Seraing,RC Sporting Charleroi,11,12,1,8,7,1,12,13,3.0,1.0,,,,,B1,2021-2022
+2021-10-23,Cercle Brugge,Standard Liège,8,4,5,2,6,3,15,22,2.0,7.0,,,,,B1,2021-2022
+2021-10-23,KV Kortrijk,KV Oostende,16,12,5,0,5,7,9,13,2.0,2.0,,,,,B1,2021-2022
+2021-10-23,KV Mechelen,SV Zulte Waregem,17,14,7,3,11,7,6,8,0.0,2.0,,,,,B1,2021-2022
+2021-10-23,KAS Eupen,Royale Union Saint-Gilloise,20,12,5,4,8,2,8,21,1.0,3.0,,,,,B1,2021-2022
+2021-10-24,Royal Antwerp FC,Club Brugge KV,8,13,5,5,8,8,16,10,2.0,4.0,1.0,1.0,,,B1,2021-2022
+2021-10-24,RSC Anderlecht,K. Beerschot V.A.,22,14,8,3,6,4,9,11,2.0,3.0,,,,,B1,2021-2022
+2021-10-24,KRC Genk,KAA Gent,13,13,5,6,3,1,14,16,2.0,2.0,,,,,B1,2021-2022
+2021-10-24,Oud-Heverlee Leuven,Sint-Truidense VV,12,13,7,5,3,6,8,13,0.0,3.0,0.0,1.0,,,B1,2021-2022
+2021-10-29,KV Oostende,KV Mechelen,14,8,4,4,7,1,16,14,6.0,3.0,1.0,0.0,,,B1,2021-2022
+2021-10-30,RC Sporting Charleroi,KAS Eupen,21,7,7,3,6,5,11,14,0.0,2.0,,,,,B1,2021-2022
+2021-10-30,K. Beerschot V.A.,RFC Seraing,21,10,8,2,9,8,11,11,0.0,4.0,,,,,B1,2021-2022
+2021-10-30,Standard Liège,KV Kortrijk,15,7,5,3,8,2,13,15,2.0,5.0,,,,,B1,2021-2022
+2021-10-30,Sint-Truidense VV,Club Brugge KV,11,11,4,5,9,2,16,11,3.0,3.0,,,,,B1,2021-2022
+2021-10-31,SV Zulte Waregem,KRC Genk,6,20,2,10,4,4,10,7,2.0,3.0,,,,,B1,2021-2022
+2021-10-31,Cercle Brugge,Royal Antwerp FC,12,10,6,3,6,3,13,15,4.0,5.0,,,,,B1,2021-2022
+2021-10-31,RSC Anderlecht,Oud-Heverlee Leuven,17,14,5,9,10,5,12,3,1.0,1.0,2.0,0.0,,,B1,2021-2022
+2021-10-31,KAA Gent,Royale Union Saint-Gilloise,10,10,4,3,7,6,8,18,2.0,4.0,,,,,B1,2021-2022
+2021-11-05,Oud-Heverlee Leuven,KV Oostende,9,16,5,5,9,8,6,12,3.0,3.0,1.0,0.0,,,B1,2021-2022
+2021-11-06,KAS Eupen,SV Zulte Waregem,7,9,2,2,4,6,13,8,3.0,2.0,,,,,B1,2021-2022
+2021-11-06,KV Kortrijk,K. Beerschot V.A.,21,9,7,4,11,6,10,16,1.0,5.0,,,,,B1,2021-2022
+2021-11-06,KV Mechelen,Sint-Truidense VV,9,12,1,1,1,4,6,15,1.0,5.0,0.0,1.0,,,B1,2021-2022
+2021-11-06,Royale Union Saint-Gilloise,RC Sporting Charleroi,14,11,5,1,4,4,9,5,1.0,2.0,,,,,B1,2021-2022
+2021-11-07,Club Brugge KV,Standard Liège,11,7,4,2,5,4,13,25,2.0,2.0,,,,,B1,2021-2022
+2021-11-07,RFC Seraing,KAA Gent,8,8,2,4,4,3,9,16,2.0,2.0,,,,,B1,2021-2022
+2021-11-07,Royal Antwerp FC,RSC Anderlecht,12,9,4,3,2,8,7,9,0.0,3.0,,,,,B1,2021-2022
+2021-11-07,KRC Genk,Cercle Brugge,8,17,4,7,5,6,18,13,1.0,0.0,,,,,B1,2021-2022
+2021-11-19,KV Mechelen,Club Brugge KV,11,17,4,5,11,3,18,11,3.0,1.0,,,,,B1,2021-2022
+2021-11-20,Cercle Brugge,RC Sporting Charleroi,24,11,7,4,3,3,13,13,2.0,4.0,,,,,B1,2021-2022
+2021-11-20,Oud-Heverlee Leuven,RFC Seraing,10,12,5,3,6,1,13,11,3.0,3.0,,,,,B1,2021-2022
+2021-11-20,SV Zulte Waregem,KAA Gent,10,16,3,4,5,6,11,18,4.0,4.0,,,,,B1,2021-2022
+2021-11-20,Standard Liège,KAS Eupen,18,13,6,2,6,8,6,13,1.0,2.0,,,,,B1,2021-2022
+2021-11-21,RSC Anderlecht,KV Kortrijk,22,11,3,4,10,2,8,15,0.0,4.0,1.0,0.0,,,B1,2021-2022
+2021-11-21,Sint-Truidense VV,Royal Antwerp FC,12,12,7,4,5,5,17,12,2.0,0.0,,,,,B1,2021-2022
+2021-11-21,KV Oostende,Royale Union Saint-Gilloise,6,16,1,8,5,5,11,6,1.0,0.0,,,,,B1,2021-2022
+2021-11-21,K. Beerschot V.A.,KRC Genk,10,19,3,4,4,7,10,5,1.0,1.0,,,,,B1,2021-2022
+2021-11-26,Royale Union Saint-Gilloise,Oud-Heverlee Leuven,14,6,2,5,5,2,13,13,3.0,3.0,,,,,B1,2021-2022
+2021-11-27,RFC Seraing,Sint-Truidense VV,9,11,2,6,2,6,12,16,,,,,,,B1,2021-2022
+2021-11-27,Cercle Brugge,KV Mechelen,19,4,9,3,6,2,12,15,1.0,2.0,,,,,B1,2021-2022
+2021-11-27,KAS Eupen,KV Kortrijk,13,17,6,8,7,11,15,8,2.0,1.0,,,,,B1,2021-2022
+2021-11-27,RC Sporting Charleroi,RSC Anderlecht,8,14,3,6,4,8,12,7,1.0,1.0,,,,,B1,2021-2022
+2021-11-28,KRC Genk,Club Brugge KV,13,8,5,4,5,6,17,11,1.0,3.0,0.0,1.0,,,B1,2021-2022
+2021-11-28,SV Zulte Waregem,K. Beerschot V.A.,15,14,6,5,2,5,12,11,1.0,1.0,,,,,B1,2021-2022
+2021-11-28,KAA Gent,Standard Liège,20,8,8,5,12,4,10,5,0.0,2.0,,,,,B1,2021-2022
+2021-11-28,Royal Antwerp FC,KV Oostende,14,4,8,1,4,4,10,16,1.0,2.0,,,,,B1,2021-2022
+2021-12-03,Sint-Truidense VV,Royale Union Saint-Gilloise,9,13,3,9,2,6,10,10,2.0,2.0,,,,,B1,2021-2022
+2021-12-04,Oud-Heverlee Leuven,KAA Gent,14,16,2,8,5,11,5,18,2.0,5.0,,,,,B1,2021-2022
+2021-12-04,KV Kortrijk,Cercle Brugge,13,17,1,5,7,4,12,25,2.0,4.0,,,,,B1,2021-2022
+2021-12-04,KV Oostende,KAS Eupen,17,4,6,2,10,1,8,11,2.0,2.0,,,,,B1,2021-2022
+2021-12-04,Club Brugge KV,RFC Seraing,17,13,8,5,1,3,9,10,0.0,4.0,,,,,B1,2021-2022
+2021-12-05,K. Beerschot V.A.,Royal Antwerp FC,13,15,3,6,5,7,12,13,5.0,1.0,,,,,B1,2021-2022
+2021-12-05,RSC Anderlecht,SV Zulte Waregem,17,11,7,4,5,0,9,13,2.0,2.0,,,,,B1,2021-2022
+2021-12-05,Standard Liège,RC Sporting Charleroi,15,8,3,4,4,1,15,9,7.0,2.0,,,,,B1,2021-2022
+2021-12-05,KV Mechelen,KRC Genk,11,12,3,5,5,10,10,5,1.0,0.0,1.0,0.0,,,B1,2021-2022
+2021-12-10,RC Sporting Charleroi,KV Oostende,11,19,6,3,5,9,8,10,0.0,1.0,,,,,B1,2021-2022
+2021-12-11,KV Kortrijk,Oud-Heverlee Leuven,8,18,2,2,6,7,11,11,3.0,0.0,1.0,1.0,,,B1,2021-2022
+2021-12-11,KAS Eupen,K. Beerschot V.A.,16,21,7,4,5,7,8,10,1.0,1.0,,,,,B1,2021-2022
+2021-12-11,Sint-Truidense VV,Cercle Brugge,12,11,5,5,6,9,9,17,1.0,4.0,0.0,1.0,,,B1,2021-2022
+2021-12-11,RFC Seraing,RSC Anderlecht,5,17,1,7,2,9,8,8,0.0,2.0,1.0,0.0,,,B1,2021-2022
+2021-12-12,Royal Antwerp FC,Standard Liège,10,10,4,8,4,6,9,15,4.0,6.0,2.0,1.0,,,B1,2021-2022
+2021-12-12,Royale Union Saint-Gilloise,KV Mechelen,13,15,4,3,6,5,14,14,4.0,2.0,,,,,B1,2021-2022
+2021-12-12,KAA Gent,KRC Genk,13,12,6,3,5,4,9,11,1.0,2.0,,,,,B1,2021-2022
+2021-12-12,Club Brugge KV,SV Zulte Waregem,21,7,9,0,7,1,12,14,0.0,3.0,,,,,B1,2021-2022
+2021-12-14,Cercle Brugge,RFC Seraing,12,7,5,1,5,5,19,10,1.0,1.0,,,,,B1,2021-2022
+2021-12-14,KV Oostende,KV Kortrijk,11,13,0,4,6,4,11,10,1.0,1.0,,,,,B1,2021-2022
+2021-12-14,RSC Anderlecht,Sint-Truidense VV,18,8,4,2,6,6,9,17,0.0,2.0,,,,,B1,2021-2022
+2021-12-15,KV Mechelen,KAA Gent,12,24,5,9,4,10,13,10,2.0,0.0,,,,,B1,2021-2022
+2021-12-15,SV Zulte Waregem,Royale Union Saint-Gilloise,12,13,4,9,6,9,9,14,0.0,4.0,,,,,B1,2021-2022
+2021-12-15,Oud-Heverlee Leuven,Club Brugge KV,16,14,7,4,7,7,7,4,,,,,,,B1,2021-2022
+2021-12-16,Royal Antwerp FC,KAS Eupen,16,13,6,7,3,5,3,8,0.0,1.0,,,,,B1,2021-2022
+2021-12-16,KRC Genk,RC Sporting Charleroi,17,14,6,2,9,4,11,8,2.0,3.0,,,,,B1,2021-2022
+2022-03-02,Standard Liège,K. Beerschot V.A.,8,12,3,5,1,3,15,14,2.0,4.0,1.0,0.0,,,B1,2021-2022
+2021-12-17,RFC Seraing,KV Kortrijk,9,6,2,5,7,1,15,14,2.0,3.0,,,,,B1,2021-2022
+2021-12-18,K. Beerschot V.A.,KV Oostende,13,14,3,6,8,5,9,19,0.0,5.0,1.0,1.0,,,B1,2021-2022
+2021-12-18,Royale Union Saint-Gilloise,Cercle Brugge,18,10,5,5,7,2,14,15,4.0,3.0,,,,,B1,2021-2022
+2021-12-18,SV Zulte Waregem,KV Mechelen,19,11,6,6,9,5,11,14,2.0,2.0,,,,,B1,2021-2022
+2021-12-18,KAA Gent,Sint-Truidense VV,8,15,4,3,5,6,13,8,3.0,1.0,,,,,B1,2021-2022
+2021-12-19,Club Brugge KV,RSC Anderlecht,16,13,5,6,9,8,16,8,1.0,2.0,,,,,B1,2021-2022
+2021-12-19,KAS Eupen,RC Sporting Charleroi,24,9,8,4,4,1,16,7,4.0,0.0,,,,,B1,2021-2022
+2021-12-19,KRC Genk,Royal Antwerp FC,10,7,2,2,6,7,7,9,0.0,2.0,,,,,B1,2021-2022
+2021-12-19,Oud-Heverlee Leuven,Standard Liège,6,23,3,7,2,5,9,14,1.0,4.0,,,,,B1,2021-2022
+2021-12-26,Cercle Brugge,Club Brugge KV,12,12,5,6,4,7,16,11,3.0,3.0,0.0,1.0,,,B1,2021-2022
+2021-12-26,Standard Liège,SV Zulte Waregem,19,8,2,2,8,1,16,10,2.0,1.0,1.0,0.0,,,B1,2021-2022
+2021-12-26,Royale Union Saint-Gilloise,KAA Gent,6,10,0,2,5,6,11,11,0.0,3.0,,,,,B1,2021-2022
+2021-12-26,KV Oostende,KRC Genk,7,15,2,10,1,9,15,8,1.0,1.0,0.0,1.0,,,B1,2021-2022
+2021-12-27,KV Mechelen,RFC Seraing,18,19,6,4,6,10,12,5,4.0,3.0,,,,,B1,2021-2022
+2021-12-27,RC Sporting Charleroi,Oud-Heverlee Leuven,19,11,7,6,4,4,8,4,1.0,0.0,,,,,B1,2021-2022
+2021-12-27,K. Beerschot V.A.,RSC Anderlecht,5,18,2,10,4,7,15,10,2.0,0.0,1.0,0.0,,,B1,2021-2022
+2021-12-27,Sint-Truidense VV,KAS Eupen,13,9,4,1,6,2,12,16,1.0,3.0,,,,,B1,2021-2022
+2022-02-02,KV Kortrijk,Royal Antwerp FC,30,5,5,2,8,1,9,3,2.0,1.0,1.0,1.0,,,B1,2021-2022
+2022-01-14,KAA Gent,KV Kortrijk,22,13,5,7,6,6,9,19,1.0,5.0,,,,,B1,2021-2022
+2022-01-15,RFC Seraing,Royale Union Saint-Gilloise,14,9,4,6,7,0,10,15,2.0,1.0,0.0,1.0,,,B1,2021-2022
+2022-01-15,Club Brugge KV,Sint-Truidense VV,19,5,8,2,7,1,8,11,0.0,4.0,,,,,B1,2021-2022
+2022-01-16,Royal Antwerp FC,RC Sporting Charleroi,16,13,4,3,3,4,12,10,2.0,2.0,,,,,B1,2021-2022
+2022-01-16,KAS Eupen,Cercle Brugge,5,14,3,6,3,3,11,17,2.0,2.0,,,,,B1,2021-2022
+2022-01-16,RSC Anderlecht,Standard Liège,15,6,3,1,3,1,10,14,1.0,3.0,,,,,B1,2021-2022
+2022-01-16,KRC Genk,K. Beerschot V.A.,20,8,11,4,8,4,9,7,1.0,2.0,,,,,B1,2021-2022
+2022-02-09,SV Zulte Waregem,KV Oostende,12,17,7,3,6,8,10,14,0.0,1.0,,,,,B1,2021-2022
+2022-01-21,KV Oostende,Royal Antwerp FC,12,14,6,5,5,8,8,7,1.0,2.0,,,,,B1,2021-2022
+2022-01-22,KV Kortrijk,KAS Eupen,18,11,5,3,5,1,15,15,0.0,1.0,,,,,B1,2021-2022
+2022-01-22,K. Beerschot V.A.,Oud-Heverlee Leuven,15,17,12,5,8,5,14,13,1.0,3.0,,,,,B1,2021-2022
+2022-01-22,Sint-Truidense VV,RFC Seraing,14,9,6,1,6,1,14,6,2.0,2.0,,,,,B1,2021-2022
+2022-01-22,RC Sporting Charleroi,KAA Gent,12,8,4,4,4,4,13,12,1.0,1.0,,,,,B1,2021-2022
+2022-01-23,Standard Liège,Club Brugge KV,11,19,6,6,5,7,12,9,2.0,1.0,0.0,1.0,,,B1,2021-2022
+2022-01-23,Royale Union Saint-Gilloise,KRC Genk,8,8,5,2,5,6,15,11,3.0,0.0,,,,,B1,2021-2022
+2022-01-23,KV Mechelen,RSC Anderlecht,3,8,0,5,4,4,12,6,3.0,2.0,,,,,B1,2021-2022
+2022-01-23,Cercle Brugge,SV Zulte Waregem,12,11,5,4,3,5,14,10,3.0,4.0,,,,,B1,2021-2022
+2022-01-25,Royal Antwerp FC,Sint-Truidense VV,13,7,3,2,8,5,7,16,0.0,2.0,,,,,B1,2021-2022
+2022-01-25,KAA Gent,KV Oostende,17,4,6,2,5,3,9,15,1.0,3.0,,,,,B1,2021-2022
+2022-01-25,RC Sporting Charleroi,KV Kortrijk,19,7,10,2,6,2,14,11,2.0,3.0,,,,,B1,2021-2022
+2022-01-26,KAS Eupen,Standard Liège,16,14,3,4,11,2,7,9,1.0,2.0,,,,,B1,2021-2022
+2022-01-26,SV Zulte Waregem,Oud-Heverlee Leuven,11,10,4,3,6,2,6,10,2.0,2.0,,,,,B1,2021-2022
+2022-01-26,RFC Seraing,K. Beerschot V.A.,14,14,4,4,5,9,10,8,2.0,1.0,,,,,B1,2021-2022
+2022-01-26,RSC Anderlecht,Cercle Brugge,3,17,0,9,4,1,10,17,1.0,2.0,1.0,0.0,,,B1,2021-2022
+2022-01-27,Club Brugge KV,Royale Union Saint-Gilloise,10,17,1,6,4,9,14,14,1.0,4.0,,,,,B1,2021-2022
+2022-02-16,KRC Genk,KV Mechelen,25,6,9,2,12,5,5,6,,,0.0,1.0,,,B1,2021-2022
+2022-01-28,Sint-Truidense VV,RC Sporting Charleroi,18,14,3,2,10,4,12,9,1.0,1.0,,,,,B1,2021-2022
+2022-01-29,K. Beerschot V.A.,SV Zulte Waregem,18,8,7,3,13,1,12,16,1.0,3.0,,,,,B1,2021-2022
+2022-01-29,RFC Seraing,KAS Eupen,15,10,5,2,6,1,8,16,2.0,3.0,,,,,B1,2021-2022
+2022-01-29,Cercle Brugge,KV Oostende,10,11,2,3,5,4,14,14,1.0,2.0,,,,,B1,2021-2022
+2022-01-30,Royale Union Saint-Gilloise,RSC Anderlecht,6,9,5,3,5,2,15,14,3.0,1.0,,,,,B1,2021-2022
+2022-01-30,KAA Gent,Royal Antwerp FC,16,3,4,2,8,7,12,14,3.0,3.0,,,,,B1,2021-2022
+2022-01-30,Standard Liège,KV Mechelen,16,9,7,4,6,5,11,16,1.0,4.0,,,,,B1,2021-2022
+2022-01-30,KV Kortrijk,Club Brugge KV,8,17,1,6,3,4,10,13,2.0,1.0,,,,,B1,2021-2022
+2022-02-09,Oud-Heverlee Leuven,KRC Genk,22,12,6,7,4,3,18,8,2.0,3.0,0.0,1.0,,,B1,2021-2022
+2022-02-04,RC Sporting Charleroi,RFC Seraing,10,7,3,1,6,8,11,6,1.0,3.0,0.0,1.0,,,B1,2021-2022
+2022-02-05,KV Kortrijk,Sint-Truidense VV,12,11,3,4,6,2,18,18,3.0,4.0,,,,,B1,2021-2022
+2022-02-05,KV Oostende,Oud-Heverlee Leuven,12,8,3,4,6,2,11,13,2.0,1.0,,,,,B1,2021-2022
+2022-02-05,Standard Liège,Cercle Brugge,9,17,5,6,4,8,18,19,6.0,3.0,0.0,1.0,,,B1,2021-2022
+2022-02-05,Royal Antwerp FC,Royale Union Saint-Gilloise,14,16,2,6,6,4,8,14,3.0,3.0,,,,,B1,2021-2022
+2022-02-06,Club Brugge KV,KAA Gent,12,10,3,3,9,5,10,15,4.0,5.0,2.0,0.0,,,B1,2021-2022
+2022-02-06,KV Mechelen,K. Beerschot V.A.,11,11,4,2,6,8,12,15,0.0,3.0,1.0,0.0,,,B1,2021-2022
+2022-02-06,RSC Anderlecht,KAS Eupen,19,8,5,5,9,3,12,8,0.0,1.0,,,,,B1,2021-2022
+2022-02-06,KRC Genk,SV Zulte Waregem,13,10,5,1,5,4,12,8,2.0,2.0,,,,,B1,2021-2022
+2022-02-11,RFC Seraing,Royal Antwerp FC,8,20,3,5,1,9,14,11,1.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-02-12,KAS Eupen,KAA Gent,9,11,3,7,8,3,11,8,2.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-02-12,KV Mechelen,KV Oostende,11,4,4,1,7,3,1,13,0.0,1.0,,,,,B1,2021-2022
+2022-02-12,Oud-Heverlee Leuven,Cercle Brugge,10,15,5,5,5,5,13,14,2.0,4.0,,,,,B1,2021-2022
+2022-02-12,SV Zulte Waregem,RSC Anderlecht,13,11,4,5,6,5,8,6,1.0,1.0,,,,,B1,2021-2022
+2022-02-13,KRC Genk,Standard Liège,15,11,6,4,4,0,14,24,4.0,3.0,,,,,B1,2021-2022
+2022-02-13,Royale Union Saint-Gilloise,Sint-Truidense VV,10,13,1,5,5,4,17,14,5.0,2.0,,,,,B1,2021-2022
+2022-02-13,Club Brugge KV,RC Sporting Charleroi,10,14,5,3,5,5,7,9,1.0,1.0,,,,,B1,2021-2022
+2022-02-13,K. Beerschot V.A.,KV Kortrijk,10,13,3,4,3,7,15,10,2.0,3.0,,,,,B1,2021-2022
+2022-02-19,Cercle Brugge,K. Beerschot V.A.,26,7,10,2,10,2,14,11,1.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-02-19,KV Kortrijk,SV Zulte Waregem,17,16,10,3,1,5,8,11,1.0,4.0,0.0,1.0,,,B1,2021-2022
+2022-02-19,KV Oostende,Standard Liège,15,6,5,0,4,5,14,16,1.0,5.0,,,,,B1,2021-2022
+2022-02-19,RC Sporting Charleroi,Royale Union Saint-Gilloise,13,17,5,7,1,3,11,9,3.0,4.0,0.0,1.0,,,B1,2021-2022
+2022-02-20,Royal Antwerp FC,KV Mechelen,25,12,5,8,10,3,7,14,1.0,2.0,,,,,B1,2021-2022
+2022-02-20,KAS Eupen,Club Brugge KV,11,15,5,6,8,3,9,7,1.0,0.0,,,,,B1,2021-2022
+2022-02-20,RSC Anderlecht,KRC Genk,14,10,5,1,4,3,10,11,4.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-02-20,Sint-Truidense VV,Oud-Heverlee Leuven,10,8,4,3,5,8,11,7,3.0,3.0,0.0,1.0,,,B1,2021-2022
+2022-02-23,KAA Gent,RFC Seraing,13,8,5,3,3,8,8,5,1.0,2.0,,,,,B1,2021-2022
+2022-02-25,K. Beerschot V.A.,RC Sporting Charleroi,11,17,6,7,4,3,10,8,1.0,2.0,,,,,B1,2021-2022
+2022-02-26,Royale Union Saint-Gilloise,KAS Eupen,13,2,3,0,9,3,16,10,0.0,3.0,,,,,B1,2021-2022
+2022-02-26,KV Mechelen,Cercle Brugge,21,13,5,5,7,5,10,16,3.0,4.0,1.0,1.0,,,B1,2021-2022
+2022-02-26,KV Oostende,Sint-Truidense VV,11,8,2,1,4,4,9,14,1.0,2.0,,,,,B1,2021-2022
+2022-02-26,Oud-Heverlee Leuven,RSC Anderlecht,14,18,4,5,5,4,2,12,1.0,4.0,0.0,1.0,,,B1,2021-2022
+2022-02-27,Club Brugge KV,Royal Antwerp FC,17,8,9,3,7,3,18,11,3.0,2.0,,,,,B1,2021-2022
+2022-02-27,KRC Genk,KV Kortrijk,29,11,9,4,13,0,9,15,0.0,2.0,,,,,B1,2021-2022
+2022-02-27,Standard Liège,KAA Gent,13,10,4,4,2,5,19,14,5.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-02-27,SV Zulte Waregem,RFC Seraing,10,13,6,2,4,7,8,7,1.0,1.0,,,,,B1,2021-2022
+2022-03-04,Sint-Truidense VV,KV Mechelen,13,11,5,5,3,4,7,16,1.0,3.0,,,,,B1,2021-2022
+2022-03-05,Cercle Brugge,KRC Genk,17,17,6,6,11,2,10,10,,,,,,,B1,2021-2022
+2022-03-05,KV Kortrijk,Royale Union Saint-Gilloise,10,17,3,7,3,13,10,9,2.0,3.0,,,,,B1,2021-2022
+2022-03-05,RFC Seraing,Club Brugge KV,6,14,2,7,6,5,8,8,1.0,1.0,1.0,0.0,,,B1,2021-2022
+2022-03-06,Royal Antwerp FC,K. Beerschot V.A.,13,6,5,1,7,3,13,13,2.0,7.0,0.0,1.0,,,B1,2021-2022
+2022-03-06,RSC Anderlecht,KV Oostende,13,10,7,1,2,5,8,10,1.0,2.0,,,,,B1,2021-2022
+2022-03-06,RC Sporting Charleroi,Standard Liège,8,10,3,2,8,4,8,18,2.0,3.0,,,,,B1,2021-2022
+2022-03-06,KAA Gent,SV Zulte Waregem,27,11,10,5,10,0,5,8,0.0,3.0,,,,,B1,2021-2022
+2022-03-06,KAS Eupen,Oud-Heverlee Leuven,12,12,5,4,3,7,7,10,1.0,3.0,,,,,B1,2021-2022
+2022-03-11,Oud-Heverlee Leuven,Royale Union Saint-Gilloise,10,21,2,8,5,7,11,11,2.0,0.0,,,,,B1,2021-2022
+2022-03-12,KV Mechelen,RC Sporting Charleroi,9,14,3,5,4,3,12,6,2.0,4.0,,,,,B1,2021-2022
+2022-03-12,Cercle Brugge,KV Kortrijk,23,6,5,0,6,5,19,11,1.0,2.0,,,,,B1,2021-2022
+2022-03-12,SV Zulte Waregem,KAS Eupen,9,18,6,6,1,9,12,6,2.0,1.0,,,,,B1,2021-2022
+2022-03-12,KV Oostende,Club Brugge KV,16,10,4,5,6,4,11,8,1.0,2.0,,,,,B1,2021-2022
+2022-03-13,RSC Anderlecht,Royal Antwerp FC,15,12,10,5,6,3,12,13,3.0,4.0,,,,,B1,2021-2022
+2022-03-13,KRC Genk,Sint-Truidense VV,14,8,4,4,5,1,10,18,1.0,5.0,,,,,B1,2021-2022
+2022-03-13,K. Beerschot V.A.,KAA Gent,11,14,2,6,6,2,14,14,4.0,2.0,,,,,B1,2021-2022
+2022-03-13,Standard Liège,RFC Seraing,9,12,3,5,3,4,13,13,3.0,1.0,,,,,B1,2021-2022
+2022-03-18,Royale Union Saint-Gilloise,KV Oostende,18,7,7,4,9,1,17,12,1.0,5.0,,,,,B1,2021-2022
+2022-03-19,KAS Eupen,KV Mechelen,12,22,5,6,6,12,3,7,3.0,0.0,1.0,0.0,,,B1,2021-2022
+2022-03-19,RC Sporting Charleroi,Cercle Brugge,12,9,11,4,2,3,18,4,2.0,0.0,0.0,1.0,,,B1,2021-2022
+2022-03-19,RFC Seraing,Oud-Heverlee Leuven,11,11,3,5,3,3,11,12,2.0,1.0,,,,,B1,2021-2022
+2022-03-19,Royal Antwerp FC,SV Zulte Waregem,19,5,7,3,6,0,6,4,1.0,2.0,,,,,B1,2021-2022
+2022-03-20,Club Brugge KV,KRC Genk,14,10,5,2,10,6,9,15,1.0,4.0,0.0,1.0,,,B1,2021-2022
+2022-03-20,KV Kortrijk,Standard Liège,12,10,1,3,2,6,16,19,0.0,3.0,,,,,B1,2021-2022
+2022-03-20,KAA Gent,RSC Anderlecht,5,19,2,7,4,5,2,6,0.0,2.0,,,,,B1,2021-2022
+2022-03-20,Sint-Truidense VV,K. Beerschot V.A.,20,10,5,5,7,6,9,8,1.0,2.0,,,,,B1,2021-2022
+2022-04-01,K. Beerschot V.A.,Club Brugge KV,4,22,1,10,2,5,9,8,1.0,0.0,,,,,B1,2021-2022
+2022-04-02,SV Zulte Waregem,Sint-Truidense VV,9,15,0,7,1,4,12,13,3.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-04-02,KV Mechelen,KV Kortrijk,15,15,7,5,11,6,7,11,0.0,2.0,,,,,B1,2021-2022
+2022-04-02,KV Oostende,RFC Seraing,13,8,2,4,6,4,9,6,2.0,2.0,0.0,1.0,,,B1,2021-2022
+2022-04-02,Oud-Heverlee Leuven,Royal Antwerp FC,16,9,5,3,6,3,11,11,1.0,3.0,,,,,B1,2021-2022
+2022-04-03,Standard Liège,Royale Union Saint-Gilloise,5,13,1,5,4,7,18,12,4.0,2.0,,,,,B1,2021-2022
+2022-04-03,Cercle Brugge,KAA Gent,15,10,3,6,7,4,14,8,4.0,1.0,0.0,1.0,,,B1,2021-2022
+2022-04-03,RSC Anderlecht,RC Sporting Charleroi,20,1,11,0,5,2,8,14,1.0,2.0,,,,,B1,2021-2022
+2022-04-03,KRC Genk,KAS Eupen,14,5,9,2,4,2,11,10,2.0,1.0,,,,,B1,2021-2022
+2022-04-09,KAS Eupen,KV Oostende,9,17,1,8,5,3,14,9,4.0,3.0,0.0,1.0,,,B1,2021-2022
+2022-04-09,Royal Antwerp FC,Cercle Brugge,24,5,7,1,9,2,6,10,0.0,1.0,,,,,B1,2021-2022
+2022-04-10,Club Brugge KV,KV Mechelen,22,8,8,0,7,4,8,6,2.0,1.0,,,,,B1,2021-2022
+2022-04-10,KAA Gent,Oud-Heverlee Leuven,26,7,12,3,6,3,8,13,0.0,4.0,,,,,B1,2021-2022
+2022-04-10,KV Kortrijk,RSC Anderlecht,15,15,5,9,7,3,10,6,1.0,1.0,,,,,B1,2021-2022
+2022-04-10,RC Sporting Charleroi,SV Zulte Waregem,15,9,7,3,7,3,9,11,0.0,2.0,,,,,B1,2021-2022
+2022-04-10,RFC Seraing,KRC Genk,4,12,2,6,4,7,3,13,0.0,2.0,1.0,0.0,,,B1,2021-2022
+2022-04-10,Sint-Truidense VV,Standard Liège,16,11,5,2,5,2,12,15,2.0,3.0,,,,,B1,2021-2022
