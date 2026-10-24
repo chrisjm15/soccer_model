@@ -26,6 +26,31 @@ def consensus_novig(book_prices: list[tuple[float, float]]) -> float:
     return sum(probs) / len(probs)
 
 
+def select_main_line(ah_data: dict[float, list[tuple[float, float]]]) -> tuple[float, float]:
+    """Choose the Asian Handicap line whose consensus no-vig home probability is closest to 0.5.
+
+    Distance to 0.5 is rounded to 6 decimal places.
+    Ties go to the line with more bookmakers, then to the smaller |line|.
+    Returns (line, consensus_novig_home).
+    Raises ValueError if ah_data is empty.
+    """
+    if not ah_data:
+        raise ValueError("ah_data must not be empty")
+
+    best_key = None
+    best_result = None
+
+    for line, book_prices in ah_data.items():
+        nv = consensus_novig(book_prices)
+        dist = round(abs(nv - 0.5), 6)
+        key = (dist, -len(book_prices), abs(float(line)), float(line))
+        if best_key is None or key < best_key:
+            best_key = key
+            best_result = (float(line), nv)
+
+    return best_result
+
+
 def calibrate_prob(market_prob: float, model_prob: float, coefs: dict) -> float:
     """Clip both probs to [0.01, 0.99] and return sigmoid(intercept + b_market*logit(m) + b_model*logit(x))."""
     m = max(0.01, min(0.99, market_prob))

@@ -148,15 +148,24 @@ def fetch_all_leagues_odds(
     return pd.DataFrame(all_matches)
 
 
+from model.calibration import select_main_line
+
+AU_BOOKMAKERS = {
+    'bet365_au', 'betfair_ex_au', 'betr_au', 'betright', 'bluebet', 'boombet',
+    'dabble_au', 'ladbrokes_au', 'neds', 'palmerbet', 'playup', 'pointsbetau',
+    'sportsbet', 'tab', 'tabtouch', 'topsport', 'unibet', 'unibet_au'
+}
+
+
 def fetch_epl_ah_odds(
     api_key: str,
     sport_key: str,
     league_name: str,
-    regions: str = 'uk,au'
+    regions: str = 'uk,au,eu'
 ) -> list[dict]:
     """
     Fetches upcoming Asian Handicap (spreads) odds for one league.
-    Returns list of match dicts with AH odds data.
+    Returns list of match dicts with AH odds data on the main Asian line.
     Prints raw first-match bookmaker data to verify AH fields are present.
     """
     url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
@@ -181,7 +190,7 @@ def fetch_epl_ah_odds(
         for m in data:
             for b in m.get('bookmakers', []):
                 all_bookmaker_keys.add(b.get('key'))
-        bet365_present = 'bet365' in all_bookmaker_keys
+        bet365_present = any(str(k).startswith('bet365') for k in all_bookmaker_keys if k)
         print(f"  [The Odds API] bet365 present in response: {bet365_present}")
 
         # Print raw first match for verification
@@ -235,6 +244,7 @@ def fetch_epl_ah_odds(
                     a_price = away_oc.get('price')
                     if h_price is None or a_price is None:
                         continue
+                    line = float(line)
                     if line not in ah_data:
                         ah_data[line] = {'book_prices': [], 'bookmakers': []}
                     ah_data[line]['book_prices'].append((float(h_price), float(a_price)))
@@ -243,21 +253,42 @@ def fetch_epl_ah_odds(
             if not ah_data:
                 continue
 
-            # Use the line offered by the most bookmakers
-            modal_line = max(ah_data, key=lambda l: len(ah_data[l]['book_prices']))
-            pairs = ah_data[modal_line]['book_prices']
-            bks = ah_data[modal_line]['bookmakers']
-            home_prices = [p[0] for p in pairs]
-            away_prices = [p[1] for p in pairs]
+            # Select the main Asian line (consensus no-vig closest to 0.5)
+            line_to_prices = {l: info['book_prices'] for l, info in ah_data.items()}
+            main_line, _ = select_main_line(line_to_prices)
+            pairs = ah_data[main_line]['book_prices']
+            bks = ah_data[main_line]['bookmakers']
+
+            best_home_idx = max(range(len(pairs)), key=lambda i: pairs[i][0])
+            best_away_idx = max(range(len(pairs)), key=lambda i: pairs[i][1])
+            odds_ah_home_best = pairs[best_home_idx][0]
+            odds_ah_away_best = pairs[best_away_idx][1]
+            best_home_book = bks[best_home_idx]
+            best_away_book = bks[best_away_idx]
+
+            au_pairs = [
+                pairs[i] for i, bk in enumerate(bks)
+                if bk in AU_BOOKMAKERS or str(bk).endswith('_au')
+            ]
+            if au_pairs:
+                best_au_home = max(p[0] for p in au_pairs)
+                best_au_away = max(p[1] for p in au_pairs)
+            else:
+                best_au_home = ''
+                best_au_away = ''
 
             matches.append({
                 'date': match_date,
                 'league': league_name,
                 'home_team': home_name,
                 'away_team': away_name,
-                'ah_line': float(modal_line),
-                'odds_ah_home_best': max(home_prices),
-                'odds_ah_away_best': max(away_prices),
+                'ah_line': float(main_line),
+                'odds_ah_home_best': odds_ah_home_best,
+                'odds_ah_away_best': odds_ah_away_best,
+                'best_home_book': best_home_book,
+                'best_away_book': best_away_book,
+                'best_au_home': best_au_home,
+                'best_au_away': best_au_away,
                 'book_prices': pairs,
                 'bookmakers': bks,
                 'n_bookmakers': len(pairs)

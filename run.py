@@ -204,6 +204,9 @@ def cmd_predict():
 
         bet_side = decision['bet_side']
         bet_odds = odds_ah_home if bet_side == 'home' else odds_ah_away
+        best_book = row.get('best_home_book', '') if bet_side == 'home' else row.get('best_away_book', '')
+        raw_au = row.get('best_au_home', '') if bet_side == 'home' else row.get('best_au_away', '')
+        best_au_price = round(float(raw_au), 3) if (raw_au != '' and pd.notna(raw_au)) else ''
         break_even_odds = 1.0 / decision['calib_prob'] if decision['calib_prob'] > 0 else 999.0
 
         # M1-only calibrated prob (diagnostic)
@@ -253,6 +256,8 @@ def cmd_predict():
             'calib_prob_m1_only': round(calib_prob_m1, 4),
             'n_books': len(book_prices),
             'coef_fit_date': coef_fit_date,
+            'best_book': best_book,
+            'best_au_price': best_au_price,
             'closing_line': '',
             'closing_odds': '',
             'clv': '',
@@ -278,7 +283,7 @@ def cmd_predict():
 
     if len(flagged) > 0:
         print(f"\nFLAGGED BETS (calibrated edge >= {edge_threshold*100:.1f}%):")
-        print(f"  NOTE: Odds shown are best available from UK + AU bookmakers via The Odds API.")
+        print(f"  NOTE: Odds shown are best available from UK + AU + EU bookmakers via The Odds API.")
         print()
         for _, r in flagged.iterrows():
             side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
@@ -310,11 +315,12 @@ def cmd_predict():
             else:
                 outcome_desc = f"{bet_team} win or draw (or lose by up to {display_line:.2f})"
 
+            au_str = f"{float(r['best_au_price']):.2f}" if r['best_au_price'] != '' else 'None (no AU book on line)'
             print(f"  {'='*70}")
             print(f"  {r['match_date']}  {r['home_team']} vs {r['away_team']}")
             print(f"  BET:             {bet_team} AH {display_line:+.2f} ({side_str} side)")
             print(f"  OUTCOME:         {outcome_desc}")
-            print(f"  Best Price:      {r['odds_ah']:.2f}  |  Break-Even Odds: {r['break_even_odds']:.2f}")
+            print(f"  Best Price:      {r['odds_ah']:.2f} ({r['best_book']})  |  Best AU Price: {au_str}  |  Break-Even Odds: {r['break_even_odds']:.2f}")
             print(f"  Calib P:         {r['calib_prob']*100:.2f}%  |  Market P: {r['market_prob_consensus']*100:.2f}%  |  Raw Model P: {r['model_prob_ah']*100:.2f}%")
             print(f"  Calibrated Edge: {r['calib_edge']*100:+.2f}%")
             print()
@@ -324,17 +330,18 @@ def cmd_predict():
     print(f"\nALL EPL MATCHES THIS WEEK ({len(pred_df)} total), sorted by date then edge:")
     print(
         f"  {'Date':<12} {'Home':<20} {'Away':<20} "
-        f"{'AH':>6} {'Side':>5} {'CalibP':>8} {'MktP':>8} {'Edge':>7} {'Best':>6} {'BreakEv':>8} {'Signal':>9} {'Notes':<15}"
+        f"{'AH':>6} {'Side':>5} {'CalibP':>8} {'MktP':>8} {'Edge':>7} {'Best':>6} {'Book':<14} {'AU':>6} {'BreakEv':>8} {'Signal':>9} {'Notes':<15}"
     )
-    print(f"  {'-'*125}")
+    print(f"  {'-'*148}")
     for _, r in pred_df.iterrows():
         signal = '*** BET' if r['bet_flag'] else 'No Bet'
         side_str = 'Home' if r['bet_side'] == 'home' else 'Away'
         notes_str = r['notes'] if r['notes'] else ''
+        au_col = f"{float(r['best_au_price']):>6.2f}" if r['best_au_price'] != '' else f"{'':>6}"
         print(
             f"  {r['match_date']:<12} {r['home_team'][:20]:<20} {r['away_team'][:20]:<20} "
             f"{r['ah_line']:>+6.2f} {side_str:>5} {r['calib_prob']*100:>7.2f}% {r['market_prob_consensus']*100:>7.2f}% "
-            f"{r['calib_edge']*100:>+6.2f}% {r['odds_ah']:>6.2f} {r['break_even_odds']:>8.2f}   {signal:<7} {notes_str:<15}"
+            f"{r['calib_edge']*100:>+6.2f}% {r['odds_ah']:>6.2f} {str(r['best_book'])[:14]:<14} {au_col} {r['break_even_odds']:>8.2f}   {signal:<7} {notes_str:<15}"
         )
 
     # --- Paper trading log (AH) ---
@@ -346,13 +353,14 @@ def cmd_predict():
         'bet_flag', 'actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
         'market_prob_consensus', 'calib_prob', 'calib_edge', 'calib_prob_m1_only',
         'n_books', 'coef_fit_date',
+        'best_book', 'best_au_price',
         'closing_line', 'closing_odds', 'clv',
     ]
     log_path = 'output/paper_trading/log_ah.csv'
     os.makedirs('output/paper_trading', exist_ok=True)
 
     if os.path.exists(log_path):
-        existing = pd.read_csv(log_path, dtype=str)
+        existing = pd.read_csv(log_path, dtype=str, keep_default_na=False)
         for col in log_cols:
             if col not in existing.columns:
                 existing[col] = ''
@@ -435,7 +443,7 @@ def cmd_results():
         print("Run 'python run.py predict' first.")
         sys.exit(0)
 
-    log_df = pd.read_csv(log_path, dtype=str)
+    log_df = pd.read_csv(log_path, dtype=str, keep_default_na=False)
     for col in ['actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
                 'odds_ah_home_at_bet', 'odds_ah_away_at_bet',
                 'closing_line', 'closing_odds', 'clv']:
@@ -527,9 +535,11 @@ def cmd_results():
             closing_novig = (1.0 / closing_odds_side) / overround
             # Bet no-vig probability: use both sides at bet time when available
             # (more accurate than 1/bet_odds which includes the bookmaker margin)
-            bet_oh_str = str(row.get('odds_ah_home_at_bet', '')).strip()
-            bet_oa_str = str(row.get('odds_ah_away_at_bet', '')).strip()
-            if bet_oh_str and bet_oa_str:
+            bet_oh_val = row.get('odds_ah_home_at_bet', '')
+            bet_oa_val = row.get('odds_ah_away_at_bet', '')
+            bet_oh_str = '' if pd.isna(bet_oh_val) else str(bet_oh_val).strip()
+            bet_oa_str = '' if pd.isna(bet_oa_val) else str(bet_oa_val).strip()
+            if bet_oh_str and bet_oa_str and bet_oh_str.lower() != 'nan' and bet_oa_str.lower() != 'nan':
                 bet_oh_f = float(bet_oh_str)
                 bet_oa_f = float(bet_oa_str)
                 bet_overround = 1.0 / bet_oh_f + 1.0 / bet_oa_f
@@ -548,12 +558,16 @@ def cmd_results():
         'odds_ah_home_at_bet', 'odds_ah_away_at_bet',
         'implied_prob', 'edge', 'bet_flag',
         'actual_home_goals', 'actual_away_goals', 'actual_ah_result', 'profit_loss', 'notes',
+        'market_prob_consensus', 'calib_prob', 'calib_edge', 'calib_prob_m1_only',
+        'n_books', 'coef_fit_date',
         'closing_line', 'closing_odds', 'clv',
     ]
+    existing_cols = list(log_df.columns)
     for col in desired_cols:
-        if col not in log_df.columns:
+        if col not in existing_cols:
             log_df[col] = ''
-    log_df = log_df[[c for c in desired_cols if c in log_df.columns]]
+            existing_cols.append(col)
+    log_df = log_df[existing_cols]
     log_df.to_csv(log_path, index=False)
 
     print(f"\n{'='*64}")
