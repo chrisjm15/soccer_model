@@ -69,6 +69,28 @@ OUTPUT_SCHEMA = [
     'league', 'season',
 ]
 
+PROXY_EXTRA_COLUMNS = [
+    'close_ah_line',
+    'close_avg_ah_home', 'close_avg_ah_away',
+    'avg_ah_home', 'avg_ah_away',
+    'close_avg_home', 'close_avg_draw', 'close_avg_away',
+    'avg_home', 'avg_draw', 'avg_away',
+]
+
+PROXY_EXTRA_MAP = {
+    'AHCh':    'close_ah_line',
+    'AvgCAHH': 'close_avg_ah_home',
+    'AvgCAHA': 'close_avg_ah_away',
+    'AvgAHH':  'avg_ah_home',
+    'AvgAHA':  'avg_ah_away',
+    'AvgCH':   'close_avg_home',
+    'AvgCD':   'close_avg_draw',
+    'AvgCA':   'close_avg_away',
+    'AvgH':    'avg_home',
+    'AvgD':    'avg_draw',
+    'AvgA':    'avg_away',
+}
+
 # Raw column → output column (stats)
 STATS_COLUMN_MAP = {
     'HomeTeam': 'home_team',
@@ -151,6 +173,7 @@ def resolve_odds(df):
 
 def to_output_schema(df, league, season):
     """Final cleanup: set metadata columns, reindex to output schema."""
+    df = df.copy()
     df['date'] = parse_dates(df['Date']) if 'Date' in df.columns else pd.NA
     df['league'] = league
     df['season'] = season
@@ -158,6 +181,14 @@ def to_output_schema(df, league, season):
     df['odds_btts_no'] = pd.NA
     df = apply_column_map(df)
     df = resolve_odds(df)
+    if league in PROXY_LEAGUES:
+        df = df.copy()
+        for raw_col, out_col in PROXY_EXTRA_MAP.items():
+            if raw_col in df.columns:
+                df[out_col] = pd.to_numeric(df[raw_col], errors='coerce')
+            else:
+                df[out_col] = pd.NA
+        return df.reindex(columns=OUTPUT_SCHEMA + PROXY_EXTRA_COLUMNS)
     return df.reindex(columns=OUTPUT_SCHEMA)
 
 

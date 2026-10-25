@@ -28,6 +28,19 @@ OUTPUT_COLUMNS = [
     'odds_over25', 'odds_under25',
     'ah_line', 'odds_ah_home', 'odds_ah_away',
     'odds_timing', 'xg_source', 'matched',
+    'close_ah_line',
+    'close_avg_ah_home', 'close_avg_ah_away',
+    'avg_ah_home', 'avg_ah_away',
+    'close_avg_home', 'close_avg_draw', 'close_avg_away',
+    'avg_home', 'avg_draw', 'avg_away',
+]
+
+EXTRA_ODDS_COLS = [
+    'close_ah_line',
+    'close_avg_ah_home', 'close_avg_ah_away',
+    'avg_ah_home', 'avg_ah_away',
+    'close_avg_home', 'close_avg_draw', 'close_avg_away',
+    'avg_home', 'avg_draw', 'avg_away',
 ]
 
 STAT_COLS = [
@@ -173,6 +186,9 @@ def merge_season(
             'odds_timing': odds_timing,
             'matched': is_matched,
         }
+
+        for col in EXTRA_ODDS_COLS:
+            row[col] = f_row.get(col, pd.NA) if league in PROXY_LEAGUES else pd.NA
 
         for col in STAT_COLS:
             f_val = f_row.get(col)
