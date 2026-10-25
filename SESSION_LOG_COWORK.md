@@ -64,6 +64,12 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
     figure of ~92/season at +8.9%. Likely different coefficients (train-only vs refit) — check before quoting
     either number again.
 
+12. **Brief 3 executed (`f06852c`) — QC: alias table and joins correct, but data incomplete.** Cowork found
+    `experiment/load_footballdata.py` had a frozen season list ending 2024-25 (same bug as session 15's scrapers)
+    → 2025-26 missing for all 5 proxy leagues (1 of 3 xG seasons). Scandinavian football-data stops 2026-05-04.
+    Cowork added 2025-26/2026-27 to SEASON_CODES; `prompts/ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md` re-downloads and
+    re-merges. Lesson: every scraper/loader with a hard-coded season list needs checking at each season rollover.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.

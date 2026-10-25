@@ -22,7 +22,8 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
    `Read prompts/<FILE>.md and carry out every task in it, in order.`
    1. ~~`ANTIGRAVITY_CLOSING_LINE_CLV.md`~~ — DONE + QC'd 2026-10-25
    2. ~~`ANTIGRAVITY_CLV_EDGE_ANALYSIS.md`~~ — DONE + QC'd 2026-10-25 (`5db7ca2`). Verdict in §3.
-   3. `ANTIGRAVITY_SOFT_LEAGUE_MERGE.md` — independent, any time
+   3. ~~`ANTIGRAVITY_SOFT_LEAGUE_MERGE.md`~~ — DONE + QC'd (`f06852c`). Alias table reviewed: correct.
+   3b. `ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md` — NEXT. Adds the missing 2025-26 proxy season + fresh Scandinavian data
    4. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, after brief 1
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
 
@@ -50,11 +51,12 @@ From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
 - AU execution (§5) is now the binding constraint: the model edge is only usable at sharp/best prices.
 
 ### 4. Soft-league expansion
-After the merge brief is QC'd (alias table reviewed by Cowork), the next brief replicates
+After the refresh brief is QC'd, the next brief (Cowork to write) replicates
 calibration_backtest + recalibration_test per league. Test market: **AH for B1/N1/P1/T1/E1, 1X2 for
 DNK/SWE/NOR** (no AH odds exist there). Scandinavian odds are closing prices — a harder benchmark and
 not prices we could bet at. Only ~3 xG seasons per league → ~2 usable test seasons after warm-up.
-SC0 and FIN stay parked.
+SC0 and FIN stay parked. For that brief: exclude `matched=False` rows (play-offs, walkovers) from rating
+updates; Scandinavian Sofascore stops 2026-07-18 (re-scrape via scrape_next_league.bat before live use).
 
 ### 5. Manual actions for Chris (no code)
 - **Rotate the Odds API key** (exposed in a Cowork tool error on 2026-10-24): new key from your The Odds API
