@@ -88,6 +88,11 @@ bug found, deferred to the off-season. Automation unchanged and running. No brie
     confirmed its root cause in `model/ratings.py` (league means for season regression read live, partly
     new-season-updated ratings → order-dependent). Deferred to the off-season with a calibration refit.
 
+17. Real-money data point (Chris): Sunderland +0.00 at **Bet365 AU 2.025** (best offshore 2.15, break-even 2.08 →
+    ≈ −2.6% EV). Bet365 AU is the only AU book where Chris reliably gets Asian handicaps. Recorded in handoff §4.
+18. Defect (Cowork): end-of-session commit `770acd6` contained a stale early-session handoff (staged-copy path).
+    Rewritten directly on disk and verified; process note added to handoff tech debt.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
