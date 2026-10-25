@@ -74,6 +74,10 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
     DNK 2025 complete; 7 new promoted-club aliases all exact/normalised. Pre-existing seasons unchanged. Cowork
     re-checked soft_merged.csv: 7,841 matched xG rows, 0 duplicates.
 
+14. Wrote `prompts/ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md`: proxy closing odds via loader (Part A), soft ratings
+    via unmodified `build_ratings` on xG rows only (B), warm-up season + 10-match guard (C), M1/M3 AH and 1X2,
+    stacked robustness, OOS sweep, movement test with EPL benchmark (D). Decision rule pre-set in handoff §4.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
