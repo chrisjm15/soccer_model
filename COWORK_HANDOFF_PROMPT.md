@@ -21,7 +21,7 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 2. Antigravity, one brief per fresh session, in this order — paste:
    `Read prompts/<FILE>.md and carry out every task in it, in order.`
    1. ~~`ANTIGRAVITY_CLOSING_LINE_CLV.md`~~ — DONE + QC'd 2026-10-25
-   2. `ANTIGRAVITY_CLV_EDGE_ANALYSIS.md` — needs brief 1 committed
+   2. ~~`ANTIGRAVITY_CLV_EDGE_ANALYSIS.md`~~ — DONE + QC'd 2026-10-25 (`5db7ca2`). Verdict in §3.
    3. `ANTIGRAVITY_SOFT_LEAGUE_MERGE.md` — independent, any time
    4. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, after brief 1
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
@@ -35,13 +35,19 @@ prediction_date 2026-10-30. **Never run predict by hand before Friday** — firs
 Villa/Sunderland settled correctly by hand; calibration columns still present. After brief 1: how many
 GW9 rows got CLV and how many needed line conversion.
 
-### 3. Checkpoint — decide on line movement, not ROI
-ROI at 40 bets has a 95% CI of about ±30pp, so it is reported but not decided on before season end.
-Decision rule, applied to `clv_edge_report.txt` (H1 EPL; Pinnacle-to-Pinnacle movement preferred, avg-to-avg must agree in sign):
-- slope > 0 with t ≥ 2, **and** H2 flagged bets have mean price-CLV > 0 → edge credible: keep going and plan real execution (see 5).
-- t < 1 or slope ≤ 0 → the model does not anticipate the market: keep the paper log running untouched, move effort to soft leagues.
-- 1 ≤ t < 2 → inconclusive: re-run with live rows at ~150 logged matches (≈ late Jan 2027).
-- Control: H3 (Big 5) should show ~no slope. A strong Big-5 slope means the test is picking up something other than model skill — investigate before trusting H1.
+### 3. Checkpoint — VERDICT 2026-10-25: EPL information edge is real; profitability depends on price
+From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
+- EPL: market moves toward the model between pre-closing and close. move~signal slope +0.0069, t=4.7
+  (Pinnacle-to-Pinnacle t=3.9, avg-to-avg t=3.3); positive in all 6 seasons.
+- Not an artefact: Cowork re-ran with the pre-closing price as a separate control — model term t=3.2–4.4 in EPL,
+  ~0 in Big 5 ex-EPL (t −0.3 to 1.3). Big 5 control pooled slope ≈ 0, matching the July "no edge" verdict.
+- Size is small. OOS flagged bets (n=43): mean move toward us +2.0pp (t=3.9), ≈ the bookmaker margin.
+  Price CLV ≈ 0: +0.7% at B365 pre-closing prices (t=0.7), −1.1% at market-average prices.
+  → The edge only pays if we beat the average price. Best-price shopping is the whole game.
+- **New live checkpoint: mean `clv_price` on flagged bets at ~40 bets (≈ Feb 2027).** Per-bet SD of price CLV
+  ≈ 0.063 → SE ≈ 1pp at n=40 (ROI SE would be ≈ 15pp). Rule: mean clv_price > +1% → plan real stakes;
+  ≤ 0 → the edge doesn't survive the prices we actually get; in between → continue to season end.
+- AU execution (§5) is now the binding constraint: the model edge is only usable at sharp/best prices.
 
 ### 4. Soft-league expansion
 After the merge brief is QC'd (alias table reviewed by Cowork), the next brief replicates

@@ -56,6 +56,14 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
    executor to run `predict` outside the Friday slot.
 10. Brief 2 amended: add avg-to-avg movement (`move_avg`), note Pinnacle gap.
 
+11. **Brief 2 executed (`5db7ca2`) — QC PASSED, verdict reached.** 100% joins; Cowork reproduced H1 slope
+    (0.0069, t=4.69) and ran an artefact control (move ~ logit(model) + logit(pre price)): EPL model term
+    t=3.2–4.4; Big 5 ex-EPL ≈ 0. Conclusion: real but small EPL information edge (flagged OOS bets: +2.0pp
+    move, price CLV ≈ 0 at B365/avg prices). Checkpoint changed to live mean clv_price at ~40 flagged bets.
+    Side note, unexplained: OOS flagged bets here are 44 over 2 seasons (−4.2% realised ROI) vs the July
+    figure of ~92/season at +8.9%. Likely different coefficients (train-only vs refit) — check before quoting
+    either number again.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
