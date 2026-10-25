@@ -211,6 +211,8 @@ def merge_league_season(league, season):
         "AHh", "B365AHH", "B365AHA",
         "PSH", "PSD", "PSA",
         "MaxH", "MaxD", "MaxA", "AvgH", "AvgD", "AvgA",
+        "AHCh", "PCAHH", "PCAHA", "AvgCAHH", "AvgCAHA", "B365CAHH", "B365CAHA",
+        "PAHH", "PAHA", "AvgAHH", "AvgAHA",
     ]
     for c in odds_cols:
         if c in merged.columns:
@@ -236,6 +238,12 @@ def merge_league_season(league, season):
         "PSH": "pinnacle_home", "PSD": "pinnacle_draw", "PSA": "pinnacle_away",
         "MaxH": "max_odds_home", "MaxD": "max_odds_draw", "MaxA": "max_odds_away",
         "AvgH": "avg_odds_home", "AvgD": "avg_odds_draw", "AvgA": "avg_odds_away",
+        "AHCh": "close_ah_line",
+        "PCAHH": "close_pin_ah_home", "PCAHA": "close_pin_ah_away",
+        "AvgCAHH": "close_avg_ah_home", "AvgCAHA": "close_avg_ah_away",
+        "B365CAHH": "close_b365_ah_home", "B365CAHA": "close_b365_ah_away",
+        "PAHH": "pin_ah_home", "PAHA": "pin_ah_away",
+        "AvgAHH": "avg_ah_home", "AvgAHA": "avg_ah_away",
     }
     result = result.rename(columns={k: v for k, v in rename_map.items() if k in result.columns})
 

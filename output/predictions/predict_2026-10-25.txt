@@ -1,0 +1,76 @@
+﻿Fetching EPL Asian Handicap odds from The Odds API...
+Target market: spreads (Asian Handicap) | EPL only | 1.0% calibrated edge threshold
+
+  [EPL] API credits remaining: 481
+  [The Odds API] bet365 present in response: False
+
+  [DEBUG] Raw AH fields from first API match (Manchester United vs Bournemouth):
+    Bookmaker: onexbet
+    Market key: spreads
+      Bournemouth: price=2.32, point=0.0
+      Manchester United: price=1.71, point=0.0
+
+
+Found 13 EPL matches with AH odds.
+
+WARNING: The following API team names could not be mapped to rated teams:
+  EPL: 'Ipswich Town' -> canonical='Ipswich Town'
+  -> These matches will be skipped. Add missing mappings to data/aliases/team_aliases.json
+
+  SKIP (no rating): EPL ÔÇö 'Ipswich Town' -> 'Ipswich Town'
+
+==========================================================================================
+=== EPL ASIAN HANDICAP PREDICTIONS - 2026-10-25 ===
+Threshold: 1.0% calibrated edge | Market: Asian Handicap | Best price execution
+==========================================================================================
+
+FLAGGED BETS (calibrated edge >= 1.0%):
+  NOTE: Odds shown are best available from UK + AU + EU bookmakers via The Odds API.
+
+  ======================================================================
+  2026-10-25  Sunderland vs Leeds
+  BET:             Sunderland AH +0.00 (Home side)
+  OUTCOME:         Sunderland win (draw = stake returned)
+  Best Price:      2.15 (onexbet)  |  Best AU Price: None (no AU book on line)  |  Break-Even Odds: 2.09
+  Calib P:         47.93%  |  Market P: 45.94%  |  Raw Model P: 54.22%
+  Calibrated Edge: +1.98%
+
+  ======================================================================
+  2026-10-31  Tottenham vs Crystal Palace
+  BET:             Crystal Palace AH +1.00 (Away side)
+  OUTCOME:         Crystal Palace win, draw, or lose by 1 (push if lose by exactly 1)
+  Best Price:      1.90 (matchbook)  |  Best AU Price: None (no AU book on line)  |  Break-Even Odds: 1.83
+  Calib P:         54.69%  |  Market P: 52.14%  |  Raw Model P: 70.58%
+  Calibrated Edge: +2.55%
+
+  ======================================================================
+  2026-10-31  Manchester City vs Brighton
+  BET:             Brighton AH +0.75 (Away side)
+  OUTCOME:         Brighton win or draw (or lose by 1 for half-stake)
+  Best Price:      2.08 (matchbook)  |  Best AU Price: None (no AU book on line)  |  Break-Even Odds: 2.03
+  Calib P:         49.23%  |  Market P: 47.50%  |  Raw Model P: 56.97%
+  Calibrated Edge: +1.73%
+
+
+ALL EPL MATCHES THIS WEEK (12 total), sorted by date then edge:
+  Date         Home                 Away                     AH  Side   CalibP     MktP    Edge   Best Book               AU  BreakEv    Signal Notes          
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  2026-10-25   Hull                 Brentford             +0.75  Home   54.46%   48.89%  +5.56%   2.04 matchbook                 1.84   No Bet  promoted_veto  
+  2026-10-25   Sunderland           Leeds                 +0.00  Home   47.93%   45.94%  +1.98%   2.15 onexbet                   2.09   *** BET                
+  2026-10-25   Manchester United    Bournemouth           -0.25  Home   49.86%   49.53%  +0.33%   2.00 matchbook                 2.01   No Bet                 
+  2026-10-25   Liverpool            Brighton              -0.25  Away   47.61%   47.74%  -0.13%   2.08 matchbook                 2.10   No Bet                 
+  2026-10-25   Crystal Palace       Newcastle United      +0.25  Home   51.96%   52.30%  -0.34%   1.90 matchbook                 1.92   No Bet                 
+  2026-10-31   Tottenham            Crystal Palace        -1.00  Away   54.69%   52.14%  +2.55%   1.90 matchbook                 1.83   *** BET                
+  2026-10-31   Manchester City      Brighton              -0.75  Away   49.23%   47.50%  +1.73%   2.08 matchbook                 2.03   *** BET                
+  2026-10-31   Coventry             Sunderland            +0.00  Home   48.68%   47.12%  +1.57%   2.12 onexbet                   2.05   No Bet  promoted_veto  
+  2026-10-31   Aston Villa          Fulham                -0.50  Away   49.44%   49.95%  -0.51%   2.02 matchbook                 2.02   No Bet                 
+  2026-10-31   Brentford            Nottingham Forest     -0.50  Home   47.80%   48.65%  -0.85%   2.00 matchbook                 2.09   No Bet                 
+  2026-10-31   Chelsea              Manchester United     -0.50  Away   51.31%   52.32%  -1.00%   1.89 matchbook                 1.95   No Bet                 
+  2026-10-31   Bournemouth          Leeds                 -0.25  Home   49.82%   50.97%  -1.15%   1.90 pinnacle                  2.01   No Bet                 
+
+Paper trading log updated: output/paper_trading/log_ah.csv
+  Added 7 new rows (33 already existed)
+
+This week: 3 flagged bets out of 12 EPL matches
+================================================================================
+

@@ -42,6 +42,8 @@ ODDS_COLUMNS = [
     "AvgH", "AvgD", "AvgA",
     "Max>2.5", "Max<2.5", "Avg>2.5", "Avg<2.5",
     "PSH", "PSD", "PSA",
+    "AHCh", "PCAHH", "PCAHA", "AvgCAHH", "AvgCAHA", "B365CAHH", "B365CAHA",
+    "PAHH", "PAHA", "AvgAHH", "AvgAHA",
 ]
 
 
