@@ -70,6 +70,10 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
     Cowork added 2025-26/2026-27 to SEASON_CODES; `prompts/ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md` re-downloads and
     re-merges. Lesson: every scraper/loader with a hard-coded season list needs checking at each season rollover.
 
+13. **Refresh brief executed (`5388a3b`) — QC PASSED.** 2025-26 now merged for all 5 proxy leagues (100% match),
+    DNK 2025 complete; 7 new promoted-club aliases all exact/normalised. Pre-existing seasons unchanged. Cowork
+    re-checked soft_merged.csv: 7,841 matched xG rows, 0 duplicates.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
