@@ -32,8 +32,12 @@ if ($updateCode -ne 0) {
     # --- Step 2b: Predict and log this round's paper bets ---
     $stamp = Get-Date -Format 'yyyy-MM-dd'
     New-Item -ItemType Directory -Force "$ProjectDir\output\predictions" | Out-Null
-    & $Python run.py predict 2>&1 | Tee-Object -FilePath "$ProjectDir\output\predictions\predict_$stamp.txt" | Out-File "$ProjectDir\output\predict_latest.txt" -Encoding utf8
-    Log "run.py predict complete (exit code: $LASTEXITCODE) - output in output\predict_latest.txt"
+    # Capture once, write both copies as UTF-8 (Tee-Object in PowerShell 5.1 writes UTF-16)
+    $predictOut  = & $Python run.py predict 2>&1
+    $predictCode = $LASTEXITCODE
+    $predictOut | Out-File "$ProjectDir\output\predictions\predict_$stamp.txt" -Encoding utf8
+    $predictOut | Out-File "$ProjectDir\output\predict_latest.txt" -Encoding utf8
+    Log "run.py predict complete (exit code: $predictCode) - output in output\predict_latest.txt"
 }
 
 Log "Task finished"
