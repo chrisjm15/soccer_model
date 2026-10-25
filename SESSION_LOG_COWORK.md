@@ -1,10 +1,10 @@
 # Session 16 — 2026-10-25
 
-## Status
-Model live and automated (unchanged). This session found that **the live CLV metric was never
-measuring closing line value**, briefed the fix, and replaced the ROI checkpoint with a CLV-based
-decision that can be answered on six seasons of history instead of ~40 live bets.
-Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravity yet.
+## Status at session end (2026-10-25 19:00)
+Six briefs executed and QC'd in one day. Outcomes: (1) live CLV fixed — it had never measured closing value;
+(2) EPL edge confirmed real but ≈ one bookmaker margin → price access decides profitability; checkpoint moved to
+live price CLV at ~40 bets (≈ Feb 2027); (3) soft leagues tested and closed for v1; (4) a ratings season-transition
+bug found, deferred to the off-season. Automation unchanged and running. No briefs outstanding.
 
 ## Done (Cowork)
 1. **Session 15 commit made locally — `85b9efe`** (13 files). Cowork shell has no GitHub credentials;
@@ -98,7 +98,7 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
 - Soft leagues: closed for v1 per the rule set before the results (handoff §4).
 
 ## Files changed this session
-Committed locally in `85b9efe` (session 15 work). Uncommitted Cowork changes: `.gitignore` (in 85b9efe),
-`scripts/run_update.ps1`, `scripts/test_clv.py`, `output/predictions/predict_2026-10-24.txt`,
-`prompts/ANTIGRAVITY_*.md` (4 new), `docs/INDEX.md`, `SESSION_LOG_COWORK.md`, `COWORK_HANDOFF_PROMPT.md`,
-`archive/session_logs/SESSION_LOG_SESSION_15.md`.
+All committed and pushed. Key new files: `model/clv.py`, `scripts/test_clv.py` (gold), `scripts/clv_edge_analysis.py`,
+`scripts/soft_league_calibration.py`, `experiment/build_soft_aliases.py`, `experiment/merge_data.py`,
+`data/aliases/soft_league_aliases.json`, two verdict reports in `output/backtest_results/`. Briefs moved to
+`prompts/completed/`. Docs refreshed: CLAUDE.md (focus line), handoff (full rewrite), INDEX, FUTURE_DEVELOPMENT.

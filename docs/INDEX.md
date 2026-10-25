@@ -26,17 +26,12 @@
 | `Football Pythag v0.5.xlsx` | Chris's existing Excel model (reference only, not being evolved) |
 
 ## prompts/
-Active (session 16) — run in this order:
-| File | Purpose |
-|---|---|
-| `ANTIGRAVITY_CLOSING_LINE_CLV.md` | Money-critical. Real closing odds (AHCh/PCAHH), line conversion, CLV on all log rows, display bug |
-| `ANTIGRAVITY_CLV_EDGE_ANALYSIS.md` | After CLV brief. Historical EPL/Big5 test: does model signal predict line movement? + live log |
-| `ANTIGRAVITY_SOFT_LEAGUE_MERGE.md` | Independent. Module 4 merge: Sofascore xG + football-data for B1 N1 P1 T1 E1 DNK SWE NOR |
-| `ANTIGRAVITY_MERGE_SORT_KEY.md` | Low priority, after CLV brief. Replace ratings_backup row-order hack in merge.py |
-| `rescrape_plan_2026-07-18.md` | Reference: soft-league inclusion table (Step 3) |
+No active prompts (end of session 16). Everything executed lives in `prompts/completed/`.
 
 ## prompts/completed/
-25 executed or abandoned prompts (reference only) — all Phase 1-3 build prompts, experiment module prompts, bug-fix prompts, and session 14's `CLI_PROMPT_CALIBRATION_CLV.md` + `CLI_PROMPT_RECALIBRATION_TEST.md`. Scan the folder if you need one.
+Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANALYSIS`, `_SOFT_LEAGUE_MERGE`,
+`_SOFT_LEAGUE_REFRESH`, `_SOFT_LEAGUE_CALIBRATION`, `_MERGE_SORT_KEY` (stopped at its gate, restored), plus
+`rescrape_plan_2026-07-18.md`. Older: 25 executed or abandoned prompts (reference only) — all Phase 1-3 build prompts, experiment module prompts, bug-fix prompts, and session 14's `CLI_PROMPT_CALIBRATION_CLV.md` + `CLI_PROMPT_RECALIBRATION_TEST.md`. Scan the folder if you need one.
 
 ## archive/
 | File | Purpose |
@@ -57,6 +52,7 @@ Active (session 16) — run in this order:
 | `scrapers/odds_api.py` | The Odds API — live AH odds fetcher |
 | `scrapers/team_name_mapper.py` | Maps Odds API team names to canonical names |
 | `model/ratings.py` | EMA attack/defence rating engine |
+| `model/clv.py` | Pure CLV functions: no-vig, AH line conversion (Poisson supremacy solve), clv_move / clv_price |
 | `model/calibration.py` | Pure calibration functions (consensus no-vig, calibrate_prob, calibrated_ah_decision, calibrate_m1) |
 | `model/poisson.py` | Poisson probability model (BTTS, WDL, O/U) |
 | `model/btts.py` | BTTS prediction, edge calculation, bet flagging |
@@ -73,18 +69,25 @@ Active (session 16) — run in this order:
 | `scripts/test_calibration.py` | Fixed gold tests for model/calibration.py |
 | `scripts/test_line_selection.py` | Fixed gold tests for select_main_line (main Asian line choice) |
 | `scripts/test_clv.py` | Fixed gold tests for model/clv.py (closing-line conversion, clv_move, clv_price) — session 16 |
+| `scripts/clv_edge_analysis.py` | Historical EPL/Big 5 line-movement vs model signal test + live log → `clv_edge_report.txt` (session 16 verdict) |
+| `scripts/soft_league_calibration.py` | Soft-league M1/M3 (AH + 1X2), OOS sweep, movement test → `soft_calibration_report.txt` (failed) |
+| `experiment/load_footballdata.py` | football-data loader for proxy + Scandinavian leagues (season list to 2026-27) |
+| `experiment/build_soft_aliases.py`, `experiment/merge_data.py` | Soft-league alias table + Sofascore/football-data merge → `data/processed/soft_merged.csv` |
+| `data/aliases/soft_league_aliases.json` | Sofascore → football-data team names, 8 soft leagues (Cowork-reviewed) |
 | `scripts/run_update.ps1` | Scheduled automation: `-Mode settle` (Tue: update+results) / `-Mode predict` (Fri: update+predict) |
 | `output/predict_latest.txt`, `output/predictions/` | Console output of the scheduled predict runs |
 | `prompts/completed/ANTIGRAVITY_*.md` | Session 15 executor briefs (executed) |
 | `config/leagues.yaml` | League definitions + Odds API sport keys |
 | `config/calibration.yaml` | EPL AH calibration config (M3/M1 coefficients, market_prob_range, 1% threshold, promoted_min_matches) |
 | `data/aliases/team_aliases.json` | Team name mapping |
-| `data/processed/all_merged.csv` | 10,714 merged match records (2020-21 to 2025-26) |
+| `data/processed/all_merged.csv` | ~11,060 merged Big 5 records 2020-21→2026-27, incl. football-data closing AH columns (close_*) |
+| `data/processed/soft_merged.csv`, `soft_ratings.csv` | Soft-league merged data (12,869 rows) and xG ratings — gitignored, regenerate with merge_data.py |
 | `data/processed/ratings.csv` | Pre-match EMA ratings for all matches |
 | `output/backtest_results/predictions.csv` | Full backtest predictions + outcomes |
 | `output/backtest_results/calibration_matches.csv` | Per-match calibration data (10,702 rows) — model_prob, market_prob_novig, actual_score, pnl_flat10 |
 | `output/backtest_results/calibration_report.txt` | Calibration report — prob zone × line-size tables, disagreement test, by-season drift |
 | `output/backtest_results/recalibration_report.txt` | Market-blend test report — regression tables, OOS metrics, threshold sweep, bootstrap CIs |
 | `output/backtest_results/recalibrated_test_matches.csv` | Test-season rows (2024-26) with M3/M4 calibrated probs, calibrated edge, P&L |
-| `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker (closing columns before the CLV brief are vs PRE-closing odds — invalid; recomputed by ANTIGRAVITY_CLOSING_LINE_CLV) |
+| `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker — real closing CLV (closing_source, clv_move, clv_price) on every row |
+| `output/backtest_results/clv_edge_report.txt`, `soft_calibration_report.txt` | Session 16 verdict reports (EPL edge real but small; soft leagues fail) |
 | `run.py` | Entry point: `python run.py update / predict / backtest` |

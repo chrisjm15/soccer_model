@@ -1,7 +1,11 @@
 # Future Development — Edge Backlog
 
-*Created 2026-07-12 (session 14), after the recalibration verdict. This is the durable list —
-the handoff doc carries only the current top items and points here.*
+*Created 2026-07-12 (session 14), after the recalibration verdict. Updated 2026-10-25 (session 16). This is the
+durable list — the handoff doc carries only the current top items and points here.*
+
+**Session 16 update:** EPL line-movement test confirmed real but small information (market moves +2.0pp toward
+flagged bets ≈ one margin; price CLV ≈ 0 at average prices). Soft leagues failed. Execution items (Tier 1)
+are now the highest-value work.
 
 **Organising principle (from the 2026-07-12 analysis):** the model is at information parity with
 the EPL market and behind everywhere else in the Big 5. Model-quality work improves calibration
@@ -13,10 +17,10 @@ same knowledge. Items are ranked by realistic edge-per-effort.
 
 ## Tier 1 — Execution / mechanical (no modelling required)
 
-### 1. Best-price execution ⚠️ scheduled — part of the pre-GW1 deployment prompt
-Check whether `run.py predict` evaluates edge against average or best-available odds from the
-Odds API. Switch to best price. Worth ~1–2% ROI mechanically — on a hypothesised 1–3% edge this
-can roughly double it. Zero modelling work.
+### 1. Best-price execution ✅ partly done (session 15)
+Predict now prices bets at the best available book (edge still measured vs consensus no-vig). Open: the best
+prices mostly come from offshore/exchange books with no AU access — see item 3. On the measured edge (≈ one
+margin) this item decides whether the EPL model makes money at all.
 
 ### 2. Bet timing
 Currently betting Thursday; 6 of 11 paper bets had the line move before close — we bet before
@@ -51,12 +55,13 @@ parity, not past it. Higher value in soft leagues than EPL.
 
 ## Tier 3 — Market / structural
 
-### 7. Soft-league expansion ⚠️ in motion — data collection via scrape_next_league.bat
-Where the remaining upside is concentrated. Sequence: finish Sofascore queue → Module 4 merge →
-replicate calibration_backtest + recalibration disagreement test per league. Check during merge
-whether Scandinavian football-data files carry AH odds or only 1X2 — determines target market.
+### 7. Soft-league expansion ❌ closed for v1 (2026-10-25)
+Tested B1 N1 P1 T1 E1 (AH + 1X2) and DNK SWE NOR (1X2 only — no AH odds exist). Pooled AH M3 b_model −0.097
+(CI excludes EPL's +0.245); 1X2 ≤ 0 everywhere; OOS ROI ≈ 0 / negative. Curiosity: the model predicts soft-league
+line *movement* (t=3.1) but not results — revisit only with a new information source. Report:
+`output/backtest_results/soft_calibration_report.txt`. Pipeline kept (`experiment/merge_data.py`).
 
-### 8. Derivative markets (revisit after soft-league test)
+### 8. Derivative markets (EPL only — soft leagues failed)
 BTTS+result combos, team totals: fewer punters model these rigorously, books price them lazier
 (original BUILD_PLAN 3C thesis). Higher vig partially offsets. Only worth testing where the
 underlying model has demonstrated information (i.e. not Big 5 ex-EPL).
@@ -69,17 +74,18 @@ economics, not a business. The model can tiebreak which discrepancies to hit.
 
 ## Measurement / infrastructure (supports everything above)
 
-### 10. CLV decision framework ⚠️ live from next season
-Both-sides odds now logged; CLV computed at settle. Checkpoint ~Christmas 2026 (~40–50 bets):
-positive mean CLV → edge likely real, consider small stakes; negative → close the Big-5 chapter.
+### 10. CLV decision framework ✅ live (fixed session 16)
+CLV now uses football-data closing odds (market-average), converted onto the bet line, on every logged match.
+Checkpoint ≈ Feb 2027 at ~40 flagged bets on mean `clv_price` (> +1% → plan stakes; ≤ 0 → edge doesn't survive our
+prices). Historical test: `output/backtest_results/clv_edge_report.txt`.
 
-### 11. Promoted-team rating initialisation ⚠️ scheduled — part of the pre-GW1 deployment prompt
-Three promoted clubs have no EPL xG history. Verify how their ratings seed; if league-mean, flag
-or veto early-season bets involving them.
+### 11. Promoted-team rating initialisation ✅ done (session 15)
+Promoted-team veto until 10 matches played (`promoted_min_matches` in `config/calibration.yaml`).
 
-### 12. Calibration refit cadence
-Deployment refits the EPL M3 blend on all six seasons. Decide refit schedule (e.g. each
-pre-season, or mid-season if CLV drifts). Never refit on data that will also judge the model.
+### 12. Calibration refit cadence + ratings season-transition fix — 2027 off-season
+Refit each pre-season, never mid-season. Next refit must follow the `model/ratings.py` season-transition fix
+(league means read live/partly-updated ratings → order-dependent ratings; see handoff tech debt), then re-run
+`scripts/clv_edge_analysis.py` to confirm the EPL result survives.
 
 ---
 

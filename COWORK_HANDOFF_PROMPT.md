@@ -11,60 +11,39 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 ## Current state
 - Live and automated: Tue 12:00 settle, Fri 12:00 predict (`scripts/run_update.ps1`). Check `output/scheduler_log.txt`.
 - Paper log `output/paper_trading/log_ah.csv`: 2 flagged GW9 bets (Villa +1.00 @1.83, Sunderland 0.00 @2.15).
-- CLV now uses real closing odds (brief 1 done, `4115d4b`, QC passed). Closing source is market-average: football-data dropped Pinnacle columns mid-2025-26.
-- Sessions 15–16 pushed to GitHub (head `06346f2`, 2026-10-25).
+- **All CLV values in the log are invalid** (measured against football-data *pre-closing* odds). Fixed by brief 1 below.
+- Session 15 work committed locally (`85b9efe`), **not pushed**.
 
 ## Priorities (in order)
 
-### 1. Run the briefs (Chris)
-1. Pushed — done.
+### 1. Push + run the briefs (Chris)
+1. In a terminal in the project folder: `git push` (pushes 85b9efe + the session 16 commit).
 2. Antigravity, one brief per fresh session, in this order — paste:
    `Read prompts/<FILE>.md and carry out every task in it, in order.`
-   1. ~~`ANTIGRAVITY_CLOSING_LINE_CLV.md`~~ — DONE + QC'd 2026-10-25
-   2. ~~`ANTIGRAVITY_CLV_EDGE_ANALYSIS.md`~~ — DONE + QC'd 2026-10-25 (`5db7ca2`). Verdict in §3.
-   3. ~~`ANTIGRAVITY_SOFT_LEAGUE_MERGE.md`~~ — DONE + QC'd (`f06852c`). Alias table reviewed: correct.
-   3b. ~~`ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md`~~ — DONE + QC'd (`5388a3b`). soft_merged: 7,841 matched xG rows; proxy xG 2023-24..2025-26, DNK 2022-25, SWE/NOR 2023-26.
-   4. ~~`ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md`~~ — DONE + QC'd (`c758b04`). **FAILED the pre-set rule** (§4).
-   5. ~~`ANTIGRAVITY_MERGE_SORT_KEY.md`~~ — ran, hit its stop gate (ratings diff up to 0.018), fully restored. Hack stays; see §6.
+   1. `ANTIGRAVITY_CLOSING_LINE_CLV.md` — money-critical; gold tests `scripts/test_clv.py` (do not let it edit them)
+   2. `ANTIGRAVITY_CLV_EDGE_ANALYSIS.md` — needs brief 1 committed
+   3. `ANTIGRAVITY_SOFT_LEAGUE_MERGE.md` — independent, any time
+   4. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, after brief 1
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
 
-### 2. Watch Friday's GW10 predict run (Fri 2026-10-30 12:00)
-The brief-1 test run on Sunday logged 7 GW10 rows on ratings missing all of GW9 (2 flagged). Cowork deleted
-them (still in git at `4115d4b`) so the Friday run logs GW10 normally. Confirm 9–10 GW10 rows appear with
-prediction_date 2026-10-30. **Never run predict by hand before Friday** — first sighting locks the row.
-
-### 2b. Verify the first automated settle (Tue 2026-10-27; check-in scheduled 14:00 AEDT)
+### 2. Verify the first automated settle (Tue 2026-10-27; check-in scheduled 14:00 AEDT)
 Villa/Sunderland settled correctly by hand; calibration columns still present. After brief 1: how many
 GW9 rows got CLV and how many needed line conversion.
 
-### 3. Checkpoint — VERDICT 2026-10-25: EPL information edge is real; profitability depends on price
-From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
-- EPL: market moves toward the model between pre-closing and close. move~signal slope +0.0069, t=4.7
-  (Pinnacle-to-Pinnacle t=3.9, avg-to-avg t=3.3); positive in all 6 seasons.
-- Not an artefact: Cowork re-ran with the pre-closing price as a separate control — model term t=3.2–4.4 in EPL,
-  ~0 in Big 5 ex-EPL (t −0.3 to 1.3). Big 5 control pooled slope ≈ 0, matching the July "no edge" verdict.
-- Size is small. OOS flagged bets (n=43): mean move toward us +2.0pp (t=3.9), ≈ the bookmaker margin.
-  Price CLV ≈ 0: +0.7% at B365 pre-closing prices (t=0.7), −1.1% at market-average prices.
-  → The edge only pays if we beat the average price. Best-price shopping is the whole game.
-- **New live checkpoint: mean `clv_price` on flagged bets at ~40 bets (≈ Feb 2027).** Per-bet SD of price CLV
-  ≈ 0.063 → SE ≈ 1pp at n=40 (ROI SE would be ≈ 15pp). Rule: mean clv_price > +1% → plan real stakes;
-  ≤ 0 → the edge doesn't survive the prices we actually get; in between → continue to season end.
-- AU execution (§5) is now the binding constraint: the model edge is only usable at sharp/best prices.
+### 3. Checkpoint — decide on line movement, not ROI
+ROI at 40 bets has a 95% CI of about ±30pp, so it is reported but not decided on before season end.
+Decision rule, applied to `clv_edge_report.txt` (H1 EPL, Pinnacle-to-Pinnacle movement preferred):
+- slope > 0 with t ≥ 2, **and** H2 flagged bets have mean price-CLV > 0 → edge credible: keep going and plan real execution (see 5).
+- t < 1 or slope ≤ 0 → the model does not anticipate the market: keep the paper log running untouched, move effort to soft leagues.
+- 1 ≤ t < 2 → inconclusive: re-run with live rows at ~150 logged matches (≈ late Jan 2027).
+- Control: H3 (Big 5) should show ~no slope. A strong Big-5 slope means the test is picking up something other than model skill — investigate before trusting H1.
 
-### 4. Soft-league expansion — VERDICT 2026-10-25: FAILED pre-set rule → closed for v1
-`output/backtest_results/soft_calibration_report.txt`; Cowork reproduced the two deciding numbers from the matches CSV.
-- **Proxy AH:** movement test passes (pooled controlled model term t=3.10; EPL benchmark same seasons t=3.59),
-  but outcomes don't: pooled M3 b_model **−0.097 (SE 0.097, p=0.31)**, 95% CI ≈ [−0.29, +0.09] — excludes the
-  EPL's +0.245. No proxy league has b_model > 0 with any significance. Rule needed both → **fail**.
-  OOS AH sweep: ROI ≈ 0 (CI ±5%) at every threshold.
-- **Proxy / Scandinavian 1X2:** b_model ≤ 0 everywhere (pooled Scand −0.14, p=0.63); stacked proxy −0.24 (p=0.03,
-  i.e. model deviations point the wrong way). OOS 1X2 ROI −8% to −23%. **Fail.**
-- Sanity: market beats model on 1X2 Brier in 19/19 league-seasons (expected; magnitude similar to typical).
-- Open question (not a pass): the model predicts line movement in soft leagues but not results beyond the
-  pre-closing price. Possible reading: the model tracks the same public xG/form information that moves prices,
-  without adding predictive value. Not worth chasing in v1.
-- Consequence: the project's remaining upside is **EPL execution** — best-price access (§5 AU check) and the
-  live clv_price checkpoint (§3). Soft-league data pipeline stays in the repo; SC0/FIN parked.
+### 4. Soft-league expansion
+After the merge brief is QC'd (alias table reviewed by Cowork), the next brief replicates
+calibration_backtest + recalibration_test per league. Test market: **AH for B1/N1/P1/T1/E1, 1X2 for
+DNK/SWE/NOR** (no AH odds exist there). Scandinavian odds are closing prices — a harder benchmark and
+not prices we could bet at. Only ~3 xG seasons per league → ~2 usable test seasons after warm-up.
+SC0 and FIN stay parked.
 
 ### 5. Manual actions for Chris (no code)
 - **Rotate the Odds API key** (exposed in a Cowork tool error on 2026-10-24): new key from your The Odds API
@@ -77,12 +56,6 @@ From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
 - Matchbook prices exclude commission → its "best price" is slightly overstated.
 - 1% rule ignores margin (some flagged bets ≈ 0 EV at best price). Deliberately unchanged for the season.
 - `scrapers/merge.py` rewrites `data/aliases/team_aliases.json` every run (line-ending churn only).
-- **Ratings season-transition bug (found 2026-10-25, deferred to the 2027 off-season):** `model/ratings.py` computes
-  each team's regression-to-mean target lazily, from live ratings of last season's teams — some already updated by
-  new-season matches played earlier the same matchday. So ratings depend on intra-date row order (why the
-  merge.py row-order hack exists; a clean sort moves ratings by up to 0.018). Fix = snapshot league means once
-  at the season boundary, then refit `config/calibration.yaml`. Not mid-season: it would change the model the
-  2026-27 test is measuring. Until then, never touch merge.py row ordering or ratings_backup.csv.
 - Cowork shell git: no autocrlf and no GitHub credentials. Use `git -c core.autocrlf=true status`; stage text
   with `git -c core.autocrlf=true add --renormalize`; Chris pushes.
 

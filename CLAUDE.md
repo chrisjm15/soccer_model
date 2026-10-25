@@ -2,7 +2,7 @@
 
 ## What This Is
 xG-based Poisson prediction model for soccer betting markets. GitHub: `chrisjm15/soccer_model`.
-Current focus (since 2026-07-12 verdict): EPL Asian Handicap only, using market-blend **calibrated** probabilities — raw model edges and the old 7% threshold are retired; Big 5 ex-EPL has no edge and takes no bets. Soft-league (Scandinavian/proxy) expansion is in data-collection phase and holds most of the remaining upside.
+Current focus: EPL Asian Handicap only, using market-blend **calibrated** probabilities (raw edges and the old 7% threshold are retired). Big 5 ex-EPL has no edge (2026-07-12). Soft leagues failed their calibration test and are closed for v1 (2026-10-25). The EPL edge is real but ≈ one bookmaker margin, so the remaining upside is execution — getting better-than-average prices. Season verdict metric: live price CLV on flagged bets.
 
 ## Session Continuity — MANDATORY (Cowork)
 Chris should never have to ask for a handoff. Sessions run long and can end at any time.
