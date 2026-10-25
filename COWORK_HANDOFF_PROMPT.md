@@ -24,7 +24,7 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
    2. ~~`ANTIGRAVITY_CLV_EDGE_ANALYSIS.md`~~ — DONE + QC'd 2026-10-25 (`5db7ca2`). Verdict in §3.
    3. ~~`ANTIGRAVITY_SOFT_LEAGUE_MERGE.md`~~ — DONE + QC'd (`f06852c`). Alias table reviewed: correct.
    3b. ~~`ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md`~~ — DONE + QC'd (`5388a3b`). soft_merged: 7,841 matched xG rows; proxy xG 2023-24..2025-26, DNK 2022-25, SWE/NOR 2023-26.
-   4. `ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md` — **NEXT.** Soft-league M1/M3 + line-movement test (rule in §4)
+   4. ~~`ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md`~~ — DONE + QC'd (`c758b04`). **FAILED the pre-set rule** (§4).
    5. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, any time
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
 
@@ -51,20 +51,20 @@ From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
   ≤ 0 → the edge doesn't survive the prices we actually get; in between → continue to season end.
 - AU execution (§5) is now the binding constraint: the model edge is only usable at sharp/best prices.
 
-### 4. Soft-league expansion — decision rule for `soft_calibration_report.txt` (set before seeing results)
-Data ready (`soft_merged.csv`, 7,841 matched xG rows). Brief: `prompts/ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md`.
-Eval seasons after a 1-season warm-up: proxy 2024-25 + 2025-26 (~600/league, E1 ~1,100); Scandinavian 2–3.
-Power: per league, M3 detects only b_model ≳ 0.4 (EPL was 0.245, SE 0.107 at n=2,279) → pooled groups decide.
-- **Proxy leagues (AH):** group passes if D5 controlled model term t ≥ 2 **and** D2 pooled b_model > 0.
-  A single league passes only at t ≥ 2.7 (8 leagues tested → guard against a lucky one). Compare against the
-  EPL benchmark row in D5. Pass → paper-trade those leagues live (needs odds feed for them — check The Odds
-  API coverage first).
-- **Scandinavian (1X2):** no movement test possible (closing odds only). Pass needs D3 pooled b_model with
-  p < 0.01 in both the chosen-outcome and stacked versions. Even then D4 ROI is at closing prices — treat as
-  "worth paper-trading", not "edge proven".
-- D1 sanity first: if the model loses badly to the market on Brier everywhere, distrust any positive b_model.
-- Fail everywhere → soft-league route closed for v1; remaining upside is execution (best price) on EPL.
-SC0 and FIN stay parked. Scandinavian Sofascore stops 2026-07-18 — re-scrape before any live use.
+### 4. Soft-league expansion — VERDICT 2026-10-25: FAILED pre-set rule → closed for v1
+`output/backtest_results/soft_calibration_report.txt`; Cowork reproduced the two deciding numbers from the matches CSV.
+- **Proxy AH:** movement test passes (pooled controlled model term t=3.10; EPL benchmark same seasons t=3.59),
+  but outcomes don't: pooled M3 b_model **−0.097 (SE 0.097, p=0.31)**, 95% CI ≈ [−0.29, +0.09] — excludes the
+  EPL's +0.245. No proxy league has b_model > 0 with any significance. Rule needed both → **fail**.
+  OOS AH sweep: ROI ≈ 0 (CI ±5%) at every threshold.
+- **Proxy / Scandinavian 1X2:** b_model ≤ 0 everywhere (pooled Scand −0.14, p=0.63); stacked proxy −0.24 (p=0.03,
+  i.e. model deviations point the wrong way). OOS 1X2 ROI −8% to −23%. **Fail.**
+- Sanity: market beats model on 1X2 Brier in 19/19 league-seasons (expected; magnitude similar to typical).
+- Open question (not a pass): the model predicts line movement in soft leagues but not results beyond the
+  pre-closing price. Possible reading: the model tracks the same public xG/form information that moves prices,
+  without adding predictive value. Not worth chasing in v1.
+- Consequence: the project's remaining upside is **EPL execution** — best-price access (§5 AU check) and the
+  live clv_price checkpoint (§3). Soft-league data pipeline stays in the repo; SC0/FIN parked.
 
 ### 5. Manual actions for Chris (no code)
 - **Rotate the Odds API key** (exposed in a Cowork tool error on 2026-10-24): new key from your The Odds API

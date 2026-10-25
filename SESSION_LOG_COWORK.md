@@ -78,12 +78,18 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
     via unmodified `build_ratings` on xG rows only (B), warm-up season + 10-match guard (C), M1/M3 AH and 1X2,
     stacked robustness, OOS sweep, movement test with EPL benchmark (D). Decision rule pre-set in handoff §4.
 
+15. **Soft-league calibration executed (`c758b04`) — QC PASSED, result: FAIL.** Ratings fingerprint unchanged;
+    filters lost ≤ 11.7% at the experience guard; hand-checks correct. Cowork reproduced D2 pooled AH b_model
+    (−0.0974, SE 0.0965) and D5 controlled movement term (t=3.10). Pre-set rule required both → fail. 1X2 fails
+    in every group. Soft-league route closed for v1; focus returns to EPL execution.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
 - CLV is computed on every logged match, not just flagged bets.
 - Closing source: Pinnacle closing, fallback market-average closing. Line conversion mu = 2.8.
 - Cross-project files stay out of the soccer repo (.gitignore).
+- Soft leagues: closed for v1 per the rule set before the results (handoff §4).
 
 ## Files changed this session
 Committed locally in `85b9efe` (session 15 work). Uncommitted Cowork changes: `.gitignore` (in 85b9efe),
