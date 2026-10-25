@@ -34,7 +34,7 @@ Do not implement code in Cowork. Write the prompt and hand it off.
 
 ## CLI Launch — Full Steps
 
-1. Press **Windows key**, type `Terminal`, press **Enter**
+1. Press **Windows key**, type `PowerShell`, press **Enter**
 2. Paste this and press Enter:
    ```
    cd "C:\Users\chris\Documents\Codex\Projects\Sports Betting - Soccer"

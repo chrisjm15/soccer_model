@@ -36,7 +36,7 @@ Chris has no coding background. All prompts must be copy-paste ready with exact 
 
 ## Sonnet CLI Launch (fallback only) — Full Steps
 
-1. Press **Windows key**, type `Terminal`, press **Enter**
+1. Press **Windows key**, type `PowerShell`, press **Enter**
 2. Paste this and press Enter:
    ```
    cd "C:\Users\chris\Documents\Claude\Projects\Sports Betting - Soccer"
