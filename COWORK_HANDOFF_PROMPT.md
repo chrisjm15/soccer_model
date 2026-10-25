@@ -40,6 +40,11 @@ Also watch `clv_move ~ calib_edge` across all logged matches (9–10/round) as a
   2.15 at the Friday run and model break-even 2.08 → ≈ 6% worse than best, ≈ −2.6% EV on the model's numbers.
   If that gap is typical, the EPL edge is not bettable at AU corporates. To measure: note the Bet365 AU price
   for each flagged bet for a few rounds and compare with the logged best price and break-even.
+  Same match, Chris's checks ~19:50 Sun: **Sportsbet Draw No Bet 2.10** (≈ +0.9% EV), **Ladbrokes DNB 1.95**
+  (≈ −6.3%). AU spread 1.95–2.10 (7.7%) ≫ the model's edge → shopping across AU books matters as much as the
+  model. AU books often don't label AH: DNB = AH 0.00, Double Chance = +0.5, H2H win = −0.5, ±0.25 = split stake
+  (DNB + win / DNB + double chance); ±0.75 / ±1.0 need a genuine 2-way handicap market ("3-way/European
+  handicap" is NOT Asian). Proposed habit: for each flagged bet record Bet365 / Sportsbet / Ladbrokes prices.
   Caveat: football-data's B365 columns are Bet365 international prices — the historical +0.7% price CLV
   "at B365 pre-closing" may not transfer to Bet365 AU.
 - **Betfair AU exchange** still unchecked — most promising execution route (backlog item 3).

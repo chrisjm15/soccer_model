@@ -93,6 +93,8 @@ bug found, deferred to the off-season. Automation unchanged and running. No brie
 18. Defect (Cowork): end-of-session commit `770acd6` contained a stale early-session handoff (staged-copy path).
     Rewritten directly on disk and verified; process note added to handoff tech debt.
 
+19. AU price spread, same bet: Sportsbet DNB 2.10, Bet365 AH 2.025, Ladbrokes DNB 1.95 (break-even 2.08). Recorded.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
