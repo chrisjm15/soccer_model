@@ -32,9 +32,13 @@ EPL season joins below 95%.**
 - Pre-closing line = the row's `ah_line` (football-data AHh). Closing line = `close_ah_line`.
 - `pre_home` = no-vig home prob of B365 pre-closing (`odds_ah_home/away`) on the pre line.
 - `pre_home_pin` = same from Pinnacle pre-closing (`pin_ah_home/away`), where present.
+- `pre_home_avg` = same from market-average pre-closing (`avg_ah_home/away`).
+- Note (found by the CLV brief): football-data stopped publishing Pinnacle columns after ~210 EPL
+  matches of 2025-26; none in 2026-27. Market-average columns are complete throughout.
 - `close_home` = Pinnacle closing no-vig (fallback market-average closing), **converted onto the
   pre-closing line** with `convert_q_home`. Record which source.
-- `move` = close_home − pre_home. `move_pin` = close_home − pre_home_pin (like-for-like book).
+- `move` = close_home − pre_home. `move_pin` = Pinnacle close − Pinnacle pre (like-for-like, Pinnacle rows only).
+  `move_avg` = market-average close − market-average pre (like-for-like; same source the live log uses).
 - Model home prob: if `bet_side == 'home'` then `model_prob`, else `1 − model_prob`
   (valid because model_prob = p_side + 0.5·p_push, so home and away sum to 1).
   Market home prob at bet time = `pre_home`.
@@ -42,8 +46,8 @@ EPL season joins below 95%.**
 
 ### Analyses — one section each in the report
 **H1 — EPL 2020-21 … 2025-26, all matches.** OLS `move ~ signal`. Report n, intercept, slope,
-HC1 SE, t, p, R², SD of move, SD of signal. Repeat with `move_pin` (rows where Pinnacle
-pre-closing exists). Repeat per season (n, slope, SE).
+HC1 SE, t, p, R², SD of move, SD of signal. Repeat with `move_pin` (rows where both Pinnacle
+prices exist) and with `move_avg` (all rows). Repeat per season (n, slope, SE).
 
 **H2 — EPL out-of-sample calibrated edge (recalibrated_test_matches, 2024-25 and 2025-26).**
 Bet-side perspective here: `move_side` = closing no-vig of the bet side (converted onto the pre
@@ -73,3 +77,4 @@ git add scripts/clv_edge_analysis.py output/backtest_results/clv_edge_report.txt
 git commit -m "CLV-vs-edge analysis: historical EPL/Big5 line movement vs model signal, live log"
 git push
 ```
+(`git push` also pushes Cowork's local commits made since the last push — expected.)

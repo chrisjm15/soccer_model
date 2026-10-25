@@ -11,28 +11,33 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 ## Current state
 - Live and automated: Tue 12:00 settle, Fri 12:00 predict (`scripts/run_update.ps1`). Check `output/scheduler_log.txt`.
 - Paper log `output/paper_trading/log_ah.csv`: 2 flagged GW9 bets (Villa +1.00 @1.83, Sunderland 0.00 @2.15).
-- **All CLV values in the log are invalid** (measured against football-data *pre-closing* odds). Fixed by brief 1 below.
-- Session 15 work committed locally (`85b9efe`), **not pushed**.
+- CLV now uses real closing odds (brief 1 done, `4115d4b`, QC passed). Closing source is market-average: football-data dropped Pinnacle columns mid-2025-26.
+- Sessions 15–16 pushed to GitHub (head `06346f2`, 2026-10-25).
 
 ## Priorities (in order)
 
-### 1. Push + run the briefs (Chris)
-1. In a terminal in the project folder: `git push` (pushes 85b9efe + the session 16 commit).
+### 1. Run the briefs (Chris)
+1. Pushed — done.
 2. Antigravity, one brief per fresh session, in this order — paste:
    `Read prompts/<FILE>.md and carry out every task in it, in order.`
-   1. `ANTIGRAVITY_CLOSING_LINE_CLV.md` — money-critical; gold tests `scripts/test_clv.py` (do not let it edit them)
+   1. ~~`ANTIGRAVITY_CLOSING_LINE_CLV.md`~~ — DONE + QC'd 2026-10-25
    2. `ANTIGRAVITY_CLV_EDGE_ANALYSIS.md` — needs brief 1 committed
    3. `ANTIGRAVITY_SOFT_LEAGUE_MERGE.md` — independent, any time
    4. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, after brief 1
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
 
-### 2. Verify the first automated settle (Tue 2026-10-27; check-in scheduled 14:00 AEDT)
+### 2. Watch Friday's GW10 predict run (Fri 2026-10-30 12:00)
+The brief-1 test run on Sunday logged 7 GW10 rows on ratings missing all of GW9 (2 flagged). Cowork deleted
+them (still in git at `4115d4b`) so the Friday run logs GW10 normally. Confirm 9–10 GW10 rows appear with
+prediction_date 2026-10-30. **Never run predict by hand before Friday** — first sighting locks the row.
+
+### 2b. Verify the first automated settle (Tue 2026-10-27; check-in scheduled 14:00 AEDT)
 Villa/Sunderland settled correctly by hand; calibration columns still present. After brief 1: how many
 GW9 rows got CLV and how many needed line conversion.
 
 ### 3. Checkpoint — decide on line movement, not ROI
 ROI at 40 bets has a 95% CI of about ±30pp, so it is reported but not decided on before season end.
-Decision rule, applied to `clv_edge_report.txt` (H1 EPL, Pinnacle-to-Pinnacle movement preferred):
+Decision rule, applied to `clv_edge_report.txt` (H1 EPL; Pinnacle-to-Pinnacle movement preferred, avg-to-avg must agree in sign):
 - slope > 0 with t ≥ 2, **and** H2 flagged bets have mean price-CLV > 0 → edge credible: keep going and plan real execution (see 5).
 - t < 1 or slope ≤ 0 → the model does not anticipate the market: keep the paper log running untouched, move effort to soft leagues.
 - 1 ≤ t < 2 → inconclusive: re-run with live rows at ~150 logged matches (≈ late Jan 2027).

@@ -7,8 +7,8 @@ decision that can be answered on six seasons of history instead of ~40 live bets
 Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravity yet.
 
 ## Done (Cowork)
-1. **Session 15 commit made locally — `85b9efe`** (13 files). Push failed: this shell has no GitHub
-   credentials → Chris runs `git push`.
+1. **Session 15 commit made locally — `85b9efe`** (13 files). Cowork shell has no GitHub credentials;
+   Chris pushed from PowerShell — origin/main = `06346f2`.
    - Cross-project files (`AFL/`, `SPORTS_PROJECT_SETUP.md`, `skillcreator_sports_project_starter.md`)
      added to `.gitignore` instead of committed. `scripts/run_update.ps1.bak` deleted.
    - First attempt stored 4 files with CRLF (Cowork's Linux git has no autocrlf); amended with
@@ -43,6 +43,18 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
    `Out-File -Encoding utf8`. Exit code captured into `$predictCode`. Not yet run on Windows — the CLV
    brief's Task 6 runs it once. `output/predictions/predict_2026-10-24.txt` converted to UTF-8.
 7. Scheduled a check-in for Tue 2026-10-27 14:00 AEDT to verify the first automatic settle.
+
+8. **Brief 1 executed by Antigravity (`4115d4b`) — QC PASSED.** Gold tests unchanged and passing (re-run by
+   Cowork); 7 converted rows re-computed with Cowork's independent reference — all within 1e-5; log diff vs
+   backup clean; unrequested predict change (append keeps all columns) reviewed — harmless, consistent with
+   the never-drop-columns rule. Findings: football-data has no Pinnacle columns after ~210 EPL matches of
+   2025-26 → live closing source is market-average (`avg`). May-2026 bets: mean clv_price −3.66% (n=11; old ±1.5
+   lines, pre-calibration model — not evidence about the current model).
+9. **Defect caused by Cowork's brief:** Task 6 step 6 (hand-run predict on Sunday) logged 7 GW10 rows on
+   ratings missing GW9 (2 flagged: Spurs v Palace away −1.00, Man City v Brighton away −0.75). First-sighting
+   would have locked them. Cowork deleted exactly those 7 rows (verified 7-line diff). Lesson: never ask an
+   executor to run `predict` outside the Friday slot.
+10. Brief 2 amended: add avg-to-avg movement (`move_avg`), note Pinnacle gap.
 
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
