@@ -83,12 +83,18 @@ Four Antigravity briefs are queued in `prompts/`. Nothing executed by Antigravit
     (−0.0974, SE 0.0965) and D5 controlled movement term (t=3.10). Pre-set rule required both → fail. 1X2 fails
     in every group. Soft-league route closed for v1; focus returns to EPL execution.
 
+16. **Merge sort-key brief: stop gate triggered (correct behaviour).** Deterministic sort changed ratings by up to
+    0.018 (8,280/11,060 rows > 1e-6); Antigravity restored merge.py/ratings.csv/all_merged.csv, tree clean. Cowork
+    confirmed its root cause in `model/ratings.py` (league means for season regression read live, partly
+    new-season-updated ratings → order-dependent). Deferred to the off-season with a calibration refit.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.
 - CLV is computed on every logged match, not just flagged bets.
 - Closing source: Pinnacle closing, fallback market-average closing. Line conversion mu = 2.8.
 - Cross-project files stay out of the soccer repo (.gitignore).
+- Ratings season-transition fix deferred to 2027 off-season (would change the live model mid-test).
 - Soft leagues: closed for v1 per the rule set before the results (handoff §4).
 
 ## Files changed this session

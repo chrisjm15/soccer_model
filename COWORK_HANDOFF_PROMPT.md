@@ -25,7 +25,7 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
    3. ~~`ANTIGRAVITY_SOFT_LEAGUE_MERGE.md`~~ — DONE + QC'd (`f06852c`). Alias table reviewed: correct.
    3b. ~~`ANTIGRAVITY_SOFT_LEAGUE_REFRESH.md`~~ — DONE + QC'd (`5388a3b`). soft_merged: 7,841 matched xG rows; proxy xG 2023-24..2025-26, DNK 2022-25, SWE/NOR 2023-26.
    4. ~~`ANTIGRAVITY_SOFT_LEAGUE_CALIBRATION.md`~~ — DONE + QC'd (`c758b04`). **FAILED the pre-set rule** (§4).
-   5. `ANTIGRAVITY_MERGE_SORT_KEY.md` — low priority, any time
+   5. ~~`ANTIGRAVITY_MERGE_SORT_KEY.md`~~ — ran, hit its stop gate (ratings diff up to 0.018), fully restored. Hack stays; see §6.
 3. Cowork QCs each report against the repo before the next one (run the gold tests, diff the log, spot-check rows).
 
 ### 2. Watch Friday's GW10 predict run (Fri 2026-10-30 12:00)
@@ -77,6 +77,12 @@ From `output/backtest_results/clv_edge_report.txt`, QC'd by Cowork:
 - Matchbook prices exclude commission → its "best price" is slightly overstated.
 - 1% rule ignores margin (some flagged bets ≈ 0 EV at best price). Deliberately unchanged for the season.
 - `scrapers/merge.py` rewrites `data/aliases/team_aliases.json` every run (line-ending churn only).
+- **Ratings season-transition bug (found 2026-10-25, deferred to the 2027 off-season):** `model/ratings.py` computes
+  each team's regression-to-mean target lazily, from live ratings of last season's teams — some already updated by
+  new-season matches played earlier the same matchday. So ratings depend on intra-date row order (why the
+  merge.py row-order hack exists; a clean sort moves ratings by up to 0.018). Fix = snapshot league means once
+  at the season boundary, then refit `config/calibration.yaml`. Not mid-season: it would change the model the
+  2026-27 test is measuring. Until then, never touch merge.py row ordering or ratings_backup.csv.
 - Cowork shell git: no autocrlf and no GitHub credentials. Use `git -c core.autocrlf=true status`; stage text
   with `git -c core.autocrlf=true add --renormalize`; Chris pushes.
 
