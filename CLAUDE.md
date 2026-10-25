@@ -4,36 +4,37 @@
 xG-based Poisson prediction model for soccer betting markets. GitHub: `chrisjm15/soccer_model`.
 Current focus (since 2026-07-12 verdict): EPL Asian Handicap only, using market-blend **calibrated** probabilities — raw model edges and the old 7% threshold are retired; Big 5 ex-EPL has no edge and takes no bets. Soft-league (Scandinavian/proxy) expansion is in data-collection phase and holds most of the remaining upside.
 
+## Session Continuity — MANDATORY (Cowork)
+Chris should never have to ask for a handoff. Sessions run long and can end at any time.
+- **Update `COWORK_HANDOFF_PROMPT.md` and `SESSION_LOG_COWORK.md` at every milestone, not at session end.**
+  A milestone is any of: a brief handed to Antigravity; Antigravity's report QC'd (pass or fail); a
+  decision made; a defect found; a config/schedule/automation change; a finding that changes priorities.
+- Do it in the same turn as the milestone, before replying to Chris. Keep both docs current-state (rewrite
+  stale sections; don't just append).
+- At the start of a new session, archive the previous session log to `archive/session_logs/` before
+  writing the new one.
+- Each handoff ends with a ready-to-paste commit block for everything Cowork changed but couldn't commit.
+
 ## Roles
 | Context | Role |
 |---|---|
-| **Cowork session** | Strategic planner. Design, research, write prompts. Does NOT implement code, run scripts, or push to git. |
-| **Claude Sonnet CLI** | Executor. Multi-file integration, debugging, git. Reads full project context. |
-| **Local LLMs** | Single-module implementors. See tool allocation below. |
+| **Cowork session** | Strategic planner and QC. Design, research, write briefs, verify executor output against the repo. Does not push to git. |
+| **Antigravity (Gemini)** | Default executor. Multi-file work, running scripts, git. Briefed via the `antigravity-handoff` skill; briefs live in `prompts/`. |
+| **Sonnet CLI** | Fallback executor if Antigravity fails a task twice. |
+| **Local LLMs** | Parked (see `docs/LOCAL_LLM_SETUP.md`). |
 
 Chris has no coding background. All prompts must be copy-paste ready with exact paths and plain English explanations.
 
 ## Cowork Default Behaviour
-For any coding task, the default flow is:
-1. **Single module** → use `local-llm` skill → write self-contained prompt → paste to chosen model → use Colab for QC/testing
-2. **Multi-file / integration / debugging** → write a **Sonnet CLI prompt**
-3. **Architecture, design, research** → handle in Cowork
+1. **Coding task** → `antigravity-handoff` skill → brief in `prompts/` sized to the cost of being wrong →
+   Chris pastes one line into Antigravity.
+2. **Money-critical code** (edges, calibration, staking, settlement, line selection) → Cowork writes a
+   hand-verified gold test file that the executor may not edit.
+3. **Always QC the executor's report against the repo** (git log/diff, run the tests, inspect outputs).
+   Never accept its claims unverified.
+4. **Architecture, design, research** → handle in Cowork.
 
-Do not implement code in Cowork. Write the prompt and hand it off.
-
-**Escalation rule — "needs testing" is NOT a reason to use Sonnet CLI.** Colab QC is the testing layer for local LLM output. Only escalate to Sonnet CLI when the task genuinely requires: reading across multiple files simultaneously, debugging integration between modules, or git operations. A single-file change that needs to be run and verified stays with local LLM + Colab.
-
-## Tool Allocation
-| Tool | Use When |
-|---|---|
-| Cowork | Architecture, design, research, prompt writing |
-| Sonnet CLI (`claude --model claude-sonnet-4-6`) | Multi-file work, debugging across modules, git, full project context |
-| Qwen3-Coder 30B (`qwen3-coder:30b-16k`) | Default: single-module scripts, data transforms, boilerplate |
-| Gemma 4 26B (`gemma4:26b-16k`) | Correctness-critical: async code, financial calculations |
-| Qwen3 8B (`qwen3:8b-16k`) | Quick edits: config, single functions, test stubs |
-| Colab | QC and testing layer for local LLM output. Run code, check output, verify results. Use for Gemma-tier work or when output looks wrong. Skip for trivial Qwen3 8B edits. |
-
-## CLI Launch — Full Steps
+## Sonnet CLI Launch (fallback only) — Full Steps
 
 1. Press **Windows key**, type `Terminal`, press **Enter**
 2. Paste this and press Enter:

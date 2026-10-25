@@ -7,3 +7,8 @@ venv/
 *.egg-info/
 .pytest_cache/
 .claude/
+
+# Cross-project files (AFL project, generic setup guides) - not part of soccer_model
+AFL/
+SPORTS_PROJECT_SETUP.md
+skillcreator_sports_project_starter.md

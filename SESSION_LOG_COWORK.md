@@ -1,44 +1,57 @@
-# Session 14 — 2026-07-12
+# Session 15 — 2026-10-24/25
 
 ## Status at session end
-Strategy verdict reached. Big 5 ex-EPL retired — model has no edge vs the market. EPL carries a weak, unconfirmed signal forward as a live hypothesis for 2026-27 using calibrated probabilities. Raw-probability edge thresholds (the old 7%) are retired. Scandinavian scraping resumed via desktop bat file (N1 mid-run at session end).
+Calibrated EPL AH model is LIVE and on autopilot for the 2026-27 paper-trading test. First 2 paper bets
+logged (GW9: Aston Villa +1.00 v Man City, Sunderland 0.00 v Leeds). Weekly runs now automatic:
+Tuesday settle, Friday predict. Soft-league work is unchanged since July (P1 now verified, FIN parked).
 
-## What was done this session
+## Found at session start (3 months idle since session 14)
+- Pre-GW1 deployment never happened: `run.py` still used the retired 7% raw threshold; no 2026-27 bets logged.
+- **Data frozen since May:** `understat.py` and `footballdata.py` season lists stopped at 2025-26. The weekly
+  `update` reported exit code 0 every week while ratings stayed at 2026-05-24.
+- P1 re-scrape verified good (306 rows × 5 seasons, xG present). FIN still broken (2021=30, 2025=15) → parked
+  per the 2026-07-18 plan.
 
-### Full project review (first Fable session)
-Identified: paper ROI statistically meaningless at n=5; +6.5% EPL AH backtest number carries a 15-cell selection problem; CLV tracking missing; calibration backtest designed but unbuilt for 2 months.
+## Done (executed by Antigravity, QC'd by Cowork)
+Executor switched from Sonnet CLI to Antigravity (Gemini) via the `antigravity-handoff` skill. Money-critical
+code now ships with Cowork-written, hand-verified gold tests (`scripts/test_calibration.py`,
+`scripts/test_line_selection.py`). Antigravity must not edit those files.
 
-### Final EPL paper trading settled
-`run.py results` settled the last 6 bets. **Final season: 11 bets, 8W 3L, +$22.40, +20.4% ROI.**
-Caveat: includes 2 bets Chris had vetoed (Arsenal/Burnley +2.50, Bournemouth +1.50 — both won, +$13.30). Excluding vetoes: 9 bets, +$9.10, ~+10%. **Convention decided: log stays pure model output; vetoes recorded in `notes`, never removed.**
+1. **Deploy (commit 9efe4f2)** — `prompts/completed/ANTIGRAVITY_EPL_CALIBRATED_DEPLOY.md`
+   - 2026-27 added to scrapers; pre-2026-27 ratings verified bit-identical after rebuild.
+   - EPL M3 refit on 2020-21..2025-26 (n=2,279): intercept −0.0601, b_market 0.3960, **b_model 0.2450 (p=0.022)**.
+     M1 diag: 0.0532 / 0.6682. Stored in `config/calibration.yaml` with market_prob_range [0.4569, 0.5407].
+   - `model/calibration.py` (pure functions); `run.py predict` = calibrated edge ≥ 1%, consensus no-vig for
+     market prob, best price for bet price, out-of-range guard, promoted-team guard (<10 matches; promoted =
+     no EPL rows in 2025-26). Promoted 2026-27: Coventry, Hull (never seen → DEFAULT_PRIORS), Ipswich
+     (returning → old rating regressed 30%).
+2. **QC found two defects in the deploy:**
+   - `run.py results` rewrote the log with a fixed column list → deleted the calibration columns and overwrote
+     old CLV with `nan`. (Antigravity's report falsely claimed the hand-check matched the log.)
+   - Live feed priced the wrong market: UK/AU `spreads` = ±1.5 lines (market probs 0.23–0.82). Model is
+     trained on the main Asian line (B365 AHh, market ≈ 0.5). Guard vetoed all 9 → model could never bet.
+3. **Fix (commit 042c9a8)** — `prompts/completed/ANTIGRAVITY_FIX_LOG_AND_MAIN_LINE.md`
+   - results now preserves all columns; 5 historical CLV values restored from cb2a344.
+   - `regions=uk,au,eu`; `select_main_line` picks the line with consensus no-vig closest to 0.5.
+     Main lines come from Pinnacle / Matchbook / offshore EU books. 8/9 GW9 matches in range.
+   - Log adds `best_book`, `best_au_price`. **Only AU book in the API for EPL spreads is PlayUp (±1.5 only)**
+     → no flagged bet is currently placeable at an AU book via the feed.
+   - First Antigravity attempt at this brief failed ("Model produced invalid output") and rewrote the prompt
+     instead of executing; a fresh session succeeded.
+4. **Automation (Cowork, uncommitted)** — `scripts/run_update.ps1` rewritten with `-Mode settle|predict`:
+   update → results (Tue) or update → predict (Fri). Skips step 2 if update fails. Sleep step removed.
+   Predict output → `output/predict_latest.txt` + `output/predictions/predict_YYYY-MM-DD.txt`.
+   New Windows task "Soccer Model - Friday Predict" (Fri 12:00, wake-to-run, start-when-available).
+   Test runs 2026-10-24 13:39 and 19:54 both exit 0, no duplicate logging.
 
-### Calibration backtest built and run (Sonnet CLI, prompt now in prompts/completed/)
-`scripts/calibration_backtest.py` over 10,702 matches → `calibration_report.txt` + `calibration_matches.csv`.
-Findings:
-- **Overconfidence is universal**, not just 65%+: +3.1pp at 50-55% rising to +31.5pp at 80%+. Actual coverage ~48-54% regardless of model probability.
-- **Disagreement test (all leagues): reality tracks the MARKET, not the model** (>10% disagreement, n=4,337: actual 50.6% vs market 49.9%). Raw model edges were almost entirely calibration error; the season's +20.4% was luck.
-- **EPL exception:** >10% bucket n=1,071, actual 53.7% vs market 50.0% (~2.4σ, but effective p≈0.10 after 5-league selection).
-- CLV added to `run.py results` (was biased gross-vs-novig on old rows; fixed properly for future via both-sides logging below).
+## Decisions
+- Keep the 1% calibrated-edge rule all season even though it ignores margin (Villa bet ≈ 0 EV at 1.83).
+  The July OOS sweep validated this exact rule at real B365 prices; changing it mid-season breaks the test.
+- Log stays pure model output; vetoes in `notes` only (unchanged).
+- Bet price logged = first sighting (Friday run); later runs don't overwrite.
 
-### Recalibration / market-blend test built and run (Sonnet CLI)
-`scripts/recalibration_test.py` — fractional logit, train 2020-24, OOS test 2024-26 → `recalibration_report.txt`.
-- **All leagues: model coefficient p=0.13, OOS worse than market-only. Dead.**
-- **EPL: model coefficient +0.286, p=0.02 — model and market get near-equal weight.** OOS sweep positive at every threshold 1-4% (1%: 92 bets/season, +8.9% ROI, CI [-3.1, +20.9]). Real but unconfirmed; only true test is 2026-27.
-- **M4: large-line interaction insignificant (p≈0.8) → the model's signal is NOT concentrated in big lines. The 10-factor large-line correction layer (docs/LARGE_LINE_CALIBRATION.md) is superseded — do not build it.** Global recalibration handles the miscalibration.
-- `run.py predict` now logs both AH sides' odds → clean no-vig CLV from next season.
-
-### Scandinavian scraping resumed
-- `scrape_next_league.bat` (project root — copy to desktop): one league per click, state in `experiment/sofascore_done.txt`, only marks a league done on clean exit. Queue: N1→B1→P1→SC0→T1→SWE→NOR→DNK→FIN. `--seasons-back 6` (26/27 is listed but empty — counting it as a season was costing the oldest real season).
-- N1 mid-run at session end (3 season files saved). "9/10 completed" round counts = Sofascore duplicate/postponed fixture entries; dedup guard handles it. QC check: Eredivisie full season = 306 rows.
-
-### Edge-improvement priorities discussed (ranked, recorded in handoff)
-Best-price execution → soft-league opening lines / lineup-aware timing → non-penalty + game-state + set-piece xG → player-availability veto → top-down Pinnacle-anchor research. Model-quality work (Dixon-Coles, PPDA etc.) explicitly deprioritised: adds calibration, not information.
-
-### Housekeeping
-All 25 executed prompts moved to `prompts/completed/`. Stale session-10 `load_sofascore.py` copy moved to `archive/`. Sessions 9-13 log archived. INDEX, handoff, CLAUDE.md updated. Old headline numbers (+18.2% ROI, 7% threshold, +6.5% raw EPL AH) superseded in all active docs.
-
-## Files touched (uncommitted — see handoff for commit block)
-New: `scrape_next_league.bat`, `prompts/completed/CLI_PROMPT_CALIBRATION_CLV.md`, `prompts/completed/CLI_PROMPT_RECALIBRATION_TEST.md`, `archive/session_logs/SESSION_LOG_SESSIONS_9_to_13.md`, N1 sofascore CSVs (in progress).
-Moved: 25 prompts → `prompts/completed/`, stale script → `archive/`.
-Updated: `COWORK_HANDOFF_PROMPT.md`, `SESSION_LOG_COWORK.md`, `docs/INDEX.md`, `docs/LARGE_LINE_CALIBRATION.md` (supersession note), `CLAUDE.md` (project description).
-Already committed by CLI sessions: calibration + recalibration scripts, reports, run.py changes.
+## Files touched this session (uncommitted)
+`scripts/run_update.ps1`, `SESSION_LOG_COWORK.md`, `COWORK_HANDOFF_PROMPT.md`, `docs/WEEKLY_SCHEDULE.md`,
+`docs/INDEX.md`, `CLAUDE.md`, `archive/session_logs/SESSION_LOG_SESSION_14.md` (moved),
+`data/aliases/team_aliases.json`, `output/scheduler_log.txt`, `output/predict_latest.txt`, `output/predictions/`.
+Delete (can't from Cowork): `scripts/run_update.ps1.bak`.

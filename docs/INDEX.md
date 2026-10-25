@@ -62,6 +62,11 @@ No active prompts (session 14). All executed/abandoned prompts live in `prompts/
 | `scripts/recalibration_test.py` | Market-blend logistic regression test (M1-M4) — trains on 2020-24, evaluates OOS on 2024-26. Tests if model adds info beyond market. Threshold sweep with bootstrap CI. |
 | `scripts/fit_epl_calibration.py` | Refit M3 & M1 on 6 historical EPL seasons (2020-26), generates config/calibration.yaml |
 | `scripts/test_calibration.py` | Fixed gold tests for model/calibration.py |
+| `scripts/test_line_selection.py` | Fixed gold tests for select_main_line (main Asian line choice) |
+| `scripts/run_update.ps1` | Scheduled automation: `-Mode settle` (Tue: update+results) / `-Mode predict` (Fri: update+predict) |
+| `output/predict_latest.txt`, `output/predictions/` | Console output of the scheduled predict runs |
+| `prompts/completed/ANTIGRAVITY_*.md` | Session 15 executor briefs (executed) |
+| `archive/session_logs/SESSION_LOG_SESSION_14.md` | Session 14 log (strategy verdict) |
 | `config/leagues.yaml` | League definitions + Odds API sport keys |
 | `config/calibration.yaml` | EPL AH calibration config (M3/M1 coefficients, market_prob_range, 1% threshold, promoted_min_matches) |
 | `data/aliases/team_aliases.json` | Team name mapping |

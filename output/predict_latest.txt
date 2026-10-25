@@ -1,0 +1,59 @@
+﻿Fetching EPL Asian Handicap odds from The Odds API...
+Target market: spreads (Asian Handicap) | EPL only | 1.0% calibrated edge threshold
+
+  [EPL] API credits remaining: 484
+  [The Odds API] bet365 present in response: False
+
+  [DEBUG] Raw AH fields from first API match (Aston Villa vs Manchester City):
+    Bookmaker: onexbet
+    Market key: spreads
+      Aston Villa: price=1.59, point=1.5
+      Manchester City: price=2.59, point=-1.5
+
+
+Found 9 EPL matches with AH odds.
+
+
+==========================================================================================
+=== EPL ASIAN HANDICAP PREDICTIONS - 2026-10-24 ===
+Threshold: 1.0% calibrated edge | Market: Asian Handicap | Best price execution
+==========================================================================================
+
+FLAGGED BETS (calibrated edge >= 1.0%):
+  NOTE: Odds shown are best available from UK + AU + EU bookmakers via The Odds API.
+
+  ======================================================================
+  2026-10-24  Aston Villa vs Manchester City
+  BET:             Aston Villa AH +1.00 (Home side)
+  OUTCOME:         Aston Villa win, draw, or lose by 1 (push if lose by exactly 1)
+  Best Price:      1.84 (coolbet)  |  Best AU Price: None (no AU book on line)  |  Break-Even Odds: 1.84
+  Calib P:         54.40%  |  Market P: 52.81%  |  Raw Model P: 68.66%
+  Calibrated Edge: +1.60%
+
+  ======================================================================
+  2026-10-25  Sunderland vs Leeds
+  BET:             Sunderland AH +0.00 (Home side)
+  OUTCOME:         Sunderland win or draw (or lose by up to 0.00)
+  Best Price:      2.15 (onexbet)  |  Best AU Price: None (no AU book on line)  |  Break-Even Odds: 2.08
+  Calib P:         48.06%  |  Market P: 46.27%  |  Raw Model P: 54.22%
+  Calibrated Edge: +1.78%
+
+
+ALL EPL MATCHES THIS WEEK (9 total), sorted by date then edge:
+  Date         Home                 Away                     AH  Side   CalibP     MktP    Edge   Best Book               AU  BreakEv    Signal Notes          
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  2026-10-24   Coventry             Fulham                +0.25  Home   52.42%   50.51%  +1.91%   1.98 matchbook                 1.91   No Bet  promoted_veto  
+  2026-10-24   Aston Villa          Manchester City       +1.00  Home   54.40%   52.81%  +1.60%   1.84 coolbet                   1.84   *** BET                
+  2026-10-24   Arsenal              Everton               -1.25  Away   52.89%   52.66%  +0.24%   1.88 matchbook                 1.89   No Bet                 
+  2026-10-24   Chelsea              Tottenham             -0.50  Away   49.25%   50.02%  -0.77%   1.98 matchbook                 2.03   No Bet                 
+  2026-10-25   Hull                 Brentford             +0.75  Home   54.37%   48.67%  +5.70%   2.04 matchbook                 1.84   No Bet  promoted_veto  
+  2026-10-25   Sunderland           Leeds                 +0.00  Home   48.06%   46.27%  +1.78%   2.15 onexbet                   2.08   *** BET                
+  2026-10-25   Manchester United    Bournemouth           -0.25  Home   50.17%   50.30%  -0.14%   2.00 matchbook                 1.99   No Bet                 
+  2026-10-25   Liverpool            Brighton              -0.25  Away   47.71%   47.99%  -0.28%   2.06 matchbook                 2.10   No Bet                 
+  2026-10-25   Crystal Palace       Newcastle United      +0.25  Home   52.13%   52.72%  -0.59%   1.87 matchbook                 1.92   No Bet                 
+
+Paper trading log unchanged: all 9 matches already logged
+
+This week: 2 flagged bets out of 9 EPL matches
+================================================================================
+
