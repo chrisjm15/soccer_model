@@ -1,0 +1,61 @@
+  O/U 2.5 AND 1X2: DOES THE MODEL ADD INFORMATION BEYOND THE MARKET?  --  2026-10-27
+  Rows: 10715 (Big 5, 2020-21..2025-26, with ratings).  Avg O/U odds joined: 100.0%
+
+====================================================================================================
+  A. FULL SAMPLE M3 (all 6 seasons), each outcome on its own; y = outcome happened
+====================================================================================================
+  -- OVER  (market = Avg no-vig; model = Poisson)
+  EPL                            n  2280  b_market +0.830 (0.171)  b_model +0.286 (SE 0.213, t +1.35, p 0.178)
+  Big 5 ex-EPL                   n  8432  b_market +1.106 (0.079)  b_model +0.010 (SE 0.115, t +0.09, p 0.928)
+  Bundesliga                     n  1834  b_market +1.339 (0.170)  b_model -0.141 (SE 0.244, t -0.58, p 0.561)
+  La_Liga                        n  2277  b_market +1.060 (0.147)  b_model +0.057 (SE 0.230, t +0.25, p 0.804)
+  Ligue_1                        n  2046  b_market +1.187 (0.176)  b_model -0.328 (SE 0.217, t -1.51, p 0.131)
+  Serie_A                        n  2275  b_market +0.775 (0.169)  b_model +0.491 (SE 0.280, t +1.75, p 0.080)
+  -- HOME  (market = Avg no-vig; model = Poisson)
+  EPL                            n  2280  b_market +0.966 (0.098)  b_model +0.287 (SE 0.241, t +1.19, p 0.233)
+  Big 5 ex-EPL                   n  8434  b_market +1.140 (0.061)  b_model +0.030 (SE 0.135, t +0.22, p 0.823)
+  Bundesliga                     n  1835  b_market +1.131 (0.133)  b_model -0.258 (SE 0.302, t -0.86, p 0.392)
+  La_Liga                        n  2277  b_market +1.101 (0.117)  b_model +0.371 (SE 0.255, t +1.45, p 0.146)
+  Ligue_1                        n  2046  b_market +1.073 (0.126)  b_model +0.149 (SE 0.282, t +0.53, p 0.597)
+  Serie_A                        n  2276  b_market +1.396 (0.124)  b_model -0.549 (SE 0.285, t -1.93, p 0.054)
+  -- DRAW  (market = Avg no-vig; model = Poisson)
+  EPL                            n  2280  b_market +0.951 (0.228)  b_model -0.382 (SE 0.640, t -0.60, p 0.551)
+  Big 5 ex-EPL                   n  8434  b_market +1.294 (0.132)  b_model -0.156 (SE 0.337, t -0.46, p 0.644)
+  Bundesliga                     n  1835  b_market +1.355 (0.276)  b_model -1.153 (SE 0.737, t -1.56, p 0.118)
+  La_Liga                        n  2277  b_market +1.270 (0.268)  b_model +0.835 (SE 0.633, t +1.32, p 0.187)
+  Ligue_1                        n  2046  b_market +1.208 (0.264)  b_model +0.427 (SE 0.677, t +0.63, p 0.528)
+  Serie_A                        n  2276  b_market +1.457 (0.256)  b_model -0.924 (SE 0.819, t -1.13, p 0.259)
+  -- AWAY  (market = Avg no-vig; model = Poisson)
+  EPL                            n  2280  b_market +0.837 (0.101)  b_model +0.527 (SE 0.247, t +2.14, p 0.033)
+  Big 5 ex-EPL                   n  8434  b_market +1.120 (0.064)  b_model +0.094 (SE 0.140, t +0.67, p 0.501)
+  Bundesliga                     n  1835  b_market +1.021 (0.127)  b_model +0.165 (SE 0.304, t +0.54, p 0.586)
+  La_Liga                        n  2277  b_market +1.100 (0.127)  b_model +0.259 (SE 0.279, t +0.93, p 0.353)
+  Ligue_1                        n  2046  b_market +1.138 (0.137)  b_model -0.216 (SE 0.300, t -0.72, p 0.473)
+  Serie_A                        n  2276  b_market +1.300 (0.128)  b_model -0.101 (SE 0.281, t -0.36, p 0.718)
+
+====================================================================================================
+  B. OUT OF SAMPLE: fit 2020-21..2023-24 per league group, test 2024-25 & 2025-26
+====================================================================================================
+  Bet = side/outcome with the largest calibrated edge (calib - market no-vig).  ROI flat stakes, +/- 1 SE.
+  Price: Avg = market average pre-closing (AU corporates are roughly here or worse); Max = best price.
+  EPL O/U 2.5 test n=760: log-loss market 0.68233  M1 0.68384  M3 0.68761   (lower is better)
+     O/U edge >= 1%: n  706 (353/season)  over share 98%  ROI@Avg -5.7%+/-3.2%  ROI@Max -3.2%+/-3.3%
+     O/U edge >= 2%: n  633 (316/season)  over share 99%  ROI@Avg -3.9%+/-3.3%  ROI@Max -1.3%+/-3.4%
+     O/U edge >= 3%: n  529 (264/season)  over share 100%  ROI@Avg -6.8%+/-3.6%  ROI@Max -4.4%+/-3.7%
+     O/U edge >= 5%: n  269 (134/season)  over share 100%  ROI@Avg -7.3%+/-5.0%  ROI@Max -4.9%+/-5.1%
+  EPL 1X2 test: mean sum of raw calibrated probs before renormalising 0.9996
+  EPL 1X2 test n=760:
+     1X2 edge >= 1%: n  690 (345/season)  mix {'away': 0.61, 'home': 0.39}  ROI@Avg -2.0%+/-4.5%  ROI@Max +1.1%+/-4.7%
+     1X2 edge >= 2%: n  318 (159/season)  mix {'away': 0.73, 'home': 0.27}  ROI@Avg +7.5%+/-6.5%  ROI@Max +10.6%+/-6.7%
+     1X2 edge >= 3%: n   98 (49/season)  mix {'away': 0.89, 'home': 0.11}  ROI@Avg +7.7%+/-11.1%  ROI@Max +10.6%+/-11.4%
+     1X2 edge >= 5%: n    6 (3/season)  mix {'away': 1.0}  ROI@Avg +26.5%+/-41.9%  ROI@Max +28.8%+/-42.6%
+  Big 5 ex-EPL O/U 2.5 test n=2732: log-loss market 0.67002  M1 0.66995  M3 0.66998   (lower is better)
+     O/U edge >= 1%: n 1171 (586/season)  over share 42%  ROI@Avg -4.7%+/-2.1%  ROI@Max -2.2%+/-2.2%
+     O/U edge >= 2%: n  186 (93/season)  over share 54%  ROI@Avg -6.0%+/-4.5%  ROI@Max -3.8%+/-4.6%
+  Big 5 ex-EPL 1X2 test: mean sum of raw calibrated probs before renormalising 1.0058
+  Big 5 ex-EPL 1X2 test n=2733:
+     1X2 edge >= 1%: n 2722 (1361/season)  mix {'draw': 0.71, 'home': 0.16, 'away': 0.13}  ROI@Avg -0.6%+/-2.6%  ROI@Max +3.3%+/-2.7%
+     1X2 edge >= 2%: n 1800 (900/season)  mix {'draw': 0.76, 'away': 0.13, 'home': 0.1}  ROI@Avg -2.4%+/-3.2%  ROI@Max +1.4%+/-3.4%
+     1X2 edge >= 3%: n  343 (172/season)  mix {'draw': 0.76, 'away': 0.23, 'home': 0.01}  ROI@Avg +1.6%+/-7.2%  ROI@Max +5.5%+/-7.5%
+
+  Reading: AH (session 14/16) for comparison: EPL M3 b_model +0.245 (t 2.30) on the AH main line.

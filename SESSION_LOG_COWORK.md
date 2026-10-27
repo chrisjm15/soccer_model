@@ -29,6 +29,14 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
 8. Docs: handoff rewritten (decision block, corrected AU EVs, push tech debt, off-season list), CLAUDE.md focus line,
    INDEX, FUTURE_DEVELOPMENT (session 17 note, Betfair item).
 
+9. **New hypotheses (Chris asked for more models).** Markets every AU book offers:
+   - O/U 2.5 (`scripts/ou_1x2_calibration_check.py`): fail — b_model n.s., OOS M3 worse than market, ROI negative.
+   - 1X2: inconclusive on ROI (EPL away b_model t 2.14). Cowork bug caught: per-outcome fits must be renormalised
+     to sum to 1 (fixed; sums were ≈ 1.000 so results barely moved).
+   - CLV test written (`scripts/ou_1x2_clv_check.py`) + `DOWNLOAD_AND_TEST_1X2_OU.bat` (football-data unreachable from
+     Cowork). Validated on mock closing data: caught a book-mix artefact (Pinnacle close − Avg pre gave t −11 on pure
+     noise) → movement is now like-for-like; null mock then gives slopes ≈ 0. Decision rule pre-set in the script.
+
 ## Decisions
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.

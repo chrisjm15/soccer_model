@@ -37,6 +37,18 @@ Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:
   each flagged bet (market named in the sheet), save, close Excel, run `STATUS.bat`.
 - `PUSH_TO_GITHUB.bat` once to push session 17's commits.
 
+### 1b. Chris: double-click `DOWNLOAD_AND_TEST_1X2_OU.bat` (any time)
+Downloads full football-data CSVs (closing 1X2 + O/U columns the scraper drops) and runs
+`scripts/ou_1x2_clv_check.py` → `output/backtest_results/ou_1x2_clv_report.txt`. Cowork shells cannot reach
+football-data (proxy 403). Pre-set rule: a market earns a live paper test only if H1 EPL avg-to-avg slope > 0 with
+t ≥ 2 AND OOS flagged CLV@Avg > 0. Cowork QCs the report next session.
+Already known without closing data (`ou_1x2_calibration_report.txt`, session 17):
+- **O/U 2.5: fail.** EPL M3 b_model +0.29 (t 1.35); OOS M3 log-loss worse than market; "edges" are 98% overs
+  (train-period drift, not information); ROI −4% to −7% at Avg.
+- **1X2: inconclusive.** EPL away b_model +0.53 (t 2.14), home +0.29 (t 1.19), draw ≤ 0. OOS EPL edge ≥ 2%: 318 bets,
+  ROI +7.5% ± 6.5 at Avg — noise-level; 73% away picks. Confounder: the 2020-21 no-crowd season is in every train set
+  (home advantage collapsed) — applies to the AH calibration too; check in the off-season refit.
+
 ### 2. Tue 2026-11-03 settle — automated. `STATUS.bat` shows exit codes and CLV.
 
 ### 3. Checkpoint ≈ Feb 2027 (~40 flagged bets) — decided on price CLV, not ROI

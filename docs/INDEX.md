@@ -9,6 +9,7 @@
 | `README.md` | GitHub-facing project overview |
 | `STATUS.bat` | Double-click: read-only live status (automation, flagged bets, CLV checkpoint split by edge band, live signal, AU prices). Saves `output/status_latest.txt` (gitignored) |
 | `AU_PRICES.bat` | Double-click after the Friday predict run: adds flagged bets to `output/paper_trading/au_prices.csv`, prints the AU market + exact break-even, opens the sheet in Excel |
+| `DOWNLOAD_AND_TEST_1X2_OU.bat` | Double-click: downloads unfiltered football-data CSVs to `data/raw/footballdata_full/` and runs the 1X2 / O/U CLV test |
 | `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
 | `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
 | `.env` | API keys — NOT in git, loaded via python-dotenv |
@@ -79,6 +80,8 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `experiment/build_soft_aliases.py`, `experiment/merge_data.py` | Soft-league alias table + Sofascore/football-data merge → `data/processed/soft_merged.csv` |
 | `data/aliases/soft_league_aliases.json` | Sofascore → football-data team names, 8 soft leagues (Cowork-reviewed) |
 | `scripts/live_rule_oos_check.py` | Session 17: OOS CLV of the LIVE rule (EPL-only fit, 1% + range guard) by threshold and price source; push-consistency check of the calibration → `live_rule_oos_report.txt` |
+| `scripts/ou_1x2_calibration_check.py` | Session 17: M1/M3 calibration + OOS ROI for O/U 2.5 and 1X2 (Big 5) → `ou_1x2_calibration_report.txt` (O/U fails; 1X2 inconclusive) |
+| `scripts/download_full_footballdata.py`, `scripts/ou_1x2_clv_check.py` | Full football-data download; 1X2 / O/U line-movement + CLV test → `ou_1x2_clv_report.txt` |
 | `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |
 | `scripts/test_au_prices.py` | Gold tests for `scripts/au_prices.py` (hand arithmetic) |
 | `scripts/live_status.py` | Read-only live status report (run by `STATUS.bat`) |
