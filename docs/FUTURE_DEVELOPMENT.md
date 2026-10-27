@@ -1,7 +1,13 @@
 # Future Development — Edge Backlog
 
-*Created 2026-07-12 (session 14), after the recalibration verdict. Updated 2026-10-25 (session 16). This is the
+*Created 2026-07-12 (session 14), after the recalibration verdict. Updated 2026-10-28 (session 17). This is the
 durable list — the handoff doc carries only the current top items and points here.*
+
+**Session 17 update (2026-10-28):** the session-16 flagged-bet CLV (+0.7%, n=43) was measured on the all-leagues
+fit, not the live EPL-only rule. For the live rule (OOS 2024-26, n=179): market move +0.6pp, CLV −1.6% at Pinnacle
+pre-close, −0.3% at best of B365/Pinnacle/avg. The 1–2% edge band carries no signal (move −0.2pp); edges ≥ 2% do
+(move +1.2pp, t≈3; CLV −0.7% Pinnacle / +0.9% best-of-3). See `output/backtest_results/live_rule_oos_report.txt`.
+Item 9 (Pinnacle-anchor) moves up: the AU price tracker already collects what it needs.
 
 **Session 16 update:** EPL line-movement test confirmed real but small information (market moves +2.0pp toward
 flagged bets ≈ one margin; price CLV ≈ 0 at average prices). Soft leagues failed. Execution items (Tier 1)
@@ -32,7 +38,12 @@ the market's biggest information event (lineups, ~1h before kickoff). Two exploi
 ### 3. Line shopping / venue
 - Widen the Odds API book set; always take best price (extends item 1).
 - **Betfair exchange (AU):** lower effective margin than corporates, no limiting of winners, and
-  the exchange close is a clean CLV benchmark. Investigate commission impact on a 1–3% edge.
+  the exchange close is a clean CLV benchmark. **Checked 2026-10-28:** Betfair AU Market Base Rate for sport is
+  **6%** of net winnings (betfair.com.au help page; was 5% before March 2025; volume discounts exist, amounts not
+  published). At evens that costs ≈ 3pp of EV (6% × (o−1)/o). Worked case, Sunderland +0.00 GW9: exact break-even
+  2.111 → Betfair back price needed 1 + 1.111/0.94 = 2.18; fair no-vig price was 2.16 and back prices sit just below
+  fair → not bettable. Rule of thumb: Betfair AU pays only for edges ≳ 3pp near evens. Not the rescue for the 1–2%
+  band. Liquidity for EPL AH on the AU exchange still unchecked (needs Chris to look at a live market).
 
 ## Tier 2 — Information inputs (things the market knows and we don't)
 

@@ -7,6 +7,9 @@
 | `COWORK_HANDOFF_PROMPT.md` | Next actions for incoming session |
 | `SESSION_LOG_COWORK.md` | Current session log (replaced each session) |
 | `README.md` | GitHub-facing project overview |
+| `STATUS.bat` | Double-click: read-only live status (automation, flagged bets, CLV checkpoint split by edge band, live signal, AU prices). Saves `output/status_latest.txt` (gitignored) |
+| `AU_PRICES.bat` | Double-click after the Friday predict run: adds flagged bets to `output/paper_trading/au_prices.csv`, prints the AU market + exact break-even, opens the sheet in Excel |
+| `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
 | `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
 | `.env` | API keys — NOT in git, loaded via python-dotenv |
 
@@ -26,7 +29,7 @@
 | `Football Pythag v0.5.xlsx` | Chris's existing Excel model (reference only, not being evolved) |
 
 ## prompts/
-No active prompts (end of session 16). Everything executed lives in `prompts/completed/`.
+No active prompts (session 17). Everything executed lives in `prompts/completed/`.
 
 ## prompts/completed/
 Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANALYSIS`, `_SOFT_LEAGUE_MERGE`,
@@ -40,6 +43,7 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `session_logs/SESSION_LOG_SESSIONS_9_to_13.md` | Sessions 9–13 logs (archived session 14) |
 | `session_logs/SESSION_LOG_SESSION_14.md` | Session 14 log (strategy verdict) |
 | `session_logs/SESSION_LOG_SESSION_15.md` | Session 15 log (calibrated deploy, main-line fix, automation) |
+| `session_logs/SESSION_LOG_SESSION_16.md` | Session 16 log (live CLV fix, EPL edge verdict, soft leagues closed) |
 | `local-llm-eval-review.html` | Skill eval viewer output (session 7, reference only) |
 | `load_sofascore_STALE_SESSION10_COPY.py` | Old buggy copy that caused the session-10 caching incident — do NOT run. Live script: `experiment/load_sofascore.py` |
 
@@ -74,6 +78,10 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `experiment/load_footballdata.py` | football-data loader for proxy + Scandinavian leagues (season list to 2026-27) |
 | `experiment/build_soft_aliases.py`, `experiment/merge_data.py` | Soft-league alias table + Sofascore/football-data merge → `data/processed/soft_merged.csv` |
 | `data/aliases/soft_league_aliases.json` | Sofascore → football-data team names, 8 soft leagues (Cowork-reviewed) |
+| `scripts/live_rule_oos_check.py` | Session 17: OOS CLV of the LIVE rule (EPL-only fit, 1% + range guard) by threshold and price source; push-consistency check of the calibration → `live_rule_oos_report.txt` |
+| `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |
+| `scripts/test_au_prices.py` | Gold tests for `scripts/au_prices.py` (hand arithmetic) |
+| `scripts/live_status.py` | Read-only live status report (run by `STATUS.bat`) |
 | `scripts/run_update.ps1` | Scheduled automation: `-Mode settle` (Tue: update+results) / `-Mode predict` (Fri: update+predict) |
 | `output/predict_latest.txt`, `output/predictions/` | Console output of the scheduled predict runs |
 | `prompts/completed/ANTIGRAVITY_*.md` | Session 15 executor briefs (executed) |
@@ -89,5 +97,7 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `output/backtest_results/recalibration_report.txt` | Market-blend test report — regression tables, OOS metrics, threshold sweep, bootstrap CIs |
 | `output/backtest_results/recalibrated_test_matches.csv` | Test-season rows (2024-26) with M3/M4 calibrated probs, calibrated edge, P&L |
 | `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker — real closing CLV (closing_source, clv_move, clv_price) on every row |
-| `output/backtest_results/clv_edge_report.txt`, `soft_calibration_report.txt` | Session 16 verdict reports (EPL edge real but small; soft leagues fail) |
+| `output/backtest_results/clv_edge_report.txt`, `soft_calibration_report.txt` | Session 16 verdict reports (EPL edge real but small; soft leagues fail). NOTE: clv_edge H2 "44 flagged" used the all-leagues fit — superseded for the live rule by `live_rule_oos_report.txt` |
+| `output/backtest_results/live_rule_oos_report.txt` | Session 17: live rule OOS — 179 bets/2 seasons, CLV@Pinnacle −1.6%, edge ≥2% subset carries the signal |
+| `output/paper_trading/au_prices.csv` | AU prices per flagged bet (Chris fills in; Excel-safe text key) |
 | `run.py` | Entry point: `python run.py update / predict / backtest` |
