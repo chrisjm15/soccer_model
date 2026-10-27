@@ -95,6 +95,9 @@ bug found, deferred to the off-season. Automation unchanged and running. No brie
 
 19. AU price spread, same bet: Sportsbet DNB 2.10, Bet365 AH 2.025, Ladbrokes DNB 1.95 (break-even 2.08). Recorded.
 
+20. **Tue 27 Oct settle check — PASSED.** Both GW9 bets settled correctly by hand (Villa Win +8.30, Sunderland Push).
+    CLV on all 9 GW9 rows (6 converted). Gold tests pass.
+
 ## Decisions
 - Primary verdict metric = line movement vs model signal (historical + live, all logged matches).
   ROI is reported but not used to decide before season end.

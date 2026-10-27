@@ -16,11 +16,12 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 
 ## Next actions (in order)
 
-### 1. Tue 2026-10-27 — first automated settle (check-in scheduled 14:00 AEDT)
-- Scheduler log: settle ran, exit codes 0.
-- GW9 bets settled correctly (check by hand from the score): Aston Villa +1.00 @1.83, Sunderland +0.00 @2.15.
-- GW9 rows (all 9) have `closing_source`, `clv_move`, `clv_price`; note how many needed line conversion.
-- Calibration columns still present.
+### 1. ~~Tue 2026-10-27 — first automated settle~~ ✅ PASSED (Cowork check 14:00)
+- Settle ran 12:00, exit 0 (an extra settle also ran Mon 19:42 — idempotent, harmless).
+- Villa 2-1 City, +1.00 @1.83 → Win +8.30 ✓ (by hand). Sunderland 0-0 Leeds, +0.00 @2.15 → Push 0.00 ✓.
+- CLV on 9/9 GW9 rows, source avg, 6/9 needed line conversion. Flagged: Villa clv_price −2.9% (move −0.1pp),
+  Sunderland +10.7% (move +5.3pp). n=2 — meaningless yet. Chris's real Bet365 AU bet at 2.025 also beat the close
+  (≈ +4.2%) and pushed. Calibration columns present; three gold tests pass.
 
 ### 2. Fri 2026-10-30 — GW10 predict run
 Confirm 9–10 GW10 rows logged with prediction_date 2026-10-30. (A Sunday test run had logged GW10 on stale ratings;
