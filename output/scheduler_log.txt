@@ -71,3 +71,11 @@
 [2026-10-25 12:29:54] run.py update complete (exit code: 0)
 [2026-10-25 12:29:57] run.py predict complete (exit code: 0) - output in output\predict_latest.txt
 [2026-10-25 12:29:57] Task finished
+[2026-10-26 19:42:07] Task started (mode: settle)
+[2026-10-26 19:49:58] run.py update complete (exit code: 0)
+[2026-10-26 19:50:00] run.py results complete (exit code: 0)
+[2026-10-26 19:50:00] Task finished
+[2026-10-27 12:00:01] Task started (mode: settle)
+[2026-10-27 12:06:31] run.py update complete (exit code: 0)
+[2026-10-27 12:06:31] run.py results complete (exit code: 0)
+[2026-10-27 12:06:31] Task finished
