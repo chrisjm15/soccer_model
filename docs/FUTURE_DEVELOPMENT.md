@@ -3,6 +3,9 @@
 *Created 2026-07-12 (session 14), after the recalibration verdict. Updated 2026-10-28 (session 17). This is the
 durable list — the handoff doc carries only the current top items and points here.*
 
+**Session 17 research — see `docs/RESEARCH_SESSION_17.md`.** New top items: luck (goals − xG) bias (shadow test
+running), early-season-only EPL rule. O/U 2.5 and BTTS (item 8) tested and failed.
+
 **Session 17 update (2026-10-28):** the session-16 flagged-bet CLV (+0.7%, n=43) was measured on the all-leagues
 fit, not the live EPL-only rule. For the live rule (OOS 2024-26, n=179): market move +0.6pp, CLV −1.6% at Pinnacle
 pre-close, −0.3% at best of B365/Pinnacle/avg. The 1–2% edge band carries no signal (move −0.2pp); edges ≥ 2% do

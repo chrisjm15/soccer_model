@@ -1,0 +1,14 @@
+  D. BTTS (market BTTS implied from Avg 1X2 + O/U 2.5 via fitted Poisson)  --  2026-10-27
+  Rows 10712; median fit error 1.36e-04; BTTS rate 0.545, market-implied mean 0.519, model mean 0.569
+  group              n  M1 b_mkt  M3 b_model      SE      t  OOS LL mkt  OOS LL M1  OOS LL M3
+  EPL             2280    +0.927      +0.126   0.292  +0.43     0.68298    0.68265    0.68286
+  Big 5 ex-EPL    8432    +1.115      -0.203   0.152  -1.33     0.68433    0.68394    0.68370
+  Bundesliga      1834    +1.625      -0.347   0.323  -1.07     0.67143    0.67921    0.67815
+  La_Liga         2277    +1.198      -0.124   0.299  -0.42     0.68496    0.67922    0.68002
+  Ligue_1         2046    +0.784      -0.439   0.286  -1.54     0.68711    0.68918    0.68743
+  Serie_A         2275    +1.048      +0.363   0.351  +1.04     0.69186    0.69250    0.69226
+
+  EPL OOS: |calibrated BTTS edge| distribution (yes or no side) vs ~4pp needed to clear an AU BTTS margin:
+   |edge| >= 2%: n  286  realised hit 0.563  vs market-implied 0.561
+   |edge| >= 4%: n    0  realised hit nan  vs market-implied nan
+   |edge| >= 6%: n    0  realised hit nan  vs market-implied nan

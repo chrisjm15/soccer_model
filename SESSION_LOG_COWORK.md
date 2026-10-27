@@ -37,6 +37,14 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
      Cowork). Validated on mock closing data: caught a book-mix artefact (Pinnacle close − Avg pre gave t −11 on pure
      noise) → movement is now like-for-like; null mock then gives slopes ≈ 0. Decision rule pre-set in the script.
 
+10. **Advanced research (Chris: "go through all the outstanding stuff... BTTS... advanced analysis").**
+    `scripts/advanced_research.py` A–D + `docs/RESEARCH_SESSION_17.md` (verdict table). Headlines: EPL information is
+    early-season (interaction t 4.9); calibration model term rests on 2020-21; luck bias at close t −4.1, replicated on
+    soft leagues; BTTS fail; model-free Bet365/Max vs Pinnacle not visible. Two headline results re-computed with
+    independent code (exact match). A late-season ROI anomaly (t 2.6 post-hoc) checked for look-ahead (none) and
+    recorded as noise / prospective only.
+11. Pre-registered `scripts/luck_shadow.py` (rule fixed in docstring; counts from GW10); STATUS section 6.
+
 ## Decisions
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.

@@ -1,0 +1,10 @@
+prediction_date,match_date,home_team,away_team,ah_line,luck_home,luck_away,luck_diff,shadow_side,shadow_flag,shadow_odds,market_prob_side,model_bet_side,model_flag,result,pnl_unit,clv_move,clv_price
+2026-10-24,2026-10-24,Arsenal,Everton,-1.0,-0.0288,-0.1155,0.0866,away,False,2.16,0.4565,away,False,Loss,-1.0,-0.079326,-0.185304
+2026-10-24,2026-10-24,Coventry,Fulham,0.25,-0.2172,-0.219,0.0018,away,False,2.0,0.49429999999999996,home,False,Win,1.0,0.029541,0.047682
+2026-10-24,2026-10-24,Aston Villa,Manchester City,1.0,-0.0544,0.42,-0.4744,home,True,1.83,0.5321,home,True,Win,0.83,-0.001433,-0.02888
+2026-10-24,2026-10-24,Chelsea,Tottenham,-0.75,0.2214,-0.2325,0.4539,away,True,1.85,0.5264,away,False,Win,0.85,0.025088,0.020253
+2026-10-24,2026-10-25,Hull,Brentford,0.75,0.3986,0.3309,0.0676,away,False,1.95,0.5137,home,False,Loss,-1.0,0.012896,0.026862
+2026-10-24,2026-10-25,Sunderland,Leeds,0.0,-0.2481,0.1425,-0.3906,home,False,2.15,0.462,home,True,Push,0.0,0.052667,0.106533
+2026-10-24,2026-10-25,Liverpool,Brighton,-0.25,-0.0245,0.8561,-0.8806,home,True,1.89,0.5243,away,False,Win,0.89,0.033024,0.053343
+2026-10-24,2026-10-25,Manchester United,Bournemouth,-0.25,0.0265,-0.7642,0.7907,away,True,1.98,0.4982,home,False,Win,0.98,0.039805,0.065251
+2026-10-24,2026-10-25,Crystal Palace,Newcastle United,0.25,-0.3209,-0.0432,-0.2777,home,False,1.87,0.5272,home,False,Loss,-1.0,0.044006,0.068154

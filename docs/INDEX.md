@@ -24,6 +24,7 @@
 | `SESSION_MANAGEMENT_GUIDE.md` | Guide for Chris on managing multi-session projects (not for Claude) |
 | `SCANDINAVIAN_EXPANSION_SPEC.md` | Full experiment spec — 25 metric variants, 6 proxy leagues, module architecture, data sources. Handoff doc for Sonnet execution. |
 | `LARGE_LINE_CALIBRATION.md` | SUPERSEDED 2026-07-12 — 10-factor layer killed by recalibration test (M4: no large-line interaction). Kept for the factor research notes only. |
+| `RESEARCH_SESSION_17.md` | Session 17 verdict table: 11 hypotheses (early-season edge, luck bias, O/U, 1X2, BTTS, model-free, Betfair) with numbers and report pointers |
 | `FUTURE_DEVELOPMENT.md` | Durable edge backlog (session 14) — ranked by edge-per-effort, incl. deprioritised items. Handoff carries only current top items; this is the full list. |
 | `football_model_briefing.md` | Research briefing — xG, PPDA, markets, data sources |
 | `SOCCER_COWORK_SESSION.md` | Original session planning doc (read-only reference) |
@@ -82,6 +83,8 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `scripts/live_rule_oos_check.py` | Session 17: OOS CLV of the LIVE rule (EPL-only fit, 1% + range guard) by threshold and price source; push-consistency check of the calibration → `live_rule_oos_report.txt` |
 | `scripts/ou_1x2_calibration_check.py` | Session 17: M1/M3 calibration + OOS ROI for O/U 2.5 and 1X2 (Big 5) → `ou_1x2_calibration_report.txt` (O/U fails; 1X2 inconclusive) |
 | `scripts/download_full_footballdata.py`, `scripts/ou_1x2_clv_check.py` | Full football-data download; 1X2 / O/U line-movement + CLV test → `ou_1x2_clv_report.txt` |
+| `scripts/advanced_research.py` | Session 17 sections A (live-rule robustness, early-season), B (model-free value), C (luck bias), D (BTTS) → `advanced_<X>.txt` |
+| `scripts/luck_shadow.py` | Pre-registered luck shadow test on the live log → `output/paper_trading/luck_shadow.csv` (STATUS section 6) |
 | `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |
 | `scripts/test_au_prices.py` | Gold tests for `scripts/au_prices.py` (hand arithmetic) |
 | `scripts/live_status.py` | Read-only live status report (run by `STATUS.bat`) |

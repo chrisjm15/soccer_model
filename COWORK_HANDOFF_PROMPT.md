@@ -19,9 +19,18 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
   `output/paper_trading/au_prices.csv` (AU price capture, exact break-even), `PUSH_TO_GITHUB.bat`.
 - No briefs outstanding.
 
+## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
+- EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).
+- **Luck (goals − xG) bias survives to the close** (t −4.1, replicated on soft leagues). EPL rule historical +8% at avg
+  prices. Pre-registered shadow test from GW10: `scripts/luck_shadow.py`, STATUS section 6.
+- O/U 2.5 fail, BTTS fail, model-free Bet365-vs-Pinnacle not visible, Betfair AU no. 1X2 awaits the CLV bat.
+- Calibration model term rests on the 2020-21 no-crowd season (b_model t 1.3 without it).
+
 ## Decision for Chris (open)
 Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:
-- **(a) Recommended:** keep the 1% rule unchanged to the Feb checkpoint (it is the pre-registered test), and read
+- Added later in session 17: the live season is leaving the Aug–Oct window where the edge lives. Real-money bets
+  from here on have no historical support; paper trading costs nothing.
+- **(a) Recommended:** stop real-money bets for this season; keep the 1% rule paper-trading unchanged to the Feb checkpoint (it is the pre-registered test), and read
   the ≥ 2% shadow subset in `STATUS.bat` alongside it. No model change. Decide at the checkpoint on BOTH, and on
   CLV at the price actually obtainable in AU (from `au_prices.csv`), not only the logged offshore best price.
 - (b) Raise the threshold to 2% now: ~half the volume (≈ 20 bets by Feb), changes the test mid-season.

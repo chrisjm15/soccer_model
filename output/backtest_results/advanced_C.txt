@@ -1,0 +1,122 @@
+  C. LUCK SIGNAL (goals - xG divergence) vs MARKET  --  2026-10-27
+  luck_diff: home team net (goals-xG) EMA minus away team net, pre-match, alpha 0.1, home perspective.
+  If the market prices off goals, it overrates lucky teams: expect move < 0 and results < close when luck_diff > 0.
+  Rows 10679; corr(signal, luck_diff) EPL -0.245, ex-EPL -0.247
+  test                                        group              n      coef       t
+  C1 move ~ luck_diff                         EPL             2273   -0.0077   -4.52
+  C2 move ~ signal + luck_diff: luck term     EPL             2273   -0.0058   -3.28
+  C2 move ~ signal + luck_diff: signal term   EPL             2273   +0.0058   +3.79
+  C3 results - close ~ luck_diff (close biased?)EPL             2273   -0.0692   -3.28
+  C3 results - close ~ signal                 EPL             2273   +0.0340   +2.08
+  C4 move ~ luck_diff, Aug-Oct only           EPL              566   -0.0045   -1.34
+  C1 move ~ luck_diff                         Big 5 ex-EPL    8406   -0.0094   -9.59
+  C2 move ~ signal + luck_diff: luck term     Big 5 ex-EPL    8406   -0.0095   -9.64
+  C2 move ~ signal + luck_diff: signal term   Big 5 ex-EPL    8406   -0.0005   -0.47
+  C3 results - close ~ luck_diff (close biased?)Big 5 ex-EPL    8406   -0.0278   -2.49
+  C3 results - close ~ signal                 Big 5 ex-EPL    8406   -0.0055   -0.57
+  C4 move ~ luck_diff, Aug-Oct only           Big 5 ex-EPL    2241   -0.0088   -4.75
+  C1 move ~ luck_diff                         Big 5 all      10679   -0.0090  -10.62
+  C2 move ~ signal + luck_diff: luck term     Big 5 all      10679   -0.0087  -10.03
+  C2 move ~ signal + luck_diff: signal term   Big 5 all      10679   +0.0011   +1.35
+  C3 results - close ~ luck_diff (close biased?)Big 5 all      10679   -0.0368   -3.74
+  C3 results - close ~ signal                 Big 5 all      10679   +0.0047   +0.57
+  C4 move ~ luck_diff, Aug-Oct only           Big 5 all       2807   -0.0079   -4.87
+
+  C5 rule: bet against the luckier side (AH main line) when |luck_diff| >= k
+  group             k     n           move       CLV@B365   CLV@Pinnacle       ROI@B365
+  EPL             0.0  2273 +0.26%+/-0.08% -2.33%+/-0.15% -1.91%+/-0.15% +2.60%+/-1.86%
+  EPL             0.2  1492 +0.39%+/-0.09% -2.09%+/-0.18% -1.71%+/-0.19% +6.39%+/-2.28%
+  EPL             0.4   859 +0.49%+/-0.12% -1.89%+/-0.24% -1.54%+/-0.24% +7.50%+/-3.00%
+  EPL             0.6   425 +0.65%+/-0.17% -1.63%+/-0.33% -1.37%+/-0.33%+13.01%+/-4.24%
+  Big 5 ex-EPL    0.0  8406 +0.32%+/-0.04% -2.21%+/-0.08% -1.70%+/-0.08% -0.25%+/-0.96%
+  Big 5 ex-EPL    0.2  5391 +0.50%+/-0.05% -1.86%+/-0.10% -1.38%+/-0.11% +0.58%+/-1.20%
+  Big 5 ex-EPL    0.4  3042 +0.64%+/-0.07% -1.58%+/-0.14% -1.11%+/-0.14% +2.50%+/-1.59%
+  Big 5 ex-EPL    0.6  1490 +0.79%+/-0.10% -1.27%+/-0.20% -0.86%+/-0.20% +2.54%+/-2.27%
+
+  C6. IS THE CLOSING LINE BIASED BY LUCK? (push-free and controlled)
+  spec                                                group              n  luck coef       t
+  half lines: result - close ~ luck                   EPL              547    -0.0819   -1.67
+  half lines: result - close ~ luck + logit(close)    EPL              547    -0.0814   -1.66
+  all lines: result - close ~ luck + logit(close)     EPL             2273    -0.0699   -3.30
+  all lines: frac-logit score ~ logit(close) + luck   EPL             2273    -0.2828   -3.28
+  half lines: result - close ~ luck                   Big 5 ex-EPL    1940    -0.0939   -3.64
+  half lines: result - close ~ luck + logit(close)    Big 5 ex-EPL    1940    -0.0969   -3.74
+  all lines: result - close ~ luck + logit(close)     Big 5 ex-EPL    8406    -0.0297   -2.65
+  all lines: frac-logit score ~ logit(close) + luck   Big 5 ex-EPL    8406    -0.1198   -2.65
+  half lines: result - close ~ luck                   Big 5 all       2487    -0.0913   -4.00
+  half lines: result - close ~ luck + logit(close)    Big 5 all       2487    -0.0931   -4.07
+  all lines: result - close ~ luck + logit(close)     Big 5 all      10679    -0.0385   -3.89
+  all lines: frac-logit score ~ logit(close) + luck   Big 5 all      10679    -0.1553   -3.88
+
+  C6b. Rule (back the less lucky side) ROI at FAIR closing odds = pure close inefficiency, by season (EPL, |luck| >= 0.4)
+  season        n  ROI@fair close    ROI@B365 pre
+  2020-21     116  +9.00%+/-8.32%  +8.93%+/-8.28%
+  2021-22     151  +9.93%+/-7.39%  +7.56%+/-7.17%
+  2022-23     134 +15.06%+/-7.83% +13.01%+/-7.63%
+  2023-24     171  -7.29%+/-6.84%  -8.36%+/-6.73%
+  2024-25     132 +29.11%+/-7.57% +27.45%+/-7.42%
+  2025-26     155  +5.55%+/-7.24%  +2.14%+/-6.94%
+  all         859  +9.33%+/-3.07%  +7.50%+/-3.00%
+  ex-EPL     3042  +4.01%+/-1.63%  +2.50%+/-1.59%
+  Bundesliga  727  +8.93%+/-3.35%  +8.24%+/-3.31%
+  La_Liga     784  +5.06%+/-3.15%  +3.36%+/-3.06%
+  Ligue_1     756  +0.24%+/-3.33%  -1.71%+/-3.23%
+  Serie_A     775  +2.02%+/-3.24%  +0.36%+/-3.16%
+
+  C7. SENSITIVITY (Big 5 AH). Regression: result - close ~ luck + logit(close), all lines; rule |luck| >= 0.4
+  variant                     group        coef      t  n rule  ROI@fair close        ROI@B365         ROI@avg         ROI@Pin
+  net, alpha 0.10 (base)      EPL       -0.0699  -3.30     859  +9.33%+/-3.07%  +7.50%+/-3.00%  +7.99%+/-3.10%  +7.82%+/-3.15%
+  net, alpha 0.10 (base)      ex-EPL    -0.0297  -2.65    3042  +4.01%+/-1.63%  +2.50%+/-1.59%  +1.59%+/-1.58%  +2.45%+/-1.67%
+  net, alpha 0.05             EPL       -0.0970  -3.23     483 +11.03%+/-4.06%  +9.27%+/-3.97%  +9.23%+/-4.03%  +9.85%+/-4.19%
+  net, alpha 0.05             ex-EPL    -0.0431  -2.69    1650  +3.64%+/-2.21%  +1.97%+/-2.15%  +1.06%+/-2.14%  +2.12%+/-2.24%
+  net, alpha 0.20             EPL       -0.0461  -3.12    1215  +9.45%+/-2.59%  +7.56%+/-2.53%  +7.57%+/-2.58%  +8.20%+/-2.64%
+  net, alpha 0.20             ex-EPL    -0.0194  -2.50    4418  +2.54%+/-1.36%  +0.82%+/-1.32%  +0.08%+/-1.32%  +1.16%+/-1.39%
+  attack only, 0.10           EPL       -0.0611  -2.16     538  +4.13%+/-3.89%  +2.24%+/-3.79%  +2.18%+/-3.85%  +2.28%+/-3.93%
+  attack only, 0.10           ex-EPL    -0.0477  -3.06    1680  +2.38%+/-2.22%  +1.01%+/-2.17%  +0.15%+/-2.16%  +0.83%+/-2.27%
+  defence only, 0.10          EPL       -0.0716  -2.38     449 +11.04%+/-4.26%  +8.72%+/-4.14%  +9.36%+/-4.30%  +8.73%+/-4.38%
+  defence only, 0.10          ex-EPL    -0.0098  -0.62    1684  +1.48%+/-2.19%  -0.49%+/-2.13%  -1.70%+/-2.10%  +0.13%+/-2.25%
+
+  C7b. Base rule (|luck| >= 0.4) splits
+  subset                                 n  ROI@fair close         ROI@avg
+  EPL Aug-Oct                          203 +15.47%+/-6.30% +11.06%+/-5.97%
+  EPL Nov-May                          656  +7.44%+/-3.52%  +7.04%+/-3.61%
+  EPL half lines                       201 +11.08%+/-7.05%  +7.24%+/-6.78%
+  EPL back home                        415  +6.39%+/-4.45%  +3.10%+/-4.27%
+  EPL back away                        444 +12.09%+/-4.25% +12.57%+/-4.46%
+  EPL |luck| >= 0.6                    425 +14.85%+/-4.34% +13.05%+/-4.32%
+  EPL |luck| >= 0.8                    161  +9.76%+/-7.03%  +9.82%+/-7.34%
+  ex-EPL Aug-Oct                       756  +4.84%+/-3.26%  +2.02%+/-3.14%
+  ex-EPL Nov-May                      2286  +3.74%+/-1.89%  +1.45%+/-1.84%
+  ex-EPL half lines                    707 +14.06%+/-3.74% +10.08%+/-3.58%
+  ex-EPL back home                    1518  +1.96%+/-2.29%  -0.30%+/-2.22%
+  ex-EPL back away                    1524  +6.06%+/-2.32%  +3.47%+/-2.26%
+  ex-EPL |luck| >= 0.6                1490  +3.87%+/-2.32%  +1.65%+/-2.26%
+  ex-EPL |luck| >= 0.8                 575  +5.54%+/-3.73%  +3.25%+/-3.60%
+  Big 5 Aug-Oct                        959  +7.09%+/-2.89%  +3.93%+/-2.78%
+  Big 5 Nov-May                       2942  +4.56%+/-1.66%  +2.69%+/-1.64%
+  Big 5 half lines                     908 +13.40%+/-3.30%  +9.45%+/-3.17%
+  Big 5 back home                     1933  +2.91%+/-2.04%  +0.43%+/-1.97%
+  Big 5 back away                     1968  +7.42%+/-2.04%  +5.52%+/-2.02%
+  Big 5 |luck| >= 0.6                 1915  +6.31%+/-2.05%  +4.18%+/-2.00%
+  Big 5 |luck| >= 0.8                  736  +6.47%+/-3.30%  +4.69%+/-3.24%
+
+  C8. REPLICATION ON SOFT LEAGUES (Sofascore xG; football-data closing avg odds). No parameters re-tuned.
+  test                                        group          n  luck coef       t
+  home win - close ~ luck + logit(close)      all soft    7841    -0.0300   -2.67
+  away win - close ~ (-luck) + logit(close)   all soft    7841    -0.0276   -2.58
+  home win - close ~ luck + logit(close)      proxy       5449    -0.0277   -2.02
+  away win - close ~ (-luck) + logit(close)   proxy       5449    -0.0243   -1.88
+  home win - close ~ luck + logit(close)      Scandi      2392    -0.0340   -1.73
+  away win - close ~ (-luck) + logit(close)   Scandi      2392    -0.0333   -1.75
+
+  C8b. 1X2 rule on soft leagues: back the less lucky team to win when |luck| >= 0.4
+  league         n  ROI@fair close   ROI@close avg
+  B1           341  +9.19%+/-9.43%  +2.54%+/-8.85%
+  DNK          302  -2.05%+/-9.99%  -8.10%+/-9.37%
+  E1           607  -1.25%+/-6.00%  -6.52%+/-5.68%
+  N1           432  -8.31%+/-9.65% -13.44%+/-9.11%
+  NOR          365  +6.74%+/-9.43%  +0.22%+/-8.86%
+  P1           342 -18.32%+/-9.62% -23.06%+/-9.05%
+  SWE          339 +17.15%+/-9.64%  +9.95%+/-9.05%
+  T1           377  -4.50%+/-9.80% -10.48%+/-9.18%
+  ALL         3105  -0.49%+/-3.17%  -6.35%+/-2.99%

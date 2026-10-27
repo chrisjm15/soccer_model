@@ -8,6 +8,7 @@ Sections
   3. Checkpoint metric  - mean clv_price on flagged bets vs the ~40-bet Feb 2027 rule, split by edge band
   4. Model signal live  - clv_move ~ calib_edge across every logged match (historical OOS slope +0.67)
   5. AU prices          - from output/paper_trading/au_prices.csv (scripts/au_prices.py)
+  6. Luck shadow test   - scripts/luck_shadow.py (writes output/paper_trading/luck_shadow.csv only)
 """
 import math
 import sys
@@ -140,6 +141,12 @@ def main():
     signal(cur)
     section('5. AU PRICES (flagged bets)')
     au_prices.cmd_report()
+    section('6. LUCK SHADOW TEST (pre-registered 2026-10-28, separate from the model)')
+    import luck_shadow
+    try:
+        print('\n'.join(luck_shadow.report_lines(luck_shadow.build())))
+    except Exception as exc:  # never let the shadow break the status report
+        print(f'  luck shadow failed: {exc}')
     print()
     return 0
 
