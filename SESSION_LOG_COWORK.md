@@ -54,7 +54,12 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
     Big 5 +3.1% ± 1.4 at avg (passes), Max inflated by ~0.4% extreme quotes (capped), Betfair net 6% ≈ avg − 1pp
     on the same rows. Real-money decision still unanswered by Chris.
 
+14. **Chris decided: continue real-money bets.** Built Big-5 luck paper log (`scripts/luck_paper_big5.py` + gold tests
+    `scripts/test_luck_paper.py`), wired into `scripts/run_update.ps1` (Fri log / Tue settle, try/catch, after main
+    steps; CRLF kept), STATUS section 7, `LUCK_BIG5_DRYRUN.bat`. Not yet run against the live Odds API.
+
 ## Decisions
+- Real-money bets continue (Chris, 2026-10-28), against Cowork's recommendation.
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.
 - Push mismatch: off-season fix with the refit, not mid-season.

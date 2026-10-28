@@ -9,6 +9,7 @@ Sections
   4. Model signal live  - clv_move ~ calib_edge across every logged match (historical OOS slope +0.67)
   5. AU prices          - from output/paper_trading/au_prices.csv (scripts/au_prices.py)
   6. Luck shadow test   - scripts/luck_shadow.py (writes output/paper_trading/luck_shadow.csv only)
+  7. Luck paper Big 5   - scripts/luck_paper_big5.py log (read only here)
 """
 import math
 import sys
@@ -147,6 +148,17 @@ def main():
         print('\n'.join(luck_shadow.report_lines(luck_shadow.build())))
     except Exception as exc:  # never let the shadow break the status report
         print(f'  luck shadow failed: {exc}')
+    section('7. LUCK PAPER LOG - LA LIGA / BUNDESLIGA / SERIE A / LIGUE 1 (scripts/luck_paper_big5.py)')
+    try:
+        import luck_paper_big5
+        print('\n'.join(luck_paper_big5.report_lines()))
+        last = PROJECT / 'output' / 'luck_big5_latest.txt'
+        if last.exists():
+            txt = last.read_text(encoding='utf-8', errors='replace')
+            if 'UNMAPPED' in txt:
+                print('  WARNING: last run skipped fixtures with unmapped team names - see output/luck_big5_latest.txt')
+    except Exception as exc:
+        print(f'  luck paper report failed: {exc}')
     print()
     return 0
 

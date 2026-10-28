@@ -10,6 +10,7 @@
 | `STATUS.bat` | Double-click: read-only live status (automation, flagged bets, CLV checkpoint split by edge band, live signal, AU prices). Saves `output/status_latest.txt` (gitignored) |
 | `AU_PRICES.bat` | Double-click after the Friday predict run: adds flagged bets to `output/paper_trading/au_prices.csv`, prints the AU market + exact break-even, opens the sheet in Excel |
 | `DOWNLOAD_AND_TEST_1X2_OU.bat` | Double-click: downloads unfiltered football-data CSVs to `data/raw/footballdata_full/` and runs the 1X2 / O/U CLV test |
+| `LUCK_BIG5_DRYRUN.bat` | One-off: runs luck paper gold tests + a dry-run fetch of Big-5 (ex-EPL) AH odds to check team-name mapping (~8 credits) |
 | `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
 | `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
 | `.env` | API keys — NOT in git, loaded via python-dotenv |
@@ -85,6 +86,7 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `scripts/download_full_footballdata.py`, `scripts/ou_1x2_clv_check.py` | Full football-data download; 1X2 / O/U line-movement + CLV test → `ou_1x2_clv_report.txt` |
 | `scripts/advanced_research.py` | Session 17 sections A (live-rule robustness, early-season), B (model-free value), C (luck bias), D (BTTS) → `advanced_<X>.txt` |
 | `scripts/advanced_research2.py` | Session 17 part 2 (needs `data/raw/footballdata_full/`): E luck→O/U, F luck→1X2/DNB, G promoted, H dead rubbers, J luck AH by venue → `advanced_<X>.txt` |
+| `scripts/luck_paper_big5.py`, `scripts/test_luck_paper.py` | Luck rule paper log for La Liga/Bundesliga/Serie A/Ligue 1 (Fri log, Tue settle via run_update.ps1) → `output/paper_trading/luck_big5_log.csv`; gold tests |
 | `scripts/luck_shadow.py` | Pre-registered luck shadow test on the live log → `output/paper_trading/luck_shadow.csv` (STATUS section 6) |
 | `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |
 | `scripts/test_au_prices.py` | Gold tests for `scripts/au_prices.py` (hand arithmetic) |

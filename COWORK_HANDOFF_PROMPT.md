@@ -29,10 +29,17 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 - Evening (part 2, `scripts/advanced_research2.py`, pre-set rule): luck→O/U fail, luck→1X2/DNB fail (margin),
   promoted teams fail, 'nothing to play for' fail. **Luck→AH passes on Big 5 (+3.1% ± 1.4 at avg; EPL +7.9%).**
   Betfair AU net 6% ≈ 1pp worse than average bookmaker prices for this rule.
-- Possible next build (not started): extend the luck shadow to La Liga/Bundesliga/Serie A/Ligue 1 (needs a weekly
-  Odds API fetch for those leagues, ~12 credits/week) → ~4x the sample by season end.
+- **Built (Chris asked):** `scripts/luck_paper_big5.py` — luck rule paper log for La Liga/Bundesliga/Serie A/Ligue 1.
+  Runs inside the scheduled task: Fri `log` (~8 Odds API credits, regions uk,eu), Tue `settle` (closing AH from
+  all_merged, Pinnacle → avg fallback, same as run.py). Wrapped in try/catch after the main steps; output
+  `output/luck_big5_latest.txt`; log `output/paper_trading/luck_big5_log.csv`; STATUS section 7. Gold tests
+  `scripts/test_luck_paper.py` pass. `LUCK_BIG5_DRYRUN.bat` = one-off pre-Friday check of team-name mapping.
 
-## Decision for Chris (open)
+## Decision for Chris — ANSWERED 2026-10-28 18:16
+**Chris: continue real-money bets** (1% rule unchanged). Cowork had recommended stopping (edge historically Aug–Oct).
+Record AU prices for every real bet via `AU_PRICES.bat`. Options below kept for the Feb checkpoint.
+
+## Options considered
 Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:
 - Added later in session 17: the live season is leaving the Aug–Oct window where the edge lives. Real-money bets
   from here on have no historical support; paper trading costs nothing.
