@@ -17,7 +17,21 @@ Reports in `output/backtest_results/`. "t" = robust (HC1) t-statistic. Segment t
 | 8 | 1X2 | **Fail** (pre-set rule, 2026-10-28) | EPL home/away move~signal t 3.0 / 2.7 (same info as AH, half size) but OOS CLV@Avg −4.6%, @Pinnacle −3.3%. Draw signal anti-predicts movement (ex-EPL t −9) | `ou_1x2_clv_report.txt` |
 | 9 | BTTS | **Fail** | b_model n.s. in every league; no edge ≥ 4pp exists. (Market-implied Poisson under-predicts BTTS by 2.6pp) | `advanced_D.txt` |
 | 10 | Model-free "book beats Pinnacle fair" | **Not visible in this data** | Bet365 AH rarely above Pinnacle fair (6/season EPL); "Max" 1X2 prices that beat Pinnacle lose −3% to −8% (stale quotes) | `advanced_B.txt` |
-| 11 | Betfair AU rescues execution | **No** | 6% commission ≈ 3pp EV at evens | FUTURE_DEVELOPMENT item 3 |
+| 11 | Betfair AU rescues execution | **No** | 6% commission ≈ 3pp EV at evens; luck rule on the same rows: Betfair net 6% +7.1% vs average bookmaker +8.2% | FUTURE_DEVELOPMENT item 3; `advanced_J.txt` |
+
+### Part 2 (evening, full football-data files) — pass rule pre-set in `scripts/advanced_research2.py` docstring
+Pass = closing price biased (|t| ≥ 2 pooled, controlled for logit(close)) AND fixed-threshold rule ROI at average prices > 0 with t ≥ 2.
+
+| # | Hypothesis | Close biased? | Rule ROI @ Avg | Verdict | Report |
+|---|---|---|---|---|---|
+| 12 | Luck → O/U 2.5 (lucky runs inflate totals) | Yes, t −2.3 | −2.1% ± 1.6 (Big 5) | **Fail** | `advanced_E.txt` |
+| 13 | Luck → 1X2 win / Draw No Bet | Yes, home t −3.2 | WIN −2.4% ± 2.8, DNB −2.3% ± 2.1 (Big 5); EPL DNB +2.4% ± 4.9 | **Fail** (margin) | `advanced_F.txt` |
+| 14 | Promoted teams overrated early | No, t −0.97 | −0.5% ± 3.5 | **Fail** | `advanced_G.txt` |
+| 15 | 'Nothing to play for' teams underperform | No, wrong sign t +1.4 | −9.2% ± 4.5 | **Fail** | `advanced_H.txt` |
+| 16 | Luck → AH (the survivor), by venue | Yes, t −4.1 (part 1) | Big 5 +3.1% ± 1.4 (t 2.2); EPL +7.9% ± 3.1; best realistic quote (≤1.08× avg) Big 5 +5.0%, EPL +8.7% | **Passes** both parts — shadow-tested from GW10 (EPL); ex-EPL not yet live | `advanced_C.txt`, `advanced_J.txt` |
+
+Data notes: football-data "Max" includes ~0.4% extreme quotes that inflate any Max-price ROI (cap them). Betfair
+Exchange AH prices exist only for 2024-25/2025-26.
 
 ## What this means
 - The model's real information is **early-season** (Aug–Oct) — plausibly the market anchoring on last season while
@@ -29,6 +43,9 @@ Reports in `output/backtest_results/`. "t" = robust (HC1) t-statistic. Segment t
 - **Price access still decides everything:** every positive result here is +1% to +2% CLV at Pinnacle-like prices;
   at average prices most go to ≈ 0 (the luck rule is the exception historically). The live log's "best price" comes
   from offshore books and may be flattered by stale quotes (finding 10).
+
+- **The luck effect is real across markets (AH, 1X2, O/U closes all biased) but only the low-margin AH market
+  converts it into profit.** Everything else tried tonight is priced correctly by the market.
 
 ## Off-season candidates (2027), in order
 1. Read the luck shadow verdict; if it passes, add luck_diff to the model (or as its own rule).

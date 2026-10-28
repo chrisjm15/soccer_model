@@ -26,6 +26,11 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 - O/U 2.5 fail, BTTS fail, **1X2 fail** (CLV test run by Chris 28 Oct, QC'd: 100% joins; CLV@Avg −4.6%), model-free
   Bet365-vs-Pinnacle not visible, Betfair AU no.
 - Calibration model term rests on the 2020-21 no-crowd season (b_model t 1.3 without it).
+- Evening (part 2, `scripts/advanced_research2.py`, pre-set rule): luck→O/U fail, luck→1X2/DNB fail (margin),
+  promoted teams fail, 'nothing to play for' fail. **Luck→AH passes on Big 5 (+3.1% ± 1.4 at avg; EPL +7.9%).**
+  Betfair AU net 6% ≈ 1pp worse than average bookmaker prices for this rule.
+- Possible next build (not started): extend the luck shadow to La Liga/Bundesliga/Serie A/Ligue 1 (needs a weekly
+  Odds API fetch for those leagues, ~12 credits/week) → ~4x the sample by season end.
 
 ## Decision for Chris (open)
 Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:

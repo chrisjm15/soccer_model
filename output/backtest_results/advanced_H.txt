@@ -1,0 +1,15 @@
+  H. LATE SEASON: teams with nothing to play for (AH main line, close)  --  2026-10-28
+  Pass rule (pre-set): close biased |t| >= 2 pooled AND rule ROI@Avg > 0 with t >= 2 (pooled or EPL).
+
+  'Dead' = last 8 matches, cannot drop to the relegation zone and cannot reach 6th (3 pts x matches left).
+  Hypothesis (pre-set): dead team underperforms the close -> bet AGAINST it when the opponent is not dead.
+  Rows 10679; dead-team appearances 516
+  test                                                    group          n     coef      t
+  result - close ~ dead(home - away)                      Big 5      10679  +0.0333  +1.43
+  result - close ~ dead(home - away)                      EPL         2273  +0.0690  +1.59
+  result - close ~ dead(home - away)                      ex-EPL      8406  +0.0202  +0.74
+
+  rule                                         n ROI@fair close        ROI@Avg       ROI@B365   ROI@Pinnacle
+  against dead team, Big 5                   372 -5.84%+/-4.74% -9.21%+/-4.49% -8.33%+/-4.55% -4.73%+/-5.01%
+  against dead team, EPL                     102-13.65%+/-8.67%-14.45%+/-8.53%-13.91%+/-8.60%-13.67%+/-9.25%
+  against dead team, ex-EPL                  270 -2.89%+/-5.65% -7.23%+/-5.29% -6.21%+/-5.36% -1.13%+/-5.96%

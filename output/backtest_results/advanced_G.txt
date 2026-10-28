@@ -1,0 +1,18 @@
+  G. PROMOTED TEAMS: does the market overrate them early in the season? (AH main line, close)  --  2026-10-28
+  Pass rule (pre-set): close biased |t| >= 2 pooled AND rule ROI@Avg > 0 with t >= 2 (pooled or EPL).
+
+  Hypothesis (pre-set): promoted team underperforms the close in its first 10 matches -> bet AGAINST it.
+  Rows 8859 (2021-22..2025-26; 2020-21 has no previous season in the data).
+  test                                                    group          n     coef      t
+  result - close ~ promoted(home - away), first 10        Big 5       8859  -0.0177  -0.97
+  result - close ~ promoted(home - away), first 10        EPL         1893  -0.0358  -0.92
+  result - close ~ promoted(home - away), first 10        ex-EPL      6966  -0.0132  -0.64
+  result - close ~ promoted(home - away), first 19        Big 5       8859  -0.0002  -0.01
+  result - close ~ promoted(home - away), first 19        EPL         1893  +0.0090  +0.32
+  result - close ~ promoted(home - away), first 19        ex-EPL      6966  -0.0030  -0.20
+
+  rule                                         n ROI@fair close        ROI@Avg       ROI@B365   ROI@Pinnacle
+  against promoted, first 10, Big 5          608 +4.22%+/-3.75% -0.50%+/-3.53% +0.67%+/-3.57% +1.21%+/-3.60%
+  against promoted, first 10, EPL            130 +7.61%+/-8.00% +2.44%+/-7.50% +3.48%+/-7.59% +4.03%+/-7.64%
+  against promoted, first 10, ex-EPL         478 +3.30%+/-4.25% -1.30%+/-4.00% -0.09%+/-4.05% +0.45%+/-4.08%
+  against promoted, whole season, Big 5     2247 -0.02%+/-1.93% -3.84%+/-1.84% -2.82%+/-1.86% -2.29%+/-1.97%

@@ -1,0 +1,18 @@
+  J. LUCK AH RULE (|luck_diff| >= 0.4, back the less lucky side, AHh line) BY EXECUTION VENUE  --  2026-10-28
+  Pass rule (pre-set): close biased |t| >= 2 pooled AND rule ROI@Avg > 0 with t >= 2 (pooled or EPL).
+
+  Betfair Exchange (BFE) = UK exchange back price at football-data collection time; AU commission 6% on net wins.
+  venue                                      Big 5                   EPL                ex-EPL
+  price / Avg ratio, Max       : median 1.029  p95 1.047  share > 1.10: 0.4%
+  price / Avg ratio, Betfair Ex: median 1.043  p95 1.078  share > 1.10: 0.6%
+  price / Avg ratio, Pinnacle  : median 1.016  p95 1.038  share > 1.10: 0.1%
+  Average                     +3.08%+/-1.41% n3911   +7.87%+/-3.09% n860  +1.72%+/-1.58% n3051
+  Bet365 (intl)               +3.68%+/-1.41% n3911   +7.38%+/-3.00% n860  +2.64%+/-1.59% n3051
+  Pinnacle                    +3.70%+/-1.47% n3608   +7.69%+/-3.15% n793  +2.57%+/-1.67% n2815
+  Max (best quoted)           +9.73%+/-2.11% n3911  +20.59%+/-6.22% n860  +6.67%+/-2.06% n3051
+  Betfair Ex gross            +9.91%+/-2.54% n1222  +16.23%+/-5.29% n282   +8.01%+/-2.89% n940
+  Betfair Ex net 6% (AU)      +7.10%+/-2.46% n1222  +13.21%+/-5.12% n282   +5.26%+/-2.81% n940
+  Max, quotes <= 1.08 x Avg   +4.96%+/-1.43% n3891   +8.65%+/-3.07% n850  +3.92%+/-1.62% n3041
+    same rows at Average            +8.15%+/-2.62%       +18.94%+/-5.87%        +4.94%+/-2.90%
+    BFE seasons             ['2024-25', '2025-26']
+  Betfair net 6%, <= 1.08 x Avg  +7.05%+/-2.51% n1168  +14.79%+/-5.22% n268   +4.74%+/-2.86% n900

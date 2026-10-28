@@ -49,6 +49,11 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
     untracked (line-ending churn). Chris ran DOWNLOAD_AND_TEST_1X2_OU.bat — QC: 30 files, 100% join, Pinnacle close 92%.
     **1X2 and O/U fail the pre-set rule** (EPL home/away move t 3.0/2.7 but CLV@Avg −4.6%).
 
+13. Part 2 research (Chris: "keep exploring"): `scripts/advanced_research2.py` E–H, J with a pass rule written
+    before results. E luck→O/U fail; F luck→1X2/DNB fail; G promoted fail; H dead rubbers fail; J luck AH by venue:
+    Big 5 +3.1% ± 1.4 at avg (passes), Max inflated by ~0.4% extreme quotes (capped), Betfair net 6% ≈ avg − 1pp
+    on the same rows. Real-money decision still unanswered by Chris.
+
 ## Decisions
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.

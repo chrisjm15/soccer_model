@@ -84,6 +84,7 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `scripts/ou_1x2_calibration_check.py` | Session 17: M1/M3 calibration + OOS ROI for O/U 2.5 and 1X2 (Big 5) → `ou_1x2_calibration_report.txt` (O/U fails; 1X2 inconclusive) |
 | `scripts/download_full_footballdata.py`, `scripts/ou_1x2_clv_check.py` | Full football-data download; 1X2 / O/U line-movement + CLV test → `ou_1x2_clv_report.txt` |
 | `scripts/advanced_research.py` | Session 17 sections A (live-rule robustness, early-season), B (model-free value), C (luck bias), D (BTTS) → `advanced_<X>.txt` |
+| `scripts/advanced_research2.py` | Session 17 part 2 (needs `data/raw/footballdata_full/`): E luck→O/U, F luck→1X2/DNB, G promoted, H dead rubbers, J luck AH by venue → `advanced_<X>.txt` |
 | `scripts/luck_shadow.py` | Pre-registered luck shadow test on the live log → `output/paper_trading/luck_shadow.csv` (STATUS section 6) |
 | `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |
 | `scripts/test_au_prices.py` | Gold tests for `scripts/au_prices.py` (hand arithmetic) |

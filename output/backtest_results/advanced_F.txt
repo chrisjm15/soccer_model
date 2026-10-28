@@ -1,0 +1,31 @@
+  F. LUCK -> 1X2 at the close (market every AU book offers)  --  2026-10-28
+  Pass rule (pre-set): close biased |t| >= 2 pooled AND rule ROI@Avg > 0 with t >= 2 (pooled or EPL).
+
+  Hypothesis: coef < 0 (lucky home side -> home win overpriced at close). Rule threshold |luck_diff| >= 0.4 (as AH shadow).
+  test                                                group              n     coef      t
+  home win - close ~ luck_diff + logit(close)         Big 5          10737  -0.0317  -3.16
+  away win - close ~ (-luck_diff) + logit(close)      Big 5          10737  -0.0188  -1.97
+  draw - close ~ |luck_diff| + logit(close)           Big 5          10737  +0.0128  +0.82
+  home win - close ~ luck_diff + logit(close)         EPL             2284  -0.0485  -2.26
+  away win - close ~ (-luck_diff) + logit(close)      EPL             2284  -0.0378  -1.80
+  draw - close ~ |luck_diff| + logit(close)           EPL             2284  +0.0102  +0.32
+  home win - close ~ luck_diff + logit(close)         ex-EPL          8453  -0.0270  -2.38
+  away win - close ~ (-luck_diff) + logit(close)      ex-EPL          8453  -0.0134  -1.25
+  draw - close ~ |luck_diff| + logit(close)           ex-EPL          8453  +0.0139  +0.78
+
+  Rules at |luck_diff| >= 0.4: back the less lucky side to WIN; and Draw No Bet built from 1X2
+  (DNB price = (1 - 1/draw price) x win price, the standard 1X2->DNB conversion; fair = close no-vig).
+  subset                                 n ROI@fair close    ROI@Avg pre    ROI@Max pre
+  WIN  Big 5                          3925 +2.47%+/-3.00% -2.35%+/-2.78% +3.24%+/-3.06%
+  DNB  Big 5                          3925 +2.31%+/-2.27% -2.26%+/-2.06% +3.32%+/-2.34%
+  WIN  EPL                             863 +8.96%+/-6.82% +4.73%+/-6.45%+10.53%+/-7.12%
+  DNB  EPL                             863 +6.52%+/-5.28% +2.39%+/-4.92% +8.17%+/-5.58%
+  WIN  ex-EPL                         3062 +0.65%+/-3.33% -4.35%+/-3.06% +1.19%+/-3.36%
+  DNB  ex-EPL                         3062 +1.13%+/-2.51% -3.57%+/-2.25% +1.95%+/-2.55%
+  DNB by season (EPL):
+    2020-21     116+10.20%+/-13.26%+9.19%+/-13.05%
+    2021-22     152+13.44%+/-16.65%+7.66%+/-14.78%
+    2022-23     134+30.69%+/-18.53%+26.14%+/-17.61%
+    2023-24     173-25.24%+/-6.77%-26.80%+/-6.59%
+    2024-25     132+29.33%+/-12.60%+21.01%+/-11.30%
+    2025-26     156 -7.82%+/-7.76%-11.59%+/-7.47%
