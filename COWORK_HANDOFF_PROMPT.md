@@ -28,7 +28,8 @@ recorded in `output/paper_trading/telegram_sent.csv`; refuses stale rounds and t
 Remove with `REMOVE_SCHEDULE.bat`.
 Chris (28 Oct, final): **no manual AU prices** — automatic prices only. Fri 12:30 AU_PRICES task removed; Telegram shows the
 Odds API best price (offshore) + exact worth-it price. AU-price evidence for the checkpoint will therefore be missing.
-Telegram test message confirmed in the channel 28 Oct. Tasks run only while Chris is logged on.
+Telegram test message confirmed in the channel 28 Oct. Chris: also post the Big-5 luck picks as a separate message
+labelled EXPERIMENTAL (paper test, not a tip) — built in `telegram_post.py` (`experimental_messages`). Tasks run only while Chris is logged on.
 
 ## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
 - EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).

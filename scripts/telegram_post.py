@@ -5,6 +5,7 @@ Rules from TELEGRAM_CHANNEL_HANDOFF.md (gitignored; token lives in .env as TELEG
   python scripts/telegram_post.py test      # send 'Test from the other sports model.'
   python scripts/telegram_post.py send      # send this round's bets (once per predict run; --force to resend)
 
+Also posts a second, clearly labelled EXPERIMENTAL message with this run's Big-5 luck picks (paper test).
 Safety: never posts 11:25-11:40 Sat (racing card); never posts a stale round (predict older than 3 days);
 records each sent round in output/paper_trading/telegram_sent.csv so a re-run does not double-post.
 """
@@ -35,6 +36,21 @@ PLAIN = {0.0: 'win = win, draw = money back', 0.5: 'win or draw', -0.5: 'must wi
          -1.0: 'win by 2+ = win; win by 1 = money back', 1.5: 'win, draw or lose by 1',
          -1.5: 'win by 2 or more', 1.25: 'win or draw = win; lose by 1 = half win',
          -1.25: 'win by 2+ = win; win by 1 = half stake lost'}
+
+
+BIG5_LOG = PROJECT / 'output' / 'paper_trading' / 'luck_big5_log.csv'
+LEAGUE_NAMES = {'La_Liga': 'La Liga', 'Bundesliga': 'Bundesliga', 'Serie_A': 'Serie A', 'Ligue_1': 'Ligue 1'}
+KEY_EXP = ('<b>KEY</b>\n'
+           '<i>⚽ the match · EXPERIMENTAL = a paper test we are tracking, not a tip · "luck pick" = the team whose recent '
+           'results have been worse than the chances it created; bookmakers tend to underrate them · AH = Asian handicap: '
+           'a team starts with a goal head start (+) or deficit (−) · % = the bookmakers\' chance, from their prices</i>')
+
+
+def plain_line(line):
+    if line in PLAIN:
+        return PLAIN[line]
+    g = abs(line)
+    return f"starts with a {g:g}-goal {'head start' if line > 0 else 'deficit'}"
 
 
 def esc(s):
@@ -80,7 +96,7 @@ def bet_block(r, au):
     q_score = q + pp * (0.5 - q)   # bookmakers' chance on the same basis as the model (refund = half)
     market, _ = au_prices.au_market(line)
     lines = [f"<b>{esc(r['home_team'])} v {esc(r['away_team'])}</b> · {fmt_date(r['match_date'])}",
-             f"Bet: {esc(team)} AH {line:+.2f} — {esc(PLAIN.get(line, 'Asian handicap ' + format(line, '+.2f')))}",
+             f"Bet: {esc(team)} AH {line:+.2f} — {esc(plain_line(line))}",
              f"At AU bookies look for: {esc(market)}",
              f"Chance: price says {q_score:.0%} → with the edge {p:.0%}",
              f"Worth it at {be:.2f} or better"]
@@ -119,6 +135,46 @@ def build_messages(log, au=None):
     return pdate, msgs
 
 
+def experimental_messages(today=None, path=None):
+    """Second message: this run's Big-5 (ex-EPL) luck picks, labelled experimental. [] if none / stale."""
+    path = BIG5_LOG if path is None else path
+    if not Path(path).exists():
+        return []
+    b = pd.read_csv(path, dtype=str, keep_default_na=False)
+    if b.empty:
+        return []
+    p = b.prediction_date.max()
+    today = date.today() if today is None else today
+    if (today - datetime.strptime(p, '%Y-%m-%d').date()).days > 3:
+        return []
+    f = b[(b.prediction_date == p) & (b.shadow_flag == 'True')].sort_values(['match_date', 'league'])
+    head = '⚽ <b>EXPERIMENTAL — luck picks, La Liga / Bundesliga / Serie A / Ligue 1</b>'
+    sub = '<i>Paper test only, not a tip. We are tracking these to see if the idea works.</i>'
+    if f.empty:
+        return [KEY_EXP + '\n\n' + head + '\n' + sub + '\n\nNo luck picks this round.']
+    blocks = []
+    for _, r in f.iterrows():
+        side = r.shadow_side
+        team = r.home_team if side == 'home' else r.away_team
+        line = au_prices.bet_line(float(r.ah_line), side)
+        q = float(r.market_prob_side)
+        if q < MIN_CHANCE:
+            continue
+        blocks.append(f"<b>{esc(r.home_team)} v {esc(r.away_team)}</b> · {LEAGUE_NAMES.get(r.league, r.league)} · {fmt_date(r.match_date)}\n"
+                      f"Luck pick: {esc(team)} AH {line:+.2f} — {esc(plain_line(line))}\n"
+                      f"Chance (price says): {q:.0%}\n"
+                      f"Best price found online: {float(r.shadow_odds):.2f}")
+    msgs, cur = [], KEY_EXP + '\n\n' + head + '\n' + sub + f'\n\n{len(blocks)} pick(s).'
+    for part in blocks:
+        cand = cur + '\n\n' + part
+        if len(cand) > MAX_LEN:
+            msgs.append(cur); cur = KEY_EXP + '\n\n' + head + ' (continued)\n\n' + part
+        else:
+            cur = cand
+    msgs.append(cur)
+    return msgs
+
+
 def creds():
     try:
         from dotenv import load_dotenv; load_dotenv(PROJECT / '.env')
@@ -154,6 +210,7 @@ def main():
         post('Test from the other sports model.'); print('Test message sent.'); return 0
     log = pd.read_csv(LOG)
     pdate, msgs = build_messages(log)
+    msgs = msgs + experimental_messages()
     if mode == 'preview':
         for m in msgs:
             print(m); print('-' * 60)
