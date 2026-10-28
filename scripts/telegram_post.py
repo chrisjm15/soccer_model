@@ -41,8 +41,8 @@ PLAIN = {0.0: 'win = win, draw = money back', 0.5: 'win or draw', -0.5: 'must wi
 BIG5_LOG = PROJECT / 'output' / 'paper_trading' / 'luck_big5_log.csv'
 LEAGUE_NAMES = {'La_Liga': 'La Liga', 'Bundesliga': 'Bundesliga', 'Serie_A': 'Serie A', 'Ligue_1': 'Ligue 1'}
 KEY_EXP = ('<b>KEY</b>\n'
-           '<i>⚽ the match · EXPERIMENTAL = a paper test we are tracking, not a tip · "luck pick" = the team whose recent '
-           'results have been worse than the chances it created; bookmakers tend to underrate them · AH = Asian handicap: '
+           '<i>⚽ the match · EXPERIMENTAL = a paper test we are tracking, not a tip · "underrated pick" = a team whose recent '
+           'results have been worse than the chances it created (its xG); bookmakers tend to rate it too low · AH = Asian handicap: '
            'a team starts with a goal head start (+) or deficit (−) · % = the bookmakers\' chance, from their prices</i>')
 
 
@@ -148,10 +148,10 @@ def experimental_messages(today=None, path=None):
     if (today - datetime.strptime(p, '%Y-%m-%d').date()).days > 3:
         return []
     f = b[(b.prediction_date == p) & (b.shadow_flag == 'True')].sort_values(['match_date', 'league'])
-    head = '⚽ <b>EXPERIMENTAL — luck picks, La Liga / Bundesliga / Serie A / Ligue 1</b>'
+    head = '⚽ <b>EXPERIMENTAL — underrated picks, La Liga / Bundesliga / Serie A / Ligue 1</b>'
     sub = '<i>Paper test only, not a tip. We are tracking these to see if the idea works.</i>'
     if f.empty:
-        return [KEY_EXP + '\n\n' + head + '\n' + sub + '\n\nNo luck picks this round.']
+        return [KEY_EXP + '\n\n' + head + '\n' + sub + '\n\nNo underrated picks this round.']
     blocks = []
     for _, r in f.iterrows():
         side = r.shadow_side
@@ -161,7 +161,7 @@ def experimental_messages(today=None, path=None):
         if q < MIN_CHANCE:
             continue
         blocks.append(f"<b>{esc(r.home_team)} v {esc(r.away_team)}</b> · {LEAGUE_NAMES.get(r.league, r.league)} · {fmt_date(r.match_date)}\n"
-                      f"Luck pick: {esc(team)} AH {line:+.2f} — {esc(plain_line(line))}\n"
+                      f"Underrated pick: {esc(team)} AH {line:+.2f} — {esc(plain_line(line))}\n"
                       f"Chance (price says): {q:.0%}\n"
                       f"Best price found online: {float(r.shadow_odds):.2f}")
     msgs, cur = [], KEY_EXP + '\n\n' + head + '\n' + sub + f'\n\n{len(blocks)} pick(s).'
