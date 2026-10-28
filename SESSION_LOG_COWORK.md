@@ -45,6 +45,10 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
     recorded as noise / prospective only.
 11. Pre-registered `scripts/luck_shadow.py` (rule fixed in docstring; counts from GW10); STATUS section 6.
 
+12. Chris home 28 Oct: STATUS.bat ran on Windows (identical to Linux output); pushed to `eb507e4`; luck_shadow.csv
+    untracked (line-ending churn). Chris ran DOWNLOAD_AND_TEST_1X2_OU.bat — QC: 30 files, 100% join, Pinnacle close 92%.
+    **1X2 and O/U fail the pre-set rule** (EPL home/away move t 3.0/2.7 but CLV@Avg −4.6%).
+
 ## Decisions
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.

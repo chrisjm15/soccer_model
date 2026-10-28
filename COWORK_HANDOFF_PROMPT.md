@@ -23,7 +23,8 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 - EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).
 - **Luck (goals − xG) bias survives to the close** (t −4.1, replicated on soft leagues). EPL rule historical +8% at avg
   prices. Pre-registered shadow test from GW10: `scripts/luck_shadow.py`, STATUS section 6.
-- O/U 2.5 fail, BTTS fail, model-free Bet365-vs-Pinnacle not visible, Betfair AU no. 1X2 awaits the CLV bat.
+- O/U 2.5 fail, BTTS fail, **1X2 fail** (CLV test run by Chris 28 Oct, QC'd: 100% joins; CLV@Avg −4.6%), model-free
+  Bet365-vs-Pinnacle not visible, Betfair AU no.
 - Calibration model term rests on the 2020-21 no-crowd season (b_model t 1.3 without it).
 
 ## Decision for Chris (open)
@@ -44,19 +45,7 @@ Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:
   **Never run predict by hand outside the Friday slot** — first sighting locks the row.
 - After the run: double-click `AU_PRICES.bat`, type Bet365 AU / Sportsbet / Ladbrokes / TAB / Betfair back prices for
   each flagged bet (market named in the sheet), save, close Excel, run `STATUS.bat`.
-- `PUSH_TO_GITHUB.bat` once to push session 17's commits.
-
-### 1b. Chris: double-click `DOWNLOAD_AND_TEST_1X2_OU.bat` (any time)
-Downloads full football-data CSVs (closing 1X2 + O/U columns the scraper drops) and runs
-`scripts/ou_1x2_clv_check.py` → `output/backtest_results/ou_1x2_clv_report.txt`. Cowork shells cannot reach
-football-data (proxy 403). Pre-set rule: a market earns a live paper test only if H1 EPL avg-to-avg slope > 0 with
-t ≥ 2 AND OOS flagged CLV@Avg > 0. Cowork QCs the report next session.
-Already known without closing data (`ou_1x2_calibration_report.txt`, session 17):
-- **O/U 2.5: fail.** EPL M3 b_model +0.29 (t 1.35); OOS M3 log-loss worse than market; "edges" are 98% overs
-  (train-period drift, not information); ROI −4% to −7% at Avg.
-- **1X2: inconclusive.** EPL away b_model +0.53 (t 2.14), home +0.29 (t 1.19), draw ≤ 0. OOS EPL edge ≥ 2%: 318 bets,
-  ROI +7.5% ± 6.5 at Avg — noise-level; 73% away picks. Confounder: the 2020-21 no-crowd season is in every train set
-  (home advantage collapsed) — applies to the AH calibration too; check in the off-season refit.
+- `STATUS.bat` verified on Windows 28 Oct; session 17 pushed (`eb507e4`).
 
 ### 2. Tue 2026-11-03 settle — automated. `STATUS.bat` shows exit codes and CLV.
 

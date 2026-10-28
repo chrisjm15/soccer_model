@@ -1,0 +1,64 @@
+  1X2 AND O/U 2.5: LINE MOVEMENT AND CLV vs MODEL  --  2026-10-28
+  Rows 10715; closing 1X2 found 100.0% (Pinnacle 92.1%), closing O/U found 100.0%
+
+====================================================================================================
+  H1. FIT-FREE: move ~ signal, all matches (OLS, HC1).  AH benchmark (session 16): EPL avg-to-avg slope +0.0047, t 3.3
+====================================================================================================
+  move_avg = Avg close no-vig - Avg pre no-vig;  move_pin = Pinnacle close - Pinnacle pre (like for like).
+  signal = logit(model) - logit(Avg pre no-vig)  [for move_pin: logit(model) - logit(Pinnacle pre)]
+  outcome group                n  slope avg      t  n pin  slope pin      t
+  home    EPL               2280    +0.0022  +3.00   2110    +0.0020  +2.50
+  home    Big 5 ex-EPL      8433    -0.0008  -1.72   7752    -0.0006  -1.19
+  home    Bundesliga        1834    +0.0019  +2.11   1677    +0.0012  +1.29
+  home    La_Liga           2277    -0.0028  -2.77   2084    -0.0026  -2.37
+  home    Ligue_1           2046    -0.0032  -2.91   1899    -0.0017  -1.47
+  home    Serie_A           2276    -0.0000  -0.04   2092    -0.0001  -0.08
+  away    EPL               2280    +0.0020  +2.74   2110    +0.0014  +1.79
+  away    Big 5 ex-EPL      8433    -0.0002  -0.40   7752    +0.0000  +0.07
+  away    Bundesliga        1834    +0.0027  +3.24   1677    +0.0024  +2.56
+  away    La_Liga           2277    -0.0016  -1.61   2084    -0.0015  -1.42
+  away    Ligue_1           2046    -0.0031  -2.79   1899    -0.0018  -1.51
+  away    Serie_A           2276    +0.0005  +0.57   2092    +0.0006  +0.56
+  draw    EPL               2280    -0.0011  -1.23   2110    +0.0004  +0.40
+  draw    Big 5 ex-EPL      8433    -0.0057  -9.31   7752    -0.0036  -5.43
+  draw    Bundesliga        1834    -0.0029  -2.98   1677    -0.0024  -2.15
+  draw    La_Liga           2277    -0.0085  -6.81   2084    -0.0061  -4.48
+  draw    Ligue_1           2046    -0.0041  -2.82   1899    -0.0015  -0.99
+  draw    Serie_A           2276    -0.0078  -6.23   2092    -0.0045  -3.32
+  over    EPL               2280    -0.0033  -1.49   2098    -0.0031  -1.26
+  over    Big 5 ex-EPL      8432    -0.0048  -4.56   7683    -0.0043  -3.69
+  over    Bundesliga        1834    -0.0009  -0.45   1621    +0.0008  +0.30
+  over    La_Liga           2277    -0.0097  -4.85   2080    -0.0118  -5.41
+  over    Ligue_1           2046    -0.0073  -3.04   1891    -0.0050  -1.98
+  over    Serie_A           2275    -0.0021  -0.91   2091    -0.0015  -0.60
+
+====================================================================================================
+  H2. OOS RULE (fit 2020-21..2023-24, test 2024-25 & 2025-26): flagged bets, move and price CLV
+====================================================================================================
+  CLV@X = pre-closing price X * closing no-vig prob - 1.  Avg ~ AU corporates; Max = best; Pin = Pinnacle pre.
+  EPL 1X2 (test n 760):
+     all matches, model pick : move(avg) -0.00%+/-0.10%  CLV@Avg -4.65%+/-0.25%  CLV@Max -1.59%+/-0.27%  CLV@Pin -3.31%+/-0.29%
+     edge >= 1%: n  690  mix {'away': 0.61, 'home': 0.39}
+        move(avg) -0.01%+/-0.10%  CLV@Avg -4.74%+/-0.26%  CLV@Max -1.78%+/-0.28%  CLV@Pin -3.32%+/-0.30%
+     edge >= 2%: n  318  mix {'away': 0.73, 'home': 0.27}
+        move(avg) +0.12%+/-0.15%  CLV@Avg -4.58%+/-0.35%  CLV@Max -1.81%+/-0.37%  CLV@Pin -3.39%+/-0.40%
+     edge >= 3%: n   98  mix {'away': 0.89, 'home': 0.11}
+        move(avg) +0.00%+/-0.27%  CLV@Avg -5.00%+/-0.64%  CLV@Max -2.43%+/-0.64%  CLV@Pin -4.00%+/-0.69%
+  EPL O/U 2.5 (test n 760):
+     edge >= 1%: n  706  over share 98%  move -0.26%+/-0.09%  CLV@Avg -6.14%+/-0.17%  CLV@Max -3.56%+/-0.18%
+     edge >= 2%: n  633  over share 99%  move -0.24%+/-0.10%  CLV@Avg -6.02%+/-0.18%  CLV@Max -3.46%+/-0.19%
+     edge >= 3%: n  529  over share 100%  move -0.30%+/-0.11%  CLV@Avg -6.06%+/-0.19%  CLV@Max -3.53%+/-0.20%
+  Big 5 ex-EPL 1X2 (test n 2732):
+     all matches, model pick : move(avg) +0.28%+/-0.03%  CLV@Avg -3.92%+/-0.09%  CLV@Max -0.15%+/-0.11%  CLV@Pin -2.15%+/-0.10%
+     edge >= 1%: n 2721  mix {'draw': 0.71, 'home': 0.16, 'away': 0.13}
+        move(avg) +0.28%+/-0.03%  CLV@Avg -3.92%+/-0.09%  CLV@Max -0.14%+/-0.11%  CLV@Pin -2.15%+/-0.10%
+     edge >= 2%: n 1799  mix {'draw': 0.76, 'away': 0.13, 'home': 0.1}
+        move(avg) +0.31%+/-0.04%  CLV@Avg -3.79%+/-0.09%  CLV@Max -0.03%+/-0.14%  CLV@Pin -2.18%+/-0.11%
+     edge >= 3%: n  343  mix {'draw': 0.76, 'away': 0.23, 'home': 0.01}
+        move(avg) +0.38%+/-0.08%  CLV@Avg -3.81%+/-0.19%  CLV@Max -0.12%+/-0.22%  CLV@Pin -2.09%+/-0.21%
+  Big 5 ex-EPL O/U 2.5 (test n 2732):
+     edge >= 1%: n 1171  over share 42%  move +0.34%+/-0.08%  CLV@Avg -5.03%+/-0.13%  CLV@Max -2.57%+/-0.14%
+     edge >= 2%: n  186  over share 54%  move +0.31%+/-0.18%  CLV@Avg -5.26%+/-0.29%  CLV@Max -3.06%+/-0.31%
+
+  Decision rule (set before seeing results, 2026-10-28): a market is worth a live paper test only if
+  H1 EPL avg-to-avg slope > 0 with t >= 2 for that outcome AND OOS flagged CLV@Avg > 0 (AU corporates price near Avg).

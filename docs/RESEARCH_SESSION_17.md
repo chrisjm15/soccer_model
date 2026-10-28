@@ -13,8 +13,8 @@ Reports in `output/backtest_results/`. "t" = robust (HC1) t-statistic. Segment t
 | 4 | The calibration's model term is robust | **No** — rests on 2020-21 (no crowds) | b_model 2021-26 +0.16 (t 1.3) vs 2020-21 alone +0.58 | `advanced_A.txt` A1 |
 | 5 | Market (even at close) overrates teams whose goals ran ahead of xG ("luck") | **Yes** | Big 5 half lines, push-free, controlled: t −4.1 (independently re-computed); replicates on soft leagues with Sofascore xG (t −2.6/−2.7) | `advanced_C.txt` C6/C8 |
 | 6 | Luck rule is profitable after margin | **EPL yes (historical), elsewhere no** | EPL back less-lucky side \|luck\| ≥ 0.4: ROI +8.0% ± 3.1 at avg AH prices (n 859, 5/6 seasons +ve); ex-EPL +1.6% ± 1.6; soft 1X2 −6% | `advanced_C.txt` C7/C8b |
-| 7 | O/U 2.5 | **Fail** | EPL b_model t 1.35; OOS worse than market | `ou_1x2_calibration_report.txt` |
-| 8 | 1X2 | **Pending CLV** (`DOWNLOAD_AND_TEST_1X2_OU.bat`) | EPL away b_model t 2.14; OOS ROI noise-level | same + `ou_1x2_clv_report.txt` |
+| 7 | O/U 2.5 | **Fail** (incl. CLV test) | EPL b_model t 1.35; move~signal negative; OOS CLV@Avg −6.1% | `ou_1x2_calibration_report.txt`, `ou_1x2_clv_report.txt` |
+| 8 | 1X2 | **Fail** (pre-set rule, 2026-10-28) | EPL home/away move~signal t 3.0 / 2.7 (same info as AH, half size) but OOS CLV@Avg −4.6%, @Pinnacle −3.3%. Draw signal anti-predicts movement (ex-EPL t −9) | `ou_1x2_clv_report.txt` |
 | 9 | BTTS | **Fail** | b_model n.s. in every league; no edge ≥ 4pp exists. (Market-implied Poisson under-predicts BTTS by 2.6pp) | `advanced_D.txt` |
 | 10 | Model-free "book beats Pinnacle fair" | **Not visible in this data** | Bet365 AH rarely above Pinnacle fair (6/season EPL); "Max" 1X2 prices that beat Pinnacle lose −3% to −8% (stale quotes) | `advanced_B.txt` |
 | 11 | Betfair AU rescues execution | **No** | 6% commission ≈ 3pp EV at evens | FUTURE_DEVELOPMENT item 3 |
@@ -35,6 +35,5 @@ Reports in `output/backtest_results/`. "t" = robust (HC1) t-statistic. Segment t
 2. Early-season-only EPL rule: |signal| threshold fixed in advance, sharp prices only; refit excluding or flagging 2020-21.
 3. Ratings season-transition fix + push-consistent calibration baseline (handoff tech debt), then re-run
    `live_rule_oos_check.py` and `advanced_research.py A`.
-4. 1X2 only if the CLV test passes its pre-set rule.
 
 Not explored (no data): lineups/team news, player availability, corners/cards markets, Asian totals.
