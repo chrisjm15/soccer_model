@@ -12,6 +12,8 @@
 | `DOWNLOAD_AND_TEST_1X2_OU.bat` | Double-click: downloads unfiltered football-data CSVs to `data/raw/footballdata_full/` and runs the 1X2 / O/U CLV test |
 | `LUCK_BIG5_DRYRUN.bat` | One-off: runs luck paper gold tests + a dry-run fetch of Big-5 (ex-EPL) AH odds to check team-name mapping (~8 credits) |
 | `SETUP_SCHEDULE.bat`, `REMOVE_SCHEDULE.bat` | Create/remove Windows tasks: Fri 12:30 AU_PRICES, Tue+Fri 13:00 STATUS, Tue+Fri 13:15 push (`scripts/push_quiet.bat` → `output/push_log.txt`) |
+| `TELEGRAM_TEST.bat` | Sends one test message to the Telegram channel + previews the Friday post |
+| `scripts/telegram_post.py`, `scripts/telegram_send.bat` | Friday 17:00 Telegram post of the round's EPL bets (preview / test / send) |
 | `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
 | `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
 | `.env` | API keys — NOT in git, loaded via python-dotenv |

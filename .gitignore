@@ -19,3 +19,7 @@ output/status_latest.txt
 # Rebuilt by STATUS.bat every run (deterministic; regenerate with scripts/luck_shadow.py)
 output/paper_trading/luck_shadow.csv
 output/push_log.txt
+
+# Contains the Telegram bot token - never commit
+TELEGRAM_CHANNEL_HANDOFF.md
+output/telegram_latest.txt

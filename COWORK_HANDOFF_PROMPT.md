@@ -22,7 +22,10 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 ## PC schedule (session 17, `SETUP_SCHEDULE.bat`)
 Existing: Tue 12:00 settle, Fri 12:00 predict (`run_update.ps1`, now also runs the Big-5 luck log).
 Added: Fri 12:30 `AU_PRICES.bat` opens; Tue+Fri 13:00 `STATUS.bat` opens; Tue+Fri 13:15 `scripts/push_quiet.bat`
-(log `output/push_log.txt`). Remove with `REMOVE_SCHEDULE.bat`. Tasks run only while Chris is logged on.
+(log `output/push_log.txt`); Fri 17:00 `scripts/telegram_send.bat` posts the round's EPL bets to Chris's Telegram channel
+(`scripts/telegram_post.py`; token in `.env`; rules from gitignored `TELEGRAM_CHANNEL_HANDOFF.md`; one post per round,
+recorded in `output/paper_trading/telegram_sent.csv`; refuses stale rounds and the Sat 11:25-11:40 racing window).
+Remove with `REMOVE_SCHEDULE.bat`. Tasks run only while Chris is logged on.
 
 ## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
 - EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).
