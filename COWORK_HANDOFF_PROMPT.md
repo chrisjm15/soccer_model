@@ -19,6 +19,11 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
   `output/paper_trading/au_prices.csv` (AU price capture, exact break-even), `PUSH_TO_GITHUB.bat`.
 - No briefs outstanding.
 
+## PC schedule (session 17, `SETUP_SCHEDULE.bat`)
+Existing: Tue 12:00 settle, Fri 12:00 predict (`run_update.ps1`, now also runs the Big-5 luck log).
+Added: Fri 12:30 `AU_PRICES.bat` opens; Tue+Fri 13:00 `STATUS.bat` opens; Tue+Fri 13:15 `scripts/push_quiet.bat`
+(log `output/push_log.txt`). Remove with `REMOVE_SCHEDULE.bat`. Tasks run only while Chris is logged on.
+
 ## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
 - EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).
 - **Luck (goals − xG) bias survives to the close** (t −4.1, replicated on soft leagues). EPL rule historical +8% at avg

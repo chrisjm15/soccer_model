@@ -18,3 +18,4 @@ output/status_latest.txt
 
 # Rebuilt by STATUS.bat every run (deterministic; regenerate with scripts/luck_shadow.py)
 output/paper_trading/luck_shadow.csv
+output/push_log.txt
