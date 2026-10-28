@@ -90,7 +90,7 @@ def bet_block(r, au):
         verdict = 'worth it' if v >= be else 'too low, skip it'
         lines.append(f"Best AU price found: {v:.2f} ({esc(book)}), {verdict}")
     else:
-        lines.append(f"Best price found online: {float(r['odds_ah']):.2f}")
+        lines.append(f"Best price found online: {float(r['odds_ah']):.2f} (often an overseas bookie; AU prices are usually lower)")
     return '\n'.join(lines)
 
 

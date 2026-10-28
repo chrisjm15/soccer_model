@@ -21,12 +21,13 @@ CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.
 
 ## PC schedule (session 17, `SETUP_SCHEDULE.bat`)
 Existing: Tue 12:00 settle, Fri 12:00 predict (`run_update.ps1`, now also runs the Big-5 luck log).
-Added: Fri 12:30 `AU_PRICES.bat` opens; Tue+Fri 13:00 `STATUS.bat` opens; Tue+Fri 13:15 `scripts/push_quiet.bat`
+Added: Tue+Fri 13:00 `STATUS.bat` opens; Tue+Fri 13:15 `scripts/push_quiet.bat`
 (log `output/push_log.txt`); Fri 17:00 `scripts/telegram_send.bat` posts the round's EPL bets to Chris's Telegram channel
 (`scripts/telegram_post.py`; token in `.env`; rules from gitignored `TELEGRAM_CHANNEL_HANDOFF.md`; one post per round,
 recorded in `output/paper_trading/telegram_sent.csv`; refuses stale rounds and the Sat 11:25-11:40 racing window).
 Remove with `REMOVE_SCHEDULE.bat`.
-Chris (28 Oct): will enter **Bet365 AU prices only** in the Friday sheet; Odds API never carries Bet365 or AU books for EPL AH.
+Chris (28 Oct, final): **no manual AU prices** — automatic prices only. Fri 12:30 AU_PRICES task removed; Telegram shows the
+Odds API best price (offshore) + exact worth-it price. AU-price evidence for the checkpoint will therefore be missing.
 Telegram test message confirmed in the channel 28 Oct. Tasks run only while Chris is logged on.
 
 ## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
