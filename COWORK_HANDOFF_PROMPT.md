@@ -1,77 +1,47 @@
 # Handoff
 
 CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.md` to locate files — do not read files preemptively.
-*Last updated: 2026-10-28 (session 17, Chris away — Cowork worked unattended).*
+*Last updated: 2026-10-28 21:20 (end of session 17).*
 
-## Where the project stands
-- **EPL Asian Handicap is the only live hypothesis.** The model carries real information (market moves toward it,
-  H1 t=4.7), but **session 17 re-measured the LIVE rule out of sample** (EPL-only fit, 1% threshold, range guard,
-  2024-26, n=179; `output/backtest_results/live_rule_oos_report.txt`):
-  move +0.6pp; price CLV **−1.6% at Pinnacle pre-close**, −2.1% at B365, **−0.3% at best of B365/Pinnacle/avg**.
-  The **1–2% edge band carries no signal** (move −0.2pp, CLV@Pinnacle −3.0%, n=78). **Edges ≥ 2%** do: move +1.2pp
-  (t≈3), CLV −0.7% Pinnacle / +0.9% best-of-3 (n=101, ~50/season).
-  Session 16's "+0.7% on 44 flagged" used the **all-leagues** fit's edge — a stricter subset, not the live rule.
-  The July "92/season, +8.9%" = EPL fit without the range guard (ROI is noise: SE 6.7pp).
-- **Big 5 ex-EPL: retired** (July). **Soft leagues: closed for v1** (session 16).
-- Live and automated: Tue 12:00 settle, Fri 12:00 predict (`scripts/run_update.ps1`). Edge = calibrated prob
-  (M3) − consensus no-vig; flag at ≥ 1%. Paper log `output/paper_trading/log_ah.csv`. Model unchanged in session 17.
-- New (session 17): `STATUS.bat` (read-only status, checkpoint split by edge band), `AU_PRICES.bat` + 
-  `output/paper_trading/au_prices.csv` (AU price capture, exact break-even), `PUSH_TO_GITHUB.bat`.
-- No briefs outstanding.
+## Where the project stands (end of session 17, 2026-10-28)
+- **Live:** EPL Asian Handicap model, 1% calibrated-edge rule, unchanged. **Chris bets real money on it** (decided
+  28 Oct against Cowork's advice — see below). Paper log `output/paper_trading/log_ah.csv`.
+- **Research verdicts:** `docs/RESEARCH_SESSION_17.md` (one table, 16 hypotheses). In short: the live 1% rule does not
+  beat the close OOS (CLV@Pinnacle −1.6%); the model's information is early-season only (Aug–Oct); the one new edge is
+  **luck** (goals − xG): the market overrates lucky teams even at the close (t −4.1) and only the AH market converts it
+  to profit (Big 5 +3.1% ± 1.4, EPL +7.9% at avg prices). O/U, 1X2, BTTS, promoted, dead rubbers, Betfair AU: all fail.
+- **Two pre-registered paper tests running** (rule fixed in each script's docstring; verdict at season end):
+  EPL luck shadow `scripts/luck_shadow.py` (from GW10, STATUS §6) and Big-5 ex-EPL luck log
+  `scripts/luck_paper_big5.py` (Fri log / Tue settle inside `run_update.ps1`, STATUS §7).
+- **No manual AU prices** (Chris, final): Telegram shows the Odds API best (offshore) price + exact worth-it price.
+  The Odds API never carries Bet365 or AU books for EPL AH. AU-price evidence for the checkpoint will be missing.
 
-## PC schedule (session 17, `SETUP_SCHEDULE.bat`)
-Existing: Tue 12:00 settle, Fri 12:00 predict (`run_update.ps1`, now also runs the Big-5 luck log).
-Added: Tue+Fri 13:00 `STATUS.bat` opens; Tue+Fri 13:15 `scripts/push_quiet.bat`
-(log `output/push_log.txt`); Fri 17:00 `scripts/telegram_send.bat` posts the round's EPL bets to Chris's Telegram channel
-(`scripts/telegram_post.py`; token in `.env`; rules from gitignored `TELEGRAM_CHANNEL_HANDOFF.md`; one post per round,
-recorded in `output/paper_trading/telegram_sent.csv`; refuses stale rounds and the Sat 11:25-11:40 racing window).
-Remove with `REMOVE_SCHEDULE.bat`.
-Chris (28 Oct, final): **no manual AU prices** — automatic prices only. Fri 12:30 AU_PRICES task removed; Telegram shows the
-Odds API best price (offshore) + exact worth-it price. AU-price evidence for the checkpoint will therefore be missing.
-Telegram test message confirmed in the channel 28 Oct. Chris: also post the Big-5 luck picks as a separate message
-labelled EXPERIMENTAL (paper test, not a tip) — built in `telegram_post.py` (`experimental_messages`). Tasks run only while Chris is logged on.
+## PC schedule (all automatic; `SETUP_SCHEDULE.bat` / `REMOVE_SCHEDULE.bat`; runs only while Chris is logged on)
+| When | What |
+|---|---|
+| Tue 12:00 | `run_update.ps1` settle: update → results → Big-5 luck settle |
+| Fri 12:00 | `run_update.ps1 -Mode predict`: update → predict → Big-5 luck log (~8 Odds API credits) |
+| Tue + Fri 13:00 | `STATUS.bat` opens (also writes `output/status_latest.txt`) |
+| Tue + Fri 13:15 | `scripts/push_quiet.bat` → `output/push_log.txt` |
+| Fri 17:00 | `scripts/telegram_send.bat` → `telegram_post.py send`: EPL bets + separate EXPERIMENTAL "underrated picks" (Big-5 luck) message → `output/telegram_latest.txt` |
+Telegram: token in `.env`; channel rules in gitignored `TELEGRAM_CHANNEL_HANDOFF.md` (contains the token — never commit);
+one post per round (`output/paper_trading/telegram_sent.csv`); refuses stale rounds and Sat 11:25–11:40 (racing card).
+Public wording says "underrated picks", never "luck" (Chris). Test message confirmed in channel 28 Oct.
 
-## Session 17 research (read `docs/RESEARCH_SESSION_17.md` — one table of verdicts)
-- EPL model information is **early-season only** (Aug–Oct move~signal t 6.9, +ve every season; Feb–May 0).
-- **Luck (goals − xG) bias survives to the close** (t −4.1, replicated on soft leagues). EPL rule historical +8% at avg
-  prices. Pre-registered shadow test from GW10: `scripts/luck_shadow.py`, STATUS section 6.
-- O/U 2.5 fail, BTTS fail, **1X2 fail** (CLV test run by Chris 28 Oct, QC'd: 100% joins; CLV@Avg −4.6%), model-free
-  Bet365-vs-Pinnacle not visible, Betfair AU no.
-- Calibration model term rests on the 2020-21 no-crowd season (b_model t 1.3 without it).
-- Evening (part 2, `scripts/advanced_research2.py`, pre-set rule): luck→O/U fail, luck→1X2/DNB fail (margin),
-  promoted teams fail, 'nothing to play for' fail. **Luck→AH passes on Big 5 (+3.1% ± 1.4 at avg; EPL +7.9%).**
-  Betfair AU net 6% ≈ 1pp worse than average bookmaker prices for this rule.
-- **Built (Chris asked):** `scripts/luck_paper_big5.py` — luck rule paper log for La Liga/Bundesliga/Serie A/Ligue 1.
-  Runs inside the scheduled task: Fri `log` (~8 Odds API credits, regions uk,eu), Tue `settle` (closing AH from
-  all_merged, Pinnacle → avg fallback, same as run.py). Wrapped in try/catch after the main steps; output
-  `output/luck_big5_latest.txt`; log `output/paper_trading/luck_big5_log.csv`; STATUS section 7. Gold tests
-  `scripts/test_luck_paper.py` pass. `LUCK_BIG5_DRYRUN.bat` = one-off pre-Friday check of team-name mapping.
-
-## Decision for Chris — ANSWERED 2026-10-28 18:16
-**Chris: continue real-money bets** (1% rule unchanged). Cowork had recommended stopping (edge historically Aug–Oct).
-Record AU prices for every real bet via `AU_PRICES.bat`. Options below kept for the Feb checkpoint.
-
-## Options considered
-Given the live-rule OOS result, choose before ~10 more flagged bets accumulate:
-- Added later in session 17: the live season is leaving the Aug–Oct window where the edge lives. Real-money bets
-  from here on have no historical support; paper trading costs nothing.
-- **(a) Recommended:** stop real-money bets for this season; keep the 1% rule paper-trading unchanged to the Feb checkpoint (it is the pre-registered test), and read
-  the ≥ 2% shadow subset in `STATUS.bat` alongside it. No model change. Decide at the checkpoint on BOTH, and on
-  CLV at the price actually obtainable in AU (from `au_prices.csv`), not only the logged offshore best price.
-- (b) Raise the threshold to 2% now: ~half the volume (≈ 20 bets by Feb), changes the test mid-season.
-- (c) Accept now that the 1% rule does not survive AU prices; keep paper trading for data, put effort into
-  backlog item 9 (Pinnacle-anchor price discrepancies at AU books — model-free; the AU tracker collects the data).
+## Decision record
+- 28 Oct: **real-money bets continue** (Chris). Cowork recommended stopping: edge historically Aug–Oct only.
+- 28 Oct: automatic prices only; Big-5 picks posted to Telegram as experimental.
 
 ## Next actions (in order)
 
-### 1. Fri 2026-10-30 — GW10 predict run, then AU prices (Chris)
-- Check 9–10 GW10 rows logged with prediction_date 2026-10-30 (`STATUS.bat` section 1–2).
-  **Never run predict by hand outside the Friday slot** — first sighting locks the row.
-- After the run: double-click `AU_PRICES.bat`, type Bet365 AU / Sportsbet / Ladbrokes / TAB / Betfair back prices for
-  each flagged bet (market named in the sheet), save, close Excel, run `STATUS.bat`.
-- `STATUS.bat` verified on Windows 28 Oct; session 17 pushed (`eb507e4`).
+### 1. TOP PRIORITY — QC the first full automated Friday (Fri 2026-10-30, check from ~17:15)
+- `output/scheduler_log.txt`: predict exit 0 AND `luck_paper_big5 log complete (exit code: 0)`.
+- `log_ah.csv`: 9–10 GW10 rows, prediction_date 2026-10-30. **Never run predict by hand outside the Friday slot.**
+- `output/luck_big5_latest.txt`: no UNMAPPED / errors; `luck_big5_log.csv` ≈ 40 fixtures, ≈ 15 flagged.
+- `output/telegram_latest.txt` says "Posted round 2026-10-30: 2 message(s)"; `output/push_log.txt` shows a clean push.
+- First real Telegram post: check wording renders (KEY, no stray HTML).
 
-### 2. Tue 2026-11-03 settle — automated. `STATUS.bat` shows exit codes and CLV.
+### 2. Tue 2026-11-03 settle — first Big-5 settle (`luck_paper_big5 settle` in scheduler_log; CLV filled for weekend rows).
 
 ### 3. Checkpoint ≈ Feb 2027 (~40 flagged bets) — decided on price CLV, not ROI
 Mean `clv_price` on flagged bets (per-bet SD ≈ 0.063 → SE ≈ 1pp at n=40):

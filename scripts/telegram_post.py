@@ -5,7 +5,7 @@ Rules from TELEGRAM_CHANNEL_HANDOFF.md (gitignored; token lives in .env as TELEG
   python scripts/telegram_post.py test      # send 'Test from the other sports model.'
   python scripts/telegram_post.py send      # send this round's bets (once per predict run; --force to resend)
 
-Also posts a second, clearly labelled EXPERIMENTAL message with this run's Big-5 luck picks (paper test).
+Also posts a second, clearly labelled EXPERIMENTAL message ("underrated picks" = Big-5 luck rule, paper test).
 Safety: never posts 11:25-11:40 Sat (racing card); never posts a stale round (predict older than 3 days);
 records each sent round in output/paper_trading/telegram_sent.csv so a re-run does not double-post.
 """

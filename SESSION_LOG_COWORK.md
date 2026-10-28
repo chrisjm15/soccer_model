@@ -59,7 +59,13 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
     steps; CRLF kept), STATUS section 7, `LUCK_BIG5_DRYRUN.bat`. Chris ran LUCK_BIG5_DRYRUN.bat 18:50: API OK (473 credits left),
     43 fixtures / 16 flagged; 2 unmapped (Racing Santander, RC Lens) fixed + ~40 long-form aliases added and checked.
 
+15. PC schedule (`SETUP_SCHEDULE.bat`): STATUS + push Tue/Fri 13:00/13:15; Fri 12:30 AU prices task added then removed
+    (Chris: no manual prices). Telegram: token moved from Chris's md into `.env`, md gitignored (never committed);
+    `scripts/telegram_post.py` (rules from the md), test message confirmed; Fri 17:00 task; Big-5 picks as a separate
+    EXPERIMENTAL message, public name "underrated picks" (Chris found "luck" daft).
+
 ## Decisions
+- Automatic prices only (no AU sheet); Big-5 picks posted as experimental; public label "underrated".
 - Real-money bets continue (Chris, 2026-10-28), against Cowork's recommendation.
 - None taken on the model. Recommendation to Chris: (a) keep the 1% rule to the Feb checkpoint, read the ≥ 2% shadow
   subset and AU-price CLV alongside it.

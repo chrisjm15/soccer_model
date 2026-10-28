@@ -16,7 +16,8 @@
 | `scripts/telegram_post.py`, `scripts/telegram_send.bat` | Friday 17:00 Telegram post of the round's EPL bets (preview / test / send) |
 | `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
 | `scrape_next_league.bat` | Desktop-clickable Sofascore scraper — one league per click, resumable, state in `experiment/sofascore_done.txt` |
-| `.env` | API keys — NOT in git, loaded via python-dotenv |
+| `.env` | API keys + TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID — NOT in git, loaded via python-dotenv |
+| `TELEGRAM_CHANNEL_HANDOFF.md` | Chris's Telegram channel rules (KEY, % wording, no ticks/stakes, racing window). Contains the bot token — gitignored, never commit |
 
 ## docs/
 | File | Purpose |
@@ -111,5 +112,6 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `output/paper_trading/log_ah.csv` | EPL AH paper trading tracker — real closing CLV (closing_source, clv_move, clv_price) on every row |
 | `output/backtest_results/clv_edge_report.txt`, `soft_calibration_report.txt` | Session 16 verdict reports (EPL edge real but small; soft leagues fail). NOTE: clv_edge H2 "44 flagged" used the all-leagues fit — superseded for the live rule by `live_rule_oos_report.txt` |
 | `output/backtest_results/live_rule_oos_report.txt` | Session 17: live rule OOS — 179 bets/2 seasons, CLV@Pinnacle −1.6%, edge ≥2% subset carries the signal |
+| `output/paper_trading/telegram_sent.csv`, `luck_shadow.csv` (gitignored, rebuilt) | Telegram rounds posted (no double posts); EPL luck shadow table |
 | `output/paper_trading/au_prices.csv` | AU prices per flagged bet (Chris fills in; Excel-safe text key) |
 | `run.py` | Entry point: `python run.py update / predict / backtest` |
