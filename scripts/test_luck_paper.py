@@ -19,6 +19,9 @@ for api, want, lg in (('Inter Milan', 'Inter', 'Serie_A'), ('Juventus', 'Juventu
     got = lp.map_name(api, lg, canon)
     assert got == want, (api, got)
 assert lp.map_name('Totally Unknown FC', 'Serie_A', canon) is None
+# names seen unmapped in the first live dry run (2026-10-28)
+assert lp.map_name('Real Racing Club de Santander', 'La_Liga', {'Racing Santander', 'Real Madrid'}) == 'Racing Santander'
+assert lp.map_name('RC Lens', 'Ligue_1', {'Lens', 'Lille'}) == 'Lens'
 
 # --- side pick: diff = -0.3 - 0.2 = -0.5 -> back home, flagged, home odds, home prob
 assert lp.shadow_pick(-0.3, 0.2, 1.9, 2.0, 0.48) == (-0.5, 'home', True, 1.9, 0.48)

@@ -51,7 +51,21 @@ MANUAL = {'inter milan': 'Inter', 'internazionale': 'Inter', 'rb leipzig': 'Rase
           'athletic bilbao': 'Athletic Club', 'paris saint germain': 'Paris Saint Germain', 'psg': 'Paris Saint Germain',
           'parma': 'Parma Calcio 1913', 'hellas verona': 'Verona', 'tsg hoffenheim': 'Hoffenheim',
           '1899 hoffenheim': 'Hoffenheim', 'mainz': 'Mainz 05', 'deportivo': 'Deportivo La Coruna',
-          'racing': 'Racing Santander', 'sc paderborn': 'Paderborn', 'paderborn 07': 'Paderborn'}
+          'racing': 'Racing Santander', 'sc paderborn': 'Paderborn', 'paderborn 07': 'Paderborn',
+          'real racing club de santander': 'Racing Santander', 'racing santander': 'Racing Santander',
+          'rc lens': 'Lens', 'racing club de lens': 'Lens', 'rc strasbourg': 'Strasbourg',
+          'rc strasbourg alsace': 'Strasbourg', 'rc celta': 'Celta Vigo', 'rcd espanyol': 'Espanyol',
+          'rcd mallorca': 'Mallorca', 'sc paderborn 07': 'Paderborn', 'olympique lyonnais': 'Lyon',
+          'olympique lyon': 'Lyon', 'olympique marseille': 'Marseille', 'olympique de marseille': 'Marseille',
+          'stade rennais': 'Rennes', 'ogc nice': 'Nice', 'stade brestois 29': 'Brest', 'stade brestois': 'Brest',
+          'losc lille': 'Lille', 'lille osc': 'Lille', 'sco angers': 'Angers', 'aj auxerre': 'Auxerre',
+          'estac troyes': 'Troyes', 'deportivo alaves': 'Alaves', 'real betis balompie': 'Real Betis',
+          'sevilla': 'Sevilla', 'rayo vallecano de madrid': 'Rayo Vallecano', 'fc st pauli': 'St. Pauli',
+          'st pauli': 'St. Pauli', 'vfl wolfsburg': 'Wolfsburg', 'sv werder bremen': 'Werder Bremen',
+          'fc augsburg': 'Augsburg', 'sc freiburg': 'Freiburg', '1 fc union berlin': 'Union Berlin',
+          'fc schalke 04': 'Schalke 04', 'bayer 04 leverkusen': 'Bayer Leverkusen', 'udinese': 'Udinese',
+          'us lecce': 'Lecce', 'genoa cfc': 'Genoa', 'torino fc': 'Torino', 'ss lazio': 'Lazio',
+          'acf fiorentina': 'Fiorentina', 'us sassuolo': 'Sassuolo', 'cagliari': 'Cagliari'}
 
 
 def map_name(api_name, league, canon):
@@ -161,7 +175,7 @@ def cmd_log(dry_run=False, fetch=None):
     log = read_log()
     seen = set(zip(log.match_date, log.home_team, log.away_team))
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    new, unmapped = [], []
+    new, unmapped, renamed = [], [], set()
     for lg, sport in LEAGUES.items():
         canon = set(merged_all[(merged_all.league == lg) & (merged_all.season == merged_all[merged_all.league == lg].season.max())][['home_team', 'away_team']].values.ravel())
         for m in fetch(sport, lg) or []:
@@ -169,6 +183,9 @@ def cmd_log(dry_run=False, fetch=None):
             if ht is None or at is None:
                 unmapped.append(f"{lg}: {m['home_team'] if ht is None else ''} {m['away_team'] if at is None else ''}".strip())
                 continue
+            for api, c in ((m['home_team'], ht), (m['away_team'], at)):
+                if api != c:
+                    renamed.add(f'{api} -> {c}')
             if (m['date'], ht, at) in seen:
                 continue
             luck = luck_state(h, m['date'])
@@ -190,6 +207,10 @@ def cmd_log(dry_run=False, fetch=None):
             team = r['home_team'] if r['shadow_side'] == 'home' else r['away_team']
             line = float(r['ah_line']) if r['shadow_side'] == 'home' else -float(r['ah_line'])
             print(f"  {r['match_date']} {r['league']:<11} {team} {line + 0.0:+.2f} @ {r['shadow_odds']}  luck {r['luck_diff']:+.2f}")
+    if renamed and dry_run:
+        print('  Name translations (check each is the same club):')
+        for x in sorted(renamed):
+            print('    ' + x)
     if unmapped:
         print('  UNMAPPED team names (fixture skipped - tell Claude):', '; '.join(unmapped))
     if dry_run:

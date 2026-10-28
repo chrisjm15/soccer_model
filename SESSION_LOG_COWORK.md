@@ -56,7 +56,8 @@ that the live rule's OOS CLV is negative. Model and automation unchanged. Decisi
 
 14. **Chris decided: continue real-money bets.** Built Big-5 luck paper log (`scripts/luck_paper_big5.py` + gold tests
     `scripts/test_luck_paper.py`), wired into `scripts/run_update.ps1` (Fri log / Tue settle, try/catch, after main
-    steps; CRLF kept), STATUS section 7, `LUCK_BIG5_DRYRUN.bat`. Not yet run against the live Odds API.
+    steps; CRLF kept), STATUS section 7, `LUCK_BIG5_DRYRUN.bat`. Chris ran LUCK_BIG5_DRYRUN.bat 18:50: API OK (473 credits left),
+    43 fixtures / 16 flagged; 2 unmapped (Racing Santander, RC Lens) fixed + ~40 long-form aliases added and checked.
 
 ## Decisions
 - Real-money bets continue (Chris, 2026-10-28), against Cowork's recommendation.
