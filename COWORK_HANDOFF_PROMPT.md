@@ -1,15 +1,20 @@
 # Handoff
 
 CLAUDE.md is already loaded. Read `SESSION_LOG_COWORK.md` only. Use `docs/INDEX.md` to locate files — do not read files preemptively.
-*Last updated: 2026-10-28 21:20 (end of session 17).*
+*Last updated: 2026-10-29 (session 18, Cowork unattended while Chris at work).*
 
-## Where the project stands (end of session 17, 2026-10-28)
+## Where the project stands (session 18, 2026-10-29)
 - **Live:** EPL Asian Handicap model, 1% calibrated-edge rule, unchanged. **Chris bets real money on it** (decided
   28 Oct against Cowork's advice — see below). Paper log `output/paper_trading/log_ah.csv`.
 - **Research verdicts:** `docs/RESEARCH_SESSION_17.md` (one table, 16 hypotheses). In short: the live 1% rule does not
   beat the close OOS (CLV@Pinnacle −1.6%); the model's information is early-season only (Aug–Oct); the one new edge is
   **luck** (goals − xG): the market overrates lucky teams even at the close (t −4.1) and only the AH market converts it
-  to profit (Big 5 +3.1% ± 1.4, EPL +7.9% at avg prices). O/U, 1X2, BTTS, promoted, dead rubbers, Betfair AU: all fail.
+  to profit (at Pinnacle prices Big 5 +3.7%, ex-EPL +2.6%, EPL +7.7%; at avg prices after the session 18 price fix
+  Big 5 +2.3% ± 1.4, EPL +6.0% ± 3.0). O/U, 1X2, BTTS, promoted, dead rubbers, Betfair AU: all fail.
+- **Session 18 (stop-date + data fix):** two bad football-data Avg prices had flattered the live rule; corrected OOS
+  CLV@best-of-3 is **−1.5% ± 0.6** (not −0.3%). The model's information is gone by **GW 8** (fit-free t 0.5 for
+  GW 8–10); live rule from GW 10 on: CLV@Pinnacle −3.2% ± 0.8. Cowork recommends **stopping real-money stakes from
+  GW 10**; Chris decided to continue real-money bets (final, do not re-ask). `output/backtest_results/stop_date_report.txt`.
 - **Two pre-registered paper tests running** (rule fixed in each script's docstring; verdict at season end):
   EPL luck shadow `scripts/luck_shadow.py` (from GW10, STATUS §6) and Big-5 ex-EPL luck log
   `scripts/luck_paper_big5.py` (Fri log / Tue settle inside `run_update.ps1`, STATUS §7).
@@ -29,10 +34,18 @@ one post per round (`output/paper_trading/telegram_sent.csv`); refuses stale rou
 Public wording says "underrated picks", never "luck" (Chris). Test message confirmed in channel 28 Oct.
 
 ## Decision record
+- 29 Oct: Big-5 luck verdict rule AMENDED before the first row (Chris): pass = clv_move > 0 with t >= 2 AND ROI not
+  significantly below +2.6%; fail = move <= 0. Old rule (clv_price > 0) tested the wrong thing. `luck_paper_big5.py`.
+- 29 Oct (session 18): Cowork recommended stopping real-money stakes from GW 10. **Chris: real-money bets continue.
+  Final - do not ask again this season.**
 - 28 Oct: **real-money bets continue** (Chris). Cowork recommended stopping: edge historically Aug–Oct only.
 - 28 Oct: automatic prices only; Big-5 picks posted to Telegram as experimental.
 
 ## Next actions (in order)
+
+### 0. BEFORE FRIDAY (Chris, Thu evening)
+- Double-click `FIX_SCHEDULE.bat`. Every line under AFTER must say `catch-up=True wake=True`
+  (`output/schedule_check.txt`). Without it the 17:00 Telegram task does not run if the PC is asleep at 17:00.
 
 ### 1. TOP PRIORITY — QC the first full automated Friday (Fri 2026-10-30, check from ~17:15)
 - `output/scheduler_log.txt`: predict exit 0 AND `luck_paper_big5 log complete (exit code: 0)`.
@@ -41,12 +54,33 @@ Public wording says "underrated picks", never "luck" (Chris). Test message confi
 - `output/telegram_latest.txt` says "Posted round 2026-10-30: 2 message(s)"; `output/push_log.txt` shows a clean push.
 - First real Telegram post: check wording renders (KEY, no stray HTML).
 
+### 1a. Scandinavian data refresh — PARKED (29 Oct)
+Sofascore now blocks the Playwright browser at Cloudflare ("Verification failed" on www.sofascore.com). Do not build
+bot-check workarounds. Revisit only with a different, permitted xG source. v1 verdict unchanged.
+
+### 1b. Lineup research — DONE 29 Oct (results below; bat kept for re-runs)
+EPL lineups 2020-26 fetched (2,279 matches, all 11+11 starters). `output/backtest_results/lineup_report.txt`:
+L1 PASS - market moves +0.72pp toward the side with fewer missing regulars per player (t 13.6).
+L2 FAIL - the close prices lineups correctly (t 0.3): no edge betting after lineups.
+L3 - model signal is independent of lineups (corr 0.00) and survives (t 2.9).
+L4 - live-rule bets whose side loses 2+ more regulars: CLV@Pinnacle -7.0% (n 29); opponent weakened +3.5% (n 29).
+L5 (EXPLORATORY, post-hoc) Friday-knowable absences (regulars missing from the previous XI): move +0.19pp per
+player (t 3.6) -> the Friday price under-reacts to known absences; the model ignores them (t -1.3). Live-rule
+bets with Friday-known adv >= 2: CLV@Pinnacle -3.9% (n 39) vs -2.0% (n 84) - difference not significant.
+Lead for 2027: an availability input/veto. Needs a pre-registered prospective test, not a mid-season rule change.
+
+Original instructions:
+Steps: parser test -> probe (1 match per season; must print PROBE OK) -> fetch 2020-26 -> `scripts/lineup_research.py`
+-> `output/lineup_latest.txt`. Pass rules in the script docstring (L1 market reacts to lineups; L2 close mis-prices
+them = the only edge, and only for bets after lineups). QC: ~2,280 matches, "Not 11 starters" count small.
+
 ### 2. Tue 2026-11-03 settle — first Big-5 settle (`luck_paper_big5 settle` in scheduler_log; CLV filled for weekend rows).
 
 ### 3. Checkpoint ≈ Feb 2027 (~40 flagged bets) — decided on price CLV, not ROI
 Mean `clv_price` on flagged bets (per-bet SD ≈ 0.063 → SE ≈ 1pp at n=40):
 - > +1% → plan real stakes (needs AU-price evidence, item 4).  ≤ 0 → edge doesn't survive.  Between → continue.
-Historical expectation for this rule at best-of-3 prices: −0.3% ± 1.0% → most likely outcome is "≤ 0 / between".
+Historical expectation for this rule at best-of-3 prices: −1.5% ± 0.6% (corrected session 18; was −0.3%) and from
+GW 10 on −2.8% ± 0.7 → most likely outcome is "≤ 0".
 Also watch `clv_move ~ calib_edge` (STATUS section 4; historical OOS slope +0.67).
 
 ### 4. Execution — now the binding constraint (Chris, manual)
@@ -67,7 +101,8 @@ Also watch `clv_move ~ calib_edge` (STATUS section 4; historical OOS slope +0.67
 - **Rotate the Odds API key** (exposed in a Cowork tool error 2026-10-24) → new key into `.env`.
 
 ### 5. 2027 off-season (do not start mid-season — it would change the model under test)
-1. Fix the ratings season-transition bug (below), 2. refit `config/calibration.yaml` with the push-consistent market
+1. Fix the ratings season-transition bug — **fix + gold tests ready in `experiment/offseason_2027/`** (README has the
+   steps; not wired in), 2. refit `config/calibration.yaml` with the push-consistent market
 baseline (tech debt), 3. re-run `scripts/live_rule_oos_check.py` + `clv_edge_analysis.py` on the refit, 4. set the
 threshold from the OOS CLV table (not ROI), 5. fix predict's break-even display.
 
@@ -83,6 +118,9 @@ results don't — pooled M3 b_model −0.097 (SE 0.097), CI excludes EPL's +0.24
 (`experiment/merge_data.py`, `data/processed/soft_*`); Scandinavian Sofascore stops 2026-07-18.
 
 ## Known issues / tech debt
+- **football-data Avg/Pinnacle AH price errors:** a few prices are > 1.3x Bet365 (e.g. 4.43 vs 1.98). Any
+  best-price or Avg-price CLV must drop them first — `clean_prices()` in `scripts/stop_date_analysis.py`. Session 17
+  reports (`live_rule_oos_report.txt`, `advanced_A.txt`) were NOT re-run with it; their best-of-3 columns are high.
 - **Ratings season-transition bug** (`model/ratings.py`): regression-to-mean target computed lazily from live
   ratings, some already updated by same-matchday new-season games → order-dependent ratings. This is why the
   `scrapers/merge.py` ratings_backup row-order hack exists; a clean sort moves ratings by up to 0.018.
@@ -109,5 +147,5 @@ tests Antigravity may not edit. **Always QC Antigravity's report against the rep
 `predict` outside the Friday slot. Instructions for Chris: PowerShell, one command per block.
 
 ## Commit block
-None — Cowork commits locally (needs file-deletion permission in the session for git's lock files). If
-`git -c core.autocrlf=true status -sb` shows `ahead`, Chris double-clicks `PUSH_TO_GITHUB.bat`.
+Session 18 files are NOT committed (no file-deletion permission in the Cowork shell; git would leave lock files).
+Chris double-clicks `COMMIT_SESSION_18.bat` (commits the session 18 files, then pushes). After that it can be deleted.

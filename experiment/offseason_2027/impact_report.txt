@@ -1,0 +1,28 @@
+IMPACT OF THE RATINGS FIX (Cowork session 18, 2026-10-29). Units: xG per match. |diff| = max over the 4 ratings.
+Check: old function reproduces live data/processed/ratings.csv exactly: rows 11106, max |diff| 0.000000
+Fixed vs live ratings.csv: rows 11106  mean |diff| 0.0031  max 0.0375
+              mean     max
+league                    
+Bundesliga  0.0031  0.0177
+EPL         0.0030  0.0260
+La_Liga     0.0022  0.0174
+Ligue_1     0.0043  0.0375
+Serie_A     0.0029  0.0276
+EPL by season:
+            mean     max
+season_a                
+2020-21   0.0000  0.0000
+2021-22   0.0018  0.0072
+2022-23   0.0031  0.0134
+2023-24   0.0036  0.0260
+2024-25   0.0034  0.0222
+2025-26   0.0051  0.0166
+2026-27   0.0066  0.0249
+Share of EPL rows with |diff| > 0.01: 4.4%
+Largest EPL differences (mostly promoted/returning teams, which the live rule vetoes for 10 matches):
+      date        home_team       away_team        d
+2024-08-24           Fulham       Leicester 0.022223
+2026-09-04          Ipswich       Liverpool 0.022427
+2023-08-27 Sheffield United Manchester City 0.023403
+2026-08-22          Ipswich      Sunderland 0.024919
+2023-08-12 Sheffield United  Crystal Palace 0.026004

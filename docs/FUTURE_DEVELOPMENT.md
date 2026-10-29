@@ -6,6 +6,10 @@ durable list — the handoff doc carries only the current top items and points h
 **Session 17 research — see `docs/RESEARCH_SESSION_17.md`.** New top items: luck (goals − xG) bias (shadow test
 running), early-season-only EPL rule. O/U 2.5 and BTTS (item 8) tested and failed.
 
+**Session 18 update (2026-10-29):** best-of-3 CLV figures corrected for two bad Avg prices (live rule −1.5%, edge
+≥ 2% −0.2%); model information ends by GW 8 (`stop_date_report.txt`). Item 4 (lineups): scraper + pre-set test built,
+awaiting Chris's fetch (`LINEUPS_FETCH_AND_TEST.bat`). Item 12: fix ready in `experiment/offseason_2027/`.
+
 **Session 17 update (2026-10-28):** the session-16 flagged-bet CLV (+0.7%, n=43) was measured on the all-leagues
 fit, not the live EPL-only rule. For the live rule (OOS 2024-26, n=179): market move +0.6pp, CLV −1.6% at Pinnacle
 pre-close, −0.3% at best of B365/Pinnacle/avg. The 1–2% edge band carries no signal (move −0.2pp); edges ≥ 2% do
@@ -50,7 +54,11 @@ the market's biggest information event (lineups, ~1h before kickoff). Two exploi
 
 ## Tier 2 — Information inputs (things the market knows and we don't)
 
-### 4. Lineup-aware adjustment
+### 4. Lineup-aware adjustment — tested 2026-10-29 (`lineup_report.txt`)
+Market reacts strongly to lineups (t 13.6) and the close prices them correctly (no post-lineup edge). Lead: absences
+known on Friday (regulars missing from the previous XI) move the price later (t 3.6, post-hoc) and the model ignores
+them -> candidate 2027 input/veto, pre-register a prospective test first. Data: `scrapers/understat_lineups.py`.
+
 Sofascore (already scraped) publishes lineups. Even a crude flag — "favourite resting 3+
 starters" — beats nothing. Full version: adjust λ by xG-share of absent players.
 

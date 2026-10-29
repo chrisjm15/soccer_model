@@ -308,11 +308,16 @@ def section_j():
     L = header('J. LUCK AH RULE (|luck_diff| >= 0.4, back the less lucky side, AHh line) BY EXECUTION VENUE')
     L.append('  Betfair Exchange (BFE) = UK exchange back price at football-data collection time; AU commission 6% on net wins.')
     L.append(f"  {'venue':<26}" + ''.join(f"{g:>22}" for g in ('Big 5', 'EPL', 'ex-EPL')))
+    # Session 18: football-data Avg/Pinnacle prices > 1.3x Bet365 are data errors (13 Avg rows here) - drop them
+    for hc, ac in (('AvgAHH', 'AvgAHA'), ('PAHH', 'PAHA')):
+        if hc in d:
+            d.loc[home & (d[hc] / d.B365AHH > 1.3), hc] = np.nan
+            d.loc[~home & (d[ac] / d.B365AHA > 1.3), ac] = np.nan
     avg_side = np.where(home, d.AvgAHH, d.AvgAHA)
     def pnl(ph, pa, comm=0.0, cap=None):
         price = np.where(home, d[ph], d[pa]).astype(float)
         if cap is not None:   # drop quotes implausibly far above the market average (stale / illiquid)
-            price = np.where(price / avg_side > cap, np.nan, price)
+            price = np.where(~(price / avg_side <= cap), np.nan, price)   # also drops rows whose Avg was removed
         out = []
         for h, a, l, bh, o in zip(d.home_goals, d.away_goals, d.AHh, home, price):
             if not (o > 1):

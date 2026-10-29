@@ -59,6 +59,8 @@ def ah_frame():
     d['p_b365'] = d.market_odds
     d['p_pin'] = np.where(home, d.pin_ah_home, d.pin_ah_away)
     d['p_avg'] = np.where(home, d.avg_ah_home, d.avg_ah_away)
+    for k in ('pin', 'avg'):   # session 18: drop football-data price errors (> 1.3x Bet365)
+        d.loc[d['p_' + k] / d.p_b365 > 1.3, 'p_' + k] = np.nan
     d['p_best3'] = d[['p_b365', 'p_pin', 'p_avg']].max(axis=1)
     for k in ('b365', 'pin', 'avg', 'best3'):
         d['clv_' + k] = d['p_' + k] * d.close_prob_side - 1
@@ -166,6 +168,8 @@ def section_a5():
     m['move'] = cp - np.where(home, m.pre_home, 1 - m.pre_home)
     pr = {'b365': np.where(home, m.odds_ah_home, m.odds_ah_away), 'pin': np.where(home, m.pin_ah_home, m.pin_ah_away),
           'avg': np.where(home, m.avg_ah_home, m.avg_ah_away)}
+    for k in ('pin', 'avg'):   # session 18: drop football-data price errors (> 1.3x Bet365)
+        pr[k] = np.where(pr[k] / pr['b365'] > 1.3, np.nan, pr[k])
     pr['best3'] = np.nanmax(np.column_stack(list(pr.values())), axis=1)
     for k, v in pr.items():
         m['clv_' + k] = v * cp - 1

@@ -6,3 +6,6 @@ pyyaml>=6.0
 lxml>=4.9.0
 scipy>=1.11.0
 numpy>=1.24.0
+statsmodels>=0.14.0
+python-dotenv>=1.0.0
+playwright>=1.40.0

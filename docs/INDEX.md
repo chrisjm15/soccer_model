@@ -12,6 +12,10 @@
 | `DOWNLOAD_AND_TEST_1X2_OU.bat` | Double-click: downloads unfiltered football-data CSVs to `data/raw/footballdata_full/` and runs the 1X2 / O/U CLV test |
 | `LUCK_BIG5_DRYRUN.bat` | One-off: runs luck paper gold tests + a dry-run fetch of Big-5 (ex-EPL) AH odds to check team-name mapping (~8 credits) |
 | `SETUP_SCHEDULE.bat`, `REMOVE_SCHEDULE.bat` | Create/remove Windows tasks: Fri 12:30 AU_PRICES, Tue+Fri 13:00 STATUS, Tue+Fri 13:15 push (`scripts/push_quiet.bat` → `output/push_log.txt`) |
+| `FIX_SCHEDULE.bat`, `scripts/fix_schedule.ps1` | Session 18: turns on catch-up + wake for every "Soccer Model*" Windows task; report `output/schedule_check.txt` |
+| `LINEUPS_FETCH_AND_TEST.bat` | Session 18: lineup research - parser test, probe, ~1 h Understat lineup fetch, `scripts/lineup_research.py`. Run after Fri 5pm, never Fri morning |
+| `SCANDI_UPDATE.bat` | Session 18: current-season Sofascore xG for SWE/NOR/DNK + football-data refresh + soft merge rebuild. Research data only |
+| `COMMIT_SESSION_18.bat` | One-off: commits + pushes session 18 files (Cowork shell cannot commit) |
 | `TELEGRAM_TEST.bat` | Sends one test message to the Telegram channel + previews the Friday post |
 | `scripts/telegram_post.py`, `scripts/telegram_send.bat` | Friday 17:00 Telegram post of the round's EPL bets (preview / test / send) |
 | `PUSH_TO_GITHUB.bat` | Double-click: `git push` of Cowork's local commits |
@@ -51,6 +55,7 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `session_logs/SESSION_LOG_SESSION_14.md` | Session 14 log (strategy verdict) |
 | `session_logs/SESSION_LOG_SESSION_15.md` | Session 15 log (calibrated deploy, main-line fix, automation) |
 | `session_logs/SESSION_LOG_SESSION_16.md` | Session 16 log (live CLV fix, EPL edge verdict, soft leagues closed) |
+| `session_logs/SESSION_LOG_SESSION_17.md` | Session 17 log (live-rule OOS, 16 hypotheses, luck tests, Telegram, schedule) |
 | `local-llm-eval-review.html` | Skill eval viewer output (session 7, reference only) |
 | `load_sofascore_STALE_SESSION10_COPY.py` | Old buggy copy that caused the session-10 caching incident — do NOT run. Live script: `experiment/load_sofascore.py` |
 
@@ -90,6 +95,10 @@ Session 16 briefs (all executed): `ANTIGRAVITY_CLOSING_LINE_CLV`, `_CLV_EDGE_ANA
 | `scripts/download_full_footballdata.py`, `scripts/ou_1x2_clv_check.py` | Full football-data download; 1X2 / O/U line-movement + CLV test → `ou_1x2_clv_report.txt` |
 | `scripts/advanced_research.py` | Session 17 sections A (live-rule robustness, early-season), B (model-free value), C (luck bias), D (BTTS) → `advanced_<X>.txt` |
 | `scripts/advanced_research2.py` | Session 17 part 2 (needs `data/raw/footballdata_full/`): E luck→O/U, F luck→1X2/DNB, G promoted, H dead rubbers, J luck AH by venue → `advanced_<X>.txt` |
+| `scripts/stop_date_analysis.py` | Session 18: live rule by gameweek, pre-set stop rule, `clean_prices()` (drops football-data prices > 1.3x B365) → `stop_date_report.txt` |
+| `scrapers/understat_lineups.py`, `scripts/test_understat_lineups.py`, `scripts/fixtures/` | Session 18: research-only Understat starting-XI scraper (probe/fetch) + parser gold test on a real page extract → `data/raw/understat_lineups/EPL_lineups.csv` |
+| `scripts/lineup_research.py` | Session 18: pre-registered lineup tests L1–L4 → `lineup_report.txt` |
+| `experiment/offseason_2027/` | Session 18: ratings season-transition fix + gold tests + impact report. NOT wired in; README has the 2027 steps |
 | `scripts/luck_paper_big5.py`, `scripts/test_luck_paper.py` | Luck rule paper log for La Liga/Bundesliga/Serie A/Ligue 1 (Fri log, Tue settle via run_update.ps1) → `output/paper_trading/luck_big5_log.csv`; gold tests |
 | `scripts/luck_shadow.py` | Pre-registered luck shadow test on the live log → `output/paper_trading/luck_shadow.csv` (STATUS section 6) |
 | `scripts/au_prices.py` | AU price tracker: AH line → AU market mapping, exact push-aware EV / break-even, Betfair 6% commission. `prepare` / `report` |

@@ -139,6 +139,9 @@ def main():
     prices = {'B365 pre': te.market_odds,
               'Pinnacle pre': pd.Series(np.where(home, te.pin_ah_home, te.pin_ah_away), index=te.index),
               'Avg pre': pd.Series(np.where(home, te.avg_ah_home, te.avg_ah_away), index=te.index)}
+    # Session 18: football-data Pinnacle/Avg prices > 1.3x Bet365 are data errors (e.g. 4.43 v 1.98) - drop them
+    for k in ('Pinnacle pre', 'Avg pre'):
+        prices[k] = prices[k].where(~(prices[k] / prices['B365 pre'] > 1.3))
     prices['Best of 3'] = pd.concat(prices.values(), axis=1).max(axis=1)
     for k, v in prices.items():
         te['clv_' + k] = v * te.close_prob_side - 1

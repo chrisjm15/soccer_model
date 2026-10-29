@@ -23,3 +23,6 @@ output/push_log.txt
 # Contains the Telegram bot token - never commit
 TELEGRAM_CHANNEL_HANDOFF.md
 output/telegram_latest.txt
+output/schedule_check.txt
+output/lineup_latest.txt
+output/scandi_update_latest.txt

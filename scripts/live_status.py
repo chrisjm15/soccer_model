@@ -113,7 +113,7 @@ def checkpoint(cur):
     print('  Rule at n~40: > +1% -> plan real stakes; <= 0 -> edge does not survive our prices; between -> continue.')
     print('  Note: clv_price uses the LOGGED BEST price (mostly offshore). AU prices are lower - see section 5.')
     print('  Historical expectation for this exact rule (OOS 2024-26, live_rule_oos_report.txt): CLV at')
-    print('  Pinnacle pre-close -1.6% (SE 0.7%), best of B365/Pinnacle/avg -0.3% (SE 1.0%); edge >= 2%: -0.7% / +0.9%.')
+    print('  Pinnacle pre-close -1.6% (SE 0.7%), best of B365/Pinnacle/avg -1.5% (SE 0.6%, 2 bad avg prices removed, session 18); edge >= 2%: -0.7% / -0.2%.')
 
 
 def signal(cur):

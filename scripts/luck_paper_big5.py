@@ -8,8 +8,16 @@ FIXED RULE (registered 2026-10-28, do not tune mid-season):
   bet        = back the LESS lucky side on the main AH line when |luck_diff| >= 0.40,
                at the best price found at the Friday run (first sighting locks the row, like the live log).
   Every fixture is logged (flagged or not) so the market-movement test can use all of them.
-VERDICT (with the EPL shadow, season end): pooled mean clv_price > 0 AND ROI > 0 -> build into the 2027-28 model.
-  Historical expectation (2020-26): ex-EPL ROI +1.7% at average prices, +2.6% at Pinnacle; EPL +7.9%.
+VERDICT (season end; AMENDED 2026-10-29 by Chris, before the first row was logged - no results seen):
+  PASS = mean clv_move on flagged bets > 0 with t >= 2  AND  live ROI not significantly below the historical +2.6%
+         (t of (ROI - 0.026) > -2; it does NOT need to be significantly above 0).
+  FAIL = mean clv_move <= 0 at season end.   Anything else = inconclusive, keep logging into 2027-28.
+  Why amended: the rule profits because the CLOSE itself overrates lucky teams, so its price CLV is negative
+  historically (ex-EPL CLV@Pinnacle -1.1%) while ROI is positive. The old rule (clv_price > 0 AND ROI > 0) tested the
+  wrong thing. ROI cannot be proven in one season (needs ~4,500 bets for t 2 at +2.6%; ~420 expected this season).
+  The market MOVE toward our side can: historical +0.64pp per bet (SD ~3.9pp) -> expected t ~2.4 by mid-Jan, ~3.4 by May.
+  Historical expectation (2020-26): ex-EPL ROI +1.3% at average prices, +2.6% at Pinnacle; EPL +6.0% at average
+  (session 18: 13 bad football-data Avg prices removed; were +1.7% / +7.9%). Pinnacle figures unaffected.
 
 Modes:   python scripts/luck_paper_big5.py log [--dry-run]   (Friday, after the predict run; uses ~8 Odds API credits)
          python scripts/luck_paper_big5.py settle            (Tuesday, after run.py update)
@@ -262,6 +270,13 @@ def report_lines():
         if len(v):
             se = v.std() / math.sqrt(len(v)) if len(v) > 1 else float('nan')
             L.append(f'  {name:<13} n={len(v):<4} mean {v.mean():+.2%}' + ('' if math.isnan(se) else f' (SE {se:.2%})'))
+    mv, pl = num('clv_move'), num('pnl_unit')
+    if len(mv) > 1:
+        t_mv = mv.mean() / (mv.std() / math.sqrt(len(mv)))
+        t_roi = (pl.mean() - 0.026) / (pl.std() / math.sqrt(len(pl))) if len(pl) > 1 else float('nan')
+        status = ('PASS so far' if t_mv >= 2 and not t_roi <= -2 else 'FAIL so far' if mv.mean() <= 0 else 'inconclusive')
+        L.append(f'  Verdict test (amended 2026-10-29): move t {t_mv:+.2f} (need >= 2), ROI vs +2.6% t {t_roi:+.2f} '
+                 f'(need > -2) -> {status}. Expected move t ~2.4 at n~200, ~3.4 at n~420.')
     for lg, g in f.groupby('league'):
         p = pd.to_numeric(g.pnl_unit, errors='coerce').dropna()
         L.append(f'    {lg:<11} flagged {len(g):>3}  settled {len(p):>3}  P/L {p.sum():+.2f} units')

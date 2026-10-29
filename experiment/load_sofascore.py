@@ -47,14 +47,36 @@ MAX_ROUNDS = {
 DELAY = 1.0  # seconds between API calls — do NOT reduce below 1.0 (Sofascore will block)
 
 
+_USE_IN_PAGE_FETCH = False   # session 18: set True once direct navigation gets 403 and in-page fetch works
+
+
+def _in_page_fetch(page, url):
+    """Call the API the way the website does: fetch() from a www.sofascore.com page (session 18, 2026-10-29,
+    after direct navigation to api.sofascore.com started returning 403). Returns parsed JSON or None."""
+    if not page.url.startswith('https://www.sofascore.com'):
+        page.goto('https://www.sofascore.com', wait_until='domcontentloaded', timeout=30000)
+        time.sleep(3)
+    return page.evaluate(
+        "async (u) => { const r = await fetch(u, {credentials: 'include'}); return r.ok ? await r.json() : null; }", url)
+
+
 def fetch_json(page, url):
-    """Navigate directly to API URL and parse JSON from page body. Returns parsed JSON or None."""
+    """Navigate directly to API URL and parse JSON from page body; if that is refused, use an in-page fetch.
+    Returns parsed JSON or None."""
+    global _USE_IN_PAGE_FETCH
+    if not _USE_IN_PAGE_FETCH:
+        try:
+            response = page.goto(url, wait_until='domcontentloaded', timeout=15000)
+            if response and response.ok:
+                return json.loads(page.inner_text('body'))
+        except Exception:
+            pass
     try:
-        response = page.goto(url, wait_until='domcontentloaded', timeout=15000)
-        if not response or not response.ok:
-            return None
-        content = page.inner_text('body')
-        return json.loads(content)
+        data = _in_page_fetch(page, url)
+        if data is not None and not _USE_IN_PAGE_FETCH:
+            _USE_IN_PAGE_FETCH = True
+            print('  (direct API navigation refused - switched to in-page fetch)')
+        return data
     except Exception:
         return None
 

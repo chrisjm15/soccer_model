@@ -3,6 +3,14 @@
 Cowork, unattended. All read-only research; live model and automation unchanged. Reproduce with the scripts named.
 Reports in `output/backtest_results/`. "t" = robust (HC1) t-statistic. Segment tables are exploratory.
 
+> **Session 18 correction (2026-10-29):** two football-data Avg AH prices in the EPL OOS set are data errors
+> (4.43 / 4.24 vs Bet365 1.98 / 2.03). All CLV@best-of-3 numbers below that include Avg prices are too high.
+> Live rule: −1.5% ± 0.6 (not −0.3%); edge ≥ 2%: −0.2% (not +0.9%). CLV@Pinnacle figures are unaffected.
+> **Luck AH rule at Average prices also corrected** (13 bad Avg rows among its bets): Big 5 +2.3% ± 1.4 (was +3.1%),
+> EPL +6.0% ± 3.0 (was +7.9%), ex-EPL +1.3% ± 1.6 (was +1.7%). Pinnacle figures unchanged (ex-EPL +2.6%). Item 16
+> now passes only on EPL at exactly t 2.0. Re-run reports: `live_rule_oos_report.txt`, `advanced_A.txt`, `advanced_J.txt`.
+> Stop-date by gameweek: `output/backtest_results/stop_date_report.txt` (information gone by GW 8).
+
 ## Verdicts by hypothesis
 
 | # | Hypothesis | Verdict | Key number | Report |

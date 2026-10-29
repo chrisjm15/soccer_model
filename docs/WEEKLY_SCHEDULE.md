@@ -8,10 +8,16 @@
 | Tuesday 12:00 | existing weekly task → `scripts/run_update.ps1` | `run.py update` then `run.py results` (settles last round's paper bets, computes CLV) |
 | Friday 12:00 | "Soccer Model - Friday Predict" → `run_update.ps1 -Mode predict` | `run.py update` then `run.py predict` (logs this round's matches + flagged bets) |
 
-- Both wake the PC from sleep. If the PC was off, each runs as soon as it's next on.
+| Tue + Fri 13:00 | "Soccer Model - Status" → `STATUS.bat` | Opens the status report (`output/status_latest.txt`) |
+| Tue + Fri 13:15 | "Soccer Model - Push" → `scripts/push_quiet.bat` | `git push` → `output/push_log.txt` |
+| Friday 17:00 | "Soccer Model - Telegram" → `scripts/telegram_send.bat` | Posts the round's EPL bets + EXPERIMENTAL underrated picks |
+
+- All tasks wake the PC and catch up if missed, once `FIX_SCHEDULE.bat` has been run (session 18). The three
+  13:00/13:15/17:00 tasks did NOT do this before. Wake needs "Allow wake timers" on in the Windows power plan.
+- Tue/Fri runs also settle/log the Big-5 luck paper test (`scripts/luck_paper_big5.py`).
 - If `update` fails, the script skips results/predict (no predictions on stale ratings).
 - The PC is **not** put to sleep afterwards.
-- Each predict run uses 3 Odds API credits (uk, au, eu regions).
+- Each Friday uses ~11 Odds API credits: predict 3 (uk, au, eu) + Big-5 luck log 8.
 
 ## What to look at (optional, ~1 min)
 - `output/predict_latest.txt` — this round's predictions and flagged bets (dated copies in `output/predictions/`).
